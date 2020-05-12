@@ -18,11 +18,11 @@ alias mmbin="cd ~/mmbin"
 
 # Env
 alias srce="source ~/.bash_env; source ~/local/.bash_env"
-alias lenv="vi ~/local/.bash_env"
+alias lenv="vi ~/.local/.bash_env"
 
 # rc file
 alias rc="vi ~/.bashrc"
-alias crc="vi ~/bash/.bashrc.custom"
+alias crc="vi ~/.bashrc.custom"
 alias lrc="vi ~/.local/.bashrc"
 
 # Term

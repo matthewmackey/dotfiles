@@ -26,10 +26,10 @@ source_file() {
 #===================================================================================
 # Source files
 #===================================================================================
-source_file ~/bash/.bashrc.20_04             # this sources ~/.bash_aliases
-source_file ~/bash/.bashrc.custom
-source_file ~/bash/.bash_env
-source_file ~/bash/.bash_functions
+source_file ~/.bashrc.20_04             # this sources ~/.bash_aliases
+source_file ~/.bashrc.custom
+source_file ~/.bash_env
+source_file ~/.bash_functions
 
 # Override with any local changes
 source_file ~/.local/.bashrc
