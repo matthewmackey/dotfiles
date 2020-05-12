@@ -1,28 +1,208 @@
-syntax on
-filetype plugin indent on
+"###################################################################################
+" START From: https://github.com/hamvocke/dotfiles/blob/master/vim/.vimrc
+" With some mmackey edits
+"###################################################################################
+""""""""""""""""""""""""""""""""""""""""""""""""
+" Setup Vundler for plugin management
+""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible
+filetype off
 
-set nonu
-colorscheme delek
-set colorcolumn=85
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
-" Have all indents be 2 spaces, have tabs replaced with spaces, and have the >> and
-" << operators peforms indents of 2 spaces
-set tabstop=2 shiftwidth=2 expandtab
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
 
-:set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,nbsp:.
+" NERD tree - tree explorer
+Plugin 'scrooloose/nerdtree'
 
-"-----------------------------------------------------
-" SEARCH configurations
-"-----------------------------------------------------
-" search highlighting
+" Base16 colorschemes
+Plugin 'chriskempson/base16-vim'
+
+" Ctrl-p
+"Plugin 'kien/ctrlp.vim'
+
+" Elixir syntax highlighting
+"Plugin 'elixir-lang/vim-elixir'
+
+" Vimwiki
+"Plugin 'vimwiki/vimwiki'
+
+" Keep Plugin commands between vundle#begin/end.
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Custom Keybindings
+"""""""""""""""""""""""""""""""""""""""""""""""""
+"let mapleader=","       " leader is comma
+
+" turn off search highlight with ,-<space>
+"nnoremap <leader><space> :nohlsearch<CR>
+
+" Invoke Ctrl-p with c-p
+"let g:ctrlp_map = '<c-p>'
+"let g:ctrlp_cmd = 'CtrlP'
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""
+" General Configuration
+""""""""""""""""""""""""""""""""""""""""""""""""
+" Automatically update a file if it is changed externally
+"set autoread
+
+" Height of the command bar
+set cmdheight=2
+
 " NOTE: Use ':noh' or ',h' to turn off search highlighting until next search
-:set hlsearch
+set hlsearch	    " highlight search matches
 
-" show match as search proceeds
-:set incsearch
+set incsearch	    " search while characters are entered
+
+" search is case-insensitive by default
+set ignorecase
 
 " ignore case if search pattern is all lowercase, case-sensitive otherwise
-set smartcase
+" set smartcase ??
+
+" Show linenumbers
+set number
+
+set showcmd	" show last command in the bottom right
+
+set ruler	" always show current position
+
+" Line wrap (number of cols)
+set wrap	    " wrap lines only visually
+set linebreak	    " wrap only at valid characters
+set textwidth=0	    " prevent vim from inserting linebreaks
+set wrapmargin=0    "   in newly entered text
+
+" show matching braces
+set showmatch
+
+set wildmenu	    " visual autocomplete for command menu
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Backups, Swap Files
+"""""""""""""""""""""""""""""""""""""""""""""""""
+set nobackup
+set nowb
+set noswapfile
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Colors and Fonts
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Enable syntax highlighting
+syntax on
+
+" UTF-8 encoding and en_US as default encoding/language
+set encoding=utf8
+
+" Define standard filetype
+set ffs=unix,dos,mac
+
+let base16colorspace=256
+colorscheme base16-horizon-dark
+set background=dark
+
+set cursorline	" highlight current active line
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" File Types
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" recognize .md files as markdown files
+"au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+
+" enable spell-checking for markdown files
+"autocmd BufRead,BufNewFile *.md setlocal spell
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Text and Indentation
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Use smart tabs
+set smarttab
+
+set expandtab " use spaces, no tabs
+
+" 1 tab == 4 spaces
+set shiftwidth=4
+set softtabstop=4
+
+set ai " Auto indent
+set si " Smart indent
+
+" modern backspace behavior
+set backspace=indent,eol,start
+
+filetype indent on	" enable filetype specific indentation
+
+set nonu
+set colorcolumn=85
+
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,nbsp:.
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Movement
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" move vertically by visual line (don't skip wrapped lines) 
+"nnoremap j gj
+"nnoremap k gk
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Ctrl-p
+"""""""""""""""""""""""""""""""""""""""""""""""""
+"let g:ctrlp_match_window = 'bottom,order:ttb'
+"let g:ctrlp_switch_buffer = 0
+"let g:ctrlp_working_path_mode = 'ra'
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" vimwiki
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" automatically generate HTML files
+"let g:vimwiki_list = [{'path': '~/vimwiki/', 'auto_export': 1}]
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" NERDTree
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" show hidden files
+"let NERDTreeShowHidden=1
+
+" open/close NERDTree using Leader-f (,-f)
+"nnoremap <Leader>f :NERDTreeToggle<Enter>
+
+"###################################################################################
+" END From: (github.com/hamvocke/dotfiles)
+"###################################################################################
+
+
+"###################################################################################
+" START: mmackey
+"###################################################################################
+"-----------------------------------------------------------------------------------
+" Base16 shell creates Vim colorscheme file at ~/.vimrc_background
+" From: https://github.com/chriskempson/base16-shell
+"
+" This must be placed after 'chriskempson/base16-vim' plugin is declared in .vimrc
+"-----------------------------------------------------------------------------------
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
 
 "-----------------------------------------------------
 " From: http://stackoverflow.com/questions/7652820/how-to-disable-the-auto-comment-in-shell-script-vi-editing
@@ -38,47 +218,6 @@ set paste
 " Allow mouse to move cursor
 set mouse=a
 
-"#------------------------------------------------------------------------------------------
-"#------------------------------------------------------------------------------------------
-"# START: .vimrc.OLD
-"#------------------------------------------------------------------------------------------
-"#------------------------------------------------------------------------------------------
-" IMPORTANT:
-"   see ~/.vim/bundle/vim-sensible/plugin/sensible.vim for more config options.
-"
-" NOTE: it appears that plugin file takes precedence / is evaluated last b/c putting
-" things like 'set noautoindent' in here don't seem to work b/c it sets autoindenting
-" there via 'set autoindent'
-
-"" Next 3 lines from vim-pathogen plugin at:
-""  - https://github.com/tpope/vim-pathogen
-"execute pathogen#infect()
-"syntax on
-"filetype plugin indent on
-"
-"set nonu
-"colorscheme delek
-"set colorcolumn=85
-
-"" Have all indents be 4 spaces, have tabs replaced with spaces, and have the >> and
-"" << operators peforms indents of 4 spaces
-""set tabstop=2 shiftwidth=2 expandtab
-"
-":set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,nbsp:.
-"
-""-----------------------------------------------------
-"" SEARCH configurations
-""-----------------------------------------------------
-"" search highlighting
-"" NOTE: Use ':noh' or ',h' to turn off search highlighting until next search
-":set hlsearch
-"
-"" show match as search proceeds
-":set incsearch
-"
-"" ignore case if search pattern is all lowercase, case-sensitive otherwise
-"set smartcase
-"
 ""-----------------------------------------------------
 "" From: https://github.com/derekwyatt/vim-config/blob/master/vimrc
 ""-----------------------------------------------------
@@ -98,17 +237,3 @@ set mouse=a
 ""-----------------------------------------------------
 "" Search for highlighted text
 "vnorem // y/<c-r>"<cr>
-"
-""-----------------------------------------------------
-"" From: http://stackoverflow.com/questions/7652820/how-to-disable-the-auto-comment-in-shell-script-vi-editing
-""-----------------------------------------------------
-"" Needed to stop vim from automatically commenting out any text I paste to a file
-"" Search for highlighted text
-"" from an external source (that starts with a #...not sure if only in this case??)
-"set paste
-"
-""-----------------------------------------------------
-"" From: https://www.cs.swarthmore.edu/help/vim/etc.html
-""-----------------------------------------------------
-"" Allow mouse to move cursor
-"set mouse=a
