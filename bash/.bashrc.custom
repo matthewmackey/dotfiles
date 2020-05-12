@@ -11,7 +11,9 @@ set -o vi
 #--------------------------------------------------------------
 # Bashmarks directory completion tool
 #--------------------------------------------------------------
-unalias l 				# required for bashmarks b/c 20.04 .bashrc sets this alias
+if [[ $(command -v l | grep alias) ]]; then
+  unalias l 				# required for bashmarks b/c 20.04 .bashrc sets this alias
+fi
 source_file ~/.local/bin/bashmarks.sh
 
 #--------------------------------------------------------------
