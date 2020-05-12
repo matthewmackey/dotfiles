@@ -40,6 +40,7 @@ alias down="cd ~/downloads"
 alias fr="file-roller"
 alias h="history | grep "
 alias ll="ls -alh"
+alias treeg="tree -I .git"
 alias whatismyip="wget http://ipinfo.io/ip -qO -"
 
 #-------------------------------------------------------------------------------
@@ -89,8 +90,8 @@ alias images="docker images"
 #-------------------------------------------------------------------------------
 alias gba="git branch -a"
 alias gbav="git branch -av"
-alias gdiff="clear && git diff"
-alias gdf="clear && git df"
+alias gdf="clear && git diff"
+alias gdfc="clear && git diff --cached"
 alias gl="git log"
 alias gst="clear && git status"
 alias glogo="git log --pretty=oneline"
