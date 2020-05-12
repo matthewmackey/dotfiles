@@ -14,7 +14,9 @@ set -o vi
 if [[ $(command -v l | grep alias) ]]; then
   unalias l 				# required for bashmarks b/c 20.04 .bashrc sets this alias
 fi
-source_file ~/.local/bin/bashmarks.sh
+if [ -f ~/.local/bin/bashmarks.sh ]; then
+  source ~/.local/bin/bashmarks.sh
+fi
 
 #--------------------------------------------------------------
 # Virtualenvwrapper setup
@@ -25,11 +27,6 @@ export VIRTUALENVWRAPPER_PYTHON=$default_python_bin/python
 export VIRTUALENVWRAPPER_VIRTUALENV=$default_python_bin/virtualenv
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--always-copy'
 #source ~/pythons/2.7.12/bin/virtualenvwrapper.sh
-
-#--------------------------------------------------------------
-# (mm) nodeenvwrapper setup
-#--------------------------------------------------------------
-#source ~/dotfiles/files/nodeenvwrapper.sh
 
 #--------------------------------------------------------------
 # Source LastPass CLI bash completion
@@ -44,3 +41,34 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && \
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         eval "$("$BASE16_SHELL/profile_helper.sh")"
+
+#-----------------------------------------------------------------------------------
+# For later...
+#-----------------------------------------------------------------------------------
+#--------------------------------------------------------------
+# SSH Autocomplete
+#--------------------------------------------------------------
+# Will autocomplete any hosts found in known_hosts.
+# From: https://gist.github.com/peelman/1773863
+complete -W "$(echo `cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | uniq | grep -v "\["`;)" ssh
+
+
+#--------------------------------------------------------------
+# (mm) nodeenvwrapper setup
+#--------------------------------------------------------------
+#source ~/dotfiles/files/nodeenvwrapper.sh
+
+#--------------------------------------------------------------
+# autoenv Setup
+#--------------------------------------------------------------
+# autoenv - modifies 'cd' to execute '.env' when cd'ing to a directory with a '.env' file
+#  - https://github.com/kennethreitz/autoenv
+#source ~/.autoenv/activate.sh
+
+
+#--------------------------------------------------------------
+# CHEF
+#--------------------------------------------------------------
+# autocomplete for Knife
+# https://github.com/wk8/knife-bash-autocomplete
+#source knife_autocomplete.sh

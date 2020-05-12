@@ -1,29 +1,33 @@
 #-------------------------------------------------------------------------------
 # Bash
 #-------------------------------------------------------------------------------
-# Aliases
-alias al="vi ~/.bash_aliases"
+BASH_DOT_HOME=~/bash
+
+# Bash - Aliases
+alias al="vi ${BASH_DOT_HOME}/.bash_aliases"
 alias lal="vi ~/.local/.bash_aliases"
-alias srca="source ~/.bash_aliases; source ~/.local/.bash_aliases"
+alias srca="source ${BASH_DOT_HOME}/.bash_aliases; \
+  [ -f ~/.local/.bash_aliases ] && source ~/.local/.bash_aliases"
 alias sa="srca"
 
-# cd
-alias debs="cd ~/downloads/debs"
+# Bash - Env
+alias bashenv="vi ${BASH_DOT_HOME}/.bash_env"
+alias bashenvl="vi ~/.local/.bash_env"
+alias srce="source ${BASH_DOT_HOME}/.bash_env; \
+  [ -f ~/.local/.bash_env ] && source ~/.local/.bash_env"
+
+# Bash - rc files
+alias bashrc="vi ~/.bashrc"
+alias bashrcc="vi ${BASH_DOT_HOME}/.bashrc.custom"
+alias bashrcl="vi ~/.local/.bashrc"
 
 # Bin
 alias bin="cd ~/bin"
-alias lbin="cd ~/local/bin"
-alias mbin="mmbin"
+alias lbin="cd ~/.local/bin"
 alias mmbin="cd ~/mmbin"
 
-# Env
-alias srce="source ~/.bash_env; source ~/local/.bash_env"
-alias lenv="vi ~/.local/.bash_env"
-
-# rc file
-alias rc="vi ~/.bashrc"
-alias crc="vi ~/.bashrc.custom"
-alias lrc="vi ~/.local/.bashrc"
+# cd
+alias debs="cd ~/downloads/debs"
 
 # Term
 alias dark="setTermColor solarized-dark"

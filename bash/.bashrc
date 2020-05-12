@@ -15,10 +15,10 @@
 #===================================================================================
 source_file() {
   if [ -f "$1" ]; then
-    echo "Executing -> [$1]"
+    echo -e "OK        -> ["~"/${1##/home/mmackey/}]"
     source "$1"
   else
-    echo "Non-existent -> [$1]"
+    echo -e "NOT FOUND -> ["~"/${1##/home/mmackey/}]"
   fi
 }
 
@@ -26,10 +26,12 @@ source_file() {
 #===================================================================================
 # Source files
 #===================================================================================
-source_file ~/.bashrc.20_04             # this sources ~/.bash_aliases
-source_file ~/.bashrc.custom
-source_file ~/.bash_env
-source_file ~/.bash_functions
+BASH_DOT_HOME=~/bash
+source_file ${BASH_DOT_HOME}/.bashrc.20_04
+source_file ${BASH_DOT_HOME}/.bashrc.custom
+source_file ${BASH_DOT_HOME}/.bash_env
+source_file ${BASH_DOT_HOME}/.bash_functions
+source_file ${BASH_DOT_HOME}/.bash_aliases
 
 # Override with any local changes
 source_file ~/.local/.bashrc
@@ -37,6 +39,16 @@ source_file ~/.local/.bash_aliases
 source_file ~/.local/.bash_env
 source_file ~/.local/.bash_functions
 
+# Source language/tool specific setup files
+for _bashrc in $(find ${BASH_DOT_HOME}/ -name '.bashrc_lang-*')
+do
+  source_file $_bashrc
+done
+
+
+#--------------------------------------------------------------
+# Add extra bin dirs to PATH
+#--------------------------------------------------------------
 EXTRA_BIN_DIRS_FILE=~/local/extra_bin_dirs
 if [ -f "$EXTRA_BIN_DIRS_FILE" ]; then
   for dir in $(cat "$EXTRA_BIN_DIRS_FILE"); do
