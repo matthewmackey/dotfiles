@@ -160,6 +160,13 @@ set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,nbsp:.
 "nnoremap j gj
 "nnoremap k gk
 
+" From: https://github.com/preservim/nerdtree/wiki/F.A.Q.
+" Switch between different windows by their direction
+no <C-j> <C-w>j    " switching to below window 
+no <C-k> <C-w>k    " switching to above window
+no <C-l> <C-w>l    " switching to right window 
+no <C-h> <C-w>h    " switching to left window
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Ctrl-p
