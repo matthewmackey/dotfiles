@@ -1,9 +1,14 @@
 #===================================================================================
 # Editor/vi Setup
 #===================================================================================
-EDITOR="vi"
-FCEDIT="vi"
 set -o vi
+
+export EDITOR="vi"
+export FCEDIT="vi"
+
+# Sets default editor for various systems programs like crontab & git
+export VISUAL="vi"
+
 
 #===================================================================================
 # Custom Bash Additions
