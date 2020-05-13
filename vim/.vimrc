@@ -148,7 +148,6 @@ set backspace=indent,eol,start
 filetype indent on	" enable filetype specific indentation
 
 set nonu
-set colorcolumn=80
 
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,nbsp:.
 
@@ -213,9 +212,24 @@ if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
 
-" Must be after soucing ~/.vimrc_background so it can override the color
-" for all colorschemes
+" ColorColumn: must be after soucing ~/.vimrc_background so it can override
+" the color for all colorschemes
 highlight ColorColumn ctermbg=red
+
+"------------------------------------------------------------------------------
+" From: https://csswizardry.com/2017/03/configuring-git-and-vim/
+"------------------------------------------------------------------------------
+" Force the cursor onto a new line after 80 characters
+set textwidth=80
+
+" However, in Git commit messages, let’s make it 72 characters
+autocmd FileType gitcommit set textwidth=72
+
+" Colour the 81st (or 73rd) column so that we don’t type over our limit
+set colorcolumn=+1
+
+" In Git commit messages, also colour the 51st column (for titles)
+autocmd FileType gitcommit set colorcolumn+=51
 
 "-----------------------------------------------------
 " From: http://stackoverflow.com/questions/7652820/how-to-disable-the-auto-comment-in-shell-script-vi-editing
