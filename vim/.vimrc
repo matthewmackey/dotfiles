@@ -180,10 +180,12 @@ set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,nbsp:.
 " NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""
 " show hidden files
-"let NERDTreeShowHidden=1
+let NERDTreeShowHidden=1
 
 " open/close NERDTree using Leader-f (,-f)
+" <Leader> is \ by default
 "nnoremap <Leader>f :NERDTreeToggle<Enter>
+nnoremap <C-n> :NERDTreeToggle<Enter>
 
 "###################################################################################
 " END From: (github.com/hamvocke/dotfiles)
