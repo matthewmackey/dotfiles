@@ -148,7 +148,7 @@ set backspace=indent,eol,start
 filetype indent on	" enable filetype specific indentation
 
 set nonu
-set colorcolumn=85
+set colorcolumn=80
 
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,nbsp:.
 
@@ -203,6 +203,10 @@ if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
+
+" Must be after soucing ~/.vimrc_background so it can override the color
+" for all colorschemes
+highlight ColorColumn ctermbg=red
 
 "-----------------------------------------------------
 " From: http://stackoverflow.com/questions/7652820/how-to-disable-the-auto-comment-in-shell-script-vi-editing
