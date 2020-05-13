@@ -1,0 +1,22 @@
+#!/bin/bash
+
+NODEENV_EXEC=~/.virtualenvs/node/bin/nodeenv
+NODEENV_BASE_DIR=~/.nodeenvs
+
+if [ -z "$1" ]; then
+  echo "You must provide: <nodeenv_name>"
+  exit 1
+fi
+
+NODEENV_NAME=$1
+shift
+NODEENV_EXTRA_ARGS=$@
+
+NODEENV_DEST_DIR="$NODEENV_BASE_DIR/$NODEENV_NAME"
+NODEENV_PROMPT="(node-$NODEENV_NAME) "
+
+# Create new node installation
+$NODEENV_EXEC --prebuilt --prompt $NODEENV_EXTRA_ARGS "$NODEENV_PROMPT" "$NODEENV_DEST_DIR"
+
+echo
+echo "New nodeenv installed at: $NODEENV_DEST_DIR"

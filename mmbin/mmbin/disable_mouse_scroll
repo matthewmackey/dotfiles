@@ -1,0 +1,50 @@
+#!/bin/bash
+
+MOUSE_NAME="Logitech M510"
+
+MATCHED_BUTTON_AWK_VALUE="0"
+if [ "$1" = "-e" ]; then
+  MATCHED_BUTTON_AWK_VALUE="i"
+fi
+
+mouse_id=$(xinput list | (grep "$MOUSE_NAME" |  head -1 | sed -r 's|.*id=([0-9]*).*|\1|'))
+
+echo "#-----------------------------------------------------------------------------"
+echo "# Mouse [$MOUSE_NAME] Data:"
+echo "#-----------------------------------------------------------------------------"
+xinput list "$mouse_id"
+echo
+
+button_map=$(xinput list "$mouse_id" \
+  | sed -r -n 's|.*Button labels:(.*)|\1|p' \
+  | sed -r 's|" "|,|g' \
+  | sed -r 's| "(.*)".*|\1|g' \
+  | awk '
+{
+  n = split($0, buttons, ",")
+  for (i = 1; i <= n; i++) {
+    if ( buttons[i] ~ /Button Wheel (Up|Down)/ ) {
+      button_map = button_map " " '$MATCHED_BUTTON_AWK_VALUE'
+		} else {
+			button_map = button_map " " i
+		}
+  }
+}
+END {
+  print button_map
+}')
+
+map_cmd=$(echo xinput set-button-map "$mouse_id" $button_map)
+echo "#-----------------------------------------------------------------------------"
+echo "# xinput 'set-button-map' Command:"
+echo "#-----------------------------------------------------------------------------"
+echo "$map_cmd"
+echo
+
+$map_cmd
+
+echo "#-----------------------------------------------------------------------------"
+echo "# xinput 'get-button-map' Results:"
+echo "#-----------------------------------------------------------------------------"
+xinput get-button-map "$mouse_id"
+

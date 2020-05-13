@@ -1,0 +1,16 @@
+#!/bin/bash
+
+FIRST_ARG=$1
+SECOND_ARG=$2
+
+# Poor man's parsearg
+test $FIRST_ARG = '-w' && {
+  test ! -z $SECOND_ARG || {
+    echo "With the -w argument you must also supply a filename"
+    exit -1
+  }
+  /usr/bin/google-chrome --new-window $SECOND_ARG > /dev/null
+} || {
+  /usr/bin/google-chrome $FIRST_ARG > /dev/null
+}
+
