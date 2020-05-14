@@ -18,7 +18,7 @@
   autocrlf = input
   editor = vim
   excludesfile = ~/.gitignore_global
-  whitespace = blank-at-eol,blank-at-eof,space-before-tab,indent-with-non-tab
+  whitespace = blank-at-eol,blank-at-eof,space-before-tab
 
 [credential]
   helper = cache --timeout=3600
