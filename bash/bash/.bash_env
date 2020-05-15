@@ -18,5 +18,8 @@ do
   export PATH="$_path:$PATH"
 done
 
-# Add Android Studio binto PATH
+# Add Android Studio bin to PATH
 export PATH=/opt/android-studio/bin:$PATH
+
+# Add ansible bin dir to PATH
+export PATH=~/virtualenvs/ansible/bin:$PATH
