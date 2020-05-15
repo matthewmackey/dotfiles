@@ -102,6 +102,7 @@ alias gdiff="clear && git diff --cached"
 alias gl="git log"
 alias gst="clear && git status"
 alias glogo="git log --pretty=oneline"
+alias push="git push"
 alias remotes="git remote -v"
 
 #-------------------------------------------------------------------------------
