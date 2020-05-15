@@ -61,6 +61,7 @@ alias galaxy="ansible-galaxy"
 alias nocows="export ANSIBLE_NOCOWS=1"
 alias play="ansible-playbook"
 alias rmretry="find . -name '*.retry' -exec rm {} \;"
+alias vaulta="ansible-vault"
 
 #-------------------------------------------------------------------------------
 # Chef
