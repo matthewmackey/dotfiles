@@ -24,16 +24,6 @@ if [ -f ~/.local/bin/bashmarks.sh ]; then
 fi
 
 #--------------------------------------------------------------
-# Virtualenvwrapper setup
-#--------------------------------------------------------------
-default_python_bin=~/pythons/2.7.12/bin
-export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=$default_python_bin/python
-export VIRTUALENVWRAPPER_VIRTUALENV=$default_python_bin/virtualenv
-export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--always-copy'
-#source ~/pythons/2.7.12/bin/virtualenvwrapper.sh
-
-#--------------------------------------------------------------
 # Source LastPass CLI bash completion
 #--------------------------------------------------------------
 test -f /usr/share/bash-completion/completions/lpass && source /usr/share/bash-completion/completions/lpass
