@@ -20,6 +20,7 @@ alias srce="source ${BASH_DOT_HOME}/.bash_env; \
 alias bashrc="vi ~/.bashrc"
 alias bashrcc="vi ${BASH_DOT_HOME}/.bashrc.custom"
 alias bashrcl="vi ~/.local/.bashrc"
+alias srcrc="source ~/.bashrc"
 
 # Bin
 alias bin="cd ~/bin"
@@ -96,6 +97,7 @@ alias gba="git branch -a"
 alias gbav="git branch -av"
 alias gdf="clear && git diff"
 alias gdfc="clear && git diff --cached"
+alias gdiff="clear && git diff --cached"
 alias gl="git log"
 alias gst="clear && git status"
 alias glogo="git log --pretty=oneline"

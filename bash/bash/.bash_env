@@ -18,3 +18,5 @@ do
   export PATH="$_path:$PATH"
 done
 
+# Add Android Studio binto PATH
+export PATH=/opt/android-studio/bin:$PATH
