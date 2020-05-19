@@ -1,6 +1,6 @@
 "###################################################################################
-" START From: https://github.com/hamvocke/dotfiles/blob/master/vim/.vimrc
-" With some mmackey edits
+ "START From: https://github.com/hamvocke/dotfiles/blob/master/vim/.vimrc
+ "With some mmackey edits
 "###################################################################################
 """"""""""""""""""""""""""""""""""""""""""""""""
 " Setup Vundler for plugin management
@@ -31,6 +31,11 @@ Plugin 'chriskempson/base16-vim'
 
 " Vimwiki
 "Plugin 'vimwiki/vimwiki'
+
+
+" NERD Commenter
+" https://github.com/preservim/nerdcommenter
+Plugin 'preservim/nerdcommenter'
 
 " Keep Plugin commands between vundle#begin/end.
 " All of your Plugins must be added before the following line
@@ -192,6 +197,14 @@ let NERDTreeShowHidden=1
 " <Leader> is \ by default
 "nnoremap <Leader>f :NERDTreeToggle<Enter>
 nnoremap <C-n> :NERDTreeToggle<Enter>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" NERDCommenter
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Bug: https://stackoverflow.com/questions/9051837/how-to-map-c-to-toggle-comments-in-vim
+inoremap <C-_> :call NERDComment(0,"toggle")<CR>
+noremap <C-_> :call NERDComment(0,"toggle")<CR>
+vnoremap <C-_> :call NERDComment(0,"toggle")<CR>
 
 "###################################################################################
 " END From: (github.com/hamvocke/dotfiles)
