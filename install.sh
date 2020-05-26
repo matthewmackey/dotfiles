@@ -30,5 +30,10 @@ copy_chrome_icons() {
   done
 }
 
+install_tmux_plugin_manager() {
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+}
+
 install_base16_shell
 install_vim_vundle
+install_tmux_plugin_manager
