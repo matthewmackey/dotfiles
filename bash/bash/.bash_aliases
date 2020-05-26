@@ -29,6 +29,7 @@ alias mmbin="cd ~/mmbin"
 
 # cd
 alias debs="cd ~/downloads/debs"
+alias cdb="cd -; cll"
 
 # Term
 alias dark="setTermColor solarized-dark"
