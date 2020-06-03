@@ -1,0 +1,5 @@
+#!/bin/bash
+THUNDERBOLT_GUID=00e151cc-6baf-0801-ffff-ffffffffffff
+
+boltctl forget $THUNDERBOLT_GUID
+boltctl authorize $THUNDERBOLT_GUID
