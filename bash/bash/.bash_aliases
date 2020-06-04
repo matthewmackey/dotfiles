@@ -122,6 +122,7 @@ alias wo="workon"
 # SSH
 #-------------------------------------------------------------------------------
 alias sconf="vi ~/.ssh/config"
+alias sconfl="vi ~/.ssh/config-local"
 alias sdir="cd ~/.ssh"
 alias rmsock="rm -rf ~/.ssh/sockets/*"
 
@@ -131,7 +132,7 @@ alias rmsock="rm -rf ~/.ssh/sockets/*"
 # See ~/bin/tm
 alias tml="tmux ls"
 alias tmls="tmux ls"
-alias tma="tmux attach -t"
+alias tma="tmux attach"
 alias tmd="tmux detach"
 alias tms="tmux switch -t"
 
@@ -144,3 +145,4 @@ alias vms="ll ~/virtualbox_vms"
 # VMs
 #-------------------------------------------------------------------------------
 alias mpass="multipass"
+alias msh="multipass shell"
