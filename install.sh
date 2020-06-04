@@ -34,6 +34,12 @@ install_tmux_plugin_manager() {
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 }
 
+setup_ssh_dirs() {
+  mkdir -p ~/.ssh/config.d
+}
+
 install_base16_shell
 install_vim_vundle
 install_tmux_plugin_manager
+setup_ssh_dirs
+
