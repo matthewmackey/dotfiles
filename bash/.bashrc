@@ -40,7 +40,7 @@ source_file ~/.local/.bash_env
 source_file ~/.local/.bash_functions
 
 # Source language/tool specific setup files
-for _bashrc in $(find ${BASH_DOT_HOME}/ -name '.bashrc_lang-*')
+for _bashrc in $(find ${BASH_DOT_HOME}/ -name 'lang-*')
 do
   source_file $_bashrc
 done

@@ -30,6 +30,11 @@ alias mmbin="cd ~/mmbin"
 # cd
 alias debs="cd ~/downloads/debs"
 alias cdb="cd -; cll"
+alias cdl="cd -"
+alias cdd="cd ../"
+alias cddd="cd ../../"
+alias cdddd="cd ../../../"
+alias cddddd="cd ../../../../"
 
 # Term
 alias dark="setTermColor solarized-dark"
@@ -46,7 +51,7 @@ alias down="cd ~/downloads"
 alias fr="file-roller"
 alias h="history | grep "
 alias ll="ls -alh"
-alias treeg="tree -I .git"
+alias treee="clear; tree -I .git"
 alias whatismyip="wget http://ipinfo.io/ip -qO -"
 
 #-------------------------------------------------------------------------------
