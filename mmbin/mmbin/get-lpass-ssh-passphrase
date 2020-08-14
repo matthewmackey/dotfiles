@@ -1,0 +1,10 @@
+#!/bin/bash
+
+KEY_ID="$1"
+
+if [ -z "$KEY_ID" ]; then
+  echo "You must provide a <KEY_ID> that refers to an SSH key at 'ssh/<KEY_ID>."
+  exit 1
+fi
+
+lpass show --field=Passphrase --clip ssh/$KEY_ID

@@ -1,0 +1,11 @@
+#/bin/bash
+
+KEY_ID="$1"
+
+if [ -z "$KEY_ID" ]; then
+  echo "You must provide: <KEY_ID>"
+  echo "The SSH key will be stored in LastPass as: 'ssh/<KEY_ID>'"
+  exit 1
+fi
+
+lpass add --note-type=ssh-key "ssh/$KEY_ID"
