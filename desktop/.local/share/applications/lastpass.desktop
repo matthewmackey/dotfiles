@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=LastPass Vault
+Exec=/opt/google/chrome/google-chrome "--profile-directory=Profile 2" --app-id=dimhappcodgioikaapfjaahnbjgiekck
+Icon=chrome-dimhappcodgioikaapfjaahnbjgiekck-Profile_2
+StartupWMClass=crx_dimhappcodgioikaapfjaahnbjgiekck

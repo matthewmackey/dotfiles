@@ -5,29 +5,28 @@
 Version=1.0
 Terminal=false
 Type=Application
-Name=Google Chrome (mmackey)
-Exec=/opt/google/chrome/google-chrome "--profile-directory=Profile 2"
-Icon=/home/mmackey/.local/share/applications/chrome-mmackey_profile-gmail.gif
+Name=Chrome-mm
+Exec=/opt/google/chrome/google-chrome "--profile-directory=Profile 1"
+Icon=/home/mmackey/media/pics/profile_pics/microwave.jpg
 #Icon=/opt/google/chrome/product_logo_128.png
 
 # Only KDE 4 seems to use GenericName, so we reuse the KDE strings.
 GenericName=Web Browser
 
 # Gnome and KDE 3 uses Comment.
-Comment=Chrome for 'mmackey' user
+Comment=Chrome for 'mm' user
 
 StartupNotify=true
 
 Categories=Network;WebBrowser;
 
 MimeType=application/pdf;application/rdf+xml;application/rss+xml;application/xhtml+xml;application/xhtml_xml;application/xml;image/gif;image/jpeg;image/png;image/webp;text/html;text/xml;x-scheme-handler/ftp;x-scheme-handler/http;x-scheme-handler/https;
-
-Actions=new-window;new-private-window;
+#Actions=new-window;new-private-window;
 
 [Desktop Action new-window]
 Name=New Window
-Exec=/usr/bin/google-chrome-stable "--profile-directory=Profile 2"
+Exec=/usr/bin/google-chrome-stable "--profile-directory=Profile 1"
 
 [Desktop Action new-private-window]
 Name=New Incognito Window
-Exec=/usr/bin/google-chrome-stable "--profile-directory=Profile 2" -- incognito
+Exec=/usr/bin/google-chrome-stable "--profile-directory=Profile 1" -- incognito

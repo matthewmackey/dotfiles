@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=0.9.4
+Name=Code Composer Studio 10.1.0
+Comment=Launches CCStudio
+Icon=/opt/ti/ccs1010/ccs/doc/ccs.ico
+Exec=/opt/ti/ccs1010/ccs/eclipse/ccstudio
+Terminal=false
+Path=/opt/ti/ccs1010/ccs/eclipse

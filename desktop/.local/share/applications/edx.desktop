@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=edX
+Exec=/opt/google/chrome/google-chrome "--profile-directory=Profile 2" --app-id=dgginmpchjlobfdfpllndmlgpcnnleno
+Icon=chrome-dgginmpchjlobfdfpllndmlgpcnnleno-Profile_2
+StartupWMClass=crx_dgginmpchjlobfdfpllndmlgpcnnleno
