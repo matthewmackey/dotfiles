@@ -35,7 +35,7 @@ if [ -z "$LASTPASS_USERNAME" ]; then
   exit 1
 fi
 
-OUTPUT_DEST="--clip"
+OUTPUT_TO_CLIP="--clip"
 while getopts "hp:" opt
 do
   case "$opt" in
@@ -44,7 +44,7 @@ do
       exit 1
       ;;
     p)
-      OUTPUT_DEST=""
+      OUTPUT_TO_CLIP=""
       shift
       ;;
     *)
@@ -62,11 +62,13 @@ if [ -z "$LASTPASS_ID" ]; then
   exit 1
 fi
 
-
 if ! lpass ls 2&>/dev/null ; then
   lpass login "$LASTPASS_USERNAME"
 fi
 
-lpass show --password "$OUTPUT_DEST" "$LASTPASS_ID"
-
-
+  lpass show --password "$OUTPUT_TO_CLIP" "$LASTPASS_ID"
+#if [ -z "$OUTPUT_TO_CLIP" ]; then
+  #lpass show --password "$LASTPASS_ID"
+#else
+  #lpass show --password "$OUTPUT_TO_CLIP" "$LASTPASS_ID"
+#fi
