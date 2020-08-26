@@ -36,6 +36,10 @@ alias cddd="cd ../../"
 alias cdddd="cd ../../../"
 alias cddddd="cd ../../../../"
 
+# SHORTCUTS
+alias down="cd ~/downloads"
+alias desk="cd ~/Desktop"
+
 # Term
 alias dark="setTermColor solarized-dark"
 alias default="setTermColor Default"
@@ -47,12 +51,14 @@ alias cl="clear"
 alias cll="clear; pwd; ll"
 alias cleanpyc="find . -name '*.pyc' -print -exec rm {} \;"
 alias ct="clear; pwd; tree;"
-alias down="cd ~/downloads"
 alias fr="file-roller"
 alias h="history | grep "
 alias ll="ls -alh"
+# search bashmarks
+alias lg="l | grep -i"
 alias treee="clear; tree -I .git"
 alias whatismyip="wget http://ipinfo.io/ip -qO -"
+alias xdgopen="xdg-open"
 
 #-------------------------------------------------------------------------------
 # Tools
@@ -108,6 +114,7 @@ alias gdiff="clear && git diff --cached"
 alias gl="git log"
 alias gst="clear && git status"
 alias glogo="git log --pretty=oneline"
+alias pull="git pull"
 alias push="git push"
 alias remotes="git remote -v"
 
@@ -139,6 +146,7 @@ alias tml="tmux ls"
 alias tmls="tmux ls"
 alias tma="tmux attach"
 alias tmd="tmux detach"
+alias tmk="tmux kill-session"
 alias tms="tmux switch -t"
 
 #-------------------------------------------------------------------------------
