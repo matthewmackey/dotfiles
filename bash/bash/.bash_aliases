@@ -57,6 +57,7 @@ alias ll="ls -alh"
 # search bashmarks
 alias lg="l | grep -i"
 alias treee="clear; tree -I .git"
+alias treeea="clear; tree -I .git -a"
 alias whatismyip="wget http://ipinfo.io/ip -qO -"
 alias xdgopen="xdg-open"
 
