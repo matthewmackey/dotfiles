@@ -1,0 +1,8 @@
+[roxterm profile]
+height=60
+width=200
+full_screen=0
+show_tab_status=0
+colour_scheme=Tango
+title_string=%s
+middle_click_tab=0
