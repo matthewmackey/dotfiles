@@ -36,6 +36,9 @@ alias cddd="cd ../../"
 alias cdddd="cd ../../../"
 alias cddddd="cd ../../../../"
 
+# LastPass
+alias lgrep="lpass ls | grep -i"
+
 # SHORTCUTS
 alias down="cd ~/downloads"
 alias desk="cd ~/Desktop"
