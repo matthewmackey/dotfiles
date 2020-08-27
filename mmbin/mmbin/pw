@@ -66,9 +66,8 @@ if ! lpass ls 2&>/dev/null ; then
   lpass login "$LASTPASS_USERNAME"
 fi
 
+if [ -z "$OUTPUT_TO_CLIP" ]; then
+  lpass show --password "$LASTPASS_ID"
+else
   lpass show --password "$OUTPUT_TO_CLIP" "$LASTPASS_ID"
-#if [ -z "$OUTPUT_TO_CLIP" ]; then
-  #lpass show --password "$LASTPASS_ID"
-#else
-  #lpass show --password "$OUTPUT_TO_CLIP" "$LASTPASS_ID"
-#fi
+fi
