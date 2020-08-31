@@ -1,0 +1,35 @@
+#!/bin/bash
+
+#-------------------------------------------------------------------------------
+# SEE Also:
+#  https://ostechnix.com/how-to-quickly-serve-files-and-folders-over-http-in-linux/
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# http.server (Python3 module) NOTES
+#
+# usage: server.py [-h] [--cgi] [--bind ADDRESS] [--directory DIRECTORY] [port]
+#
+#
+
+#import http.server
+#import socketserver
+
+#PORT = 8000
+
+#Handler = http.server.SimpleHTTPRequestHandler
+
+#with socketserver.TCPServer(("", PORT), Handler) as httpd:
+    #print("serving at port", PORT)
+    #httpd.serve_forever()
+#-------------------------------------------------------------------------------
+
+PORT=8000
+DIR=$1
+
+if [ ! -d "$DIR" ]; then
+  echo "You must provide: <DIR>"
+  exit 1
+fi
+
+python3 -m http.server --directory "$DIR" --bind 127.0.0.1 "$PORT" >/dev/null 2>&1
