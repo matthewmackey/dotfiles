@@ -10,5 +10,5 @@ fi
 lpass show --field=Passphrase --clip ssh/$KEY_ID
 
 if [ $? -eq 0 ]; then
-  echo "SUCCESS: pasword copied to clipboard"
+  echo "SUCCESS: SSH password copied to clipboard for [$KEY_ID]"
 fi
