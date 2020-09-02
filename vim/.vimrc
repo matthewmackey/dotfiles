@@ -71,7 +71,7 @@ set hlsearch	    " highlight search matches
 set incsearch	    " search while characters are entered
 
 " search is case-insensitive by default
-set ignorecase
+"set ignorecase
 
 " ignore case if search pattern is all lowercase, case-sensitive otherwise
 " set smartcase ??
