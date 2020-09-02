@@ -1,0 +1,17 @@
+{
+    "workbench.colorTheme": "Solarized Light",
+    "editor.formatOnSave": true,
+    "workbench.startupEditor": "newUntitledFile",
+    "window.zoomLevel": 0,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.minimap.enabled": false,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "workbench.iconTheme": "material-icon-theme",
+    "csharp.suppressHiddenDiagnostics": false,
+    "omnisharp.enableDecompilationSupport": true,
+    "workbench.settings.openDefaultKeybindings": true,
+    "workbench.settings.openDefaultSettings": true,
+    "workbench.settings.useSplitJSON": true
+}
