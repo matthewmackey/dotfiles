@@ -1,0 +1,31 @@
+#!/bin/bash
+
+ALIAS_FILE=~/bash/.bash_aliases
+
+ALIAS_NAME=$1
+ALIAS_CMD="$*"
+
+ALIAS="alias $ALIAS_NAME='$ALIAS_CMD'"
+
+echo "Creating alias -> $ALIAS"
+echo "In [$ALIAS_FILE]"
+echo
+read -p "Confirm [Y/n]: " CONFIRM
+
+if [[ "$CONFIRM" = "y" ]] || [[ "$CONFIRM" = "Y" ]]; then
+    echo >>$ALIAS_FILE alias $ALIAS_NAME=\'$ALIAS_CMD\'
+
+    if [ $? = 0 ]; then
+      echo
+      echo "#-------------------------------------------------------------------"
+      echo "# Created the following alias in [$ALIAS_FILE]:"
+      echo "#"
+      echo "# $ALIAS" 
+      echo "#-------------------------------------------------------------------"
+    else
+      echo "Error creating alias."
+      exit 1
+    fi
+else
+  echo "Exiting"
+fi
