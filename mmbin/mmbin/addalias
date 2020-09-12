@@ -3,6 +3,7 @@
 ALIAS_FILE=~/bash/.bash_aliases
 
 ALIAS_NAME=$1
+shift 1
 ALIAS_CMD="$*"
 
 ALIAS="alias $ALIAS_NAME='$ALIAS_CMD'"
