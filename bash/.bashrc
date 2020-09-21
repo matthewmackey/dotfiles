@@ -45,13 +45,3 @@ do
   source_file $_bashrc
 done
 
-
-#--------------------------------------------------------------
-# Add extra bin dirs to PATH
-#--------------------------------------------------------------
-EXTRA_BIN_DIRS_FILE=~/local/extra_bin_dirs
-if [ -f "$EXTRA_BIN_DIRS_FILE" ]; then
-  for dir in $(cat "$EXTRA_BIN_DIRS_FILE"); do
-    [ -d $dir ] && PATH="$dir:$PATH"
-  done
-fi

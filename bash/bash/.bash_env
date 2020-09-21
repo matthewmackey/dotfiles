@@ -22,16 +22,28 @@ DOTNET_CLI_TELEMETRY_OPTOUT=true
 #export CATALINA_OPTS="-Duser.timezone=GMT"
 
 #------------------------------------------------------------------------------------------------
-# Set PATH
+# Add BIN directories to PATH
+#
+# NOTE: $HOME/.local/bin and $HOME/bin already added by $HOME/.profile
 #------------------------------------------------------------------------------------------------
-OPT_BIN_PATHS=/opt/bin
-for _path in $OPT_BIN_PATHS $MAVEN_HOME/bin $HOME/.local/bin $HOME/mmbin $HOME/bin
+BIN_DIRS=(
+
+  # mmackey bin dir
+  $HOME/mmbin
+
+  # Maven bin dir
+  $MAVEN_HOME/bin
+
+  # Android Studio bin dir
+  /opt/android-studio/bin
+
+  # Golang bin dir
+  /usr/local/go/bin:$PATH
+
+)
+
+for _path in ${BIN_DIRS[@]}
 do
   export PATH="$_path:$PATH"
 done
 
-# Add Android Studio bin to PATH
-export PATH=/opt/android-studio/bin:$PATH
-
-# Add ansible bin dir to PATH
-export PATH=~/virtualenvs/ansible/bin:$PATH
