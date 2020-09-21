@@ -40,8 +40,11 @@ alias cddddd="cd ../../../../"
 alias lgrep="lpass ls | grep -i"
 
 # SHORTCUTS
+alias cs="createshortcut"
 alias down="cd ~/downloads"
 alias desk="cd ~/Desktop"
+alias openhome="xdg-open $HOME/srv/html/index.html >/dev/null 2>&1"
+alias projects="vi ~/notes/projects.list"
 
 # Term
 alias dark="setTermColor solarized-dark"
@@ -50,6 +53,7 @@ alias light="setTermColor solarized-light"
 alias tango="setTermColor Tango"
 
 # Other
+alias ack-grep="ack" # backwards-compatibility for some scripts
 alias cl="clear"
 alias cll="clear; pwd; ll"
 alias cleanpyc="find . -name '*.pyc' -print -exec rm {} \;"
@@ -59,10 +63,11 @@ alias h="history | grep "
 alias ll="ls -alh"
 # search bashmarks
 alias lg="l | grep -i"
+alias op="xdg-open"
+alias open="op"
 alias treee="clear; tree -I .git"
 alias treeea="clear; tree -I .git -a"
 alias whatismyip="wget http://ipinfo.io/ip -qO -"
-alias xdgopen="xdg-open"
 
 #-------------------------------------------------------------------------------
 # Tools
@@ -113,11 +118,13 @@ alias images="docker images"
 alias gba="git branch -a"
 alias gbav="git branch -av"
 alias gdf="clear && git diff"
-alias gdfc="clear && git diff --cached"
+alias gd="clear && git diff --cached"
+alias gdp="clear && git diff --cached -- ':(exclude)package-lock.json'"
 alias gdiff="clear && git diff --cached"
-alias gl="git log"
+alias glo="clear && git log"
+alias gsh="clear && git show"
 alias gst="clear && git status"
-alias glogo="git log --pretty=oneline"
+alias gl="clear && git log --pretty=oneline"
 alias pull="git pull"
 alias push="git push"
 alias remotes="git remote -v"
@@ -128,6 +135,24 @@ alias remotes="git remote -v"
 alias apti="sudo apt-get install"
 alias aptu="sudo apt-get update"
 alias grepdpkg="dpkg -l | grep ^ii | grep"
+
+
+#-------------------------------------------------------------------------------
+# MySQL
+#-------------------------------------------------------------------------------
+alias lmysql="mysql -h 0.0.0.0 -P 3306 -u root -ppw"
+
+#-------------------------------------------------------------------------------
+# node/npm
+#-------------------------------------------------------------------------------
+alias npml="npm ls --depth=0"
+
+#-------------------------------------------------------------------------------
+# PHP
+#-------------------------------------------------------------------------------
+alias php='docker run -it --rm --name php-cli-tmp php:latest php -a'
+alias phpcli='php'
+alias phpscript='docker run -it --rm --name php-script-tmp -v $PWD:/usr/src/myapp -w /usr/src/myapp php:latest php'
 
 #-------------------------------------------------------------------------------
 # Python
@@ -148,7 +173,7 @@ alias rmsock="rm -rf ~/.ssh/sockets/*"
 # See ~/bin/tm
 alias tml="tmux ls"
 alias tmls="tmux ls"
-alias tma="tmux attach"
+alias tma="tmux attach -t"
 alias tmd="tmux detach"
 alias tmk="tmux kill-session"
 alias tms="tmux switch -t"
@@ -161,5 +186,6 @@ alias vms="ll ~/virtualbox_vms"
 #-------------------------------------------------------------------------------
 # VMs
 #-------------------------------------------------------------------------------
-alias mpass="multipass"
-alias msh="multipass shell"
+alias mpls="multipass ls"
+alias mp="multipass"
+alias mpsh="multipass shell"
