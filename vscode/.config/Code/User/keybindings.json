@@ -15,7 +15,7 @@
    * Close editor
    */
   {
-    "key": "ctrl+x",
+    "key": "ctrl+b x",
     "command": "workbench.action.closeActiveEditor"
   },
 
@@ -63,7 +63,7 @@
    * Switch between tab groups (panes)
    */
   {
-    "key": "ctrl+o",
+    "key": "ctrl+b o",
     "command": "workbench.action.navigateEditorGroups"
   },
 
