@@ -1,8 +1,20 @@
 #!/bin/bash
 
 #-------------------------------------------------------------------------------
-# See:
-# https://askubuntu.com/questions/404337/how-to-easily-switch-between-proxy-methods-from-terminal
+# NAME
+#     proxytoggle - toggles Gnome proxy ON/OFF and updates its settings when
+#                   turning it on
+#
+# SYNOPSIS
+#    proxytoggle [port]
+#
+# ARGUMENTS
+#    port - optional argument to specify port HTTP/HTTPS proxy will listen on
+#
+# SEE ALSO
+#
+#    https://askubuntu.com/questions/404337/how-to-easily-switch-between-proxy-methods-from-terminal
+#
 #-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
@@ -51,12 +63,13 @@ resetProxySettings() {
   gsettings reset-recursively $SYSTEM_SCHEMA
   gsettings reset-recursively $HTTP_SCHEMA
   gsettings reset-recursively $HTTPS_SCHEMA
+}
 
 
 #-------------------------------------------------------------------------------
 # MAIN
 #-------------------------------------------------------------------------------
-PROXY_PORT=8080
+PROXY_PORT=${1:-8080}
 PROXY_HOST=127.0.0.1
 
 CURR_PROXY_MODE=$(gsettings get $PROXY_MODE_SETTING | tr -d "'")
