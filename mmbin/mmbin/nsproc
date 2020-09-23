@@ -1,7 +1,5 @@
 #!/bin/bash
 
-. ~/bash/.bash_functions
-
 PORT=$1
 
 [ -z "$PORT" ] && { echo "You must provide port: <port>"; exit 1; }
