@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Google Photos
+Exec=/opt/google/chrome/google-chrome "--profile-directory=Profile 3" --app-id=ncmjhecbjeaamljdfahankockkkdmedg
+Icon=chrome-ncmjhecbjeaamljdfahankockkkdmedg-Profile_3
+StartupWMClass=crx_ncmjhecbjeaamljdfahankockkkdmedg
