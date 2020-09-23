@@ -38,7 +38,7 @@ BIN_DIRS=(
   /opt/android-studio/bin
 
   # Golang bin dir
-  /usr/local/go/bin:$PATH
+  /usr/local/go/bin
 
 )
 
