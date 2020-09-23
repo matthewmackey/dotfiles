@@ -1,0 +1,97 @@
+#!/bin/bash
+
+#-------------------------------------------------------------------------------
+# See:
+# https://askubuntu.com/questions/404337/how-to-easily-switch-between-proxy-methods-from-terminal
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# CONSTANTS
+#-------------------------------------------------------------------------------
+ON_PROXY_MODE=manual
+OFF_PROXY_MODE=none
+
+SYSTEM_SCHEMA="org.gnome.system.proxy"
+HTTP_SCHEMA="org.gnome.system.proxy.http"
+HTTPS_SCHEMA="org.gnome.system.proxy.https"
+
+
+#-------------------------------------------------------------------------------
+# GNOME Schema Settings
+#-------------------------------------------------------------------------------
+PROXY_MODE_SETTING="$SYSTEM_SCHEMA mode"
+IGNORE_HOSTS_SETTING="$SYSTEM_SCHEMA ignore-hosts"
+
+HTTP_ENABLED_SETTING="$HTTP_SCHEMA enabled"
+
+HTTP_HOST_SETTING="$HTTP_SCHEMA host"
+HTTP_PORT_SETTING="$HTTP_SCHEMA port"
+
+HTTPS_HOST_SETTING="$HTTPS_SCHEMA host"
+HTTPS_PORT_SETTING="$HTTPS_SCHEMA port"
+
+setProxySettings() {
+  local _proxy_host=$1
+  local _proxy_port=$2
+
+  # Default Value: ['localhost', '127.0.0.0/8', '::1']
+  # but we want to allow proxying of localhost requests
+  gsettings set $IGNORE_HOSTS_SETTING "[]"
+
+  gsettings set $HTTP_ENABLED_SETTING true
+
+  gsettings set $HTTP_HOST_SETTING $_proxy_host
+  gsettings set $HTTP_PORT_SETTING $_proxy_port
+
+  gsettings set $HTTPS_HOST_SETTING $_proxy_host
+  gsettings set $HTTPS_PORT_SETTING $_proxy_port
+}
+
+resetProxySettings() {
+  gsettings reset-recursively $SYSTEM_SCHEMA
+  gsettings reset-recursively $HTTP_SCHEMA
+  gsettings reset-recursively $HTTPS_SCHEMA
+
+
+#-------------------------------------------------------------------------------
+# MAIN
+#-------------------------------------------------------------------------------
+PROXY_PORT=8080
+PROXY_HOST=127.0.0.1
+
+CURR_PROXY_MODE=$(gsettings get $PROXY_MODE_SETTING | tr -d "'")
+
+#----------------------------------------------------
+# DISABLE proxy
+#----------------------------------------------------
+if [ "$CURR_PROXY_MODE" = "$ON_PROXY_MODE" ]; then
+  echo -en "SWITCHING proxy from [${GREEN}ON${NC}] ($ON_PROXY_MODE) -> "
+  echo -e  "[${RED}OFF${NC}] ($OFF_PROXY_MODE)"
+
+  resetProxySettings
+
+  gsettings set $PROXY_MODE_SETTING $OFF_PROXY_MODE
+
+#----------------------------------------------------
+# ENABLE proxy
+#----------------------------------------------------
+else
+  echo -en "SWITCHING proxy from [${RED}OFF${NC}] ($OFF_PROXY_MODE) -> "
+  echo -e  "[${GREEN}ON${NC}] ($ON_PROXY_MODE)"
+
+  setProxySettings $PROXY_HOST $PROXY_PORT
+
+  gsettings set $PROXY_MODE_SETTING $ON_PROXY_MODE
+fi
+
+#---------------------------------
+# Display updated settings
+#---------------------------------
+echo
+echo  "$PROXY_MODE_SETTING $(gsettings get $PROXY_MODE_SETTING | tr -d "'")"
+echo  "$HTTP_ENABLED_SETTING $(gsettings get $HTTP_ENABLED_SETTING)"
+echo  "$HTTP_PORT_SETTING $(gsettings get $HTTP_PORT_SETTING)"
+echo  "$HTTP_HOST_SETTING $(gsettings get $HTTP_HOST_SETTING | tr -d "'")"
+echo  "$HTTPS_PORT_SETTING $(gsettings get $HTTPS_PORT_SETTING)"
+echo  "$HTTPS_HOST_SETTING $(gsettings get $HTTPS_HOST_SETTING | tr -d "'")"
+
