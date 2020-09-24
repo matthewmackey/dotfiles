@@ -6,9 +6,10 @@
 #                   turning it on
 #
 # SYNOPSIS
-#    proxytoggle [port]
+#    proxytoggle on|off [port]
 #
 # ARGUMENTS
+#    on|off - the state the proxy should be set to
 #    port - optional argument to specify port HTTP/HTTPS proxy will listen on
 #
 # SEE ALSO
@@ -20,6 +21,8 @@
 #-------------------------------------------------------------------------------
 # CONSTANTS
 #-------------------------------------------------------------------------------
+LOCAL_PROXY_VARS_FILE=~/mmbin/.proxy_env
+
 ON_PROXY_MODE=manual
 OFF_PROXY_MODE=none
 
@@ -29,7 +32,7 @@ HTTPS_SCHEMA="org.gnome.system.proxy.https"
 
 
 #-------------------------------------------------------------------------------
-# GNOME Schema Settings
+# GNOME Proxy Settings
 #-------------------------------------------------------------------------------
 PROXY_MODE_SETTING="$SYSTEM_SCHEMA mode"
 IGNORE_HOSTS_SETTING="$SYSTEM_SCHEMA ignore-hosts"
@@ -65,46 +68,61 @@ resetProxySettings() {
   gsettings reset-recursively $HTTPS_SCHEMA
 }
 
+displayGnomeProxySettings() {
+  echo
+  echo  "$PROXY_MODE_SETTING $(gsettings get $PROXY_MODE_SETTING | tr -d "'")"
+  echo  "$HTTP_ENABLED_SETTING $(gsettings get $HTTP_ENABLED_SETTING)"
+  echo  "$HTTP_PORT_SETTING $(gsettings get $HTTP_PORT_SETTING)"
+  echo  "$HTTP_HOST_SETTING $(gsettings get $HTTP_HOST_SETTING | tr -d "'")"
+  echo  "$HTTPS_PORT_SETTING $(gsettings get $HTTPS_PORT_SETTING)"
+  echo  "$HTTPS_HOST_SETTING $(gsettings get $HTTPS_HOST_SETTING | tr -d "'")"
+}
+
+
+#-------------------------------------------------------------------------------
+# DISABLE Proxy
+#-------------------------------------------------------------------------------
+disableProxy() {
+  #echo -en "SWITCHING proxy from [${GREEN}ON${NC}] ($ON_PROXY_MODE) -> "
+  #echo -e  "[${RED}OFF${NC}] ($OFF_PROXY_MODE)"
+  echo -e "SWITCHING proxy from [${GREEN}ON${NC}] -> [${RED}OFF${NC}]"
+
+  resetProxySettings
+  gsettings set $PROXY_MODE_SETTING $OFF_PROXY_MODE
+}
+
+
+#-------------------------------------------------------------------------------
+# ENABLE Proxy
+#-------------------------------------------------------------------------------
+enableProxy() {
+  local _proxy_host=$1
+  local _proxy_port=$2
+
+  #echo -en "SWITCHING proxy from [${RED}OFF${NC}] ($OFF_PROXY_MODE) -> "
+  #echo -e  "[${GREEN}ON${NC}] ($ON_PROXY_MODE)"
+  echo -e "SWITCHING proxy from [${RED}OFF${NC}] -> [${GREEN}ON${NC}]"
+  echo -e  "  Listening on Port -> [${BROWN_ORANGE}${_proxy_port}${NC}]"
+
+  setProxySettings $_proxy_host $_proxy_port
+  gsettings set $PROXY_MODE_SETTING $ON_PROXY_MODE
+}
+
 
 #-------------------------------------------------------------------------------
 # MAIN
 #-------------------------------------------------------------------------------
-PROXY_PORT=${1:-8080}
-PROXY_HOST=127.0.0.1
+# Load shared Proxy host/port variables
+. $LOCAL_PROXY_VARS_FILE
 
-CURR_PROXY_MODE=$(gsettings get $PROXY_MODE_SETTING | tr -d "'")
+DESIRED_PROXY_STATE=$1
+PROXY_PORT=${2:-$LOCAL_PROXY_PORT}
+PROXY_HOST=$LOCAL_PROXY_HOST
 
-#----------------------------------------------------
-# DISABLE proxy
-#----------------------------------------------------
-if [ "$CURR_PROXY_MODE" = "$ON_PROXY_MODE" ]; then
-  echo -en "SWITCHING proxy from [${GREEN}ON${NC}] ($ON_PROXY_MODE) -> "
-  echo -e  "[${RED}OFF${NC}] ($OFF_PROXY_MODE)"
-
-  resetProxySettings
-
-  gsettings set $PROXY_MODE_SETTING $OFF_PROXY_MODE
-
-#----------------------------------------------------
-# ENABLE proxy
-#----------------------------------------------------
+if [ "$DESIRED_PROXY_STATE" = "off" ]; then
+  disableProxy
 else
-  echo -en "SWITCHING proxy from [${RED}OFF${NC}] ($OFF_PROXY_MODE) -> "
-  echo -e  "[${GREEN}ON${NC}] ($ON_PROXY_MODE)"
-
-  setProxySettings $PROXY_HOST $PROXY_PORT
-
-  gsettings set $PROXY_MODE_SETTING $ON_PROXY_MODE
+  enableProxy $PROXY_HOST $PROXY_PORT
 fi
 
-#---------------------------------
-# Display updated settings
-#---------------------------------
-echo
-echo  "$PROXY_MODE_SETTING $(gsettings get $PROXY_MODE_SETTING | tr -d "'")"
-echo  "$HTTP_ENABLED_SETTING $(gsettings get $HTTP_ENABLED_SETTING)"
-echo  "$HTTP_PORT_SETTING $(gsettings get $HTTP_PORT_SETTING)"
-echo  "$HTTP_HOST_SETTING $(gsettings get $HTTP_HOST_SETTING | tr -d "'")"
-echo  "$HTTPS_PORT_SETTING $(gsettings get $HTTPS_PORT_SETTING)"
-echo  "$HTTPS_HOST_SETTING $(gsettings get $HTTPS_HOST_SETTING | tr -d "'")"
-
+#displayGnomeProxySettings
