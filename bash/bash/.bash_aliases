@@ -39,7 +39,7 @@ alias cddddd="cd ../../../../"
 #-------------------------------------
 # Dotfiles-related
 #-------------------------------------
-alias commitaliases='cd ~/bash/bash; git add .bash_aliases; git ci -m".bash_aliases: updated aliases"'
+alias commitaliases='cd ~/dotfiles/bash/bash; git add .bash_aliases; git ci -m".bash_aliases: updated aliases"'
 
 # LastPass
 alias lgrep="lpass ls | grep -i"
