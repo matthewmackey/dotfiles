@@ -46,6 +46,18 @@ alias desk="cd ~/Desktop"
 alias openhome="xdg-open $HOME/srv/html/index.html >/dev/null 2>&1"
 alias projects="vi ~/notes/projects.list"
 
+#---------------------------------
+# Networking
+#---------------------------------
+alias ns="sudo netstat -tlpn"
+alias nsg="sudo netstat -tlpn | grep"
+alias proxyoff='proxytoggle off; { unset http_proxy; unset https_proxy; echo; proxystatus ; }'
+alias proxyon='proxytoggle on; { . ~/mmbin/.proxy_env ; export http_proxy="http://$LOCAL_PROXY_HOST:$LOCAL_PROXY_PORT"; export https_proxy="http://$LOCAL_PROXY_HOST:$LOCAL_PROXY_PORT"; echo; proxystatus ; }'
+alias pxoff="proxyoff"
+alias pxon="proxyon"
+alias pxs="proxystatus"
+alias pxt="proxytoggle"
+
 # Term
 alias dark="setTermColor solarized-dark"
 alias default="setTermColor Default"
