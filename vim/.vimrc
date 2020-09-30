@@ -70,11 +70,12 @@ set hlsearch	    " highlight search matches
 
 set incsearch	    " search while characters are entered
 
-" search is case-insensitive by default
-"set ignorecase
+" search is case-sensitive by default
+set ignorecase
 
 " ignore case if search pattern is all lowercase, case-sensitive otherwise
-" set smartcase ??
+" NOTE: requires 'set ignorecase' also to work
+set smartcase
 
 " Show linenumbers
 set number
@@ -119,7 +120,7 @@ let base16colorspace=256
 colorscheme base16-horizon-dark
 set background=dark
 
-set cursorline	" highlight current active line
+"set cursorline	" highlight current active line
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""
@@ -141,8 +142,8 @@ set smarttab
 set expandtab " use spaces, no tabs
 
 " 1 tab == 4 spaces
-set shiftwidth=4
-set softtabstop=4
+set shiftwidth=2
+set softtabstop=2
 
 set ai " Auto indent
 set si " Smart indent
@@ -277,3 +278,9 @@ set mouse=a
 ""-----------------------------------------------------
 "" Search for highlighted text
 "vnorem // y/<c-r>"<cr>
+
+""-----------------------------------------------------
+"" From: https://blog.pentesterlab.com/keeping-notes-during-a-pentest-security-assessment-code-review-7e6db8091a66
+""-----------------------------------------------------
+set foldmethod=marker
+set foldmarker={{,}}
