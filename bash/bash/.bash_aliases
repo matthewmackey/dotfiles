@@ -132,6 +132,8 @@ alias images="docker images"
 #-------------------------------------------------------------------------------
 # Git
 #-------------------------------------------------------------------------------
+alias add="git add"
+alias ga="git add"
 alias gba="git branch -a"
 alias gbav="git branch -av"
 alias gdf="clear && git diff"
@@ -145,6 +147,7 @@ alias gl="clear && git log --pretty=oneline"
 alias pull="git pull"
 alias push="git push"
 alias remotes="git remote -v"
+alias rs="git restore --staged"
 
 #-------------------------------------------------------------------------------
 # Linux
