@@ -80,20 +80,17 @@ set smartcase
 " Show linenumbers
 set number
 
-set showcmd	" show last command in the bottom right
+" show last command in the bottom right
+set showcmd
 
-set ruler	" always show current position
-
-" Line wrap (number of cols)
-set wrap	    " wrap lines only visually
-set linebreak	    " wrap only at valid characters
-set textwidth=0	    " prevent vim from inserting linebreaks
-set wrapmargin=0    "   in newly entered text
+" always show current position
+set ruler
 
 " show matching braces
 set showmatch
 
-set wildmenu	    " visual autocomplete for command menu
+" visual autocomplete for command menu
+set wildmenu
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""
@@ -118,7 +115,7 @@ set ffs=unix,dos,mac
 
 let base16colorspace=256
 colorscheme base16-horizon-dark
-set background=dark
+set background=light
 
 "set cursorline	" highlight current active line
 
@@ -152,8 +149,6 @@ set si " Smart indent
 set backspace=indent,eol,start
 
 filetype indent on	" enable filetype specific indentation
-
-set nonu
 
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,nbsp:.
 
@@ -232,7 +227,17 @@ highlight ColorColumn ctermbg=red
 
 "------------------------------------------------------------------------------
 " From: https://csswizardry.com/2017/03/configuring-git-and-vim/
+" Plus: mmackey edits
 "------------------------------------------------------------------------------
+" wrap lines only visually
+"set wrap
+
+" wrap only at valid characters
+"set linebreak
+
+" in newly entered text
+"set wrapmargin=0
+
 " Force the cursor onto a new line after 80 characters
 set textwidth=80
 
@@ -284,3 +289,37 @@ set mouse=a
 ""-----------------------------------------------------
 set foldmethod=marker
 set foldmarker={{,}}
+
+"----------------------------------------------------------------------------
+" STATUS Line:
+"
+" FROM: https://shapeshed.com/vim-statuslines/#what-is-a-statusline-in-vim
+" AND: http://blog.ezyang.com/2010/03/vim-textwidth/
+"----------------------------------------------------------------------------
+set laststatus=2
+
+function! GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+function! StatuslineGit()
+  let l:branchname = GitBranch()
+  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+endfunction
+
+set statusline=
+set statusline+=%#PmenuSel#
+set statusline+=%{StatuslineGit()}
+set statusline+=%#LineNr#
+set statusline+=\ %f
+set statusline+=%m\
+set statusline+=%=
+set statusline+=%#CursorColumn#
+set statusline+=\ %y
+set statusline+=\ [fo=%{&fo}]
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+set statusline+=\ [%{&fileformat}\]
+set statusline+=\ %p%%
+set statusline+=\ %l:%c
+set statusline+=\ 
+
