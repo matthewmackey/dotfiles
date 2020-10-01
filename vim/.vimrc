@@ -63,7 +63,7 @@ filetype plugin indent on    " required
 "set autoread
 
 " Height of the command bar
-set cmdheight=2
+set cmdheight=1
 
 " NOTE: Use ':noh' or ',h' to turn off search highlighting until next search
 set hlsearch	    " highlight search matches
@@ -312,13 +312,13 @@ set statusline+=%#PmenuSel#
 set statusline+=%{StatuslineGit()}
 set statusline+=%#LineNr#
 set statusline+=\ %f
-set statusline+=%m\
+set statusline+=%m
 set statusline+=%=
 set statusline+=%#CursorColumn#
 set statusline+=\ %y
 set statusline+=\ [fo=%{&fo}]
 set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-set statusline+=\ [%{&fileformat}\]
+set statusline+=\ [%{&fileformat}]
 set statusline+=\ %p%%
 set statusline+=\ %l:%c
 set statusline+=\ 
