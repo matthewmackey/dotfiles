@@ -1,4 +1,4 @@
-"###################################################################################
+"##################################################################################
  "START From: https://github.com/hamvocke/dotfiles/blob/master/vim/.vimrc
  "With some mmackey edits
 "###################################################################################
@@ -167,7 +167,6 @@ no <C-k> <C-w>k    " switching to above window
 no <C-l> <C-w>l    " switching to right window 
 no <C-h> <C-w>h    " switching to left window
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Ctrl-p
 """""""""""""""""""""""""""""""""""""""""""""""""
@@ -266,7 +265,9 @@ set paste
 " From: https://www.cs.swarthmore.edu/help/vim/etc.html
 "-----------------------------------------------------
 " Allow mouse to move cursor
-set mouse=a
+"set mouse=a
+set mouse-=a
+
 
 
 ""-----------------------------------------------------
@@ -299,10 +300,20 @@ set foldmarker={{,}}
 
 
 "-----------------------------------------------------------------------------
+" LEADER:
+"-----------------------------------------------------------------------------
+" Change the mapleader from \ to ,
+let mapleader=","
+
+
+"-----------------------------------------------------------------------------
 " SPLITTING:
 "-----------------------------------------------------------------------------
 set splitright
 
+nnoremap <silent> <Leader>0 :exe "vertical resize 100%"<CR>
+nnoremap <silent> <Leader>n :exe "vertical resize +10"<CR>
+nnoremap <silent> <Leader>m :exe "vertical resize -10"<CR>
 
 "----------------------------------------------------------------------------
 " STATUS Line:
