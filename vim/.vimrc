@@ -194,6 +194,7 @@ let NERDTreeShowHidden=1
 "nnoremap <Leader>f :NERDTreeToggle<Enter>
 nnoremap <C-n> :NERDTreeToggle<Enter>
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""
 " NERDCommenter
 """""""""""""""""""""""""""""""""""""""""""""""""
@@ -225,6 +226,7 @@ endif
 " the color for all colorschemes
 highlight ColorColumn ctermbg=red
 
+
 "------------------------------------------------------------------------------
 " From: https://csswizardry.com/2017/03/configuring-git-and-vim/
 " Plus: mmackey edits
@@ -250,6 +252,7 @@ set colorcolumn=+1
 " In Git commit messages, also colour the 51st column (for titles)
 autocmd FileType gitcommit set colorcolumn+=51
 
+
 "-----------------------------------------------------
 " From: http://stackoverflow.com/questions/7652820/how-to-disable-the-auto-comment-in-shell-script-vi-editing
 "-----------------------------------------------------
@@ -258,11 +261,13 @@ autocmd FileType gitcommit set colorcolumn+=51
 " from an external source (that starts with a #...not sure if only in this case??)
 set paste
 
+
 "-----------------------------------------------------
 " From: https://www.cs.swarthmore.edu/help/vim/etc.html
 "-----------------------------------------------------
 " Allow mouse to move cursor
 set mouse=a
+
 
 ""-----------------------------------------------------
 "" From: https://github.com/derekwyatt/vim-config/blob/master/vimrc
@@ -278,17 +283,26 @@ set mouse=a
 "" this next one turns of highlighting for some reason when re-loading .vimrc ??
 "nmap <silent> <leader>sv :so $MYVIMRC<CR>
 "
+
 ""-----------------------------------------------------
 "" From: http://vim.wikia.com/wiki/Search_for_visually_selected_text
 ""-----------------------------------------------------
 "" Search for highlighted text
 "vnorem // y/<c-r>"<cr>
 
+
 ""-----------------------------------------------------
 "" From: https://blog.pentesterlab.com/keeping-notes-during-a-pentest-security-assessment-code-review-7e6db8091a66
 ""-----------------------------------------------------
 set foldmethod=marker
 set foldmarker={{,}}
+
+
+"-----------------------------------------------------------------------------
+" SPLITTING:
+"-----------------------------------------------------------------------------
+set splitright
+
 
 "----------------------------------------------------------------------------
 " STATUS Line:
