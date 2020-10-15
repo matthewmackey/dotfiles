@@ -40,6 +40,7 @@ alias cddddd="cd ../../../../"
 # Dotfiles-related
 #-------------------------------------
 alias commitaliases='cd ~/dotfiles/bash/bash; git add .bash_aliases; git ci -m".bash_aliases: updated aliases"'
+alias commitdesktop='cd ~/dotfiles/desktop; git add .local; git ci -m"desktop: updated .desktop shortcuts"'
 alias commitvimrc='cd ~/dotfiles/vim; git add .vimrc; git ci -m"vim: updated .vimrc"'
 
 # LastPass
