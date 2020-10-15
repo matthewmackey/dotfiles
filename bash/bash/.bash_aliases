@@ -40,12 +40,14 @@ alias cddddd="cd ../../../../"
 # Dotfiles-related
 #-------------------------------------
 alias commitaliases='cd ~/dotfiles/bash/bash; git add .bash_aliases; git ci -m".bash_aliases: updated aliases"'
+alias commitvimrc='cd ~/dotfiles/vim; git add .vimrc; git ci -m"vim: updated .vimrc"'
 
 # LastPass
 alias lgrep="lpass ls | grep -i"
 
 # SHORTCUTS
 alias cs="createshortcut"
+alias cmv="command -v"
 alias down="cd ~/downloads"
 alias desk="cd ~/Desktop"
 alias openhome="xdg-open $HOME/srv/html/index.html >/dev/null 2>&1"
@@ -54,8 +56,10 @@ alias projects="vi ~/notes/projects.list"
 #---------------------------------
 # Networking
 #---------------------------------
+alias hosts="cat /etc/hosts"
 alias ns="sudo netstat -tlpn"
 alias nsg="sudo netstat -tlpn | grep"
+alias n8="nsproc 8080; echo; pxs"
 alias proxyoff='proxytoggle off; { unset http_proxy; unset https_proxy; echo; proxystatus ; }'
 alias proxyon='proxytoggle on; { . ~/mmbin/.proxy_env ; export http_proxy="http://$LOCAL_PROXY_HOST:$LOCAL_PROXY_PORT"; export https_proxy="http://$LOCAL_PROXY_HOST:$LOCAL_PROXY_PORT"; echo; proxystatus ; }'
 alias pxoff="proxyoff"
@@ -84,6 +88,7 @@ alias op="xdg-open"
 alias open="op"
 alias treee="clear; tree -I .git"
 alias treeea="clear; tree -I .git -a"
+alias vimrc="vi ~/.vimrc"
 alias whatismyip="wget http://ipinfo.io/ip -qO -"
 
 #-------------------------------------------------------------------------------
@@ -156,6 +161,12 @@ alias apti="sudo apt-get install"
 alias aptu="sudo apt-get update"
 alias grepdpkg="dpkg -l | grep ^ii | grep"
 
+
+#-------------------------------------------------------------------------------
+# Maven
+#-------------------------------------------------------------------------------
+alias mvi="mvn clean install"
+alias sbr="mvn spring-boot:run"
 
 #-------------------------------------------------------------------------------
 # MySQL
