@@ -45,3 +45,10 @@ do
   source_file $_bashrc
 done
 
+# Source any Ansible-generated Bash files
+ANSIBLE_BASH_DIR=~/.local/ansible_bash
+for _ansible_bashfile in $(ls $ANSIBLE_BASH_DIR/*)
+do
+  source_file $_ansible_bashfile
+done
+
