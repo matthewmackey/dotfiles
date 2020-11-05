@@ -5,7 +5,7 @@
 Version=1.0
 Terminal=false
 Type=Application
-Name=mackey-chrome
+Name=cma (mackey-chrome)
 Exec=/opt/google/chrome/google-chrome "--profile-directory=Profile 2"
 Icon=/home/mmackey/media/pics/profile_pics/guitar.jpg
 #Icon=/opt/google/chrome/product_logo_128.png
