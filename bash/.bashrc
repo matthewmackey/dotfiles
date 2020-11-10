@@ -15,10 +15,10 @@
 #===================================================================================
 source_file() {
   if [ -f "$1" ]; then
-    echo -e "OK        -> ["~"/${1##/home/mmackey/}]"
+    echo -e "OK        -> ["~"/${1##${HOME}/}]"
     source "$1"
   else
-    echo -e "NOT FOUND -> ["~"/${1##/home/mmackey/}]"
+    echo -e "NOT FOUND -> ["~"/${1##${HOME}/}]"
   fi
 }
 
