@@ -9,6 +9,9 @@ install_base16_shell() {
     fi
 }
 
+# Run :PluginInstall in Vim after running this function
+# NOTE: must have 'vim' package installed; vim-tiny and vim-common (usual 20.04
+#       package installs) don't work with ":PluginInstall"
 install_vim_vundle() {
     if [[ ! -d ~/.vim/bundle/Vundle.vim ]]; then
       git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
