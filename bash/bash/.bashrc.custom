@@ -9,6 +9,11 @@ export FCEDIT="vi"
 # Sets default editor for various systems programs like crontab & git
 export VISUAL="vi"
 
+# Alter prompt if in SHELL via Vim
+# SEE: https://stackoverflow.com/a/19124531/14209903
+if [ "$VIM" ]; then
+  PS1="${RED}(vim)${NC} ${PS1}"
+fi
 
 #===================================================================================
 # Custom Bash Additions
