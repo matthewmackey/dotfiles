@@ -55,6 +55,7 @@ alias cll="clear; pwd; ll"
 alias ct="clear; pwd; tree;"
 alias h="history | grep "
 alias ll="ls -alh"
+alias mx="chmod +x"
 
 ################################################################################
 
@@ -70,9 +71,11 @@ alias lg="l | grep -i"                # search bashmarks
 alias lgrep="lpass ls | grep -i"       # [LastPass]
 alias op="xdg-open"
 alias open="op"
-alias xdgo="op"
+alias syslog="tail -f /var/log/syslog"
+alias treea="clear; tree -a"
 alias treee="clear; tree -I .git"
 alias treeea="clear; tree -I .git -a"
+alias xdgo="op"
 alias whatismyip="wget http://ipinfo.io/ip -qO -"
 
 ################################################################################
@@ -96,7 +99,7 @@ alias cu="cucumber"
 alias food="chef exec $_CHEFDK_BIN/foodcritic -f any ."
 alias rb="rbenv"
 alias rubo="chef exec $_CHEFDK_BIN/rubocop -D"
-alias rs="$_CHEFDK_BIN -fd -c"
+#alias rs="$_CHEFDK_BIN -fd -c"
 
 #-------------------------------------------------------------------------------
 # [Deb]
@@ -115,6 +118,8 @@ alias dexec="docker exec -i -t"
 alias dk="docker"
 alias dps="clear; docker ps"
 alias dpsa="clear; docker ps -a"
+alias dpsaf="clear; dps -a --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}'"
+alias dpsf="clear; dps --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}'"
 alias dpsl="docker ps -l"
 alias drm="docker rm"
 alias drmi="docker rmi"
@@ -139,11 +144,13 @@ alias cs="createshortcut"
 alias add="git add"
 alias ga="git add"
 alias gba="git branch -a"
-alias gbav="clear; git branch -av"
+alias gbav="git branch -av"
+JS_GIT_EXCLUDES="':(exclude)package-lock.json' ':(exclude)yarn.lock'"
 alias gdf="clear && git diff"
+alias gdfj="clear && git diff -- $JS_GIT_EXCLUDES"
+alias gdiff="gdf"
 alias gd="clear && git diff --cached"
-alias gdp="clear && git diff --cached -- ':(exclude)package-lock.json'"
-alias gdiff="clear && git diff --cached"
+alias gdj="clear && git diff --cached -- $JS_GIT_EXCLUDES"
 alias gg="git log --all --graph --decorate --oneline"
 alias ggc="git log --all --graph --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(bold blue)<%an>%Creset'"
 alias glo="clear && git log"
@@ -153,13 +160,16 @@ alias gl="clear && git log --pretty=oneline"
 alias pull="git pull"
 alias push="git push"
 alias remotes="clear; git remote -v"
-alias rs="git restore --staged"
+alias rs="git restore"
+alias rss="git restore --staged"
 
 
 #-------------------------------------------------------------------------------
 # [Maven]
 #-------------------------------------------------------------------------------
-alias mvi="mvn clean install"
+alias mvcc="mvn clean compile"
+alias mvci="mvn clean install"
+alias mvcist="mvn clean install -DskipTests=true"
 alias sbr="mvn spring-boot:run"
 
 #-------------------------------------------------------------------------------
@@ -205,6 +215,7 @@ alias wo="workon"
 #-------------------------------------------------------------------------------
 alias down="cd ~/downloads"
 alias desk="cd ~/Desktop"
+alias glb="vi .gitlab-ci.yml"
 alias openhome="xdg-open $HOME/srv/html/index.html >/dev/null 2>&1"
 alias projects="vi ~/notes/projects.list"
 alias vimrc="vi ~/.vimrc"
@@ -234,7 +245,15 @@ alias tmls="tmux ls"
 alias tma="tmux attach -t"
 alias tmd="tmux detach"
 alias tmk="tmux kill-session"
-alias tms="tmux switch -t"
+alias 1="tmux select-window -t 1"
+alias 2="tmux select-window -t 2"
+alias 3="tmux select-window -t 3"
+alias 4="tmux select-window -t 4"
+alias 5="tmux select-window -t 5"
+alias 6="tmux select-window -t 6"
+alias 7="tmux select-window -t 7"
+alias 8="tmux select-window -t 8"
+alias 9="tmux select-window -t 9"
 
 #-------------------------------------------------------------------------------
 # [Vagrant]

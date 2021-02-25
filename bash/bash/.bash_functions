@@ -3,7 +3,7 @@ print_step() {
   echo "#---------------------------------------------------------------------------"
   echo "# Step: $1"
   echo "#---------------------------------------------------------------------------"
-} 
+}
 
 # Excerpt from: http://5thpeephole.blogspot.com/2013/10/an-ssh-session-management-trick-with.html
 setTermColor() {
@@ -44,7 +44,7 @@ replace-text() {
   [ -n "$from" ] || { echo "You must provide: <from> <to>"; return -1; }
   [ -n "$to" ] || { echo "You must provide: <from> <to>"; return -1; }
 
-  echo 
+  echo
   echo "#---------------------------------------------------------------------------"
   echo "# Files to change:"
   echo "#---------------------------------------------------------------------------"
@@ -57,12 +57,26 @@ replace-text() {
   do
     [ -f "$_file" ] || continue
 
-    echo 
+    echo
     echo "#---------------------------------------------------------------------------"
     echo "# Changes to: [$_file]"
     echo "#---------------------------------------------------------------------------"
     sed -r 's|'$from'|'$to'|g' "$_file"
     sed -i -r 's|'$from'|'$to'|g' "$_file"
   done
-} 
+}
+
+# TMUX Smart (session-aware) Switch
+tms() {
+  if [ -n "$1" ]; then
+    # ifAreInTmux?
+    if env | grep -iq TMUX; then
+      tmux switch -t $1
+    else
+      tmux attach -t $1
+    fi
+  else
+    echo "Must provide: <session_name>"
+  fi
+}
 

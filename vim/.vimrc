@@ -3,7 +3,7 @@
  "With some mmackey edits
 "###################################################################################
 """"""""""""""""""""""""""""""""""""""""""""""""
-" Setup Vundler for plugin management
+" Setup Vundler For Plugin Management:
 """"""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
 filetype off
@@ -44,7 +44,7 @@ filetype plugin indent on    " required
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""
-" Custom Keybindings
+" Custom Keybindings:
 """""""""""""""""""""""""""""""""""""""""""""""""
 "let mapleader=","       " leader is comma
 
@@ -57,7 +57,7 @@ filetype plugin indent on    " required
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""
-" General Configuration
+" General Configuration:
 """"""""""""""""""""""""""""""""""""""""""""""""
 " Automatically update a file if it is changed externally
 "set autoread
@@ -94,7 +94,7 @@ set wildmenu
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""
-" Backups, Swap Files
+" Backups And Swap Files:
 """""""""""""""""""""""""""""""""""""""""""""""""
 set nobackup
 set nowb
@@ -102,7 +102,7 @@ set noswapfile
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""
-" Colors and Fonts
+" Colors And Fonts:
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
 syntax on
@@ -121,7 +121,7 @@ set background=light
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""
-" File Types
+" File Types:
 """""""""""""""""""""""""""""""""""""""""""""""""
 " recognize .md files as markdown files
 "au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
@@ -131,7 +131,7 @@ set background=light
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""
-" Text and Indentation
+" Text And Indentation:
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Use smart tabs
 set smarttab
@@ -154,7 +154,7 @@ set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,nbsp:.
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""
-" Movement
+" Movement:
 """""""""""""""""""""""""""""""""""""""""""""""""
 " move vertically by visual line (don't skip wrapped lines) 
 "nnoremap j gj
@@ -168,7 +168,7 @@ no <C-l> <C-w>l    " switching to right window
 no <C-h> <C-w>h    " switching to left window
 
 """""""""""""""""""""""""""""""""""""""""""""""""
-" Ctrl-p
+" Ctrl P:
 """""""""""""""""""""""""""""""""""""""""""""""""
 "let g:ctrlp_match_window = 'bottom,order:ttb'
 "let g:ctrlp_switch_buffer = 0
@@ -176,14 +176,14 @@ no <C-h> <C-w>h    " switching to left window
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""
-" vimwiki
+" Vimwiki:
 """""""""""""""""""""""""""""""""""""""""""""""""
 " automatically generate HTML files
 "let g:vimwiki_list = [{'path': '~/vimwiki/', 'auto_export': 1}]
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""
-" NERDTree
+" NERDTree:
 """""""""""""""""""""""""""""""""""""""""""""""""
 " show hidden files
 let NERDTreeShowHidden=1
@@ -195,7 +195,7 @@ nnoremap <C-n> :NERDTreeToggle<Enter>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""
-" NERDCommenter
+" NERDCommenter:
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Bug: https://stackoverflow.com/questions/9051837/how-to-map-c-to-toggle-comments-in-vim
 inoremap <C-_> :call NERDComment(0,"toggle")<CR>
@@ -269,7 +269,6 @@ set paste
 set mouse-=a
 
 
-
 ""-----------------------------------------------------
 "" From: https://github.com/derekwyatt/vim-config/blob/master/vimrc
 ""-----------------------------------------------------
@@ -314,6 +313,7 @@ set splitright
 nnoremap <silent> <Leader>0 :exe "vertical resize 100%"<CR>
 nnoremap <silent> <Leader>n :exe "vertical resize +10"<CR>
 nnoremap <silent> <Leader>m :exe "vertical resize -10"<CR>
+
 
 "----------------------------------------------------------------------------
 " STATUS Line:
@@ -361,3 +361,16 @@ match ExtraWhitespace /\s\+$/
 "autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 "autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 "autocmd BufWinLeave * call clearmatches()
+
+
+"----------------------------------------------------------------------------
+" GVim Settings:
+"
+" NOTE: could also be put in ~/.gvimrc
+"----------------------------------------------------------------------------
+if has("gui_running")
+  " GUI is running or is about to start.
+   set lines=50 columns=150
+   winpos 250 70
+endif
+

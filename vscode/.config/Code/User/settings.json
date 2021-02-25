@@ -1,9 +1,17 @@
 {
+  "vim.leader": ",",
+  "vim.normalModeKeyBindings": [
+    {
+      "before" : ["<leader>","a"],
+      "commands" : [
+        "workbench.view.explorer"
+      ]
+    }
+  ],
   "editor.tabSize": 2,
-  "workbench.colorTheme": "Solarized Light",
+  "workbench.colorTheme": "Default Light+",
   "editor.formatOnSave": true,
   "workbench.startupEditor": "newUntitledFile",
-  "window.zoomLevel": 0,
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -13,7 +21,7 @@
   "csharp.suppressHiddenDiagnostics": false,
   "omnisharp.enableDecompilationSupport": true,
   "workbench.settings.openDefaultKeybindings": true,
-  "workbench.settings.openDefaultSettings": true,
+  "workbench.settings.openDefaultSettings": false,
   "workbench.settings.useSplitJSON": false,
   "editor.suggestSelection": "first",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
@@ -42,5 +50,6 @@
   // Controls the algorithm that computes wrapping points.
   //  - simple: Assumes that all characters are of the same width. This is a fast algorithm that works correctly for monospace fonts and certain scripts (like Latin characters) where glyphs are of equal width.
   //  - advanced: Delegates wrapping points computation to the browser. This is a slow algorithm, that might cause freezes for large files, but it works correctly in all cases.
-  "editor.wrappingStrategy": "simple"
+  "editor.wrappingStrategy": "simple",
+  "python.languageServer": "Microsoft"
 }
