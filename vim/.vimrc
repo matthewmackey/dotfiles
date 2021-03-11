@@ -32,10 +32,13 @@ Plugin 'chriskempson/base16-vim'
 " Vimwiki
 "Plugin 'vimwiki/vimwiki'
 
-
 " NERD Commenter
 " https://github.com/preservim/nerdcommenter
 Plugin 'preservim/nerdcommenter'
+
+" Golang plugin
+" https://github.com/fatih/vim-go
+Plugin 'fatih/vim-go'
 
 " Keep Plugin commands between vundle#begin/end.
 " All of your Plugins must be added before the following line
@@ -61,6 +64,9 @@ filetype plugin indent on    " required
 """"""""""""""""""""""""""""""""""""""""""""""""
 " Automatically update a file if it is changed externally
 "set autoread
+
+" Used by 'go-vim' via ':make' hook
+set autowrite
 
 " Height of the command bar
 set cmdheight=1
