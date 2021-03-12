@@ -12,13 +12,12 @@ Plugin 'gmarik/Vundle.vim'     " let Vundle manage Vundle, required
 Plugin 'chriskempson/base16-vim'
 Plugin 'fatih/vim-go'
 Plugin 'honza/vim-snippets'
-Plugin 'preservim/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'SirVer/ultisnips'
 "Plugin 'kien/ctrlp.vim'
 
 call vundle#end()
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                              Settings                                        "
@@ -75,6 +74,25 @@ set smartindent                " Smart indent
 set smarttab                   " Use smart tabs
 
 "----------------------------------------------------------------"
+"               Whitespace Handling                              "
+"
+" From - https://vim.fandom.com/wiki/Highlight_unwanted_spaces   "
+"----------------------------------------------------------------"
+" Don't mark special characters (from 'listchars'))
+set nolist
+
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,nbsp:.
+
+highlight ExtraWhitespace ctermbg=blue guibg=blue
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=blue guibg=blue
+
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
+"----------------------------------------------------------------"
 "               Clipboard                                        "
 "                                                                "
 " From - https://vim.fandom.com/wiki/Highlight_unwanted_spaces   "
@@ -89,27 +107,13 @@ set smarttab                   " Use smart tabs
 "endif
 
 " This enables us to undo files even if you exit Vim.
-"if has('persistent_undo')
-  "set undofile
+if has('persistent_undo')
+  set undofile
   "set undodir=~/.config/vim/tmp/undo//
-"endif
+  set undodir=~/.vim/tmp/undo/
+endif
 
-"----------------------------------------------------------------"
-"               Whitespace Handling                              "
-"
-" From - https://vim.fandom.com/wiki/Highlight_unwanted_spaces   "
-"----------------------------------------------------------------"
-set nolist                               " Don't mark special characters (from 'listchars'))
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,nbsp:.
-highlight ExtraWhitespace ctermbg=blue guibg=blue
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=blue guibg=blue
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
 
-"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Color Scheme                                     "
 "                                                                              "
@@ -118,7 +122,6 @@ autocmd BufWinLeave * call clearmatches()
 " From - https://github.com/chriskempson/base16-shell                          "
 " From - https://csswizardry.com/2017/03/configuring-git-and-vim/              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " Enable syntax highlighting
 syntax on
 
@@ -134,7 +137,9 @@ highlight ColorColumn ctermbg=blue
 colorscheme base16-horizon-dark
 set background=light
 
+"----------------------------------------------------
 " Git with Vim
+"----------------------------------------------------
 " Force the cursor onto a new line after 80 characters
 set textwidth=80
 
@@ -196,7 +201,7 @@ no <C-k> <C-w>k    " switching to above window
 no <C-l> <C-w>l    " switching to right window
 no <C-h> <C-w>h    " switching to left window
 
-" Splitting
+" Resize vertical splits
 nnoremap <silent> <Leader>0 :exe "vertical resize 100%"<CR>
 nnoremap <silent> <Leader>n :exe "vertical resize +10"<CR>
 nnoremap <silent> <Leader>m :exe "vertical resize -10"<CR>
@@ -218,16 +223,32 @@ nnoremap Y y$
 " Enter automatically into the files directory
 autocmd BufEnter * silent! lcd %:p:h
 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "             Plugin - vim-go                                                  "
 "                                                                              "
 " From - https://github.com/fatih/vim-go-tutorial/blob/master/vimrc            "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:go_fmt_command = "goimports"
+let g:go_autodetect_gopath = 1
+"let g:go_list_type = "quickfix" j
+
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_generate_tags = 1
+
 " Jump to next error with Ctrl-n and previous error with Ctrl-m. Close the
 " quickfix window with <leader>a
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
+
+" Open :GoDeclsDir with ctrl-g
+nmap <C-g> :GoDeclsDir<cr>
+imap <C-g> <esc>:<C-u>GoDeclsDir<cr>
 
 augroup go
   autocmd!
@@ -239,10 +260,10 @@ augroup go
   autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 
   " :GoTest
-  autocmd FileType go nmap <leader>t  <Plug>(go-test)
+  autocmd FileType go nmap <leader>t <Plug>(go-test)
 
   " :GoRun
-  autocmd FileType go nmap <leader>r  <Plug>(go-run)
+  autocmd FileType go nmap <leader>r <Plug>(go-run)
 
   " :GoDoc
   autocmd FileType go nmap <Leader>d <Plug>(go-doc)
@@ -258,6 +279,7 @@ augroup go
 
   " :GoDef but opens in a vertical split
   autocmd FileType go nmap <Leader>v <Plug>(go-def-vertical)
+
   " :GoDef but opens in a horizontal split
   autocmd FileType go nmap <Leader>s <Plug>(go-def-split)
 
@@ -291,13 +313,8 @@ vnoremap <C-_> :call NERDComment(0,"toggle")<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "             Plugin - NERDTree                                                "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" show hidden files
-let NERDTreeShowHidden=1
-
-" open/close NERDTree using Leader-f (,-f)
-" <Leader> is \ by default
-"nnoremap <Leader>f :NERDTreeToggle<Enter>
-nnoremap <C-n> :NERDTreeToggle<Enter>
+let NERDTreeShowHidden=1                    " show hidden files
+nnoremap <Leader>f :NERDTreeToggle<Enter>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
