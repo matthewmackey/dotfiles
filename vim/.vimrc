@@ -1,250 +1,140 @@
-"##################################################################################
- "START From: https://github.com/hamvocke/dotfiles/blob/master/vim/.vimrc
- "With some mmackey edits
-"###################################################################################
-""""""""""""""""""""""""""""""""""""""""""""""""
-" Setup Vundler For Plugin Management:
-""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible
-filetype off
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                      Vundler - Plugin Manager                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible                " Enables us Vim specific features (required by Vundler)
+filetype off                    " Reset filetype detection first (required by Vundler)
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+set rtp+=~/.vim/bundle/Vundle.vim  " set the runtime path to include Vundle and initialize
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+call vundle#begin()            " All of your Plugins must be between vundle#begin/end
+Plugin 'gmarik/Vundle.vim'     " let Vundle manage Vundle, required
 
-" NERD tree - tree explorer
-Plugin 'scrooloose/nerdtree'
-
-" Base16 colorschemes
 Plugin 'chriskempson/base16-vim'
-
-" Ctrl-p
+Plugin 'fatih/vim-go'
+Plugin 'honza/vim-snippets'
+Plugin 'preservim/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'AndrewRadev/splitjoin.vim'
+Plugin 'SirVer/ultisnips'
 "Plugin 'kien/ctrlp.vim'
 
-" Elixir syntax highlighting
-"Plugin 'elixir-lang/vim-elixir'
+call vundle#end()
 
-" Vimwiki
-"Plugin 'vimwiki/vimwiki'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                              Settings                                        "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype plugin indent on       " Re-enable filetype detection
 
-" NERD Commenter
-" https://github.com/preservim/nerdcommenter
-Plugin 'preservim/nerdcommenter'
+set ttyfast                     " Indicate fast terminal conn for faster redraw
+set ttymouse=xterm2             " Indicate terminal type for mouse codes
+set ttyscroll=3                 " Speedup scrolling
 
-" Golang plugin
-" https://github.com/fatih/vim-go
-Plugin 'fatih/vim-go'
+set autoread                    " Automatically read changed files
+set autowrite                 " Used by 'go-vim' via ':make' hook
+set backspace=indent,eol,start " modern backspace behavior
+set cmdheight=1               " Height of the command bar
+set nocursorcolumn              " Do not highlight column cursor is on(speeds up highlighting)
+set nocursorline                " Do not highlight line cursor is on (speeds up highlighting)
+set encoding=utf8             " UTF-8 encoding and en_US as default encoding/language
+set ffs=unix,dos,mac          " Define standard filetype
+set foldmethod=marker
+set foldmarker={{,}}
+set hidden                      " Buffer should still exist if window is closed
+set lazyredraw                  " Wait to redraw
+set mouse-=a                  " Allow mouse to move cursor
+set number                      " Show line numbers
+set ruler                     " always show current position
+set showcmd                   " show last command in the bottom right
+set noshowmatch                 " Do not show matching brackets by flickering
+set noshowmode                  " We show the mode with airline or lightline
+set splitright                  " Vertical windows should be split to right
+set splitbelow                  " Horizontal windows should split to bottom
 
-" Keep Plugin commands between vundle#begin/end.
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+" Backup/Swap files
+set nobackup                  " Remove backup file after file is successfully overwritten
+set noswapfile                " Don't create swap files
+set writebackup               " Make a backup before overwriting a file
 
+" Menus
+set completeopt=menu,menuone    " Show popup menu, even if there is one entry
+set pumheight=10                " Completion window max size
+set wildmenu                  " visual autocomplete for command menu
 
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" Custom Keybindings:
-"""""""""""""""""""""""""""""""""""""""""""""""""
-"let mapleader=","       " leader is comma
+" Searching
+set incsearch                   " Shows the match while typing
+set hlsearch                    " Highlight found searches
+set ignorecase                  " Search case insensitive...
+set smartcase                   " ... but not it begins with upper case
 
-" turn off search highlight with ,-<space>
-"nnoremap <leader><space> :nohlsearch<CR>
+" Text & Indentation
+set expandtab                  " Use spaces, no tabs
+set shiftwidth=2
+set softtabstop=2
+set ai                         " Auto indent
+set smartindent                " Smart indent
+set smarttab                   " Use smart tabs
 
-" Invoke Ctrl-p with c-p
-"let g:ctrlp_map = '<c-p>'
-"let g:ctrlp_cmd = 'CtrlP'
+"----------------------------------------------------------------"
+"               Clipboard                                        "
+"                                                                "
+" From - https://vim.fandom.com/wiki/Highlight_unwanted_spaces   "
+" From - https://stackoverflow.com/a/30691754/14209903           "
+"----------------------------------------------------------------"
+"set clipboard^=unnamed,unnamedplus
 
+" http://stackoverflow.com/questions/20186975/vim-mac-how-to-copy-to-clipboard-without-pbcopy
+"if has('unnamedplus')
+  "set clipboard^=unnamed
+  "set clipboard^=unnamedplus
+"endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""
-" General Configuration:
-""""""""""""""""""""""""""""""""""""""""""""""""
-" Automatically update a file if it is changed externally
-"set autoread
+" This enables us to undo files even if you exit Vim.
+"if has('persistent_undo')
+  "set undofile
+  "set undodir=~/.config/vim/tmp/undo//
+"endif
 
-" Used by 'go-vim' via ':make' hook
-set autowrite
+"----------------------------------------------------------------"
+"               Whitespace Handling                              "
+"
+" From - https://vim.fandom.com/wiki/Highlight_unwanted_spaces   "
+"----------------------------------------------------------------"
+set nolist                               " Don't mark special characters (from 'listchars'))
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,nbsp:.
+highlight ExtraWhitespace ctermbg=blue guibg=blue
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=blue guibg=blue
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
 
-" Height of the command bar
-set cmdheight=1
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                             Color Scheme                                     "
+"                                                                              "
+" base16-shell creates Vim colorscheme file at ~/.vimrc_background             "
+"                                                                              "
+" From - https://github.com/chriskempson/base16-shell                          "
+" From - https://csswizardry.com/2017/03/configuring-git-and-vim/              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" NOTE: Use ':noh' or ',h' to turn off search highlighting until next search
-set hlsearch	    " highlight search matches
-
-set incsearch	    " search while characters are entered
-
-" search is case-sensitive by default
-set ignorecase
-
-" ignore case if search pattern is all lowercase, case-sensitive otherwise
-" NOTE: requires 'set ignorecase' also to work
-set smartcase
-
-" Show linenumbers
-set number
-
-" show last command in the bottom right
-set showcmd
-
-" always show current position
-set ruler
-
-" show matching braces
-set showmatch
-
-" visual autocomplete for command menu
-set wildmenu
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" Backups And Swap Files:
-"""""""""""""""""""""""""""""""""""""""""""""""""
-set nobackup
-set nowb
-set noswapfile
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" Colors And Fonts:
-"""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
 syntax on
 
-" UTF-8 encoding and en_US as default encoding/language
-set encoding=utf8
-
-" Define standard filetype
-set ffs=unix,dos,mac
-
-let base16colorspace=256
-colorscheme base16-horizon-dark
-set background=light
-
-"set cursorline	" highlight current active line
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" File Types:
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" recognize .md files as markdown files
-"au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
-
-" enable spell-checking for markdown files
-"autocmd BufRead,BufNewFile *.md setlocal spell
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" Text And Indentation:
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" Use smart tabs
-set smarttab
-
-set expandtab " use spaces, no tabs
-
-" 1 tab == 4 spaces
-set shiftwidth=2
-set softtabstop=2
-
-set ai " Auto indent
-set si " Smart indent
-
-" modern backspace behavior
-set backspace=indent,eol,start
-
-filetype indent on	" enable filetype specific indentation
-
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,nbsp:.
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" Movement:
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" move vertically by visual line (don't skip wrapped lines) 
-"nnoremap j gj
-"nnoremap k gk
-
-" From: https://github.com/preservim/nerdtree/wiki/F.A.Q.
-" Switch between different windows by their direction
-no <C-j> <C-w>j    " switching to below window 
-no <C-k> <C-w>k    " switching to above window
-no <C-l> <C-w>l    " switching to right window 
-no <C-h> <C-w>h    " switching to left window
-
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" Ctrl P:
-"""""""""""""""""""""""""""""""""""""""""""""""""
-"let g:ctrlp_match_window = 'bottom,order:ttb'
-"let g:ctrlp_switch_buffer = 0
-"let g:ctrlp_working_path_mode = 'ra'
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" Vimwiki:
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" automatically generate HTML files
-"let g:vimwiki_list = [{'path': '~/vimwiki/', 'auto_export': 1}]
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" NERDTree:
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" show hidden files
-let NERDTreeShowHidden=1
-
-" open/close NERDTree using Leader-f (,-f)
-" <Leader> is \ by default
-"nnoremap <Leader>f :NERDTreeToggle<Enter>
-nnoremap <C-n> :NERDTreeToggle<Enter>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" NERDCommenter:
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" Bug: https://stackoverflow.com/questions/9051837/how-to-map-c-to-toggle-comments-in-vim
-inoremap <C-_> :call NERDComment(0,"toggle")<CR>
-noremap <C-_> :call NERDComment(0,"toggle")<CR>
-vnoremap <C-_> :call NERDComment(0,"toggle")<CR>
-
-"###################################################################################
-" END From: (github.com/hamvocke/dotfiles)
-"###################################################################################
-
-
-"###################################################################################
-" START: mmackey
-"###################################################################################
-"-----------------------------------------------------------------------------------
-" Base16 shell creates Vim colorscheme file at ~/.vimrc_background
-" From: https://github.com/chriskempson/base16-shell
-"
-" This must be placed after 'chriskempson/base16-vim' plugin is declared in .vimrc
-"-----------------------------------------------------------------------------------
+" Note - must be after 'chriskempson/base16-vim' plugin is declared in .vimrc
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
 
-" ColorColumn: must be after soucing ~/.vimrc_background so it can override
-" the color for all colorschemes
-highlight ColorColumn ctermbg=red
+" Must be after sourcing ~/.vimrc_background to override for all colorschemes
+highlight ColorColumn ctermbg=blue
 
+colorscheme base16-horizon-dark
+set background=light
 
-"------------------------------------------------------------------------------
-" From: https://csswizardry.com/2017/03/configuring-git-and-vim/
-" Plus: mmackey edits
-"------------------------------------------------------------------------------
-" wrap lines only visually
-"set wrap
-
-" wrap only at valid characters
-"set linebreak
-
-" in newly entered text
-"set wrapmargin=0
-
+" Git with Vim
 " Force the cursor onto a new line after 80 characters
 set textwidth=80
 
@@ -258,75 +148,13 @@ set colorcolumn=+1
 autocmd FileType gitcommit set colorcolumn+=51
 
 
-"-----------------------------------------------------
-" From: http://stackoverflow.com/questions/7652820/how-to-disable-the-auto-comment-in-shell-script-vi-editing
-"-----------------------------------------------------
-" Needed to stop vim from automatically commenting out any text I paste to a file
-" Search for highlighted text
-" from an external source (that starts with a #...not sure if only in this case??)
-set paste
-
-
-"-----------------------------------------------------
-" From: https://www.cs.swarthmore.edu/help/vim/etc.html
-"-----------------------------------------------------
-" Allow mouse to move cursor
-"set mouse=a
-set mouse-=a
-
-
-""-----------------------------------------------------
-"" From: https://github.com/derekwyatt/vim-config/blob/master/vimrc
-""-----------------------------------------------------
-"" change the mapleader from \ to ,
-"let mapleader=","
-"
-"" Turn off that stupid highlight search
-"nmap <silent> ,n :nohls<CR>
-"
-"" Quickly edit/reload the vimrc file
-"nmap <silent> <leader>ev :e $MYVIMRC<CR>
-"" this next one turns of highlighting for some reason when re-loading .vimrc ??
-"nmap <silent> <leader>sv :so $MYVIMRC<CR>
-"
-
-""-----------------------------------------------------
-"" From: http://vim.wikia.com/wiki/Search_for_visually_selected_text
-""-----------------------------------------------------
-"" Search for highlighted text
-"vnorem // y/<c-r>"<cr>
-
-
-""-----------------------------------------------------
-"" From: https://blog.pentesterlab.com/keeping-notes-during-a-pentest-security-assessment-code-review-7e6db8091a66
-""-----------------------------------------------------
-set foldmethod=marker
-set foldmarker={{,}}
-
-
-"-----------------------------------------------------------------------------
-" LEADER:
-"-----------------------------------------------------------------------------
-" Change the mapleader from \ to ,
-let mapleader=","
-
-
-"-----------------------------------------------------------------------------
-" SPLITTING:
-"-----------------------------------------------------------------------------
-set splitright
-
-nnoremap <silent> <Leader>0 :exe "vertical resize 100%"<CR>
-nnoremap <silent> <Leader>n :exe "vertical resize +10"<CR>
-nnoremap <silent> <Leader>m :exe "vertical resize -10"<CR>
-
-
-"----------------------------------------------------------------------------
-" STATUS Line:
-"
-" FROM: https://shapeshed.com/vim-statuslines/#what-is-a-statusline-in-vim
-" AND: http://blog.ezyang.com/2010/03/vim-textwidth/
-"----------------------------------------------------------------------------
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                              Status Line                                     "
+"                                                                              "
+" From - https://shapeshed.com/vim-statuslines/#what-is-a-statusline-in-vim    "
+" From - http://blog.ezyang.com/2010/03/vim-textwidth/                         "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Show status line always
 set laststatus=2
 
 function! GitBranch()
@@ -355,28 +183,131 @@ set statusline+=\ %l:%c
 set statusline+=\ 
 
 
-"----------------------------------------------------------------------------
-" Trailing Whitespace:
-"
-" FROM: https://vim.fandom.com/wiki/Highlight_unwanted_spaces
-"----------------------------------------------------------------------------
-highlight ExtraWhitespace ctermbg=red guibg=red
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-"autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-"autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-"autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-"autocmd BufWinLeave * call clearmatches()
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           Mappings                                           "
+"                                                                              "
+" From - https://github.com/fatih/vim-go-tutorial/blob/master/vimrc            "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let mapleader=","             " Change the mapleader from '\' to ','
+
+" Switch between different windows by their direction
+no <C-j> <C-w>j    " switching to below window
+no <C-k> <C-w>k    " switching to above window
+no <C-l> <C-w>l    " switching to right window
+no <C-h> <C-w>h    " switching to left window
+
+" Splitting
+nnoremap <silent> <Leader>0 :exe "vertical resize 100%"<CR>
+nnoremap <silent> <Leader>n :exe "vertical resize +10"<CR>
+nnoremap <silent> <Leader>m :exe "vertical resize -10"<CR>
+
+" Visual linewise up and down by default (and use gj gk to go quicker)
+noremap <Up> gk
+noremap <Down> gj
+noremap j gj
+noremap k gk
+
+" Search mappings: These will make it so that going to the next one in a
+" search will center on the line it's found in.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Act like D and C
+nnoremap Y y$
+
+" Enter automatically into the files directory
+autocmd BufEnter * silent! lcd %:p:h
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"             Plugin - vim-go                                                  "
+"                                                                              "
+" From - https://github.com/fatih/vim-go-tutorial/blob/master/vimrc            "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Jump to next error with Ctrl-n and previous error with Ctrl-m. Close the
+" quickfix window with <leader>a
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
+
+augroup go
+  autocmd!
+
+  " Show by default 4 spaces for a tab
+  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+
+  " :GoBuild and :GoTestCompile
+  autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+
+  " :GoTest
+  autocmd FileType go nmap <leader>t  <Plug>(go-test)
+
+  " :GoRun
+  autocmd FileType go nmap <leader>r  <Plug>(go-run)
+
+  " :GoDoc
+  autocmd FileType go nmap <Leader>d <Plug>(go-doc)
+
+  " :GoCoverageToggle
+  autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+
+  " :GoInfo
+  autocmd FileType go nmap <Leader>i <Plug>(go-info)
+
+  " :GoMetaLinter
+  autocmd FileType go nmap <Leader>l <Plug>(go-metalinter)
+
+  " :GoDef but opens in a vertical split
+  autocmd FileType go nmap <Leader>v <Plug>(go-def-vertical)
+  " :GoDef but opens in a horizontal split
+  autocmd FileType go nmap <Leader>s <Plug>(go-def-split)
+
+  " :GoAlternate  commands :A, :AV, :AS and :AT
+  autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+  autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+  autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+  autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+augroup END
+
+" build_go_files is a custom function that builds or compiles the test file.
+" It calls :GoBuild if its a Go file, or :GoTestCompile if it's a test file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
 
 
-"----------------------------------------------------------------------------
-" GVim Settings:
-"
-" NOTE: could also be put in ~/.gvimrc
-"----------------------------------------------------------------------------
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"             Plugin - NERDCommenter                                           "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+inoremap <C-_> :call NERDComment(0,"toggle")<CR>
+noremap <C-_> :call NERDComment(0,"toggle")<CR>
+vnoremap <C-_> :call NERDComment(0,"toggle")<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"             Plugin - NERDTree                                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" show hidden files
+let NERDTreeShowHidden=1
+
+" open/close NERDTree using Leader-f (,-f)
+" <Leader> is \ by default
+"nnoremap <Leader>f :NERDTreeToggle<Enter>
+nnoremap <C-n> :NERDTreeToggle<Enter>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                         GVim Settings                                        "
+"                                                                              "
+" Note - could also be put in ~/.gvimrc                                        "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("gui_running")
   " GUI is running or is about to start.
-   set lines=50 columns=150
-   winpos 250 70
+  set lines=50 columns=150
+  winpos 250 70
 endif
 
