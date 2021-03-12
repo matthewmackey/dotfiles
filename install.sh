@@ -41,8 +41,13 @@ setup_ssh_dirs() {
   mkdir -p ~/.ssh/config.d
 }
 
-install_base16_shell
-install_vim_vundle
-install_tmux_plugin_manager
-setup_ssh_dirs
+create_vim_undo_dir() {
+  mkdir -p ~/.vim/tmp/undo
+}
+
+#install_base16_shell
+#install_vim_vundle
+#install_tmux_plugin_manager
+create_vim_undo_dir
+#setup_ssh_dirs
 
