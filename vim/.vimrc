@@ -1,17 +1,20 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                      Vundler - Plugin Manager                                "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible                " Enables us Vim specific features (required by Vundler)
-filetype off                    " Reset filetype detection first (required by Vundler)
+set nocompatible                   " Enables us Vim specific features (required by Vundler)
+filetype off                       " Reset filetype detection first (required by Vundler)
 
 set rtp+=~/.vim/bundle/Vundle.vim  " set the runtime path to include Vundle and initialize
 
-call vundle#begin()            " All of your Plugins must be between vundle#begin/end
-Plugin 'gmarik/Vundle.vim'     " let Vundle manage Vundle, required
+call vundle#begin()                " All of your Plugins must be between vundle#begin/end
+
+Plugin 'gmarik/Vundle.vim'         " let Vundle manage Vundle, required
 
 Plugin 'chriskempson/base16-vim'
 Plugin 'fatih/vim-go'
 Plugin 'honza/vim-snippets'
+Plugin 'preservim/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'SirVer/ultisnips'
 "Plugin 'kien/ctrlp.vim'
@@ -73,6 +76,12 @@ set ai                         " Auto indent
 set smartindent                " Smart indent
 set smarttab                   " Use smart tabs
 
+" Persistent undo
+if has('persistent_undo')
+  set undofile
+  set undodir=~/.vim/tmp/undo/
+endif
+"
 "----------------------------------------------------------------"
 "               Whitespace Handling                              "
 "
@@ -106,13 +115,6 @@ autocmd BufWinLeave * call clearmatches()
   "set clipboard^=unnamedplus
 "endif
 
-" This enables us to undo files even if you exit Vim.
-if has('persistent_undo')
-  set undofile
-  "set undodir=~/.config/vim/tmp/undo//
-  set undodir=~/.vim/tmp/undo/
-endif
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Color Scheme                                     "
@@ -137,9 +139,9 @@ highlight ColorColumn ctermbg=blue
 colorscheme base16-horizon-dark
 set background=light
 
-"----------------------------------------------------
-" Git with Vim
-"----------------------------------------------------
+"---------------------"
+"   Git with Vim      "
+"---------------------"
 " Force the cursor onto a new line after 80 characters
 set textwidth=80
 
@@ -196,10 +198,10 @@ set statusline+=\
 let mapleader=","             " Change the mapleader from '\' to ','
 
 " Switch between different windows by their direction
-no <C-j> <C-w>j    " switching to below window
-no <C-k> <C-w>k    " switching to above window
-no <C-l> <C-w>l    " switching to right window
-no <C-h> <C-w>h    " switching to left window
+noremap <C-j> <C-w>j    " switching to below window
+noremap <C-k> <C-w>k    " switching to above window
+noremap <C-l> <C-w>l    " switching to right window
+noremap <C-h> <C-w>h    " switching to left window
 
 " Resize vertical splits
 nnoremap <silent> <Leader>0 :exe "vertical resize 100%"<CR>
@@ -313,7 +315,7 @@ vnoremap <C-_> :call NERDComment(0,"toggle")<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "             Plugin - NERDTree                                                "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let NERDTreeShowHidden=1                    " show hidden files
+let NERDTreeShowHidden=1                         " show hidden files
 nnoremap <Leader>f :NERDTreeToggle<Enter>
 
 
