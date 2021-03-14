@@ -11,12 +11,14 @@ call vundle#begin()                " All of your Plugins must be between vundle#
 Plugin 'gmarik/Vundle.vim'         " let Vundle manage Vundle, required
 
 Plugin 'chriskempson/base16-vim'
+Bundle 'ervandew/supertab'
 Plugin 'fatih/vim-go'
 Plugin 'honza/vim-snippets'
 Plugin 'preservim/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'SirVer/ultisnips'
+Plugin 'ycm-core/YouCompleteMe'
 "Plugin 'kien/ctrlp.vim'
 
 call vundle#end()
@@ -44,7 +46,8 @@ set foldmarker={{,}}
 set hidden                      " Buffer should still exist if window is closed
 set lazyredraw                  " Wait to redraw
 set mouse-=a                  " Allow mouse to move cursor
-set number                      " Show line numbers
+set number                    " Show line numbers
+set relativenumber            " Show relative line numbers
 set ruler                     " always show current position
 set showcmd                   " show last command in the bottom right
 set noshowmatch                 " Do not show matching brackets by flickering
@@ -65,8 +68,8 @@ set wildmenu                  " visual autocomplete for command menu
 " Searching
 set incsearch                   " Shows the match while typing
 set hlsearch                    " Highlight found searches
-set ignorecase                  " Search case insensitive...
-set smartcase                   " ... but not it begins with upper case
+"set ignorecase                  " Search case insensitive...
+"set smartcase                   " ... but not it begins with upper case
 
 " Text & Indentation
 set expandtab                  " Use spaces, no tabs
@@ -81,7 +84,7 @@ if has('persistent_undo')
   set undofile
   set undodir=~/.vim/tmp/undo/
 endif
-"
+
 "----------------------------------------------------------------"
 "               Whitespace Handling                              "
 "
@@ -92,14 +95,14 @@ set nolist
 
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,nbsp:.
 
-highlight ExtraWhitespace ctermbg=blue guibg=blue
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=blue guibg=blue
+"highlight ExtraWhitespace ctermbg=blue guibg=blue
+"autocmd ColorScheme * highlight ExtraWhitespace ctermbg=blue guibg=blue
 
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
+"match ExtraWhitespace /\s\+$/
+"autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+"autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+"autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+"autocmd BufWinLeave * call clearmatches()
 
 "----------------------------------------------------------------"
 "               Clipboard                                        "
@@ -209,10 +212,10 @@ nnoremap <silent> <Leader>n :exe "vertical resize +10"<CR>
 nnoremap <silent> <Leader>m :exe "vertical resize -10"<CR>
 
 " Visual linewise up and down by default (and use gj gk to go quicker)
-noremap <Up> gk
-noremap <Down> gj
-noremap j gj
-noremap k gk
+"noremap <Up> gk
+"noremap <Down> gj
+"noremap j gj
+"noremap k gk
 
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
@@ -225,7 +228,7 @@ nnoremap Y y$
 " Enter automatically into the files directory
 autocmd BufEnter * silent! lcd %:p:h
 
-
+"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "             Plugin - vim-go                                                  "
 "                                                                              "
@@ -302,6 +305,23 @@ function! s:build_go_files()
     call go#cmd#Build(0)
   endif
 endfunction
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"             Plugin - YouCompleteMe & supertab
+"                                                                              "
+" From -                                                                       " 
+"   https://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme   "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
