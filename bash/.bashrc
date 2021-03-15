@@ -22,15 +22,24 @@
 #===================================================================================
 # Helper Functions
 #===================================================================================
+# Show FDs:
+#   lsof +f g -ap $BASHPID -d 0,1,2 2>/dev/null
 source_file() {
+  exec 3>/dev/null
+
+  # Should be 1 or 3 -> not using `exec 2>/dev/null` above so that any errors
+  # that occur in sourced files will still appear
+  BASHRC_OUT_FD=3
+
   if [ -f "$1" ]; then
-    printf "OK        -> ["~"/${1##${HOME}/}]\n"
+    printf "OK        -> ["~"/${1##${HOME}/}]\n" >&"$BASHRC_OUT_FD"
     source "$1"
   else
-    printf "NOT FOUND -> ["~"/${1##${HOME}/}]\n"
+    printf "NOT FOUND -> ["~"/${1##${HOME}/}]\n" >&"$BASHRC_OUT_FD"
   fi
-} >2
 
+  exec 3>&-
+}
 
 #===================================================================================
 # Source files
