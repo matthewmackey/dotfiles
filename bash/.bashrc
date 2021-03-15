@@ -29,7 +29,7 @@ source_file() {
 
   # Should be 1 or 3 -> not using `exec 2>/dev/null` above so that any errors
   # that occur in sourced files will still appear
-  BASHRC_OUT_FD=3
+  BASHRC_OUT_FD=1
 
   if [ -f "$1" ]; then
     printf "OK        -> ["~"/${1##${HOME}/}]\n" >&"$BASHRC_OUT_FD"
@@ -46,8 +46,8 @@ source_file() {
 #===================================================================================
 BASH_DOT_HOME=~/bash
 source_file ${BASH_DOT_HOME}/.bashrc.20_04
-source_file ${BASH_DOT_HOME}/.bashrc.custom
 source_file ${BASH_DOT_HOME}/.bash_env
+source_file ${BASH_DOT_HOME}/.bashrc.custom
 source_file ${BASH_DOT_HOME}/.bash_functions
 source_file ${BASH_DOT_HOME}/.bash_aliases
 
