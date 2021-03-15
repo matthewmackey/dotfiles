@@ -133,15 +133,18 @@ alias im="images"
 #-------------------------------------------------------------------------------
 # [Dotfiles]
 #-------------------------------------------------------------------------------
-alias commitaliases='cd ~/dotfiles/bash/bash; git add .bash_aliases; git ci -m".bash_aliases: updated aliases"'
+alias commitaliases='cd ~/dotfiles/bash/bash; [ "$(git status -s | grep \"^A\" | wc -l)" != 0 ] && echo "Already staged files" || (git add .bash_aliases; git ci -m".bash_aliases: updated aliases")'
 alias commitdesktop='cd ~/dotfiles/desktop; git add .local; git ci -m"desktop: updated .desktop shortcuts"'
+alias commitgitignore='[ "$(git status -s | grep \"^A\" | wc -l)" != 0 ] && echo "Already staged files" || (git add .gitignore; git ci -m "Updated .gitignore")'
 alias commitvimrc='cd ~/dotfiles/vim; git add .vimrc; git ci -m"vim: updated .vimrc"'
 alias commitvscode='cd ~/dotfiles/vscode; git add .config; git ci -m"vscode: updated VSCode config settings"'
+
 alias cs="createshortcut"
 
 #-------------------------------------------------------------------------------
 # [Git]
 #-------------------------------------------------------------------------------
+# SEE: https://git-scm.com/docs/gitrevisions for help on HEAD^, HEAD^2~, etc.
 alias add="git add"
 alias ga="git add"
 alias gba="git branch -a"
@@ -154,10 +157,10 @@ alias gd="clear && git diff --cached"
 alias gdj="clear && git diff --cached -- $JS_GIT_EXCLUDES"
 alias gg="git log --all --graph --decorate --oneline"
 alias ggc="git log --all --graph --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(bold blue)<%an>%Creset'"
-alias glo="clear && git log"
+alias glo="clear & git log"
 alias gsh="clear && git show"
 alias gst="clear && git status"
-alias gl="clear && git log --pretty=oneline"
+alias gl="git log --pretty=oneline"
 alias pull="git pull"
 alias push="git push"
 alias remotes="clear; git remote -v"
@@ -191,6 +194,7 @@ alias pxoff="proxyoff"
 alias pxon="proxyon"
 alias pxs="proxystatus"
 alias pxt="proxytoggle"
+alias ssx='echo sudo ss -lp "sport = :domain"; sudo ss -lp "sport = :domain"'
 
 #-------------------------------------------------------------------------------
 # [node]
