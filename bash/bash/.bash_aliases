@@ -78,6 +78,12 @@ alias treeea="clear; tree -I .git -a"
 alias xdgo="op"
 alias whatismyip="wget http://ipinfo.io/ip -qO -"
 
+#------------------------------------
+# [systemctl]
+#------------------------------------
+alias logs="sudo journalctl -u"
+alias status="sudo systemctl status"
+
 ################################################################################
 
 #-------------------------------------------------------------------------------
