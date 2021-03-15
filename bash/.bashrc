@@ -24,12 +24,12 @@
 #===================================================================================
 source_file() {
   if [ -f "$1" ]; then
-    echo -e "OK        -> ["~"/${1##${HOME}/}]"
+    printf "OK        -> ["~"/${1##${HOME}/}]\n"
     source "$1"
   else
-    echo -e "NOT FOUND -> ["~"/${1##${HOME}/}]"
+    printf "NOT FOUND -> ["~"/${1##${HOME}/}]\n"
   fi
-}
+} >2
 
 
 #===================================================================================
@@ -56,8 +56,19 @@ done
 
 # Source any Ansible-generated Bash files
 ANSIBLE_BASH_DIR=~/.local/ansible_bash
-for _ansible_bashfile in $(ls $ANSIBLE_BASH_DIR/*)
-do
-  source_file $_ansible_bashfile
-done
+if [ -d "$ANSIBLE_BASH_DIR" ]; then
+  for _ansible_bashfile in $(ls $ANSIBLE_BASH_DIR/*)
+  do
+    source_file $_ansible_bashfile
+  done
+fi
+
+# Source any custom LOCAL Bash files
+LOCAL_CUSTOM_BASH_DIR=~/.local/bash_custom
+if [ -d "$LOCAL_CUSTOM_BASH_DIR" ]; then
+  for _local_custom_bashfile in $(ls $LOCAL_CUSTOM_BASH_DIR/*)
+  do
+    source_file $_local_custom_bashfile
+  done
+fi
 
