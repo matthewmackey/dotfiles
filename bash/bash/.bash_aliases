@@ -133,11 +133,12 @@ alias im="images"
 #-------------------------------------------------------------------------------
 # [Dotfiles]
 #-------------------------------------------------------------------------------
+T='[ "$(git status -s | grep \"^A\" | wc -l)" != 0 ] && echo "Already staged files" ||'
 alias commitaliases='cd ~/dotfiles/bash/bash; [ "$(git status -s | grep \"^A\" | wc -l)" != 0 ] && echo "Already staged files" || (git add .bash_aliases; git ci -m".bash_aliases: updated aliases")'
 alias commitdesktop='cd ~/dotfiles/desktop; git add .local; git ci -m"desktop: updated .desktop shortcuts"'
-alias commitgitignore='[ "$(git status -s | grep \"^A\" | wc -l)" != 0 ] && echo "Already staged files" || (git add .gitignore; git ci -m "Updated .gitignore")'
 alias commitvimrc='cd ~/dotfiles/vim; git add .vimrc; git ci -m"vim: updated .vimrc"'
 alias commitvscode='cd ~/dotfiles/vscode; git add .config; git ci -m"vscode: updated VSCode config settings"'
+alias commitgitignore=''$T' (git add .gitignore; git ci -m "Updated .gitignore")'
 
 alias cs="createshortcut"
 
