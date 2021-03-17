@@ -95,10 +95,10 @@ set nolist
 
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,nbsp:.
 
-"highlight ExtraWhitespace ctermbg=blue guibg=blue
-"autocmd ColorScheme * highlight ExtraWhitespace ctermbg=blue guibg=blue
+highlight ExtraWhitespace ctermbg=blue guibg=blue
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=blue guibg=blue
 
-"match ExtraWhitespace /\s\+$/
+match ExtraWhitespace /\s\+$/
 "autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 "autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 "autocmd InsertLeave * match ExtraWhitespace /\s\+$/
