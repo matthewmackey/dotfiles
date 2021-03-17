@@ -1,0 +1,12 @@
+#!/bin/bash
+
+ANSIBLE_HOME=~/pc-setup/ansible_root
+
+cd $ANSIBLE_HOME
+~/ansible_tmp_python/local/bin/ansible \
+  -m debug \
+  -a "var=hostvars[inventory_hostname]" \
+  -i inventory \
+  $@ \
+| sed 's#.*SUCCESS =>##'
+
