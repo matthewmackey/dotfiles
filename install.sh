@@ -45,9 +45,15 @@ create_vim_undo_dir() {
   mkdir -p ~/.vim/tmp/undo
 }
 
+compile_vim_youcompleteme() {
+  cd ~/.vim/bundle/YouCompleteMe
+  python3 install.py --all
+}
+
 #install_base16_shell
 #install_vim_vundle
 #install_tmux_plugin_manager
+#compile_vim_youcompleteme
 create_vim_undo_dir
 #setup_ssh_dirs
 
