@@ -17,7 +17,7 @@ usage() {
 EOF
 }
 
-if [ ! -f "$LOGICAL_VOLUME" ]; then
+if [ ! -e "$LOGICAL_VOLUME" ]; then
   usage
   exit 1
 fi
