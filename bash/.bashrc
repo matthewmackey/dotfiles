@@ -1,11 +1,21 @@
 #===================================================================================
-# Disable running rest of .bashrc when NOT sourced in an interactive session
+# Disable all output when .bashrc is NOT sourced in an interactive session
 # (SCP will not work w/o this b/c I have 'echo' statements in my .bashrc)
 #
+# NOTE: Ansible runs in non-interactive session so this applies to Ansible as well
 # SEE: https://unix.stackexchange.com/a/18647/408519
+#
+# Show FDs:
+#   lsof +f g -ap $BASHPID -d 0,1,2 2>/dev/null
 #===================================================================================
-[[ $- != *i* ]] && return
-
+MM_UPDATED_FDS=false
+if [[ $- != *i* ]]; then
+  exec 3>&1
+  exec 4>&2
+  exec 1>/dev/null
+  exec 2>/dev/null
+  MM_UPDATED_FDS=true
+fi
 
 #===================================================================================
 # NOTES
@@ -22,29 +32,20 @@
 #===================================================================================
 # Helper Functions
 #===================================================================================
-# Show FDs:
-#   lsof +f g -ap $BASHPID -d 0,1,2 2>/dev/null
 source_file() {
-  exec 3>/dev/null
-
-  # Should be 1 or 3 -> not using `exec 2>/dev/null` above so that any errors
-  # that occur in sourced files will still appear
-  BASHRC_OUT_FD=1
-
   if [ -f "$1" ]; then
-    printf "OK        -> ["~"/${1##${HOME}/}]\n" >&"$BASHRC_OUT_FD"
+    printf "OK        -> ["~"/${1##${HOME}/}]\n"
     source "$1"
   else
-    printf "NOT FOUND -> ["~"/${1##${HOME}/}]\n" >&"$BASHRC_OUT_FD"
+    printf "NOT FOUND -> ["~"/${1##${HOME}/}]\n"
   fi
-
-  exec 3>&-
 }
 
 #===================================================================================
 # Source files
 #===================================================================================
 BASH_DOT_HOME=~/bash
+
 source_file ${BASH_DOT_HOME}/.bashrc.20_04
 source_file ${BASH_DOT_HOME}/.bash_env
 source_file ${BASH_DOT_HOME}/.bashrc.custom
@@ -81,3 +82,11 @@ if [ -d "$LOCAL_CUSTOM_BASH_DIR" ]; then
   done
 fi
 
+
+#===================================================================================
+# Reset STDOUT/STDIN if running in non-interactive session
+#===================================================================================
+if [ "$MM_UPDATED_FDS" = true ]; then
+  exec 1>&3
+  exec 2>&4
+fi
