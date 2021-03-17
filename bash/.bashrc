@@ -64,11 +64,11 @@ do
 done
 
 # Source any Ansible-generated Bash files
-ANSIBLE_BASH_DIR=~/.local/ansible_bash
-if [ -d "$ANSIBLE_BASH_DIR" ]; then
-  for _ansible_bashfile in $(ls $ANSIBLE_BASH_DIR/*)
+ANSIBLE_BASHRC_DIR=~/.local/ansible_bash
+if [ -d "$ANSIBLE_BASHRC_DIR" ]; then
+  for _ansible_bashrc_file in $(ls $ANSIBLE_BASHRC_DIR/*)
   do
-    source_file $_ansible_bashfile
+    source_file $_ansible_bashrc_file
   done
 fi
 
