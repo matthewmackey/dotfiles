@@ -2,9 +2,9 @@
 
 gsettings get org.gnome.system.proxy mode | grep -q manual
 if [ $? -eq 0 ]; then
-  echo -e "GNOME Proxy [${GREEN}ON${NC}]"
+  echo -e "GNOME Proxy [${MM_GREEN}ON${NC}]"
 else
-  echo -e "GNOME Proxy -> [${RED}OFF${NC}]"
+  echo -e "GNOME Proxy -> [${MM_RED}OFF${NC}]"
 fi
 
 echo -e "http_proxy=\"$http_proxy\""

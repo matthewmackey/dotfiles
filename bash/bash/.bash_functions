@@ -48,10 +48,10 @@ replace-text() {
   echo "#---------------------------------------------------------------------------"
   echo "# Files to change:"
   echo "#---------------------------------------------------------------------------"
-  ack-grep -l "$from"
+  ack -l "$from"
 
   local files_to_change
-  files_to_change=($(ack-grep -l "$from"))
+  files_to_change=($(ack -l "$from"))
 
   for _file in "${files_to_change[@]}"
   do

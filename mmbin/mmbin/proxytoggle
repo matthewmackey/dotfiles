@@ -79,13 +79,14 @@ displayGnomeProxySettings() {
 }
 
 
+
 #-------------------------------------------------------------------------------
 # DISABLE Proxy
 #-------------------------------------------------------------------------------
 disableProxy() {
-  #echo -en "SWITCHING proxy from [${GREEN}ON${NC}] ($ON_PROXY_MODE) -> "
-  #echo -e  "[${RED}OFF${NC}] ($OFF_PROXY_MODE)"
-  echo -e "SWITCHING proxy from [${GREEN}ON${NC}] -> [${RED}OFF${NC}]"
+  #echo -en "SWITCHING proxy from [${MM_GREEN}ON${NC}] ($ON_PROXY_MODE) -> "
+  #echo -e  "[${MM_RED}OFF${NC}] ($OFF_PROXY_MODE)"
+  echo "SWITCHING proxy from [${MM_GREEN}ON${NC}] -> [${MM_RED}OFF${NC}]"
 
   resetProxySettings
   gsettings set $PROXY_MODE_SETTING $OFF_PROXY_MODE
@@ -99,10 +100,10 @@ enableProxy() {
   local _proxy_host=$1
   local _proxy_port=$2
 
-  #echo -en "SWITCHING proxy from [${RED}OFF${NC}] ($OFF_PROXY_MODE) -> "
-  #echo -e  "[${GREEN}ON${NC}] ($ON_PROXY_MODE)"
-  echo -e "SWITCHING proxy from [${RED}OFF${NC}] -> [${GREEN}ON${NC}]"
-  echo -e  "  Listening on Port -> [${BROWN_ORANGE}${_proxy_port}${NC}]"
+  #echo -en "SWITCHING proxy from [${MM_RED}OFF${NC}] ($OFF_PROXY_MODE) -> "
+  #echo -e  "[${MM_GREEN}ON${NC}] ($ON_PROXY_MODE)"
+  echo -e "SWITCHING proxy from [${MM_RED}OFF${NC}] -> [${MM_GREEN}ON${NC}]"
+  echo -e  "  Listening on Port -> [${MM_BROWN_ORANGE}${_proxy_port}${NC}]"
 
   setProxySettings $_proxy_host $_proxy_port
   gsettings set $PROXY_MODE_SETTING $ON_PROXY_MODE
@@ -125,4 +126,4 @@ else
   enableProxy $PROXY_HOST $PROXY_PORT
 fi
 
-#displayGnomeProxySettings
+displayGnomeProxySettings

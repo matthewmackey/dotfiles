@@ -8,14 +8,14 @@ GREP_EXPR=":$PORT"
 NSGREP_LINES=$(sudo netstat -tlpn  | grep $GREP_EXPR)
 
 if [ $? -ne 0 ]; then
-  echo -e "${RED}ERROR: No process bound to port provided -> [$PORT]${NC}"
+  echo -e "${MM_RED}ERROR: No process bound to port provided -> [$PORT]${NC}"
   echo
   sudo netstat -tlpn
   exit
 fi
 
 if [ $(echo "$NSGREP_LINES" | wc -l) -gt 1 ]; then
-  echo -e "${YELLOW}INFO: more than one process bound to port -> [$PORT]${NC}"
+  echo -e "${MM_YELLOW}INFO: more than one process bound to port -> [$PORT]${NC}"
   echo
   sudo netstat -tlpn | grep $GREP_EXPR
   exit
