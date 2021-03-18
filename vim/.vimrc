@@ -11,15 +11,14 @@ call vundle#begin()                " All of your Plugins must be between vundle#
 Plugin 'gmarik/Vundle.vim'         " let Vundle manage Vundle, required
 
 Plugin 'chriskempson/base16-vim'
-Bundle 'ervandew/supertab'
 Plugin 'fatih/vim-go'
 Plugin 'honza/vim-snippets'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'preservim/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
+Plugin 'ycm-core/YouCompleteMe'
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'SirVer/ultisnips'
-Plugin 'ycm-core/YouCompleteMe'
-"Plugin 'kien/ctrlp.vim'
 
 call vundle#end()
 
@@ -313,15 +312,28 @@ endfunction
 " From -                                                                       " 
 "   https://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme   "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-
-" better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsListSnippets="<C-l>"
+
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:ycm_key_list_stop_completion = ['<C-y>']
+"let g:ycm_key_list_stop_completion = ['<C-y>', '<Enter>']
+
+"let g:SuperTabDefaultCompletionType = '<C-p>'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"             Plugin - CtrlP                                                   "
+"
+" From - https://github.com/ctrlpvim/ctrlp.vim                                 '
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Use this option to change the mapping to invoke CtrlP in |Normal| mode: >
+let g:ctrlp_map = '<c-p>'
+
+" Set the default opening command to use when pressing the above mapping: >
+let g:ctrlp_cmd = 'CtrlP'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
