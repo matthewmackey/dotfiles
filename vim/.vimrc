@@ -317,10 +317,10 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:UltiSnipsListSnippets="<C-l>"
 
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:ycm_key_list_stop_completion = ['<C-y>']
-"let g:ycm_key_list_stop_completion = ['<C-y>', '<Enter>']
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>', '<C-j>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>', '<C-k>']
+"let g:ycm_key_list_stop_completion = ['<C-y>']
+let g:ycm_key_list_stop_completion = ['<C-y>', '<Enter>']
 
 "let g:SuperTabDefaultCompletionType = '<C-p>'
 
