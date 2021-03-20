@@ -149,10 +149,11 @@ alias im="images"
 # [Dotfiles]
 #-------------------------------------------------------------------------------
 IS_GIT_STAGED='[ "$(git status -s | grep "^A" | wc -l)" != 0 ] && (echo -e "CANNOT: already staged files\n"; git status -s) ||'
-alias commitaliases='cd ~/dotfiles/bash/bash; '$IS_GIT_STAGED' (git add .bash_aliases; git ci -m".bash_aliases: updated aliases")'
-alias commitdesktop='cd ~/dotfiles/desktop; '$IS_GIT_STAGED' (git add .local; git ci -m"desktop: updated .desktop shortcuts")'
-alias commitvimrc='cd ~/dotfiles/vim; '$IS_GIT_STAGED' (git add .vimrc; git ci -m"vim: updated .vimrc")'
-alias commitvscode='cd ~/dotfiles/vscode; '$IS_GIT_STAGED' (git add .config; git ci -m"vscode: updated VSCode config settings")'
+alias commitaliases='cd ~/dotfiles/bash/bash; '$IS_GIT_STAGED' (git add .bash_aliases; git ci -m".bash_aliases: updated aliases"); cd -'
+alias commitdesktop='cd ~/dotfiles/desktop; '$IS_GIT_STAGED' (git add .local; git ci -m"desktop: updated .desktop shortcuts"); cd -'
+alias commitvimrc='cd ~/dotfiles/vim; '$IS_GIT_STAGED' (git add .vimrc; git ci -m"vim: updated .vimrc"); cd -'
+alias commitvscode='cd ~/dotfiles/vscode; '$IS_GIT_STAGED' (git add .config; git
+ci -m"vscode: updated VSCode config settings"); cd -'
 alias commitgitignore=''$IS_GIT_STAGED' (git add .gitignore; git ci -m "Updated .gitignore")'
 
 alias cs="createshortcut"
