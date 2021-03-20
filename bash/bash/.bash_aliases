@@ -46,6 +46,14 @@ alias cdd="cd ../"
 alias cddd="cd ../../"
 alias cdddd="cd ../../../"
 alias cddddd="cd ../../../../"
+alias cdddddd="cd ../../../../../"
+
+# Change to directory then folder specified after alias on command-line
+alias cddf="cdd; cd "
+alias cdddf="cddd; cd "
+alias cddddf="cdddd; cd "
+alias cdddddf="cddddd; cd "
+alias cddddddf="cdddddd; cd "
 
 #-------------------------------------
 # console - other
@@ -71,6 +79,7 @@ alias lg="l | grep -i"                # search bashmarks
 alias lgrep="lpass ls | grep -i"       # [LastPass]
 alias op="xdg-open"
 alias open="op"
+alias pg="ps -efH | grep"
 alias syslog="tail -f /var/log/syslog"
 alias treea="clear; tree -a"
 alias treee="clear; tree -I .git"
