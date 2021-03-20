@@ -11,7 +11,6 @@ call vundle#begin()                " All of your Plugins must be between vundle#
 Plugin 'gmarik/Vundle.vim'         " let Vundle manage Vundle, required
 
 Plugin 'chriskempson/base16-vim'
-Plugin 'fatih/vim-go'
 Plugin 'honza/vim-snippets'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'preservim/nerdcommenter'
