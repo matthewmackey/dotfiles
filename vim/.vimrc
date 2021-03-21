@@ -212,6 +212,9 @@ nnoremap <silent> <Leader>m :exe "vertical resize -10"<CR>
 
 nnoremap <Leader>w :set list<CR>
 nnoremap <Leader>, :source ~/.vimrc<CR>
+
+set pastetoggle=<F2>
+
 " Visual linewise up and down by default (and use gj gk to go quicker)
 "noremap <Up> gk
 "noremap <Down> gj
