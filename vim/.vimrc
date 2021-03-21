@@ -11,10 +11,12 @@ call vundle#begin()                " All of your Plugins must be between vundle#
 Plugin 'gmarik/Vundle.vim'         " let Vundle manage Vundle, required
 
 Plugin 'chriskempson/base16-vim'
+Plugin 'faith/vim-go'
 Plugin 'honza/vim-snippets'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'preservim/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
+Plugin 'vim-airline/vim-airline'
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'SirVer/ultisnips'
@@ -65,17 +67,17 @@ set wildmenu                  " visual autocomplete for command menu
 
 " Searching
 set incsearch                   " Shows the match while typing
-set hlsearch                    " Highlight found searches
+set nohlsearch                    " Highlight found searches
 "set ignorecase                  " Search case insensitive...
 "set smartcase                   " ... but not it begins with upper case
 
 " Text & Indentation
-set expandtab                  " Use spaces, no tabs
-set shiftwidth=2
-set softtabstop=2
-set ai                         " Auto indent
-set smartindent                " Smart indent
-set smarttab                   " Use smart tabs
+set expandtab                    " Use spaces, no tabs
+set shiftwidth=2                 " # of spaces to use for each indent
+set softtabstop=2                " # of spaces <Tab> counts for when insert <Tab> or use <BS>
+set autoindent                   " Copy indent from current line when starting a new line
+set nosmartindent                " Smart indent OFF (b/c using `filetype plugin indent`)
+set smarttab                     " Use smart tabs
 
 " Persistent undo
 if has('persistent_undo')
@@ -91,7 +93,7 @@ endif
 " Don't mark special characters (from 'listchars'))
 set nolist
 
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,nbsp:.
+set listchars=eol:$,extends:>,nbsp:.,precedes:<,space:.,tab:>-,trail:~
 
 highlight ExtraWhitespace ctermbg=blue guibg=blue
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=blue guibg=blue
@@ -131,14 +133,13 @@ syntax on
 " Note - must be after 'chriskempson/base16-vim' plugin is declared in .vimrc
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
+  set background=light
   source ~/.vimrc_background
 endif
 
 " Must be after sourcing ~/.vimrc_background to override for all colorschemes
-highlight ColorColumn ctermbg=blue
+highlight ColorColumn ctermbg=gray
 
-colorscheme base16-horizon-dark
-set background=light
 
 "---------------------"
 "   Git with Vim      "
@@ -209,6 +210,8 @@ nnoremap <silent> <Leader>0 :exe "vertical resize 100%"<CR>
 nnoremap <silent> <Leader>n :exe "vertical resize +10"<CR>
 nnoremap <silent> <Leader>m :exe "vertical resize -10"<CR>
 
+nnoremap <Leader>w :set list<CR>
+nnoremap <Leader>, :source ~/.vimrc<CR>
 " Visual linewise up and down by default (and use gj gk to go quicker)
 "noremap <Up> gk
 "noremap <Down> gj
@@ -360,4 +363,3 @@ if has("gui_running")
   set lines=50 columns=150
   winpos 250 70
 endif
-
