@@ -151,6 +151,7 @@ alias im="images"
 IS_GIT_STAGED='[ "$(git status -s | grep "^A" | wc -l)" != 0 ] && (echo -e "CANNOT: already staged files\n"; git status -s) ||'
 alias commitaliases='cd ~/dotfiles/bash/bash; '$IS_GIT_STAGED' (git add .bash_aliases; git ci -m".bash_aliases: updated aliases"); cd -'
 alias commitdesktop='cd ~/dotfiles/desktop; '$IS_GIT_STAGED' (git add .local; git ci -m"desktop: updated .desktop shortcuts"); cd -'
+alias committmux='cd ~/dotfiles/tmux; '$IS_GIT_STAGED' (git add .tmux.conf; git ci -m"tmux: updated .tmux.conf"); cd -'
 alias commitvimrc='cd ~/dotfiles/vim; '$IS_GIT_STAGED' (git add .vimrc; git ci -m"vim: updated .vimrc"); cd -'
 alias commitvscode='cd ~/dotfiles/vscode; '$IS_GIT_STAGED' (git add .config; git
 ci -m"vscode: updated VSCode config settings"); cd -'
@@ -206,10 +207,8 @@ alias hosts="cat /etc/hosts"
 alias ns="sudo netstat -tlpn"
 alias nsg="sudo netstat -tlpn | grep"
 alias n8="nsproc 8080; echo; pxs"
-alias proxyoff='proxytoggle off; { unset http_proxy; unset https_proxy; echo; proxystatus ; }'
-alias proxyon='proxytoggle on; { . ~/mmbin/.proxy_env ; export http_proxy="http://$LOCAL_PROXY_HOST:$LOCAL_PROXY_PORT"; export https_proxy="http://$LOCAL_PROXY_HOST:$LOCAL_PROXY_PORT"; echo; proxystatus ; }'
-alias pxoff="proxyoff"
-alias pxon="proxyon"
+alias pxoff='. proxytoggle off'
+alias pxon='. proxytoggle on'
 alias pxs="proxystatus"
 alias pxt="proxytoggle"
 alias ssx='echo sudo ss -lp "sport = :domain"; sudo ss -lp "sport = :domain"'
@@ -241,6 +240,7 @@ alias desk="cd ~/Desktop"
 alias glb="vi .gitlab-ci.yml"
 alias openhome="xdg-open $HOME/srv/html/index.html >/dev/null 2>&1"
 alias projects="vi ~/notes/projects.list"
+alias tmconf="vi ~/.tmux.conf"
 alias vimrc="vi ~/.vimrc"
 
 #-------------------------------------------------------------------------------
