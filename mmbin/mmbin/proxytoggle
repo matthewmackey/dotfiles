@@ -1,3 +1,6 @@
+#!/bin/bash
+# Just using above-line for syntax-highlighting
+
 #-------------------------------------------------------------------------------
 # See:
 #   - https://askubuntu.com/questions/404337/how-to-easily-switch-between-proxy-methods-from-terminal
@@ -103,8 +106,8 @@ proxy_off() {
   proxy_show_settings
 }
 
-HOST=${2:-127.0.0.1}
-PORT=${3:-8080}
+HOST=${1:-127.0.0.1}
+PORT=${2:-8080}
 case "$1" in
   on)
     proxy_on "$HOST" "$PORT"
