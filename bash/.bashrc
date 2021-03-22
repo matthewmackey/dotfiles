@@ -8,8 +8,9 @@
 # Show FDs:
 #   lsof +f g -ap $BASHPID -d 0,1,2 2>/dev/null
 #===================================================================================
+MM_SHOW_SOURCE_BASHRC=yes
 MM_UPDATED_FDS=false
-if [[ $- != *i* ]]; then
+if [[ $- != *i* || "$MM_SHOW_SOURCE_BASHRC" = "yes" ]]; then
   exec 3>&1
   exec 4>&2
   exec 1>/dev/null
