@@ -1,0 +1,13 @@
+#!/bin/bash -x
+
+if [[ -n $1 ]]; then
+    CMD="$1"
+else
+  read -p "Enter command (in quotes) to run in ALL sessions: " CMD
+    if [[ -z $CMD ]]; then
+      echo "CMD must be non-blank"
+      exit 1
+    fi
+fi
+
+tmux list-sessions | cut -d : -f1 | xargs -I{} bash -c "tmuxsendallwindows '{}' '$CMD'"
