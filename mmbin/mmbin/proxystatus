@@ -7,5 +7,4 @@ else
   echo -e "GNOME Proxy -> [${MM_RED}OFF${NC}]"
 fi
 
-echo -e "http_proxy=\"$http_proxy\""
-echo -e "https_proxy=\"$https_proxy\""
+. proxytoggle show_settings
