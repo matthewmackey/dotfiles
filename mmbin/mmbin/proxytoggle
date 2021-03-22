@@ -106,9 +106,10 @@ proxy_off() {
   proxy_show_settings
 }
 
-HOST=${1:-127.0.0.1}
-PORT=${2:-8080}
-case "$1" in
+CMD=$1
+HOST=${2:-127.0.0.1}
+PORT=${3:-8080}
+case "$CMD" in
   on)
     proxy_on "$HOST" "$PORT"
     ;;
