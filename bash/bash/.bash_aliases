@@ -150,6 +150,7 @@ alias im="images"
 #-------------------------------------------------------------------------------
 IS_GIT_STAGED='[ "$(git status -s | grep "^A" | wc -l)" != 0 ] && (echo -e "CANNOT: already staged files\n"; git status -s) ||'
 alias commitaliases='cd ~/dotfiles/bash/bash; '$IS_GIT_STAGED' (git add .bash_aliases; git ci -m".bash_aliases: updated aliases"); cd -'
+alias commitbashrc='cd ~/dotfiles/bash/; '$IS_GIT_STAGED' (git add .bashrc; git ci -m".bashrc: updated"); cd -'
 alias commitdesktop='cd ~/dotfiles/desktop; '$IS_GIT_STAGED' (git add .local; git ci -m"desktop: updated .desktop shortcuts"); cd -'
 alias committmux='cd ~/dotfiles/tmux; '$IS_GIT_STAGED' (git add .tmux.conf; git ci -m"tmux: updated .tmux.conf"); cd -'
 alias commitvimrc='cd ~/dotfiles/vim; '$IS_GIT_STAGED' (git add .vimrc; git ci -m"vim: updated .vimrc"); cd -'
@@ -207,8 +208,9 @@ alias hosts="cat /etc/hosts"
 alias ns="sudo netstat -tlpn"
 alias nsg="sudo netstat -tlpn | grep"
 alias n8="nsproc 8080; echo; pxs"
-alias pxoff='. proxytoggle off'
-alias pxon='. proxytoggle on'
+alias pxoff="tmuxsendall '. proxytoggle off'"
+alias pxon="tmuxsendall '. proxytoggle on'"
+alias pxon8090="tmuxsendall '. proxytoggle on 127.0.0.1 8090'"
 alias pxs="proxystatus"
 alias pxt="proxytoggle"
 alias ssx='printf "USE: alias \"ssxp\" to specify <src_port>\n\nsudo ss -lp sport = :domain\n"; sudo ss -lp sport = :domain'
