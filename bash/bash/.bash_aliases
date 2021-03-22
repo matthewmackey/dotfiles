@@ -211,7 +211,8 @@ alias pxoff='. proxytoggle off'
 alias pxon='. proxytoggle on'
 alias pxs="proxystatus"
 alias pxt="proxytoggle"
-alias ssx='echo sudo ss -lp "sport = :domain"; sudo ss -lp "sport = :domain"'
+alias ssx='printf "USE: alias \"ssxp\" to specify <src_port>\n\nsudo ss -lp sport = :domain\n"; sudo ss -lp sport = :domain'
+alias ssxp='sudo ss -lp sport = '
 
 #-------------------------------------------------------------------------------
 # [node]
