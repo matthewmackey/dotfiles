@@ -205,6 +205,26 @@ noremap <C-k> <C-w>k    " switching to above window
 noremap <C-l> <C-w>l    " switching to right window
 noremap <C-h> <C-w>h    " switching to left window
 
+"-------------------------------------------------
+" Tabs
+"-------------------------------------------------
+" From - https://vim.fandom.com/wiki/Alternative_tab_navigation#Vim_navigation_2
+nnoremap <C-t>  :tabnew<CR>
+inoremap <C-t>  <Esc>:tabnew<CR>
+
+nnoremap H   :tabprev<CR>
+nnoremap L   :tabnext<CR>
+nnoremap tj  :tabprev<CR>
+nnoremap tk  :tabnext<CR>
+
+nnoremap th  :tabfirst<CR>
+nnoremap tl  :tablast<CR>
+nnoremap tt  :tabedit<Space>
+nnoremap tn  :tabnext<Space>
+nnoremap tm  :tabm<Space>
+nnoremap tx  :tabclose<CR>
+
+
 " Resize vertical splits
 nnoremap <silent> <Leader>0 :exe "vertical resize 100%"<CR>
 nnoremap <silent> <Leader>n :exe "vertical resize +10"<CR>
@@ -235,12 +255,13 @@ autocmd BufEnter * silent! lcd %:p:h
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "             Plugin - vim-go                                                  "
-"                                                                              "
-" From - https://github.com/fatih/vim-go-tutorial/blob/master/vimrc            "
+"                                                                              " " From - https://github.com/fatih/vim-go-tutorial/blob/master/vimrc            "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:go_fmt_command = "goimports"
 let g:go_autodetect_gopath = 1
 "let g:go_list_type = "quickfix" j
+let g:go_auto_type_info = 1
+"let g:go_auto_sameids = 1 " Highlight instances of variable under cursor
 
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
@@ -275,7 +296,10 @@ augroup go
   autocmd FileType go nmap <leader>r <Plug>(go-run)
 
   " :GoDoc
-  autocmd FileType go nmap <Leader>d <Plug>(go-doc)
+  autocmd FileType go nmap <Leader>D <Plug>(go-doc)
+
+  " :GoDocBrowser
+  autocmd FileType go nmap <Leader>d <Plug>(go-doc-browser)
 
   " :GoCoverageToggle
   autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
