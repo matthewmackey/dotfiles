@@ -84,12 +84,14 @@ alias syslog="tail -f /var/log/syslog"
 alias treea="clear; tree -a"
 alias treee="clear; tree -I .git"
 alias treeea="clear; tree -I .git -a"
-alias xdgo="op"
 alias whatismyip="wget http://ipinfo.io/ip -qO -"
+alias xdgo="op"
+alias yq="docker run --name yqtmp --rm -v"${PWD}":/workdir mikefarah/yq"
 
 #------------------------------------
 # [systemctl]
 #------------------------------------
+alias ctl="sudo systemctl"
 alias logs="sudo journalctl -u"
 alias status="sudo systemctl status"
 
@@ -186,6 +188,7 @@ alias push="git push"
 alias remotes="clear; git remote -v"
 alias rs="git restore"
 alias rss="git restore --staged"
+alias stash="git stash"
 
 
 #-------------------------------------------------------------------------------
@@ -211,6 +214,10 @@ alias n8="nsproc 8080; echo; pxs"
 alias pxoff="tmuxsendall '. proxytoggle off'"
 alias pxon="tmuxsendall '. proxytoggle on'"
 alias pxon8090="tmuxsendall '. proxytoggle on 127.0.0.1 8090'"
+
+alias pxoff=". proxytoggle off"
+alias pxon=". proxytoggle on"
+alias pxon8090=". proxytoggle on 127.0.0.1 8090"
 alias pxs="proxystatus"
 alias pxt="proxytoggle"
 alias ssx='printf "USE: alias \"ssxp\" to specify <src_port>\n\nsudo ss -lp sport = :domain\n"; sudo ss -lp sport = :domain'
@@ -280,6 +287,10 @@ alias 6="tmux select-window -t 6"
 alias 7="tmux select-window -t 7"
 alias 8="tmux select-window -t 8"
 alias 9="tmux select-window -t 9"
+alias tmrenamesession='tmux rename-session -t "$(tmux display-message -p "#S")"'
+alias tmrenamewindow='tmux rename-window -t "$(tmux display-message -p "#{window_id}")"'
+alias tmrs="tmrenamesession"
+alias tmrw="tmrenamewindow"
 
 #-------------------------------------------------------------------------------
 # [Vagrant]
