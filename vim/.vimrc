@@ -17,6 +17,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'preservim/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'SirVer/ultisnips'
@@ -252,10 +253,20 @@ nnoremap Y y$
 " Enter automatically into the files directory
 autocmd BufEnter * silent! lcd %:p:h
 
-"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"             Plugin - vim-airline
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Enables use of Powerline fonts
+let g:airline_powerline_fonts = 1
+
+" Enables the "arrow" tab line at the top
+let g:airline#extensions#tabline#enabled = 1
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "             Plugin - vim-go                                                  "
-"                                                                              " " From - https://github.com/fatih/vim-go-tutorial/blob/master/vimrc            "
+" From - https://github.com/fatih/vim-go-tutorial/blob/master/vimrc            "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:go_fmt_command = "goimports"
 let g:go_autodetect_gopath = 1
@@ -336,7 +347,7 @@ endfunction
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"             Plugin - YouCompleteMe & supertab
+"             Plugin - YouCompleteMe, UltiSnips & SuperTab                     "
 "                                                                              "
 " From -                                                                       " 
 "   https://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme   "
@@ -353,9 +364,10 @@ let g:ycm_key_list_stop_completion = ['<C-y>', '<Enter>']
 
 "let g:SuperTabDefaultCompletionType = '<C-p>'
 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "             Plugin - CtrlP                                                   "
-"
+"                                                                              "
 " From - https://github.com/ctrlpvim/ctrlp.vim                                 '
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use this option to change the mapping to invoke CtrlP in |Normal| mode: >
