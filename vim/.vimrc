@@ -207,6 +207,16 @@ noremap <C-k> <C-w>k    " switching to above window
 noremap <C-l> <C-w>l    " switching to right window
 noremap <C-h> <C-w>h    " switching to left window
 
+" Maximize window all directions
+noremap <silent> <Leader>z :resize 99999<CR>:vertical resize 99999<CR>
+
+noremap <silent> <Leader>ww :vertical resize 99999<CR> " Maximize window horizontally ("my horizontal")
+noremap <silent> <Leader>wv <C-w>_                     " Maximize window vertically ("my vertical")
+noremap          <Leader>= <C-w>=                      " Make windows all equal size
+
+nnoremap <silent> <Leader>n :exe "vertical resize +10"<CR>
+nnoremap <silent> <Leader>m :exe "vertical resize -10"<CR>
+
 "-------------------------------------------------
 " Tabs
 "-------------------------------------------------
@@ -226,16 +236,10 @@ nnoremap tn  :tabnext<Space>
 nnoremap tm  :tabm<Space>
 nnoremap tx  :tabclose<CR>
 
-
 " Resize vertical splits
-nnoremap <silent> <Leader>0 :exe "vertical resize 100%"<CR>
-nnoremap <silent> <Leader>n :exe "vertical resize +10"<CR>
-nnoremap <silent> <Leader>m :exe "vertical resize -10"<CR>
-
-nnoremap <Leader>w :set list<CR>
+nnoremap <Leader>l :set list!<CR>
 nnoremap <Leader>, :source ~/.vimrc<CR>
-
-set pastetoggle=<F2>
+nnoremap <Leader>p :set invpaste<CR>
 
 " Visual linewise up and down by default (and use gj gk to go quicker)
 "noremap <Up> gk
