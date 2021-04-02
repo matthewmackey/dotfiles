@@ -43,9 +43,9 @@ set encoding=utf8             " UTF-8 encoding and en_US as default encoding/lan
 set ffs=unix,dos,mac          " Define standard filetype
 set foldmethod=marker
 set foldmarker={{,}}
-set hidden                      " Buffer should still exist if window is closed
-set lazyredraw                  " Wait to redraw
-set mouse-=a                  " Allow mouse to move cursor
+set hidden                    " Buffer should still exist if window is closed
+set lazyredraw                " Wait to redraw
+set mouse=a                   " Allow mouse to move cursor
 set number                    " Show line numbers
 set relativenumber            " Show relative line numbers
 set ruler                     " always show current position
