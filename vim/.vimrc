@@ -253,11 +253,12 @@ nnoremap <C-PageUp>   :tabprev<CR>
 nnoremap <C-PageDown>   :tabnext<CR>
 
 " Go to prev tab page; wraps around from 1st to last
-nnoremap          J  :tabprev<CR>
+" (would do J/K to match chrome keybindings but need J for joining lines)
+nnoremap          H  :tabprev<CR>
 nnoremap <Leader>tj  :tabprev<CR>
 
 " Go to next tab page; wraps around from last to 1st
-nnoremap          K  :tabnext<CR>
+nnoremap          L  :tabnext<CR>
 nnoremap <Leader>tk  :tabnext<CR>
 
 " Go to 1st tab
@@ -298,6 +299,22 @@ let g:airline_powerline_fonts = 1
 " Use the airline tabline (replacement for buftabline)
 " Enables the "arrow" tab line at the top
 let g:airline#extensions#tabline#enabled = 1
+
+" When ONLY one tab is open, enable displaying of buffer names on LEFT of tabline
+let g:airline#extensions#tabline#show_buffers = 1
+
+" When MORE than one tab open, enable displaying the names of open splits for
+" the current tab on RIGHT of tabline
+let g:airline#extensions#tabline#show_splits = 1
+
+" Whether to show Tab # and/or # of Splits in tab label (as label prefix)
+let g:airline#extensions#tabline#show_tab_nr = 1
+
+" How numbers are displayed in tab mode. >
+  "let g:airline#extensions#tabline#tab_nr_type = 0 " # of splits (default)
+  "let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+  "let g:airline#extensions#tabline#tab_nr_type = 2 " splits and tab number
+let g:airline#extensions#tabline#tab_nr_type = 2
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
