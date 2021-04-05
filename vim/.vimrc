@@ -296,6 +296,14 @@ autocmd BufEnter * silent! lcd %:p:h
 " Enables use of Powerline fonts
 let g:airline_powerline_fonts = 1
 
+" Add buffer, window, and tab #'s to status line
+" See: https://github.com/vim-airline/vim-airline/issues/401
+let g:airline_section_c =
+      \"[%{bufnr('%')}] " .
+      \"%<%f%m %#__accent_red#" .
+      \"%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#".
+      \"(%{tabpagenr()}:%{winnr()}) "
+
 " Use the airline tabline (replacement for buftabline)
 " Enables the "arrow" tab line at the top
 let g:airline#extensions#tabline#enabled = 1
@@ -317,6 +325,8 @@ let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline#extensions#tabline#tab_nr_type = 2
 
 " Allow switching a specific tab by tab #
+" Also, when only ONE tab is open, it adds #'s to open buffers (and those
+" numbers are a smaller text size for some reason)
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
