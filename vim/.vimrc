@@ -1,4 +1,4 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                      Vundler - Plugin Manager                                "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible                   " Enables us Vim specific features (required by Vundler)
@@ -224,17 +224,47 @@ nnoremap <silent> <Leader>m :exe "vertical resize -10"<CR>
 nnoremap <C-t>  :tabnew<CR>
 inoremap <C-t>  <Esc>:tabnew<CR>
 
-nnoremap H   :tabprev<CR>
-nnoremap L   :tabnext<CR>
-nnoremap tj  :tabprev<CR>
-nnoremap tk  :tabnext<CR>
+" tabnew & tabedit are actually same command, but I'm using tabedit when I
+" want to select file to open
+"
+" Open a new tab w/ empty window after curr tab
+nnoremap <Leader>tn  :tabnew<CR>
 
-nnoremap th  :tabfirst<CR>
-nnoremap tl  :tablast<CR>
-nnoremap tt  :tabedit<Space>
-nnoremap tn  :tabnext<Space>
-nnoremap tm  :tabm<Space>
-nnoremap tx  :tabclose<CR>
+" Open a new tab & edit {file} after curr tab
+nnoremap <Leader>tt  :tabedit<Space>
+
+" Close current tab
+nnoremap <Leader>tx  :tabclose<CR>
+
+" Move the current tab page to after tab page N
+nnoremap <Leader>tm  :tabmove<Space>
+
+" Move the tab page to the left
+nnoremap <Leader><< :tabmove -1<CR>
+"
+" Move the tab page to the left
+nnoremap <Leader>>> :tabmove +1<CR>
+
+" Couldn't get <C-PageUp/Down> to work even after I disabled those keybindings
+" in my terminal settings "Edit -> Preferences -> Shortcuts'
+" See here for some info:
+"   https://stackoverflow.com/questions/1814373/why-do-c-pageup-and-c-pagedown-not-work-in-vim
+nnoremap <C-PageUp>   :tabprev<CR>
+nnoremap <C-PageDown>   :tabnext<CR>
+
+" Go to prev tab page; wraps around from 1st to last
+nnoremap          J  :tabprev<CR>
+nnoremap <Leader>tj  :tabprev<CR>
+
+" Go to next tab page; wraps around from last to 1st
+nnoremap          K  :tabnext<CR>
+nnoremap <Leader>tk  :tabnext<CR>
+
+" Go to 1st tab
+nnoremap <Leader>th  :tabfirst<CR>
+
+" Go to last tab
+nnoremap <Leader>tl  :tablast<CR>
 
 " Resize vertical splits
 nnoremap <Leader>l :set list!<CR>
@@ -265,6 +295,7 @@ autocmd BufEnter * silent! lcd %:p:h
 " Enables use of Powerline fonts
 let g:airline_powerline_fonts = 1
 
+" Use the airline tabline (replacement for buftabline)
 " Enables the "arrow" tab line at the top
 let g:airline#extensions#tabline#enabled = 1
 
@@ -418,7 +449,7 @@ endif
 "-------------------------------------------------------
 " See theme screenshots here:
 "   https://github.com/vim-airline/vim-airline/wiki/Screenshots
-let g:airline_theme = 'dark'
+let g:airline_theme = 'papercolor'
 
 let g:mm_airline_themes = ['dark', 'light', 'murmur', 'papercolor', 'solarized']
 let g:mm_airline_themes_current_index = 0
@@ -490,9 +521,9 @@ endfunction
 "  - https://vi.stackexchange.com/questions/20760/how-to-add-a-count-to-a-binding
 "  - https://vi.stackexchange.com/questions/4753/is-it-possible-to-create-mappings-with-parameters
 command! -nargs=1 SelectMmAirlineTheme :call SelectMmAirlineTheme(<q-args>)
-nnoremap <Leader>ts :<C-u>call SelectMmAirlineTheme(v:count)<CR>
+nnoremap <Leader>hs :<C-u>call SelectMmAirlineTheme(v:count)<CR>
 
-nnoremap <Leader>tl :call ListMmAirlineThemes()<CR>
-nnoremap <Leader>tn :call NextMmAirlineTheme()<CR>
-nnoremap <Leader>tp :call PrevMmAirlineTheme()<CR>
+nnoremap <Leader>hl :call ListMmAirlineThemes()<CR>
+nnoremap <Leader>hn :call NextMmAirlineTheme()<CR>
+nnoremap <Leader>hp :call PrevMmAirlineTheme()<CR>
 
