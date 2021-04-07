@@ -456,6 +456,9 @@ let g:ctrlp_map = '<c-p>'
 " Set the default opening command to use when pressing the above mapping: >
 let g:ctrlp_cmd = 'CtrlP'
 
+" Set this to 1 if you want CtrlP to scan for dotfiles and dotdirs:
+let g:ctrlp_show_hidden = 1
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "             Plugin - NERDCommenter                                           "
