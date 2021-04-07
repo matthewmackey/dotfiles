@@ -10,18 +10,17 @@ call vundle#begin()                " All of your Plugins must be between vundle#
 
 Plugin 'gmarik/Vundle.vim'         " let Vundle manage Vundle, required
 
+Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'chriskempson/base16-vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'faith/vim-go'
 Plugin 'honza/vim-snippets'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'preservim/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
+Plugin 'SirVer/ultisnips'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'ycm-core/YouCompleteMe'
-Plugin 'AndrewRadev/splitjoin.vim'
-Plugin 'SirVer/ultisnips'
 
 call vundle#end()
 
@@ -291,7 +290,7 @@ autocmd BufEnter * silent! lcd %:p:h
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"             Plugin - vim-airline
+"             Plugin - vim-airline (listed 1st b/c relates to statusline)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enables use of Powerline fonts
 let g:airline_powerline_fonts = 1
@@ -342,6 +341,48 @@ nmap <leader>0 <Plug>AirlineSelectTab0
 " Another key mapping for switching through tabs
 nmap <leader>- <Plug>AirlineSelectPrevTab
 nmap <leader>+ <Plug>AirlineSelectNextTab
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"             Plugin - CtrlP                                                   "
+"                                                                              "
+" From - https://github.com/ctrlpvim/ctrlp.vim                                 '
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Use this option to change the mapping to invoke CtrlP in |Normal| mode: >
+let g:ctrlp_map = '<c-p>'
+
+" Set the default opening command to use when pressing the above mapping: >
+let g:ctrlp_cmd = 'CtrlP'
+
+" Set this to 1 if you want CtrlP to scan for dotfiles and dotdirs:
+let g:ctrlp_show_hidden = 1
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"             Plugin - NERDCommenter                                           "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+inoremap <C-_> :call NERDComment(0,"toggle")<CR>
+noremap <C-_> :call NERDComment(0,"toggle")<CR>
+vnoremap <C-_> :call NERDComment(0,"toggle")<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"             Plugin - NERDTree                                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let NERDTreeShowHidden=1                         " show hidden files
+nnoremap <Leader>f :NERDTreeToggle<Enter>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"             Plugin - UltiSnips
+"                                                                              "
+" From -                                                                       "
+"   https://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme   "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"let g:UltiSnipsExpandTrigger = "<tab>"
+"let g:UltiSnipsJumpForwardTrigger = "<tab>"
+"let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+"let g:UltiSnipsListSnippets="<C-l>"
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -424,55 +465,6 @@ function! s:build_go_files()
     call go#cmd#Build(0)
   endif
 endfunction
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"             Plugin - YouCompleteMe, UltiSnips & SuperTab                     "
-"                                                                              "
-" From -                                                                       " 
-"   https://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme   "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-let g:UltiSnipsListSnippets="<C-l>"
-
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>', '<C-j>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>', '<C-k>']
-"let g:ycm_key_list_stop_completion = ['<C-y>']
-let g:ycm_key_list_stop_completion = ['<C-y>', '<Enter>']
-
-"let g:SuperTabDefaultCompletionType = '<C-p>'
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"             Plugin - CtrlP                                                   "
-"                                                                              "
-" From - https://github.com/ctrlpvim/ctrlp.vim                                 '
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Use this option to change the mapping to invoke CtrlP in |Normal| mode: >
-let g:ctrlp_map = '<c-p>'
-
-" Set the default opening command to use when pressing the above mapping: >
-let g:ctrlp_cmd = 'CtrlP'
-
-" Set this to 1 if you want CtrlP to scan for dotfiles and dotdirs:
-let g:ctrlp_show_hidden = 1
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"             Plugin - NERDCommenter                                           "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-inoremap <C-_> :call NERDComment(0,"toggle")<CR>
-noremap <C-_> :call NERDComment(0,"toggle")<CR>
-vnoremap <C-_> :call NERDComment(0,"toggle")<CR>
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"             Plugin - NERDTree                                                "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let NERDTreeShowHidden=1                         " show hidden files
-nnoremap <Leader>f :NERDTreeToggle<Enter>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
