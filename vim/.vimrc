@@ -4,32 +4,37 @@
 set nocompatible                   " Enables us Vim specific features (required by Vundler)
 filetype off                       " Reset filetype detection first (required by Vundler)
 
-set rtp+=~/.vim/bundle/Vundle.vim  " set the runtime path to include Vundle and initialize
+" Specify a directory for plugins
+" " - For Neovim: stdpath('data') . '/plugged'
+" " - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
 
-call vundle#begin()                " All of your Plugins must be between vundle#begin/end
+" Colors / Themes
+Plug 'chriskempson/base16-vim'
+Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 
-Plugin 'gmarik/Vundle.vim'         " let Vundle manage Vundle, required
+" General - Utilities
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'preservim/nerdcommenter'| Plug 'scrooloose/nerdtree'
 
-Plugin 'chriskempson/base16-vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'preservim/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'AndrewRadev/splitjoin.vim'
-Plugin 'SirVer/ultisnips'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'tpope/vim-fugitive'
-Plugin 'faith/vim-go'
-Plugin 'honza/vim-snippets'
+" Git-related
+Plug 'tpope/vim-fugitive'
 
-call vundle#end()
+" Language-specific
+Plug 'fatih/vim-go'
+
+" Snippets
+Plug 'SirVer/ultisnips'       | Plug 'honza/vim-snippets'
+
+" call plug#end() to update &runtimepath and initialize plugin system
+" Automatically executes filetype plugin indent on and syntax enable.
+call plug#end()
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                              Settings                                        "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-filetype plugin indent on       " Re-enable filetype detection
-
 set ttyfast                     " Indicate fast terminal conn for faster redraw
 set ttymouse=xterm2             " Indicate terminal type for mouse codes
 set ttyscroll=3                 " Speedup scrolling

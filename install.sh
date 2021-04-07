@@ -19,6 +19,16 @@ install_vim_vundle() {
       echo "Vundle already installed"
     fi
 }
+install_vim_plug() {
+  if [ ! -f ~/.vim/autoload/plug.vim ]; then
+    echo "Installing vim-plug"
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    ls -al ~/.vim/autoload/plug.vim
+  else
+    echo "vim-plug already installed"
+  fi
+}
 
 # PLACEHOLDER function: didn't have time to figure out where to store the
 # Chrome profile icons b/c didn't want to store them in git; in the future,
@@ -52,8 +62,9 @@ compile_vim_youcompleteme() {
 
 #install_base16_shell
 #install_vim_vundle
+install_vim_plug
 #install_tmux_plugin_manager
 #compile_vim_youcompleteme
-create_vim_undo_dir
+#create_vim_undo_dir
 #setup_ssh_dirs
 
