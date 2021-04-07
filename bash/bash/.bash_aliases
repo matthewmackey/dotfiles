@@ -82,8 +82,8 @@ alias open="op"
 alias pg="ps -efH | grep"
 alias syslog="tail -f /var/log/syslog"
 alias treea="clear; tree -a"
-alias treee="clear; tree -I .git"
-alias treeea="clear; tree -I .git -a"
+alias treee="clear;  tree -I '.git|build|dist|node_modules'"
+alias treeea="clear; tree -I '.git|build|dist|node_modules' -a"
 alias whatismyip="wget http://ipinfo.io/ip -qO -"
 alias xdgo="op"
 alias yq="docker run --name yqtmp --rm -v"${PWD}":/workdir mikefarah/yq"
@@ -146,6 +146,8 @@ alias dstart="docker start"
 alias dstop="docker stop"
 alias images="clear; docker images"
 alias im="images"
+alias up="docker-compose up"
+alias upd="docker-compose up -d"
 
 #-------------------------------------------------------------------------------
 # [Dotfiles]
@@ -156,8 +158,9 @@ alias commitbashrc='cd ~/dotfiles/bash/; '$IS_GIT_STAGED' (git add .bashrc; git 
 alias commitdesktop='cd ~/dotfiles/desktop; '$IS_GIT_STAGED' (git add .local; git ci -m"desktop: updated .desktop shortcuts"); cd -'
 alias committmux='cd ~/dotfiles/tmux; '$IS_GIT_STAGED' (git add .tmux.conf; git ci -m"tmux: updated .tmux.conf"); cd -'
 alias commitvimrc='cd ~/dotfiles/vim; '$IS_GIT_STAGED' (git add .vimrc; git ci -m"vim: updated .vimrc"); cd -'
-alias commitvscode='cd ~/dotfiles/vscode; '$IS_GIT_STAGED' (git add .config; git
-ci -m"vscode: updated VSCode config settings"); cd -'
+alias commitvscode='cd ~/dotfiles/vscode; '$IS_GIT_STAGED' (git add .config; git ci -m"vscode: updated VSCode config settings"); cd -'
+
+alias commitglb=''$IS_GIT_STAGED' (git add .gitlab-ci.yml; git ci -m "Updated .gitlab-ci.yml")'
 alias commitgitignore=''$IS_GIT_STAGED' (git add .gitignore; git ci -m "Updated .gitignore")'
 
 alias cs="createshortcut"
@@ -166,30 +169,70 @@ alias cs="createshortcut"
 # [Git]
 #-------------------------------------------------------------------------------
 # SEE: https://git-scm.com/docs/gitrevisions for help on HEAD^, HEAD^2~, etc.
-alias add="git add"
-alias ga="git add"
-alias gba="git branch -a"
-alias gbav="git branch -av"
-JS_GIT_EXCLUDES="':(exclude)package-lock.json' ':(exclude)yarn.lock'"
-alias gdf="clear && git diff"
-alias gdfj="clear && git diff -- $JS_GIT_EXCLUDES"
-alias gdiff="gdf"
-alias gd="clear && git diff --cached"
-alias gdj="clear && git diff --cached -- $JS_GIT_EXCLUDES"
-alias gg="git log --all --graph --decorate --oneline"
-alias ggc="git log --all --graph --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(bold blue)<%an>%Creset'"
-alias glo="clear & git log"
-alias gsh="clear && git show"
-alias gss="git status -s"
-alias gst="clear && git status"
-alias gl="git log --pretty=oneline"
-alias pull="git pull"
-alias push="git push"
-alias remotes="clear; git remote -v"
-alias rs="git restore"
-alias rss="git restore --staged"
-alias stash="git stash"
 
+MM_JS_GIT_EXCLUDES="':(exclude)package-lock.json' ':(exclude)yarn.lock'"
+
+# Add
+alias ga="git a"
+
+# Branch
+alias gb="git b"
+alias gba="clear; git ba"
+alias gbav="clear; git bav"
+alias gbd="git bd"
+alias gbD="git bD"
+alias gbm="git bm"
+alias gbM="git bM"
+
+alias ngba="git ba"
+alias ngbav="git bav"
+
+# Commit
+alias gci="git ci"
+
+# Checkout
+alias gco="git co"
+alias gcob="git cob"
+
+# Diff
+alias gd="clear; git d"
+alias gdc="clear; git dc"
+alias gdj="clear; git dj"
+alias gdcj="clear; git dcj"
+
+# Log
+alias gl="clear; git l"
+alias gln="clear; git ln"
+alias glg="clear; git lg"
+alias glgn="clear; git lgn"
+
+alias ngl="git l"
+alias ngln="git ln"
+alias nglg="git lg"
+alias nglgn="git lgn"
+
+# Push/Pull
+alias pull="git pl"
+alias push="git ps"
+
+# Restore
+alias rs="git rs"
+alias rss="git rss"
+
+# Show
+alias gsh="clear; git sh"
+alias ngsh="git sh"
+
+# Status
+alias gst="clear; git st"
+alias gss="clear; git ss"
+
+alias ngst="git st"
+alias ngss="git ss"
+
+# MISCELLANEOUS
+alias remotes="clear; git remote -v"
+alias stash="git stash"
 
 #-------------------------------------------------------------------------------
 # [Maven]
@@ -251,7 +294,7 @@ alias glb="vi .gitlab-ci.yml"
 alias openhome="xdg-open $HOME/srv/html/index.html >/dev/null 2>&1"
 alias projects="vi ~/notes/projects.list"
 alias tmconf="vi ~/.tmux.conf"
-alias vimrc="vi ~/.vimrc"
+alias vimrc="vi ~/dotfiles/vim/.vimrc"
 
 #-------------------------------------------------------------------------------
 # [SSH]
