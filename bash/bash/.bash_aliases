@@ -178,14 +178,12 @@ alias ga="git a"
 # Branch
 alias gb="git b"
 alias gba="clear; git ba"
-alias gbav="clear; git bav"
 alias gbd="git bd"
 alias gbD="git bD"
 alias gbm="git bm"
 alias gbM="git bM"
 
 alias ngba="git ba"
-alias ngbav="git bav"
 
 # Commit
 alias gci="git ci"
