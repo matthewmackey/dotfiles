@@ -1,15 +1,85 @@
+#-------------------------------------------------------------------------------
 # See: https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration
+# See: https://github.com/nikolalsvk/dotfiles/blob/master/.gitconfig
+#
+# Log Note: 'auto' makes curr/local/remote ref names follow `--decorate --oneline`
+# color scheme; see link below for more info:
+#    - https://superuser.com/questions/337985/how-can-i-achieve-separate-colors-for-current-local-and-remote-ref-names-when
+#-------------------------------------------------------------------------------
 
 [user]
   name = Matthew Mackey
   email = 21043873+matthewmackey@users.noreply.github.com
 
 [alias]
-  br = branch
-  ci = commit
-  co = checkout
-  df = diff --cached
-  st = status
+  #----------------------------------
+  # Add
+  #----------------------------------
+  a   = add
+
+  #----------------------------------
+  # Branch
+  #----------------------------------
+  b   = branch
+  ba  = b -a
+  bav = b -av
+  # Shortcuts for: --delete & --delete --force
+  bd  = b -d
+  bD  = b -D
+  # Shortcuts for: -move & --move --force
+  bm  = b -m
+  bM  = b -M
+
+  #----------------------------------
+  # Commit
+  #----------------------------------
+  ci  = commit
+
+  #----------------------------------
+  # Checkout
+  #----------------------------------
+  co  = checkout
+  cob = co -b
+
+  #----------------------------------
+  # Diff
+  #----------------------------------
+  d   = diff
+  dc  = d --cached
+  dj  = d -- ':(exclude)package-lock.json' ':(exclude)yarn.lock'
+  dcj = dc -- ':(exclude)package-lock.json' ':(exclude)yarn.lock'
+
+  #----------------------------------
+  # Log
+  #
+  #----------------------------------
+  l   = log --pretty=format:'%C(yellow)%h%C(reset) %Cgreen(%><(12)%cr%><|(12))%C(reset) - %s %C(blue)<%an>%C(reset)%C(auto)%d%C(reset)'
+  ln  = l -n
+  lg  = l --all --graph
+  lgn = lg -n
+
+  #----------------------------------
+  # Push/Pull
+  #----------------------------------
+  ps  = push
+  pl  = pull
+
+  #----------------------------------
+  # Restore
+  #----------------------------------
+  rs  = restore
+  rss = rs --staged
+
+  #----------------------------------
+  # Show
+  #----------------------------------
+  sh  = show
+
+  #----------------------------------
+  # Status
+  #----------------------------------
+  st  = status
+  ss  = st -sb
 
 [commit]
   template = ~/.gitmessage.txt
