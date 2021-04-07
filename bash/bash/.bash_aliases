@@ -198,6 +198,11 @@ alias gdc="clear; git dc"
 alias gdj="clear; git dj"
 alias gdcj="clear; git dcj"
 
+alias ngd="git d"
+alias ngdc="git dc"
+alias ngdj="git dj"
+alias ngdcj="git dcj"
+
 # Log
 alias gl="clear; git l"
 alias gln="clear; git ln"
