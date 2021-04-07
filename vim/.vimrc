@@ -1,9 +1,10 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                      Vundler - Plugin Manager                                "
+"                      vim-plug - Plugin Manager                               "
+"                                                                              "
+" EXCELLENT: https://bluz71.github.io/2017/05/21/vim-plugins-i-like.html       "
+" EXCELLENT: https://bluz71.github.io/2019/10/16/lsp-in-vim-with-the-lsc-plugin.html
+"                                                                              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible                   " Enables us Vim specific features (required by Vundler)
-filetype off                       " Reset filetype detection first (required by Vundler)
-
 " Specify a directory for plugins
 " " - For Neovim: stdpath('data') . '/plugged'
 " " - Avoid using standard Vim directory names like 'plugin'
@@ -16,7 +17,7 @@ Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 " General - Utilities
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'preservim/nerdcommenter'| Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 
 " Git-related
 Plug 'tpope/vim-fugitive'
@@ -27,6 +28,14 @@ Plug 'fatih/vim-go'
 " Snippets
 Plug 'SirVer/ultisnips'       | Plug 'honza/vim-snippets'
 
+" Tim Pope Plugins
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+
 " call plug#end() to update &runtimepath and initialize plugin system
 " Automatically executes filetype plugin indent on and syntax enable.
 call plug#end()
@@ -35,6 +44,8 @@ call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                              Settings                                        "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible                " Enables us Vim specific features
+
 set ttyfast                     " Indicate fast terminal conn for faster redraw
 set ttymouse=xterm2             " Indicate terminal type for mouse codes
 set ttyscroll=3                 " Speedup scrolling
@@ -361,14 +372,6 @@ let g:ctrlp_cmd = 'CtrlP'
 
 " Set this to 1 if you want CtrlP to scan for dotfiles and dotdirs:
 let g:ctrlp_show_hidden = 1
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"             Plugin - NERDCommenter                                           "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-inoremap <C-_> :call NERDComment(0,"toggle")<CR>
-noremap <C-_> :call NERDComment(0,"toggle")<CR>
-vnoremap <C-_> :call NERDComment(0,"toggle")<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
