@@ -65,6 +65,8 @@ BIN_DIRS=(
   # Android Studio bin dir
   /opt/android-studio/bin
 
+  # General /opt/bin
+  /opt/bin
 )
 
 for _path in ${BIN_DIRS[@]}
