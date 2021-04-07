@@ -21,8 +21,7 @@
   # Branch
   #----------------------------------
   b   = branch
-  ba  = b -a
-  bav = b -av
+  ba  = b -av
   # Shortcuts for: --delete & --delete --force
   bd  = b -d
   bD  = b -D
