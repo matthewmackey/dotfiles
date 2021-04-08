@@ -15,9 +15,13 @@ Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 
 " General - Utilities
+Plug '907th/vim-auto-save'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'Yggdroot/indentLine'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'mbbill/undotree'
+Plug 'mhinz/vim-grepper'
 
 " Git-related
 Plug 'tpope/vim-fugitive'
@@ -31,14 +35,17 @@ Plug 'SirVer/ultisnips'       | Plug 'honza/vim-snippets'
 " Tim Pope Plugins
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
 " call plug#end() to update &runtimepath and initialize plugin system
 " Automatically executes filetype plugin indent on and syntax enable.
 call plug#end()
+
+nnoremap <Leader>pi :PlugInstall<CR>
+nnoremap <Leader>ps :PlugStatus<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -265,15 +272,15 @@ nnoremap <Leader>>> :tabmove +1<CR>
 " See here for some info:
 "   https://stackoverflow.com/questions/1814373/why-do-c-pageup-and-c-pagedown-not-work-in-vim
 nnoremap <C-PageUp>   :tabprev<CR>
-nnoremap <C-PageDown>   :tabnext<CR>
+nnoremap <C-PageDown> :tabnext<CR>
 
 " Go to prev tab page; wraps around from 1st to last
-" (would do J/K to match chrome keybindings but need J for joining lines)
-nnoremap          H  :tabprev<CR>
+" (can't use HJKL alone because I need those standard Vim bindings))
+nnoremap <Leader>H   :tabprev<CR>
 nnoremap <Leader>tj  :tabprev<CR>
 
 " Go to next tab page; wraps around from last to 1st
-nnoremap          L  :tabnext<CR>
+nnoremap <Leader>L   :tabnext<CR>
 nnoremap <Leader>tk  :tabnext<CR>
 
 " Go to 1st tab
@@ -285,6 +292,7 @@ nnoremap <Leader>tl  :tablast<CR>
 " Resize vertical splits
 nnoremap <Leader>l :set list!<CR>
 nnoremap <Leader>, :source ~/.vimrc<CR>
+"nnoremap <Leader>, :source ~/.vimrc \| :PlugInstall<CR>
 nnoremap <Leader>p :set invpaste<CR>
 
 " Visual linewise up and down by default (and use gj gk to go quicker)
@@ -306,7 +314,8 @@ autocmd BufEnter * silent! lcd %:p:h
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"             Plugin - vim-airline (listed 1st b/c relates to statusline)
+"                     Plugin - vim-airline                                     "
+"             (listed 1st b/c relates to statusline)                           "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enables use of Powerline fonts
 let g:airline_powerline_fonts = 1
@@ -361,8 +370,7 @@ nmap <leader>+ <Plug>AirlineSelectNextTab
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "             Plugin - CtrlP                                                   "
-"                                                                              "
-" From - https://github.com/ctrlpvim/ctrlp.vim                                 '
+"        (https://github.com/ctrlpvim/ctrlp.vim)                               "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use this option to change the mapping to invoke CtrlP in |Normal| mode: >
 let g:ctrlp_map = '<c-p>'
@@ -375,6 +383,14 @@ let g:ctrlp_show_hidden = 1
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"             Plugin - indentLine                                              "
+"        (https://github.com/Yggdroot/indentLine)                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:indentLine_char       = '▏'
+let g:indentLine_setConceal = 0
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "             Plugin - NERDTree                                                "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let NERDTreeShowHidden=1                         " show hidden files
@@ -382,8 +398,17 @@ nnoremap <Leader>f :NERDTreeToggle<Enter>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"             Plugin - undotree                                                "
+"      (https://github.com/mbbill/undotree)                                    "
+" See : https://bluz71.github.io/2017/05/21/vim-plugins-i-like.html
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:undotree_HighlightChangedWithSign = 0
+let g:undotree_WindowLayout             = 4
+let g:undotree_SetFocusWhenToggle       = 1
+nnoremap <Leader>u :UndotreeToggle<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "             Plugin - UltiSnips
-"                                                                              "
 " From -                                                                       "
 "   https://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme   "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -394,8 +419,32 @@ nnoremap <Leader>f :NERDTreeToggle<Enter>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"             Plugin - vim-grepper
+"      (https://github.com/mhinz/vim-grepper)                                "
+" See : https://bluz71.github.io/2017/05/21/vim-plugins-i-like.html
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:grepper = {}
+let g:grepper.tools = ["rg"]
+runtime autoload/grepper.vim
+let g:grepper.jump = 1
+nnoremap <Leader>/ :GreperRg<Space>
+nnoremap gs :Grepper -cword -noprompt<CR>
+xmap gs <Plug>(GrepperOperator)
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"             Plugin - vim-auto-save                                           "
+"      (https://github.com/907th/vim-auto-save)                                "
+" See : https://bluz71.github.io/2017/05/21/vim-plugins-i-like.html
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:auto_save        = 1
+let g:auto_save_silent = 1
+let g:auto_save_events = ["InsertLeave", "TextChanged", "FocusLost"]
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "             Plugin - vim-go                                                  "
-" From - https://github.com/fatih/vim-go-tutorial/blob/master/vimrc            "
+"    (https://github.com/fatih/vim-go-tutorial/blob/master/vimrc)              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:go_fmt_command = "goimports"
 let g:go_autodetect_gopath = 1
