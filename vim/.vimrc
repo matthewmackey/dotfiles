@@ -29,6 +29,10 @@ Plug 'tpope/vim-fugitive'
 " Language-specific
 Plug 'fatih/vim-go'
 
+" LSP
+
+" Completion Plugins
+
 " Snippets
 Plug 'SirVer/ultisnips'       | Plug 'honza/vim-snippets'
 
@@ -239,6 +243,32 @@ noremap          <Leader>= <C-w>=                      " Make windows all equal 
 nnoremap <silent> <Leader>n :exe "vertical resize +10"<CR>
 nnoremap <silent> <Leader>m :exe "vertical resize -10"<CR>
 
+nnoremap <Leader>l :set list!<CR>
+nnoremap <Leader>, :source ~/.vimrc<CR>
+nnoremap <Leader>p :set invpaste<CR>
+
+" Visual linewise up and down by default (and use gj gk to go quicker)
+"noremap <Up> gk
+"noremap <Down> gj
+"noremap j gj
+"noremap k gk
+
+" Search mappings: These will make it so that going to the next one in a
+" search will center on the line it's found in.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Act like D and C
+nnoremap Y y$
+
+" Change working directory of window to be the directory of current file anytime
+" we change windows (ie - each window has a workdir of where its file resides)
+"
+" 'When a |:lcd| command has been used for a window, the specified directory
+" becomes the current directory for that window.  Windows where the |:lcd|
+" command has not been used stick to the global or tab-local current directory.'
+autocmd BufEnter * silent! lcd %:p:h
+
 "-------------------------------------------------
 " Tabs
 "-------------------------------------------------
@@ -289,28 +319,6 @@ nnoremap <Leader>th  :tabfirst<CR>
 " Go to last tab
 nnoremap <Leader>tl  :tablast<CR>
 
-" Resize vertical splits
-nnoremap <Leader>l :set list!<CR>
-nnoremap <Leader>, :source ~/.vimrc<CR>
-"nnoremap <Leader>, :source ~/.vimrc \| :PlugInstall<CR>
-nnoremap <Leader>p :set invpaste<CR>
-
-" Visual linewise up and down by default (and use gj gk to go quicker)
-"noremap <Up> gk
-"noremap <Down> gj
-"noremap j gj
-"noremap k gk
-
-" Search mappings: These will make it so that going to the next one in a
-" search will center on the line it's found in.
-nnoremap n nzzzv
-nnoremap N Nzzzv
-
-" Act like D and C
-nnoremap Y y$
-
-" Enter automatically into the files directory
-autocmd BufEnter * silent! lcd %:p:h
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -407,15 +415,16 @@ let g:undotree_WindowLayout             = 4
 let g:undotree_SetFocusWhenToggle       = 1
 nnoremap <Leader>u :UndotreeToggle<CR>
 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "             Plugin - UltiSnips
 " From -                                                                       "
 "   https://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme   "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"let g:UltiSnipsExpandTrigger = "<tab>"
-"let g:UltiSnipsJumpForwardTrigger = "<tab>"
-"let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-"let g:UltiSnipsListSnippets="<C-l>"
+"let g:UltiSnipsExpandTrigger = '<tab>'
+"let g:UltiSnipsJumpForwardTrigger = '<tab>'
+"let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+"let g:UltiSnipsListSnippets='<C-l>'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
