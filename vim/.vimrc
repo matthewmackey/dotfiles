@@ -101,6 +101,7 @@ match ExtraWhitespace /\s\+$/
   "set clipboard^=unnamedplus
 "endif
 
+
 "----------------------------------------------
 " INCLUDE: Key Mappings
 "----------------------------------------------
@@ -110,12 +111,6 @@ runtime custom/keymappings.vim
 " INCLUDE: Functions
 "----------------------------------------------
 runtime custom/functions.vim
-
-"----------------------------------------------
-" INCLUDE: Status Line
-"----------------------------------------------
-runtime custom/plugins.vim
-
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -140,7 +135,6 @@ Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 
 " General - Utilities
 Plug '907th/vim-auto-save'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'scrooloose/nerdtree'
