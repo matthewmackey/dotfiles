@@ -1,2 +1,5 @@
 .vim/autoload/plug.vim
 plugged/
+
+# Used for things like persistent undo files
+tmp/

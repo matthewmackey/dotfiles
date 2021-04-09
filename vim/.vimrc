@@ -116,9 +116,14 @@ set nosmartindent                " Smart indent OFF (b/c using `filetype plugin 
 set smarttab                     " Use smart tabs
 
 " Persistent undo
+let g:tmp_undodir = $HOME . '/.vim/tmp/undo'
 if has('persistent_undo')
+  if !isdirectory(g:tmp_undodir)
+    call mkdir(g:tmp_undodir, 'p')
+    display 'Created undo directory at: ' . g:tmp_undodir
+  endif
   set undofile
-  set undodir=~/.vim/tmp/undo/
+  let &undodir=g:tmp_undodir
 endif
 
 "----------------------------------------------------------------"
