@@ -58,14 +58,14 @@ set smarttab                     " Use smart tabs
 cnoreabbrev <expr> help getcmdtype() == ":" && getcmdline() == 'help' ? 'tab help' : 'help'
 
 " Persistent undo
-let g:tmp_undodir = $HOME . '/.vim/tmp/undo'
+let s:tmp_undodir = $HOME . '/.vim/tmp/undo'
 if has('persistent_undo')
-  if !isdirectory(g:tmp_undodir)
-    call mkdir(g:tmp_undodir, 'p')
-    display 'Created undo directory at: ' . g:tmp_undodir
+  if !isdirectory(s:tmp_undodir)
+    call mkdir(s:tmp_undodir, 'p')
+    display 'Created undo directory at: ' . s:tmp_undodir
   endif
   set undofile
-  let &undodir=g:tmp_undodir
+  let &undodir=s:tmp_undodir
 endif
 
 "----------------------------------------------------------------"
@@ -106,6 +106,7 @@ match ExtraWhitespace /\s\+$/
 " INCLUDE: Key Mappings
 "----------------------------------------------
 runtime custom/keymappings.vim
+
 
 "----------------------------------------------
 " INCLUDE: Functions
