@@ -73,6 +73,7 @@ alias mx="chmod +x"
 alias ack-grep="ack"                  # backwards-compatibility for some scripts
 alias clip="xclip -sel clip <"        # Copy flie contents to clipboard
 alias cmv="command -v"
+alias fd="fdfind"
 alias fr="file-roller"
 alias image="eog"
 alias lg="l | grep -i"                # search bashmarks
