@@ -40,6 +40,9 @@ Plug 'tpope/vim-fugitive'
 "--------------------------------
 " Development-related
 "--------------------------------
+if has('nvim')
+  Plug 'neovim/nvim-lspconfig'
+endif
 Plug 'fatih/vim-go'
 
 "--------------------------------
