@@ -208,11 +208,17 @@ alias gl="clear; git l"
 alias gln="clear; git ln"
 alias glg="clear; git lg"
 alias glgn="clear; git lgn"
+for i in {2..10}; do
+  eval "alias glg${i}=\"glgn ${i}\""
+done
 
 alias ngl="git l"
 alias ngln="git ln"
 alias nglg="git lg"
 alias nglgn="git lgn"
+for i in {2..10}; do
+  eval "alias nglg${i}=\"nglgn ${i}\""
+done
 
 # Push/Pull
 alias pull="git pl"
