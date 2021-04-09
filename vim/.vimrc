@@ -135,6 +135,8 @@ Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 
 " General - Utilities
 Plug '907th/vim-auto-save'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'scrooloose/nerdtree'
