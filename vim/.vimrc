@@ -1,4 +1,4 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                      vim-plug - Plugin Manager                               "
 "                                                                              "
 " EXCELLENT: https://bluz71.github.io/2017/05/21/vim-plugins-i-like.html       "
@@ -55,6 +55,10 @@ nnoremap <Leader>ps :PlugStatus<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                              Settings                                        "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Remap `:help` in command-mode to `:tab help`
+" See: https://stackoverflow.com/questions/7513380/vim-change-x-function-to-delete-buffer-instead-of-save-quit/7515418#7515418
+cnoreabbrev <expr> help getcmdtype() == ":" && getcmdline() == 'help' ? 'tab help' : 'help'
+
 set nocompatible                " Enables us Vim specific features
 
 set ttyfast                     " Indicate fast terminal conn for faster redraw
@@ -286,6 +290,7 @@ nnoremap <Leader>tn  :tabnew<CR>
 nnoremap <Leader>tt  :tabedit<Space>
 
 " Close current tab
+nnoremap <Leader>x   :tabclose<CR>
 nnoremap <Leader>tx  :tabclose<CR>
 
 " Move the current tab page to after tab page N
@@ -318,7 +323,6 @@ nnoremap <Leader>th  :tabfirst<CR>
 
 " Go to last tab
 nnoremap <Leader>tl  :tablast<CR>
-
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
