@@ -154,8 +154,8 @@ alias upd="docker-compose up -d"
 # [Dotfiles]
 #-------------------------------------------------------------------------------
 IS_GIT_STAGED='[ "$(git status -s | grep "^A" | wc -l)" != 0 ] && (echo -e "CANNOT: already staged files\n"; git status -s) ||'
-alias commitaliases='cd ~/dotfiles/bash/bash; '$IS_GIT_STAGED' (git add .bash_aliases; git ci -m".bash_aliases: updated aliases"); cd -'
-alias commitbashrc='cd ~/dotfiles/bash/; '$IS_GIT_STAGED' (git add .bashrc; git ci -m".bashrc: updated"); cd -'
+alias commitaliases='cd ~/dotfiles/bash/bash; '$IS_GIT_STAGED' (git add .bash_aliases; git ci -m"bash_aliases: updated aliases"); cd -'
+alias commitbashrc='cd ~/dotfiles/bash/; '$IS_GIT_STAGED' (git add .bashrc; git ci -m"bashrc: updated"); cd -'
 alias commitdesktop='cd ~/dotfiles/desktop; '$IS_GIT_STAGED' (git add .local; git ci -m"desktop: updated .desktop shortcuts"); cd -'
 alias committmux='cd ~/dotfiles/tmux; '$IS_GIT_STAGED' (git add .tmux.conf; git ci -m"tmux: updated .tmux.conf"); cd -'
 alias commitvimrc='cd ~/dotfiles/vim; '$IS_GIT_STAGED' (git add .vimrc; git ci -m"vim: updated .vimrc"); cd -'
