@@ -1,5 +1,5 @@
 "-------------------------------------------------------------------------------
-" Influenced By:
+" See:
 "   - https://github.com/bluz71/dotfiles
 "   - https://github.com/nathunsmitty/.config/blob/main/nvim/init.vim
 "-------------------------------------------------------------------------------
@@ -24,11 +24,17 @@ runtime config/functions.vim
 
 "----------------------------------------------
 " Plugin Management
+"   Configs -> auto-sourced via: ~/dotfiles/vim/plugin/*
 "----------------------------------------------
 runtime config/plugin-management.vim
 
-" Plugin Configs ->
-"  - Automatically sourced via: ~/dotfiles/vim/plugin/*
+" Load Neovim Lua-based plugin configurations.
+if has('nvim')
+  " Do not load up certain plugins when in diff mode.
+  if !&diff
+    lua require'lsp-config'
+  endif
+endif
 
 "----------------------------------------------
 " Colors
