@@ -3,10 +3,6 @@
 "-------------------------------------------------------------------------------
 set nocompatible                " Enables us Vim specific features
 
-set ttyfast                     " Indicate fast terminal conn for faster redraw
-set ttymouse=xterm2             " Indicate terminal type for mouse codes
-set ttyscroll=3                 " Speedup scrolling
-
 set autoread                    " Automatically read changed files
 set autowrite                 " Used by 'go-vim' via ':make' hook
 set backspace=indent,eol,start " modern backspace behavior
@@ -130,11 +126,9 @@ endif
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
-" Colors / Themes
-Plug 'chriskempson/base16-vim'
-Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
-
+"--------------------------------
 " General - Utilities
+"--------------------------------
 Plug '907th/vim-auto-save'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -144,20 +138,26 @@ Plug 'scrooloose/nerdtree'
 Plug 'mbbill/undotree'
 Plug 'mhinz/vim-grepper'
 
+"--------------------------------
+" Colors / Themes
+"--------------------------------
+Plug 'chriskempson/base16-vim'
+Plug 'vim-airline/vim-airline'| Plug 'vim-airline/vim-airline-themes'
+
+"--------------------------------
 " Git-related
+"--------------------------------
 Plug 'tpope/vim-fugitive'
 
-" Language-specific
+"--------------------------------
+" Development-related
+"--------------------------------
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'fatih/vim-go'
 
-" LSP
-
-" Completion Plugins
-
-" Snippets
-Plug 'SirVer/ultisnips'       | Plug 'honza/vim-snippets'
-
+"--------------------------------
 " Tim Pope Plugins
+"--------------------------------
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-projectionist'
