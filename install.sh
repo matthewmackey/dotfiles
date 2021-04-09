@@ -9,27 +9,6 @@ install_base16_shell() {
     fi
 }
 
-# Run :PluginInstall in Vim after running this function
-# NOTE: must have 'vim' package installed; vim-tiny and vim-common (usual 20.04
-#       package installs) don't work with ":PluginInstall"
-install_vim_vundle() {
-    if [[ ! -d ~/.vim/bundle/Vundle.vim ]]; then
-      git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-    else
-      echo "Vundle already installed"
-    fi
-}
-install_vim_plug() {
-  if [ ! -f ~/.vim/autoload/plug.vim ]; then
-    echo "Installing vim-plug"
-    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    ls -al ~/.vim/autoload/plug.vim
-  else
-    echo "vim-plug already installed"
-  fi
-}
-
 # PLACEHOLDER function: didn't have time to figure out where to store the
 # Chrome profile icons b/c didn't want to store them in git; in the future,
 # when I have storage for them I can use this method to deploy them
@@ -51,20 +30,7 @@ setup_ssh_dirs() {
   mkdir -p ~/.ssh/config.d
 }
 
-create_vim_undo_dir() {
-  mkdir -p ~/.vim/tmp/undo
-}
-
-compile_vim_youcompleteme() {
-  cd ~/.vim/bundle/YouCompleteMe
-  python3 install.py --all
-}
-
 #install_base16_shell
-#install_vim_vundle
-install_vim_plug
 #install_tmux_plugin_manager
-#compile_vim_youcompleteme
-#create_vim_undo_dir
 #setup_ssh_dirs
 
