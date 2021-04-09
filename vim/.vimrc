@@ -1,6 +1,13 @@
 "-------------------------------------------------------------------------------
 " GENERAL Settings
 "-------------------------------------------------------------------------------
+
+" DISABLE python provider support until I get my installed Pythons reconfigured
+if has('nvim')
+  let g:loaded_python_provider = 0
+  let g:loaded_python3_provider = 0
+endif
+
 set nocompatible                " Enables us Vim specific features
 
 set autoread                    " Automatically read changed files
@@ -152,7 +159,6 @@ Plug 'tpope/vim-fugitive'
 "--------------------------------
 " Development-related
 "--------------------------------
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'fatih/vim-go'
 
 "--------------------------------
