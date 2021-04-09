@@ -12,14 +12,8 @@ runtime config/clipboard.vim
 runtime config/whitespace.vim
 runtime config/terminal.vim
 
-"----------------------------------------------
-" Key Mappings
-"----------------------------------------------
+runtime config/autocmds.vim
 runtime config/keymappings.vim
-
-"----------------------------------------------
-" Custom Functions
-"----------------------------------------------
 runtime config/functions.vim
 
 "----------------------------------------------
