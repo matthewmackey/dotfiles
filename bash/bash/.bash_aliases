@@ -304,7 +304,7 @@ alias glb="vi .gitlab-ci.yml"
 alias openhome="xdg-open $HOME/srv/html/index.html >/dev/null 2>&1"
 alias projects="vi ~/notes/projects.list"
 alias tmconf="vi ~/.tmux.conf"
-alias vimrc="vi ~/dotfiles/vim/.vimrc"
+alias vimrc="vim ~/dotfiles/vim/.vimrc"
 
 #-------------------------------------------------------------------------------
 # [SSH]
