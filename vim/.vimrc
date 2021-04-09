@@ -3,7 +3,6 @@
 "-------------------------------------------------------------------------------
 set nocompatible                " Enables us Vim specific features
 
-
 set ttyfast                     " Indicate fast terminal conn for faster redraw
 set ttymouse=xterm2             " Indicate terminal type for mouse codes
 set ttyscroll=3                 " Speedup scrolling
@@ -103,30 +102,21 @@ match ExtraWhitespace /\s\+$/
 "endif
 
 "----------------------------------------------
-" KEY MAPPINGS
+" INCLUDE: Key Mappings
 "----------------------------------------------
 runtime custom/keymappings.vim
 
 "----------------------------------------------
-" FUNCTIONS
+" INCLUDE: Functions
 "----------------------------------------------
 runtime custom/functions.vim
 
 "----------------------------------------------
-" STATUS LINE
+" INCLUDE: Status Line
 "----------------------------------------------
 runtime custom/plugins.vim
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                         GVim Settings                                        "
-"                                                                              "
-" Note - could also be put in ~/.gvimrc                                        "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has("gui_running")
-  " GUI is running or is about to start.
-  set lines=50 columns=150
-  winpos 250 70
-endif
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                      vim-plug - Plugin Manager                               "
