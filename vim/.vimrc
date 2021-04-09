@@ -3,6 +3,7 @@
 "-------------------------------------------------------------------------------
 
 " DISABLE python provider support until I get my installed Pythons reconfigured
+" See: https://neovim.io/doc/user/provider.html#provider-python
 if has('nvim')
   let g:loaded_python_provider = 0
   let g:loaded_python3_provider = 0
@@ -106,6 +107,12 @@ match ExtraWhitespace /\s\+$/
 
 
 "----------------------------------------------
+" INCLUDE: Terminal Settings
+"----------------------------------------------
+runtime custom/terminal.vim
+
+
+"----------------------------------------------
 " INCLUDE: Key Mappings
 "----------------------------------------------
 runtime custom/keymappings.vim
@@ -179,7 +186,7 @@ call plug#end()
 "----------------------------------------------
 " PLUGIN CONFIGS
 "----------------------------------------------
-runtime custom/plugins.vim
+" Automatically sourced via: ~/dotfiles/vim/plugin/*
 
 
 "----------------------------------------------
