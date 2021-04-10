@@ -21,14 +21,7 @@ runtime config/functions.vim
 "   Configs -> auto-sourced via: ~/dotfiles/vim/plugin/*
 "----------------------------------------------
 runtime config/plugin-management.vim
-
-" Load Neovim Lua-based plugin configurations.
-if has('nvim')
-  " Do not load up certain plugins when in diff mode.
-  if !&diff
-    lua require'lsp-config'
-  endif
-endif
+runtime config/lsp-config.vim
 
 "----------------------------------------------
 " Colors
