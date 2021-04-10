@@ -17,25 +17,12 @@ call plug#begin('~/.vim/plugged')
 "--------------------------------
 " General - Utilities
 "--------------------------------
-Plug '907th/vim-auto-save'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'Yggdroot/indentLine'
-Plug 'AndrewRadev/splitjoin.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'mbbill/undotree'
-Plug 'mhinz/vim-grepper'
 
 "--------------------------------
 " Colors / Themes
 "--------------------------------
 Plug 'chriskempson/base16-vim'
-Plug 'vim-airline/vim-airline'| Plug 'vim-airline/vim-airline-themes'
-
-"--------------------------------
-" Git-related
-"--------------------------------
-Plug 'tpope/vim-fugitive'
 
 "--------------------------------
 " Development-related
@@ -43,17 +30,6 @@ Plug 'tpope/vim-fugitive'
 if has('nvim')
   Plug 'neovim/nvim-lspconfig'
 endif
-Plug 'fatih/vim-go'
-
-"--------------------------------
-" Tim Pope Plugins
-"--------------------------------
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-projectionist'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
 
 " call plug#end() to update &runtimepath and initialize plugin system
 " Automatically executes filetype plugin indent on and syntax enable.
