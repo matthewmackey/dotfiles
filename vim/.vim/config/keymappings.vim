@@ -98,3 +98,22 @@ nnoremap <Leader>th  :tabfirst<CR>
 " Go to last tab
 nnoremap <Leader>tl  :tablast<CR>
 
+"-----------------------------
+" Completion mappings
+" See: https://github.com/bluz71/dotfiles/blob/master/vim/custom/mappings.vim#L220
+"-----------------------------
+"   l     - whole line completion (repeat an existing line)
+"   n     - keyword completion (forward)
+"   p     - keyword completion (backward)
+"   d     - dictionary completion (via 'dictionary' setting)
+"   f     - file path completion
+"   ]     - 'tags' file completion
+"   Space - context aware omni completion (via 'omnifunc' setting)
+inoremap <C-l>     <C-x><C-l>
+inoremap <C-n>     <C-x><C-n>
+inoremap <C-p>     <C-x><C-p>
+inoremap <C-d>     <C-x><C-k>
+inoremap <C-f>     <C-x><C-f>
+inoremap <C-]>     <C-x><C-]>
+inoremap <C-Space> <C-x><C-o>
+
