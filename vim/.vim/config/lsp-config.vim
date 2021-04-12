@@ -42,6 +42,16 @@ lua << EOF
   )
 
   -------------------------------------------------------------------------------
+  -- LSP Sign Definitions
+  --   - https://neovim.io/doc/user/sign.html
+  --   - :help vim.lsp.diagnostic.set_signs()
+  -------------------------------------------------------------------------------
+  vim.cmd('sign define LspDiagnosticsSignError       text=E linehl= numhl= texthl=LspDiagnosticsSignError')
+  vim.cmd('sign define LspDiagnosticsSignWarning     text=W linehl= numhl= texthl=LspDiagnosticsSignWarning')
+  vim.cmd('sign define LspDiagnosticsSignInformation text=I linehl= numhl= texthl=LspDiagnosticsSignInformation')
+  vim.cmd('sign define LspDiagnosticsSignHint        text=H linehl= numhl= texthl=LspDiagnosticsSignHint')
+
+  -------------------------------------------------------------------------------
   -- Setup Language Servers
   -------------------------------------------------------------------------------
   -- tsserver: (https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#tsserver)
