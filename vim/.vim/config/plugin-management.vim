@@ -31,6 +31,16 @@ if has('nvim')
   Plug 'neovim/nvim-lspconfig'
 endif
 
+"  --- Languages ---
+" Opted-out of `vim-polygot; see link below for reasoning that I agreed with:
+"   - https://www.barbarianmeetscoding.com/blog/polyglot-programming-in-vim#1-syntax-highlighting
+
+" javascript/typescript/jsx/tsx
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'leafgarland/typescript-vim'
+
+"
 " call plug#end() to update &runtimepath and initialize plugin system
 " Automatically executes filetype plugin indent on and syntax enable.
 call plug#end()
