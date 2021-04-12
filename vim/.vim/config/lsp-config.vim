@@ -1,15 +1,45 @@
 
+
 lua << EOF
+  -------------------------------------------------------------------------------
+  -- General LSP Help:
+  --   - https://neovim.io/doc/user/lsp.html#lsp-handler
+  --   - :help lsp
+  -------------------------------------------------------------------------------
   local nvim_lsp = require('lspconfig')
 
   -- Custom on attach function
-  local lsp_on_attach = function(client, bufnr)
+  local on_attach = function(client, bufnr)
     -- Setup omnitab completion
     vim.cmd('setlocal omnifunc=v:lua.vim.lsp.omnifunc')
 
     -- Indicate when language server is ready
     print('Language server is ready')
   end
+
+  -------------------------------------------------------------------------------
+  -- LSP Hander Help:
+  --   - https://neovim.io/doc/user/lsp.html#lsp-handler
+  --   - :help lsp-handler-configuration
+  -------------------------------------------------------------------------------
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+       -- Enable/Disable signs
+       -- See |vim.lsp.diagnostic.set_signs()|
+       signs = true,
+
+       -- Enable/Disable underline
+       -- See |vim.lsp.diagnostic.set_underline()|
+       underline = false,
+
+       -- Update diagnostics in InsertMode or wait until InsertLeave
+       update_in_insert = false,
+
+       -- Enable/Disable virtual_text
+       -- See |vim.lsp.diagnostic.set_virtual_text()|
+       virtual_text = false,
+    }
+  )
 
   -------------------------------------------------------------------------------
   -- Setup Language Servers
@@ -22,7 +52,7 @@ lua << EOF
   --     root_dir = root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git")
   --
   nvim_lsp.tsserver.setup {
-    on_attach = lsp_on_attach,
+    on_attach = on_attach,
   }
 
 EOF
