@@ -18,6 +18,7 @@ call plug#begin('~/.vim/plugged')
 " General - Utilities
 "--------------------------------
 Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-commentary'
 
 "--------------------------------
 " Colors / Themes
