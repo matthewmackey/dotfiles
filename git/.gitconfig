@@ -70,6 +70,13 @@
   rss = rs --staged
 
   #----------------------------------
+  # Shortlog
+  #----------------------------------
+  sl = shortlog
+  # List # of commits by user/email
+  slcommits = sl --summary --email --numbered --all
+
+  #----------------------------------
   # Show
   #----------------------------------
   sh  = show

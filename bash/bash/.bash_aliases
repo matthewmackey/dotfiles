@@ -221,6 +221,10 @@ for i in {2..10}; do
   eval "alias nglg${i}=\"nglgn ${i}\""
 done
 
+# Shortlog
+alias gsl="git sl"
+alias gslcommits=" git slcommits"
+
 # Push/Pull
 alias pull="git pl"
 alias push="git ps"
