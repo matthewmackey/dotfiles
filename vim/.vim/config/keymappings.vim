@@ -87,10 +87,12 @@ nnoremap <C-PageDown> :tabnext<CR>
 " (can't use HJKL alone because I need those standard Vim bindings))
 nnoremap <Leader>H   :tabprev<CR>
 nnoremap <Leader>tj  :tabprev<CR>
+nnoremap <Leader>P   :tabprev<CR>
 
 " Go to next tab page; wraps around from last to 1st
 nnoremap <Leader>L   :tabnext<CR>
 nnoremap <Leader>tk  :tabnext<CR>
+nnoremap <Leader>N   :tabprev<CR>
 
 " Go to 1st tab
 nnoremap <Leader>th  :tabfirst<CR>
