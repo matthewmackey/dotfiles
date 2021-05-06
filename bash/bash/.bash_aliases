@@ -59,8 +59,8 @@ alias cddddddf="cdddddd; cd "
 # console - other
 #-------------------------------------
 alias cl="clear"
-alias cll="clear; pwd; ll"
-alias ct="clear; pwd; tree;"
+alias cll="cl; pwd; ll"
+alias ct="cl; pwd; tree;"
 alias h="history | grep "
 alias ll="ls -alh"
 alias mx="chmod +x"
@@ -82,9 +82,9 @@ alias op="xdg-open"
 alias open="op"
 alias pg="ps -efH | grep"
 alias syslog="tail -f /var/log/syslog"
-alias treea="clear; tree -a"
-alias treee="clear;  tree -I '.git|build|dist|node_modules'"
-alias treeea="clear; tree -I '.git|build|dist|node_modules' -a"
+alias treea="cl; tree -a"
+alias treee="cl;  tree -I '.git|build|dist|node_modules'"
+alias treeea="cl; tree -I '.git|build|dist|node_modules' -a"
 alias whatismyip="wget http://ipinfo.io/ip -qO -"
 alias xdgo="op"
 alias yq="docker run --name yqtmp --rm -v"${PWD}":/workdir mikefarah/yq"
@@ -134,10 +134,10 @@ alias dclean="docker run -v /var/run/docker.sock:/var/run/docker.sock -v /var/li
 alias dcleandry="docker run -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker:/var/lib/docker --rm martin/docker-cleanup-volumes --dry-run"
 alias dexec="docker exec -i -t"
 alias dk="docker"
-alias dps="clear; docker ps"
-alias dpsa="clear; docker ps -a"
-alias dpsaf="clear; dps -a --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}'"
-alias dpsf="clear; dps --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}'"
+alias dps="cl; docker ps"
+alias dpsa="cl; docker ps -a"
+alias dpsaf="cl; dps -a --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}'"
+alias dpsf="cl; dps --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}'"
 alias dpsinfo="docker ps -q |xargs docker inspect --format '{{ printf \"%s\t\t|%s\t|%s\n\" .Name .Config.Hostname .HostConfig.NetworkMode }}'"
 alias dpsl="docker ps -l"
 alias drm="docker rm"
@@ -145,7 +145,7 @@ alias drmi="docker rmi"
 alias drun="docker run"
 alias dstart="docker start"
 alias dstop="docker stop"
-alias images="clear; docker images"
+alias images="cl; docker images"
 alias im="images"
 alias up="docker-compose up"
 alias upd="docker-compose up -d"
@@ -175,12 +175,15 @@ alias cs="createshortcut"
 
 MM_JS_GIT_EXCLUDES="':(exclude)package-lock.json' ':(exclude)yarn.lock'"
 
+alias gitconf="vim ~/dotfiles/git/.gitconfig"
+alias clrgit="cl; git"
+
 # Add
 alias ga="git a"
 
 # Branch
 alias gb="git b"
-alias gba="clear; git ba"
+alias gba="clrgit ba"
 alias gbd="git bd"
 alias gbD="git bD"
 alias gbm="git bm"
@@ -196,10 +199,10 @@ alias gco="git co"
 alias gcob="git cob"
 
 # Diff
-alias gd="clear; git d"
-alias gdc="clear; git dc"
-alias gdj="clear; git dj"
-alias gdcj="clear; git dcj"
+alias gd="clrgit d"
+alias gdc="clrgit dc"
+alias gdj="clrgit dj"
+alias gdcj="clrgit dcj"
 
 alias ngd="git d"
 alias ngdc="git dc"
@@ -207,27 +210,32 @@ alias ngdj="git dj"
 alias ngdcj="git dcj"
 
 # Log
-alias gl="clear; git l"
-alias gln="clear; git ln"
-alias glg="clear; git lg"
-alias glgn="clear; git lgn"
-for i in {2..10} 20 25 30 40 45; do
-  eval "alias glg${i}=\"glgn ${i}\""
-done
-  # Quarter-screen `glgn`
-alias glgq="clear; glgn 15"
-  # Half-screen `glgn`
-alias glgh="clear; glgn 22"
-  # Full-screen `glgn`
-alias glgf="clear; glgn 45"
+alias gl="clrgit l"
+alias gln="clrgit ln"
 
-alias ngl="git l"
-alias ngln="git ln"
-alias nglg="git lg"
-alias nglgn="git lgn"
-for i in {2..10} 20 25 30 40 45; do
-  eval "alias nglg${i}=\"nglgn ${i}\""
-done
+# Log - Graph
+alias glg="clrgit lg"
+  # Quarter/Half/Full-screen
+  alias glgq="glg 15"
+  alias glgh="glg 22"
+  alias glgf="glg 45"
+
+  # Various sizes
+  for i in {2..10} 20 25 30 40 45; do
+    eval "alias glg${i}=\"glg ${i}\""
+  done
+
+# Log - Graph --all
+alias glga="clrgit lga"
+  # Quarter/Half/Full-screen
+  alias glgaq="glg 15"
+  alias glgah="glg 22"
+  alias glgaf="glg 45"
+
+  # Various sizes
+  for i in {2..10} 20 25 30 40 45; do
+    eval "alias glga${i}=\"glga ${i}\""
+  done
 
 # Shortlog
 alias gsl="git sl"
@@ -242,18 +250,18 @@ alias rs="git rs"
 alias rss="git rss"
 
 # Show
-alias gsh="clear; git sh"
+alias gsh="clrgit sh"
 alias ngsh="git sh"
 
 # Status
-alias gst="clear; git st"
-alias gss="clear; git ss"
+alias gst="clrgit st"
+alias gss="clrgit ss"
 
 alias ngst="git st"
 alias ngss="git ss"
 
 # MISCELLANEOUS
-alias remotes="clear; git remote -v"
+alias remotes="clrgit remote -v"
 alias stash="git stash"
 
 #-------------------------------------------------------------------------------
