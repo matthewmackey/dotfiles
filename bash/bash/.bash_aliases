@@ -156,14 +156,16 @@ alias dpass="docker-credential-pass"
 # [Dotfiles]
 #-------------------------------------------------------------------------------
 IS_GIT_STAGED='[ "$(git status -s | grep "^A" | wc -l)" != 0 ] && (echo -e "CANNOT: already staged files\n"; git status -s) ||'
-alias commitaliases='cd ~/dotfiles/bash/bash; '$IS_GIT_STAGED' (git add .bash_aliases; git ci -m"bash_aliases: updated aliases"); cd -'
-alias commitbashrc='cd ~/dotfiles/bash/; '$IS_GIT_STAGED' (git add .bashrc; git ci -m"bashrc: updated"); cd -'
-alias commitdesktop='cd ~/dotfiles/desktop; '$IS_GIT_STAGED' (git add .local; git ci -m"desktop: updated .desktop shortcuts"); cd -'
-alias committmux='cd ~/dotfiles/tmux; '$IS_GIT_STAGED' (git add .tmux.conf; git ci -m"tmux: updated .tmux.conf"); cd -'
-alias commitvimrc='cd ~/dotfiles/vim; '$IS_GIT_STAGED' (git add .vimrc; git ci -m"vim: updated .vimrc"); cd -'
-alias commitvscode='cd ~/dotfiles/vscode; '$IS_GIT_STAGED' (git add .config; git ci -m"vscode: updated VSCode config settings"); cd -'
 
-alias commitglb=''$IS_GIT_STAGED' (git add .gitlab-ci.yml; git ci -m "Updated .gitlab-ci.yml")'
+alias commitaliases='cd ~/dotfiles/bash/bash; '$IS_GIT_STAGED' (git add .bash_aliases; git ci -m"bash_aliases: updated aliases"); cd -'
+alias commitbashrc='cd ~/dotfiles/bash/;      '$IS_GIT_STAGED' (git add .bashrc; git ci -m"bashrc: updated"); cd -'
+alias commitdesktop='cd ~/dotfiles/desktop;   '$IS_GIT_STAGED' (git add .local; git ci -m"desktop: updated .desktop shortcuts"); cd -'
+alias commitgitconf='cd ~/dotfiles/git;       '$IS_GIT_STAGED' (git add .gitconfig; git ci -m"git: updated .gitconfig"); cd -'
+alias committmux='cd ~/dotfiles/tmux;         '$IS_GIT_STAGED' (git add .tmux.conf; git ci -m"tmux: updated .tmux.conf"); cd -'
+alias commitvimrc='cd ~/dotfiles/vim;         '$IS_GIT_STAGED' (git add .vimrc; git ci -m"vim: updated .vimrc"); cd -'
+alias commitvscode='cd ~/dotfiles/vscode;     '$IS_GIT_STAGED' (git add .config; git ci -m"vscode: updated VSCode config settings"); cd -'
+
+alias commitglb=''$IS_GIT_STAGED'       (git add .gitlab-ci.yml; git ci -m "Updated .gitlab-ci.yml")'
 alias commitgitignore=''$IS_GIT_STAGED' (git add .gitignore; git ci -m "Updated .gitignore")'
 
 alias cs="createshortcut"
