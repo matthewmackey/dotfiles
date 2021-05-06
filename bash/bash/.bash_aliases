@@ -150,6 +150,8 @@ alias im="images"
 alias up="docker-compose up"
 alias upd="docker-compose up -d"
 
+alias dpass="docker-credential-pass"
+
 #-------------------------------------------------------------------------------
 # [Dotfiles]
 #-------------------------------------------------------------------------------
