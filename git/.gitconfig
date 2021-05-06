@@ -50,12 +50,11 @@
 
   #----------------------------------
   # Log
-  #
   #----------------------------------
   l   = log --pretty=format:'%C(yellow)%h%C(reset) %Cgreen(%><(12)%cr%><|(12))%C(reset) - %s %C(blue)<%an>%C(reset)%C(auto)%d%C(reset)'
   ln  = l -n
-  lg  = l --all --graph
-  lgn = lg -n
+  lg  = ln --graph
+  lga = ln --all --graph
 
   #----------------------------------
   # Push/Pull
@@ -73,7 +72,6 @@
   # Shortlog
   #----------------------------------
   sl = shortlog
-  # List # of commits by user/email
   slcommits = sl --summary --email --numbered --all
 
   #----------------------------------
