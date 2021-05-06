@@ -214,9 +214,10 @@ alias glgn="clear; git lgn"
 for i in {2..10} 20 25 30 40 45; do
   eval "alias glg${i}=\"glgn ${i}\""
 done
+  # Quarter-screen `glgn`
+alias glgq="clear; glgn 15"
   # Half-screen `glgn`
 alias glgh="clear; glgn 22"
-
   # Full-screen `glgn`
 alias glgf="clear; glgn 45"
 
