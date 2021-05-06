@@ -211,15 +211,20 @@ alias gl="clear; git l"
 alias gln="clear; git ln"
 alias glg="clear; git lg"
 alias glgn="clear; git lgn"
-for i in {2..10}; do
+for i in {2..10} 20 25 30 40 45; do
   eval "alias glg${i}=\"glgn ${i}\""
 done
+  # Half-screen `glgn`
+alias glgh="clear; glgn 22"
+
+  # Full-screen `glgn`
+alias glgf="clear; glgn 45"
 
 alias ngl="git l"
 alias ngln="git ln"
 alias nglg="git lg"
 alias nglgn="git lgn"
-for i in {2..10}; do
+for i in {2..10} 20 25 30 40 45; do
   eval "alias nglg${i}=\"nglgn ${i}\""
 done
 
