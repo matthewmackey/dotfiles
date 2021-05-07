@@ -51,13 +51,13 @@
   #----------------------------------
   # Log
   #----------------------------------
-  l   = log --pretty=format:'%C(yellow)%h%C(reset) %Cgreen(%><(12)%cr%><|(12))%C(reset) - %s %C(blue)<%an>%C(reset)%C(auto)%d%C(reset)'
+  l   = log --pretty=format:'%C(yellow)%h%C(reset) %C(green)(%><(12)%cr%><|(12))%C(reset) - %s %C(blue)<%an>%C(reset)%C(auto)%d%C(reset)'
   ln  = l -n
   lg  = l --graph -n
   lga = l --all --graph -n
   # c = Complete History
   lgc  = l --graph
-  lgac  = l --graph --all
+  lgca  = l --graph --all
 
   #----------------------------------
   # Push/Pull
