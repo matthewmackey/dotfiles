@@ -1,2 +1,3 @@
-export GIT_PRETTY="--pretty=format:'%C(yellow)%h%C(reset) Cgreen(%><(12)%cr%><|(12))%C(reset) - %s C(blue)<%an>%C(reset)%C(auto)%d%C(reset)'"
+export GIT_PRETTY="--pretty=format:%C(yellow)%h%C(reset) %C(green)(%><(12)%cr%><|(12))%C(reset) - %s %C(blue)<%an>%C(reset)%C(auto)%d%C(reset)"
 export GP="$GIT_PRETTY"
+
