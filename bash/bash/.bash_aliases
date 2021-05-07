@@ -227,6 +227,8 @@ alias glg="clrgit lg"
     eval "alias glg${i}=\"glg ${i}\""
   done
 
+  alias glgc="clrgit lgc"
+
 # Log - Graph --all
 alias glga="clrgit lga"
   # Quarter/Half/Full-screen
@@ -238,6 +240,8 @@ alias glga="clrgit lga"
   for i in {2..10} 20 25 30 40 45; do
     eval "alias glga${i}=\"glga ${i}\""
   done
+
+  alias glgac="clrgit lgac"
 
 # Shortlog
 alias gsl="git sl"
