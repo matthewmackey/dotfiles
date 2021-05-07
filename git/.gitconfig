@@ -53,8 +53,8 @@
   #----------------------------------
   l   = log --pretty=format:'%C(yellow)%h%C(reset) %Cgreen(%><(12)%cr%><|(12))%C(reset) - %s %C(blue)<%an>%C(reset)%C(auto)%d%C(reset)'
   ln  = l -n
-  lg  = ln --graph
-  lga = ln --all --graph
+  lg  = l --graph -n
+  lga = l --all --graph -n
 
   #----------------------------------
   # Push/Pull
