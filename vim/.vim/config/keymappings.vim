@@ -4,6 +4,11 @@
 " Change the mapleader from '\' to ','
 let mapleader=","
 
+" Terminal Mode - Escape Key
+if has('nvim')
+  tnoremap <C-Space> <C-\><C-n>
+endif
+
 nnoremap <Leader>pi :PlugInstall<CR>
 nnoremap <Leader>ps :PlugStatus<CR>
 
