@@ -55,6 +55,9 @@
   ln  = l -n
   lg  = l --graph -n
   lga = l --all --graph -n
+  # c = Complete History
+  lgc  = l --graph
+  lgac  = l --graph --all
 
   #----------------------------------
   # Push/Pull
