@@ -185,7 +185,7 @@ alias ga="git a"
 
 # Branch
 alias gb="git b"
-alias gba="clrgit ba"
+alias gba="git ba"
 alias gbd="git bd"
 alias gbD="git bD"
 alias gbm="git bm"
