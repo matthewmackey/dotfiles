@@ -241,7 +241,7 @@ alias glga="clrgit lga"
     eval "alias glga${i}=\"glga ${i}\""
   done
 
-  alias glgac="clrgit lgac"
+  alias glgca="clrgit lgca"
 
 # Shortlog
 alias gsl="git sl"
