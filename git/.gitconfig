@@ -44,9 +44,9 @@
   # Diff
   #----------------------------------
   d   = diff
-  dc  = d --cached
-  dj  = d -- ':(exclude)package-lock.json' ':(exclude)yarn.lock'
-  dcj = dc -- ':(exclude)package-lock.json' ':(exclude)yarn.lock'
+  ds  = d --staged
+  dn  = d -- ':(exclude)package-lock.json' ':(exclude)yarn.lock'
+  dsn = ds -- ':(exclude)package-lock.json' ':(exclude)yarn.lock'
 
   #----------------------------------
   # Log
