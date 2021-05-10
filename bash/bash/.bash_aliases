@@ -202,14 +202,17 @@ alias gcob="git cob"
 
 # Diff
 alias gd="clrgit d"
-alias gdc="clrgit dc"
-alias gdj="clrgit dj"
-alias gdcj="clrgit dcj"
+  # Diff --staged
+alias gds="clrgit ds"
+  # Diff - exclude npm
+alias gdn="clrgit dn"
+  # Diff - --staged & exclude npm
+alias gdsn="clrgit dsn"
 
 alias ngd="git d"
-alias ngdc="git dc"
-alias ngdj="git dj"
-alias ngdcj="git dcj"
+alias ngds="git ds"
+alias ngdn="git dn"
+alias ngdsn="git dsn"
 
 # Log
 alias gl="clrgit l"
