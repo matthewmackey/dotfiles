@@ -6,8 +6,10 @@ let mapleader=","
 
 " Terminal Mode - Escape Key
 if has('nvim')
+  tnoremap <Esc> <C-\><C-n>
   tnoremap <C-Space> <C-\><C-n>
 endif
+
 
 nnoremap <Leader>pi :PlugInstall<CR>
 nnoremap <Leader>ps :PlugStatus<CR>
@@ -17,14 +19,25 @@ nnoremap <Leader>ps :PlugStatus<CR>
 cnoreabbrev <expr> help getcmdtype() == ":" && getcmdline() == 'help' ? 'tab help' : 'help'
 
 nnoremap <Leader>l :set list!<CR>
-nnoremap <Leader>, :source ~/.vimrc<CR>
+" _ = forward slash
+nnoremap <Leader>_ :source ~/.vimrc<CR>
 nnoremap <Leader>p :set invpaste<CR>
 
-" Switch between different windows by their direction
-noremap <C-j> <C-w>j    " switching to below window
-noremap <C-k> <C-w>k    " switching to above window
-noremap <C-l> <C-w>l    " switching to right window
-noremap <C-h> <C-w>h    " switching to left window
+" Switch between different windows by their direction in ANY mode
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+
+inoremap <C-j> <C-\><C-N><C-w>j
+inoremap <C-k> <C-\><C-N><C-w>k
+inoremap <C-l> <C-\><C-N><C-w>l
+inoremap <C-h> <C-\><C-N><C-w>h
+
+tnoremap <C-j> <C-\><C-N><C-w>j
+tnoremap <C-k> <C-\><C-N><C-w>k
+tnoremap <C-l> <C-\><C-N><C-w>l
+tnoremap <C-h> <C-\><C-N><C-w>h
 
 " Maximize window all directions
 noremap <silent> <Leader>z :resize 99999<CR>:vertical resize 99999<CR>
@@ -90,11 +103,13 @@ nnoremap <C-PageDown> :tabnext<CR>
 
 " Go to prev tab page; wraps around from 1st to last
 " (can't use HJKL alone because I need those standard Vim bindings))
+nnoremap <Leader>.   :tabprev<CR>
 nnoremap <Leader>H   :tabprev<CR>
 nnoremap <Leader>tj  :tabprev<CR>
 nnoremap <Leader>P   :tabprev<CR>
 
 " Go to next tab page; wraps around from last to 1st
+nnoremap <Leader>,   :tabnext<CR>
 nnoremap <Leader>L   :tabnext<CR>
 nnoremap <Leader>tk  :tabnext<CR>
 nnoremap <Leader>N   :tabprev<CR>
