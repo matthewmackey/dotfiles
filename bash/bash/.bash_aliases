@@ -228,13 +228,13 @@ alias gln="clrgit ln"
 # Log - Graph
 alias glg="clrgit lg"
   # Quarter/Half/Full-screen
-  alias glgq="glg 15"
-  alias glgh="glg 22"
-  alias glgf="glg 45"
+  alias glgq="glg -n 15"
+  alias glgh="glg -n 22"
+  alias glgf="glg -n 45"
 
   # Various sizes
   for i in {2..10} 20 25 30 40 45; do
-    eval "alias glg${i}=\"glg ${i}\""
+    eval "alias glg${i}=\"glg -n ${i}\""
   done
 
   alias glgc="clrgit lgc"
@@ -242,13 +242,13 @@ alias glg="clrgit lg"
 # Log - Graph --all
 alias glga="clrgit lga"
   # Quarter/Half/Full-screen
-  alias glgaq="glg 15"
-  alias glgah="glg 22"
-  alias glgaf="glg 45"
+  alias glgaq="glg -n 15"
+  alias glgah="glg -n 22"
+  alias glgaf="glg -n 45"
 
   # Various sizes
   for i in {2..10} 20 25 30 40 45; do
-    eval "alias glga${i}=\"glga ${i}\""
+    eval "alias glga${i}=\"glga -n ${i}\""
   done
 
   alias glgca="clrgit lgca"
