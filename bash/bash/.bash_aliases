@@ -48,7 +48,14 @@ alias cdddd="cd ../../../"
 alias cddddd="cd ../../../../"
 alias cdddddd="cd ../../../../../"
 
-# Change to directory then folder specified after alias on command-line
+# Go up directories then do directory listing
+alias cddl="cdd; cll "
+alias cdddl="cddd; cll "
+alias cddddl="cdddd; cll "
+alias cdddddl="cddddd; cll"
+alias cddddddl="cdddddd; cll "
+
+# Go up directories then change to directory specified after alias on command-line
 alias cddf="cdd; cd "
 alias cdddf="cddd; cd "
 alias cddddf="cdddd; cd "
