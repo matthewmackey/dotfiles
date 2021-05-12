@@ -6,10 +6,13 @@ let mapleader=","
 
 " Terminal Mode - Escape Key
 if has('nvim')
-  tnoremap <Esc> <C-\><C-n>
-  tnoremap <C-Space> <C-\><C-n>
-endif
+  " Not using <Esc> b/c I need that for Bash's vim-mode
+  tnoremap <C-Space>    <C-\><C-n>
 
+  " Exit terminal mode then switch tabs
+  tnoremap <C-PageDown> <C-\><C-n> :tabnext<CR>
+  tnoremap <C-PageUp>   <C-\><C-n> :tabprevious<CR>
+endif
 
 nnoremap <Leader>pi :PlugInstall<CR>
 nnoremap <Leader>ps :PlugStatus<CR>
@@ -94,6 +97,8 @@ nnoremap <Leader><< :tabmove -1<CR>
 " Move the tab page to the left
 nnoremap <Leader>>> :tabmove +1<CR>
 
+" UPDATE 5/12/2021 - this seems to work now for tab switching
+"
 " Couldn't get <C-PageUp/Down> to work even after I disabled those keybindings
 " in my terminal settings "Edit -> Preferences -> Shortcuts'
 " See here for some info:
