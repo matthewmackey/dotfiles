@@ -61,7 +61,14 @@ lua << EOF
   --     filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }
   --     root_dir = root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git")
   --
+
+  -- typescript
   nvim_lsp.tsserver.setup {
+    on_attach = on_attach,
+  }
+
+  -- Golang
+  nvim_lsp.gopls.setup {
     on_attach = on_attach,
   }
 
