@@ -38,6 +38,9 @@ endif
 " Opted-out of `vim-polygot; see link below for reasoning that I agreed with:
 "   - https://www.barbarianmeetscoding.com/blog/polyglot-programming-in-vim#1-syntax-highlighting
 
+" golang
+Plug 'fatih/vim-go'
+
 " javascript/typescript/jsx/tsx
 Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
