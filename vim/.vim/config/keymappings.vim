@@ -21,11 +21,18 @@ nnoremap <Leader>ps :PlugStatus<CR>
 " See: https://stackoverflow.com/questions/7513380/vim-change-x-function-to-delete-buffer-instead-of-save-quit/7515418#7515418
 cnoreabbrev <expr> help getcmdtype() == ":" && getcmdline() == 'help' ? 'tab help' : 'help'
 
-nnoremap <Leader>l :set list!<CR>
 " _ = forward slash
 nnoremap <Leader>_ :source ~/.vimrc<CR>
-nnoremap <Leader>p :set invpaste<CR>
 
+nnoremap <Leader>p :set invpaste<CR>
+nnoremap <F2>      :set invpaste<CR>
+
+nnoremap <Leader>n :set norelativenumber!<CR>
+nnoremap <F3>      :set norelativenumber!<CR>
+
+nnoremap <Leader>w :set list!<CR>
+nnoremap <F4>      :set list!<CR>
+"
 " Switch between different windows by their direction in ANY mode
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k

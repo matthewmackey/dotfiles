@@ -21,6 +21,11 @@ endif
 " Must be after sourcing ~/.vimrc_background to override for all colorschemes
 highlight ColorColumn ctermbg=gray
 
+" Toggle the colorcolumn on/off
+"
+" NOTE - the +1 sets colorcolumn to +1 of current textwidth value;
+"        the normal textwidth set in the general settings is 80
+noremap <F5> :exec (&colorcolumn == '0' ? ':set colorcolumn=+1' : ':set colorcolumn=0')<CR>
 
 "---------------------"
 "   Git with Vim      "
