@@ -27,8 +27,8 @@ nnoremap <Leader>_ :source ~/.vimrc<CR>
 nnoremap <Leader>p :set invpaste<CR>
 nnoremap <F2>      :set invpaste<CR>
 
-nnoremap <Leader>n :set norelativenumber!<CR>
-nnoremap <F3>      :set norelativenumber!<CR>
+nnoremap <Leader>n :set norelativenumber!<CR>:set number!<Cr>
+nnoremap <F3>      :set norelativenumber!<CR>:set number!<Cr>
 
 nnoremap <Leader>w :set list!<CR>
 nnoremap <F4>      :set list!<CR>
