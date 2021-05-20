@@ -89,12 +89,24 @@ alias op="xdg-open"
 alias open="op"
 alias pg="ps -efH | grep"
 alias syslog="tail -f /var/log/syslog"
-alias treea="cl; tree -a"
-alias treee="cl;  tree -I '.git|build|dist|node_modules'"
-alias treeea="cl; tree -I '.git|build|dist|node_modules' -a"
+
+TREE_BIN=/usr/bin/tree
+alias treee="cl; $TREE_BIN"
+alias tree="cl; $TREE_BIN -a -I '.git|build|dist|node_modules'"
+alias treea="cl; $TREE_BIN -a"
+alias treeg="cl; $TREE_BIN -I '.git|build|dist|node_modules'"
+
+for i in 1 2 3; do
+  for a in treee tree treea treeg; do
+    eval "alias ${a}${i}=\"${a} -L ${i}\""
+  done
+done
+
 alias whatismyip="wget http://ipinfo.io/ip -qO -"
 alias xdgo="op"
-alias yq="docker run --name yqtmp --rm -v"${PWD}":/workdir mikefarah/yq"
+#alias yqd='docker run --name yqtmp --rm -v"${PWD}":/workdir mikefarah/yq:3.3.4 yq "$@"'
+alias yqd='docker run --name yqtmp --rm -i mikefarah/yq:3.3.4 yq "$@"'
+alias yqd4='docker run --name yqtmp --rm -v"${PWD}":/workdir mikefarah/yq:latest "$@"'
 
 #------------------------------------
 # [systemctl]
