@@ -62,15 +62,19 @@ lua << EOF
   --     root_dir = root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git")
   --
 
-  -- typescript
-  nvim_lsp.tsserver.setup {
-    on_attach = on_attach,
-  }
-
   -- Golang
   nvim_lsp.gopls.setup {
     on_attach = on_attach,
   }
 
+  -- Ruby
+  nvim_lsp.solargraph.setup{
+    on_attach = on_attach,
+  }
+
+  -- Typescript
+  nvim_lsp.tsserver.setup {
+    on_attach = on_attach,
+  }
 EOF
 
