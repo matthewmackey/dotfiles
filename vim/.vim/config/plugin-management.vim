@@ -46,7 +46,10 @@ Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'leafgarland/typescript-vim'
 
-"
+" web development
+Plug 'mattn/emmet-vim'
+
+
 " call plug#end() to update &runtimepath and initialize plugin system
 " Automatically executes filetype plugin indent on and syntax enable.
 call plug#end()

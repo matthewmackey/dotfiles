@@ -24,8 +24,8 @@ set foldmarker={{,}}
 set hidden                    " Buffer should still exist if window is closed
 set lazyredraw                " Wait to redraw
 set mouse=a                   " Allow mouse to move cursor
-set number                    " Show line numbers
-set relativenumber            " Show relative line numbers
+set nonumber                  " Show line numbers
+set norelativenumber          " Show relative line numbers
 set ruler                     " always show current position
 set showcmd                   " show last command in the bottom right
 set noshowmatch                 " Do not show matching brackets by flickering

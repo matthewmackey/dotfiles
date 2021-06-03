@@ -40,16 +40,16 @@ let g:airline#extensions#tabline#tab_nr_type = 2
 " Also, when only ONE tab is open, it adds #'s to open buffers (and those
 " numbers are a smaller text size for some reason)
 let g:airline#extensions#tabline#buffer_idx_mode = 1
-nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
-nmap <leader>0 <Plug>AirlineSelectTab0
+nmap <leader>a1 <Plug>AirlineSelectTab1
+nmap <leader>a2 <Plug>AirlineSelectTab2
+nmap <leader>a3 <Plug>AirlineSelectTab3
+nmap <leader>a4 <Plug>AirlineSelectTab4
+nmap <leader>a5 <Plug>AirlineSelectTab5
+nmap <leader>a6 <Plug>AirlineSelectTab6
+nmap <leader>a7 <Plug>AirlineSelectTab7
+nmap <leader>a8 <Plug>AirlineSelectTab8
+nmap <leader>a9 <Plug>AirlineSelectTab9
+nmap <leader>a0 <Plug>AirlineSelectTab0
 
 " Another key mapping for switching through tabs
 nmap <leader>- <Plug>AirlineSelectPrevTab

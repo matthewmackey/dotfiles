@@ -24,13 +24,13 @@ cnoreabbrev <expr> help getcmdtype() == ":" && getcmdline() == 'help' ? 'tab hel
 " _ = forward slash
 nnoremap <Leader>_ :source ~/.vimrc<CR>
 
-nnoremap <Leader>p :set invpaste<CR>
+nnoremap <Leader>2 :set invpaste<CR>
 nnoremap <F2>      :set invpaste<CR>
 
-nnoremap <Leader>n :windo set norelativenumber! nonu!<Cr>
+nnoremap <Leader>3 :windo set norelativenumber! nonu!<Cr>
 nnoremap <F3>      :windo set norelativenumber! nonu!<Cr>
 
-nnoremap <Leader>w :set list!<CR>
+nnoremap <Leader>4 :set list!<CR>
 nnoremap <F4>      :set list!<CR>
 "
 " Switch between different windows by their direction in ANY mode
