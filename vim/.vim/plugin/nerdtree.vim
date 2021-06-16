@@ -6,5 +6,7 @@ let NERDTreeShowHidden=1                         " show hidden files
 
 let NERDTreeIgnore=['.git$[[dir]]']
 "['\.d$[[dir]]', '\.o$[[file]]', 'tmp/cache$[[path]]']
-nnoremap <Leader>f :NERDTreeToggle<Enter>
+nnoremap <Leader>f :NERDTreeToggle<CR>
+nnoremap <Leader>nr :NERDTreeToggle %<CR>
+nnoremap <Leader>nf :NERDTreeFind<CR>
 
