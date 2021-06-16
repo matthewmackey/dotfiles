@@ -1,5 +1,0 @@
-#!/bin/bash
-THUNDERBOLT_GUID=00e151cc-6baf-0801-ffff-ffffffffffff
-
-sudo boltctl forget $THUNDERBOLT_GUID
-sudo boltctl enroll $THUNDERBOLT_GUID
