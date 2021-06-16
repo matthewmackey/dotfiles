@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=SQuirreL SQL Client
-Exec=/opt/squirrel-sql-3.7.1/squirrel-sql.sh
-Icon=/opt/squirrel-sql-3.7.1/icons/acorn.ico
-Terminal=false
-Type=Application
-WorkingDirectory=/opt/squirrel-sql-3.7.1
