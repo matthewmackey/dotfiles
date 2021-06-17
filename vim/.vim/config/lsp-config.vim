@@ -98,5 +98,5 @@ if has('nvim')
     nvim_lsp.tsserver.setup {
       on_attach = on_attach,
     }
-  EOF
+EOF
 endif
