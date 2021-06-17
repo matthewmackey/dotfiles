@@ -42,7 +42,7 @@ DIRS=(
 
 for i in ${DIRS[@]}; do
   f=$i/$i.bash
-  if [[ -f "$f" ]]; then
-    source "$f"
+  if [ -f "$f" ]; then
+     source "$f"
   fi
 done
