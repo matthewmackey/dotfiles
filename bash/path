@@ -1,0 +1,12 @@
+BIN_DIRS=(
+  $HOME/mmbin
+  /opt/bin
+)
+
+for _path in ${BIN_DIRS[@]}
+do
+  if [ -d "$_path" ]; then
+    export PATH="$_path:$PATH"
+  fi
+done
+

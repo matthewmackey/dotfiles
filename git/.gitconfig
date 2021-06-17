@@ -103,7 +103,7 @@
   helper = cache --timeout=3600
 
 [credential "https://github.com"]
-  username = matthewmackey
+#  username = matthewmachaj
 
 [merge]
   #tool = ??
