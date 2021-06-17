@@ -19,6 +19,12 @@ alias lbin="cd ~/.local/bin"
 alias mmbin="cd ~/mmbin"
 
 #-------------------------------------
+# [clear]
+#-------------------------------------
+alias cl="clear"
+alias cll="cl; pwd; ll"
+
+#-------------------------------------
 # [cd]
 #-------------------------------------
 alias cdl="cd -"
@@ -46,8 +52,6 @@ alias cddddddf="cdddddd; cd "
 #-------------------------------------
 # console - other
 #-------------------------------------
-alias cl="clear"
-alias cll="cl; pwd; ll"
 alias hg="history | grep"
 alias ll="ls -alh"
 alias mx="chmod +x"
@@ -142,7 +146,7 @@ alias gbm="git branch -m"
 alias gd="clrgit diff"
 
 # Diff --staged
-alias gds="clrgit diff --staged
+alias gds="clrgit diff --staged"
 
 # Log
 alias gl="clrgit l"

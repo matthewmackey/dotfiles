@@ -21,3 +21,28 @@ source ~/dotfiles/bash/aliases
 source ~/.local/bash/bashrc  2>/dev/null
 source ~/.local/bash/env     2>/dev/null
 source ~/.local/bash/aliases 2>/dev/null
+
+#-------------------------------#
+# SOURCE - *.bash files         #
+#-------------------------------#
+DIRS=(
+  android
+  dotnet
+  fzf
+  git
+  go
+  lastpass
+  node
+  python
+  ruby
+  ssh
+  tmux
+  vim
+)
+
+for i in ${DIRS[@]}; do
+  f=$i/$i.bash
+  if [[ -f "$f" ]]; then
+    source "$f"
+  fi
+done
