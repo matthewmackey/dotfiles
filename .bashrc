@@ -12,19 +12,12 @@ case $- in
 esac
 
 # Use Ubuntu 20.04 as base .bashrc config
-source ~/dotfiles/bash/20_04
-source ~/dotfiles/bash/rc
+source ~/dotfiles/bash/bashrc-20_04
+source ~/dotfiles/bash/bashrc
+source ~/dotfiles/bash/env
 source ~/dotfiles/bash/aliases
-source ~/dotfiles/bash/path
-
-source ~/dotfiles/bash/common/base16-shell.bash
-source ~/dotfiles/bash/common/bashmarks.bash
-source ~/dotfiles/bash/common/colors.bash
-source ~/dotfiles/bash/common/git.bash
-source ~/dotfiles/bash/common/ssh_completion.bash
-source ~/dotfiles/bash/common/ssh_prompt.bash
-source ~/dotfiles/bash/common/vim_prompt.bash
 
 # Include any local changes
-source ~/.local/bash/rc 2>/dev/null
+source ~/.local/bash/bashrc 2>/dev/null
+source ~/.local/bash/env 2>/dev/null
 source ~/.local/bash/aliases 2>/dev/null
