@@ -41,3 +41,11 @@ There seem to be two parts to get this project implemented:
 1. Symlinking .bashrc and non-Bash-related files into the right places on the
    filesystem
 2. Setting up the Bash-related files and then sourcing them (via .bashrc)
+
+
+Bugs
+====
+
+- Remove installation of base16-shell from simple/remote machine logins, OR
+  consider how that will work on remote machines where shell is defined by my
+  Lenovo terminal colors already
