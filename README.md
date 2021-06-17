@@ -43,9 +43,13 @@ There seem to be two parts to get this project implemented:
 2. Setting up the Bash-related files and then sourcing them (via .bashrc)
 
 
-Bugs
-====
+Bugs/Improvements
+=================
 
+- Update main install.sh so that it will pull in ANY *.bash file in the
+  subdirectories
+- Fix ssh_completion.bash so `cat known_hosts` doesn't cause issue on hosts w/o
+  that file
 - Remove installation of base16-shell from simple/remote machine logins, OR
   consider how that will work on remote machines where shell is defined by my
   Lenovo terminal colors already
