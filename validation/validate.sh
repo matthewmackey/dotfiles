@@ -69,6 +69,7 @@ NET_CMDS=(
   ping
   route
   tracepath
+  traceroute
   traceroute6
   tshark
   wget
