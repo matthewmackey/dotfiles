@@ -18,9 +18,12 @@ source ~/dotfiles/bash/env
 source ~/dotfiles/bash/aliases
 
 # Include any local changes
-source ~/.local/bash/bashrc  2>/dev/null
-source ~/.local/bash/env     2>/dev/null
-source ~/.local/bash/aliases 2>/dev/null
+for i in bashrc env aliases
+do
+  if [ -e ~/.local/bash/"$i" ]; then
+    source ~/.local/bash/"$i"
+  fi
+done
 
 #-------------------------------#
 # SOURCE - *.bash files         #
