@@ -41,7 +41,7 @@ DIRS=(
 )
 
 for i in ${DIRS[@]}; do
-  f=$i/$i.bash
+  f=~/dotfiles/$i/$i.bash
   if [ -f "$f" ]; then
      source "$f"
   fi
