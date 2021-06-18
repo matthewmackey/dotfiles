@@ -34,8 +34,8 @@ fi
 
 
 ./git/install.sh
+./tmux/install.sh
 ./vim/install.sh
 
 # NOT for remote machines - TODO figure out how to flag when to run these
 #./ssh/install.sh
-#./tmux/install.sh
