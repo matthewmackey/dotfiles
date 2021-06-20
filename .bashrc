@@ -30,6 +30,7 @@ done
 #-------------------------------#
 DIRS=(
   android
+  aws
   dotnet
   fzf
   git
