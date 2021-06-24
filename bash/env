@@ -4,6 +4,7 @@
 BIN_DIRS=(
   $HOME/mmbin
   /opt/bin
+  $HOME/tools/bin
 )
 
 for _path in ${BIN_DIRS[@]}
