@@ -30,6 +30,7 @@ set ruler                     " always show current position
 set showcmd                   " show last command in the bottom right
 set noshowmatch                 " Do not show matching brackets by flickering
 set noshowmode                  " We show the mode with airline or lightline
+set nospell                   " Turn off spell check
 set splitright                  " Vertical windows should be split to right
 set splitbelow                  " Horizontal windows should split to bottom
 set textwidth=80                 " Force the cursor onto a new line after 80 characters
