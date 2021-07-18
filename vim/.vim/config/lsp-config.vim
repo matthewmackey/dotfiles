@@ -89,6 +89,11 @@ if has('nvim')
       on_attach = on_attach,
     }
 
+    -- Python
+    nvim_lsp.pyright.setup{
+      on_attach = on_attach,
+    }
+
     -- Ruby
     nvim_lsp.solargraph.setup{
       on_attach = on_attach,
