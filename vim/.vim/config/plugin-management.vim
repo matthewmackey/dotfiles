@@ -17,8 +17,11 @@ call plug#begin('~/.vim/plugged')
 "--------------------------------
 " General - Utilities
 "--------------------------------
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
+Plug 'airblade/vim-rooter'
 
 "--------------------------------
 " Colors / Themes
@@ -32,6 +35,7 @@ Plug 'vim-airline/vim-airline-themes'
 "--------------------------------
 if has('nvim')
   Plug 'neovim/nvim-lspconfig'
+  Plug 'hrsh7th/nvim-compe'
 endif
 
 "  --- Languages ---
