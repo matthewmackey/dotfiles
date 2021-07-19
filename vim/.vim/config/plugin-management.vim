@@ -22,6 +22,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-rooter'
+Plug 'tpope/vim-surround'
 
 "--------------------------------
 " Colors / Themes
