@@ -26,7 +26,7 @@ export FZF_DEFAULT_OPTS="
 --prompt='∼ ' --pointer='▶' --marker='✓'
 --bind '?:toggle-preview'
 --bind 'ctrl-a:select-all'
---bind 'ctrl-y:execute-silent(echo {+} | pbcopy)'
+--bind 'ctrl-y:execute-silent(echo {+} | xclip -i -sel clip)'
 --bind 'ctrl-e:execute(echo {+} | xargs -o vim)'
 --bind 'ctrl-v:execute(code {+})'
 --bind 'ctrl-f:page-down,ctrl-b:page-up'
