@@ -18,6 +18,10 @@ fi
 # Install Language Servers      #
 #-------------------------------#
 cat <<EOF
+
+#----------------------------------------#
+# vim/install.sh
+#----------------------------------------#
 You must install any language server binaries you need as well, like:
 
 # Golang
