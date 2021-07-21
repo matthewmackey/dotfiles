@@ -16,15 +16,20 @@ setopt histexpiredupsfirst
 setopt histignoredups
 setopt histreduceblanks
 setopt histverify
-setopt sharedhistory
+setopt sharehistory
 
+
+eval "$(zoxide init zsh)"
 #--------------------------------#
 # Oh My Zsh Config
 #--------------------------------#
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 
-plugins=(git)
+plugins=(copydir copyfile git vi-mode)
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+VI_MODE_SET_CURSOR=true
+MODE_INDICATOR="%F{yellow}<<<%f"
 
 source $ZSH/oh-my-zsh.sh
 

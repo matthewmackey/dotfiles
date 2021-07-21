@@ -1,5 +1,15 @@
+#--------------------------------#
+# Local File Config
+#--------------------------------#
 source ~/dotfiles/shell/bashrc-20_04
 source ~/dotfiles/shell/bashrc
+
+eval "$(zoxide init bash)"
+
+
+#--------------------------------#
+# Dotfiles Config
+#--------------------------------#
 
 # Source COMMON
 source ~/dotfiles/.rc
