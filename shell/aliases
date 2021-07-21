@@ -1,15 +1,17 @@
+DOT_DIR=~/dotfiles
+
 #-------------------------------------------------------------------------------
-# [Bash]
+# [SHELL]
 #-------------------------------------------------------------------------------
-BASH_ALIASES=~/dotfiles/bash/aliases
-LOCAL_BASH_ALIASES=~/.local/bash/aliases
+ALIASES=${DOT_DIR}/shell/aliases
+LOCAL_ALIASES=~/.local/dot/aliases
 
 #-------------------------------------
-# Bash - [Aliases]
+# Shell - [Aliases]
 #-------------------------------------
-alias al="vim ${BASH_ALIASES}"
-alias lal="vim ${LOCAL_BASH_ALIASES}"
-alias sa=". ${BASH_ALIASES}; [ -f ${LOCAL_BASH_ALIASES} ] && . ${LOCAL_BASH_ALIASES}"
+alias al="vim ${ALIASES}"
+alias lal="vim ${LOCAL_ALIASES}"
+alias sa=". ${ALIASES}; [ -f ${LOCAL_ALIASES} ] && . ${LOCAL_ALIASES}"
 
 #-------------------------------------
 # [bin]
@@ -112,21 +114,21 @@ alias upd="docker-compose up -d"
 #-------------------------------------------------------------------------------
 IS_GIT_STAGED='[ "$(git status -s | grep "^A" | wc -l)" != 0 ] && (echo -e "CANNOT: already staged files\n"; git status -s) ||'
 
-alias commitaliases='cd ~/dotfiles/bash/bash; '$IS_GIT_STAGED' (git add .bash_aliases; git ci -m"bash_aliases: updated aliases"); cd -'
-alias commitbashrc='cd ~/dotfiles/bash/;      '$IS_GIT_STAGED' (git add .bashrc; git ci -m"bashrc: updated"); cd -'
-alias commitdesktop='cd ~/dotfiles/desktop;   '$IS_GIT_STAGED' (git add .local; git ci -m"desktop: updated .desktop shortcuts"); cd -'
-alias commitgitconf='cd ~/dotfiles/git;       '$IS_GIT_STAGED' (git add .gitconfig; git ci -m"git: updated .gitconfig"); cd -'
-alias committmux='cd ~/dotfiles/tmux;         '$IS_GIT_STAGED' (git add .tmux.conf; git ci -m"tmux: updated .tmux.conf"); cd -'
-alias commitvimrc='cd ~/dotfiles/vim;         '$IS_GIT_STAGED' (git add .vimrc; git ci -m"vim: updated .vimrc"); cd -'
-alias commitvscode='cd ~/dotfiles/vscode;     '$IS_GIT_STAGED' (git add .config; git ci -m"vscode: updated VSCode config settings"); cd -'
+alias commitaliases='cd ${DOT_DIR}/bash/bash; '$IS_GIT_STAGED' (git add .bash_aliases; git ci -m"bash_aliases: updated aliases"); cd -'
+alias commitbashrc='cd ${DOT_DIR}/bash/;      '$IS_GIT_STAGED' (git add .bashrc; git ci -m"bashrc: updated"); cd -'
+alias commitdesktop='cd ${DOT_DIR}/desktop;   '$IS_GIT_STAGED' (git add .local; git ci -m"desktop: updated .desktop shortcuts"); cd -'
+alias commitgitconf='cd ${DOT_DIR}/git;       '$IS_GIT_STAGED' (git add .gitconfig; git ci -m"git: updated .gitconfig"); cd -'
+alias committmux='cd ${DOT_DIR}/tmux;         '$IS_GIT_STAGED' (git add .tmux.conf; git ci -m"tmux: updated .tmux.conf"); cd -'
+alias commitvimrc='cd ${DOT_DIR}/vim;         '$IS_GIT_STAGED' (git add .vimrc; git ci -m"vim: updated .vimrc"); cd -'
+alias commitvscode='cd ${DOT_DIR}/vscode;     '$IS_GIT_STAGED' (git add .config; git ci -m"vscode: updated VSCode config settings"); cd -'
 
 alias commitglb=''$IS_GIT_STAGED'       (git add .gitlab-ci.yml; git ci -m "Updated .gitlab-ci.yml")'
 alias commitgitignore=''$IS_GIT_STAGED' (git add .gitignore; git ci -m "Updated .gitignore")'
 
-alias gitconf="vim ~/dotfiles/git/.gitconfig"
+alias gitconf="vim ${DOT_DIR}/git/.gitconfig"
 alias glb="vim .gitlab-ci.yml"
 alias tmconf="vim ~/.tmux.conf"
-alias vimrc="vim ~/dotfiles/vim/.vimrc"
+alias vimrc="vim ${DOT_DIR}/vim/.vimrc"
 
 
 #-------------------------------------------------------------------------------

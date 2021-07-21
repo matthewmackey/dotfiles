@@ -14,5 +14,4 @@ if [ -f $default_python_bin/virtualenvwrapper.sh ]; then
   export VIRTUALENVWRAPPER_VIRTUALENV=$default_python_bin/virtualenv
   export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--always-copy'
   source $default_python_bin/virtualenvwrapper.sh
-
 fi

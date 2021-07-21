@@ -1,15 +1,19 @@
-source ~/dotfiles/shell/bashrc-20_04
-source ~/dotfiles/shell/bashrc
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="robbyrussell"
+
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
 
 # Source COMMON
 source ~/dotfiles/.rc
 
-# Source BASH-specific
-for bash_shell_file in ~/dotfiles/shell/*.bash
-do
-  echo "Sourcing -> [$bash_shell_file]"
-  source "$bash_shell_file"
-done
+# Source ZSH-specific
+# for zsh_shell_file in ~/dotfiles/shell/*.zsh
+# do
+#   echo "Sourcing -> [$zsh_shell_file]"
+#   source "$zsh_shell_file"
+# done
 
 # Source LOCAL (files in local dir that can be source-controlled)
 if [ -f ~/.local/dot/rc ]; then
