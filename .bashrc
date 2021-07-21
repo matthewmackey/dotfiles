@@ -1,21 +1,30 @@
 #--------------------------------#
 # Local File Config
 #--------------------------------#
-source ~/dotfiles/shell/bashrc-20_04
-source ~/dotfiles/shell/bashrc
-
+set -o vi
 eval "$(zoxide init bash)"
+
+# Bashmarks
+[ $(command -v l | grep alias) ] && unalias l
+if [ ! -f ~/.local/bin/bashmarks.sh ]; then
+  mkdir -p ~/.local/bin 2>/dev/null
+  curl -o ~/.local/bin/bashmarks.sh "https://raw.githubusercontent.com/huyng/bashmarks/master/bashmarks.sh"
+fi
+source ~/.local/bin/bashmarks.sh
 
 
 #--------------------------------#
 # Dotfiles Config
 #--------------------------------#
+DOT_DIR=~/dotfiles
+
+source ~/dotfiles/shell/bashrc-20_04
 
 # Source COMMON
-source ~/dotfiles/.rc
+source $DOT_DIR/.rc
 
 # Source BASH-specific
-for bash_shell_file in ~/dotfiles/shell/*.bash
+for bash_shell_file in $DOT_DIR/shell/*.bash
 do
   echo "Sourcing -> [$bash_shell_file]"
   source "$bash_shell_file"

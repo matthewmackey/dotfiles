@@ -18,8 +18,9 @@ setopt histreduceblanks
 setopt histverify
 setopt sharehistory
 
-
 eval "$(zoxide init zsh)"
+
+
 #--------------------------------#
 # Oh My Zsh Config
 #--------------------------------#
@@ -41,6 +42,9 @@ DOT_DIR=~/dotfiles
 
 # Source COMMON
 source $DOT_DIR/.rc
+
+# Source ZSH-specific aliases
+source $DOT_DIR/shell/zsh.aliases
 
 # Source ZSH-specific
 for zsh_shell_file in $DOT_DIR/shell/*.zsh

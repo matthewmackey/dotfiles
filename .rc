@@ -10,11 +10,15 @@ case $- in
       *) return;;
 esac
 
-export DOT_DIR=~/dotfiles
+#---------------------------#
+# TERM - base16-shell       #
+#---------------------------#
+if [ ! -d ~/.config/base16-shell/.git ]; then
+  git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+fi
 
-export EDITOR="vi"
-export FCEDIT="vi"
-export VISUAL="vi"
+BASE16_SHELL="$HOME/.config/base16-shell"
+[ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ] && eval "$("$BASE16_SHELL/profile_helper.sh")"
 
 #---------------------------#
 # PATH                      #
@@ -31,8 +35,16 @@ do
   fi
 done
 
+export EDITOR="vi"
+export FCEDIT="vi"
+export VISUAL="vi"
+
+export DOT_DIR=~/dotfiles
+
+# SOUCE - common shell aliases
 source $DOT_DIR/shell/aliases
 
+# SOURCE - common shell files
 for common_shell_file in $DOT_DIR/shell/*.common
 do
   echo "Sourcing -> [$common_shell_file]"

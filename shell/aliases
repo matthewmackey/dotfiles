@@ -29,13 +29,13 @@ alias cll="cl; pwd; ll"
 #-------------------------------------
 # [cd]
 #-------------------------------------
-alias cdl="cd -"
-alias cdll="cd -; cll"
-alias cdd="cd ../"
-alias cddd="cd ../../"
-alias cdddd="cd ../../../"
-alias cddddd="cd ../../../../"
-alias cdddddd="cd ../../../../../"
+alias .l="cd -"
+alias .ll="cd -; cll"
+alias ..="cd ../"
+alias ...="cd ../../"
+alias ....="cd ../../../"
+alias .....="cd ../../../../"
+alias ......="cd ../../../../../"
 
 # Go up directories then do directory listing
 alias cddl="cdd; cll "

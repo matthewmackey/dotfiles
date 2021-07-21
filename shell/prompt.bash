@@ -1,35 +1,4 @@
 #---------------------------#
-# SHELL - Vim Settings      #
-#---------------------------#
-set -o vi
-
-
-#---------------------------#
-# SHELL - Bashmarks         #
-#---------------------------#
-if [[ $(command -v l | grep alias) ]]; then
-  unalias l
-fi
-
-if [ ! -f ~/.local/bin/bashmarks.sh ]; then
-  mkdir -p ~/.local/bin 2>/dev/null
-  curl -o ~/.local/bin/bashmarks.sh "https://raw.githubusercontent.com/huyng/bashmarks/master/bashmarks.sh"
-fi
-source ~/.local/bin/bashmarks.sh
-
-
-#---------------------------#
-# TERM - base16-shell       #
-#---------------------------#
-if [[ ! -d ~/.config/base16-shell/.git ]]; then
-  git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
-fi
-
-BASE16_SHELL="$HOME/.config/base16-shell"
-[ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ] && eval "$("$BASE16_SHELL/profile_helper.sh")"
-
-
-#---------------------------#
 # PROMPT - SSH              #
 #---------------------------#
 # Change prompt if session is remote
