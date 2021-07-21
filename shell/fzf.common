@@ -1,10 +1,6 @@
 if [ ! -d $HOME/.fzf ]; then
   git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
-  $HOME/.fzf/install --no-zsh --no-fish --key-bindings --completion --no-update-rc
-fi
-
-if [[ ! "$PATH" == *$HOME/.fzf/bin* ]]; then
-  export PATH="${PATH:+${PATH}:}$HOME/.fzf/bin"
+  $HOME/.fzf/install --no-bash --no-fish --no-zsh --no-key-bindings --no-completion --no-update-rc
 fi
 
 # Use `--color=never` b/c otherwise Bash color escape codes show in fzf results
