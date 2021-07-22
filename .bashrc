@@ -12,6 +12,12 @@ if [ ! -f ~/.local/bin/bashmarks.sh ]; then
 fi
 source ~/.local/bin/bashmarks.sh
 
+FZF_MARKS_PLUGIN=~/.fzf-marks.plugin.bash
+if [ ! -f "$FZF_MARKS_PLUGIN" ]; then
+  curl https://raw.githubusercontent.com/urbainvaes/fzf-marks/master/fzf-marks.plugin.bash \
+    -o "$FZF_MARKS_PLUGIN"
+fi
+
 
 #--------------------------------#
 # Dotfiles Config
@@ -29,6 +35,10 @@ do
   echo "Sourcing -> [$bash_shell_file]"
   source "$bash_shell_file"
 done
+
+# Must be sourced after fzf.bash is b/c that file puts `fzf` on the PATH, which
+# this plugin requires to be on the PATH in order to be sourced properly
+source "$FZF_MARKS_PLUGIN"
 
 # Source LOCAL (files in local dir that can be source-controlled)
 if [ -f ~/.local/dot/rc ]; then
