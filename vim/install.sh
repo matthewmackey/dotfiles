@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -e
+set -o pipefail
+
 #-------------------------------#
 # SYMLINK - .vimrc              #
 #-------------------------------#
@@ -13,6 +16,13 @@ fi
 if [ ! -L ~/.vim ]; then
   ln -s ~/dotfiles/vim/.vim ~/.vim
 fi
+
+#-------------------------------#
+# Install vim-plug              #
+#-------------------------------#
+sudo apt install -y curl
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 #-------------------------------#
 # Install Language Servers      #
