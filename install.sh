@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 msg() {
   printf "%s\n" "$1"
 }
@@ -30,7 +32,7 @@ create_symlink_with_backup() {
 
     else
       msg "[$_link_name] exists AND is NOT a symlink"
-      local _backup=~/$_link_name.bak."$(date +%F_%R)"
+      local _backup=$_link_name.bak."$(date '+%F-%H%M%S')"
 
       msg "Moving existing [$_link_name] to -> [$_backup]"
       mv "$_link_name" "$_backup"
@@ -46,8 +48,10 @@ create_symlink_with_backup() {
 #-------------------------------#
 install_packages
 create_symlink_with_backup ~/dotfiles/.bashrc .bashrc ~
+create_symlink_with_backup ~/dotfiles/.zshrc .zshrc ~
 
 ./git/install.sh
+./shell/install.sh
 ./tmux/install.sh
 ./vim/install.sh
 
