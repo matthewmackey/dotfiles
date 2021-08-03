@@ -40,6 +40,10 @@ MODE_INDICATOR="%F{yellow}<<<%f"
 
 source $ZSH/oh-my-zsh.sh
 
+# Fix git paging issues w/ oh-my-zsh
+# https://superuser.com/questions/820943/typing-git-log-oneline-in-oh-my-zsh-pipes-to-less
+unset LESS
+
 
 #--------------------------------#
 # Dotfiles Config
