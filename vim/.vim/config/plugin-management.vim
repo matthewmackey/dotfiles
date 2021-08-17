@@ -47,6 +47,10 @@ endif
 " golang
 Plug 'fatih/vim-go'
 
+" HCL
+" Not specifically a vim-plug plugin
+Plug 'jvirtanen/vim-hcl'
+
 " javascript/typescript/jsx/tsx
 Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
