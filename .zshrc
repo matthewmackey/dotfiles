@@ -33,7 +33,7 @@ fi
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 
-plugins=(copydir copyfile git vi-mode)
+plugins=(copydir copyfile git kubectl vi-mode)
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 VI_MODE_SET_CURSOR=true
 MODE_INDICATOR="%F{yellow}<<<%f"
@@ -66,6 +66,9 @@ done
 # Must be sourced after fzf.zsh is b/c that file puts `fzf` on the PATH, which
 # this plugin requires to be on the PATH in order to be sourced properly
 source "$FZF_MARKS_PLUGIN"
+
+# Reload any completions that were loaded
+autoload -U compinit && compinit
 
 # Source LOCAL (files in local dir that can be source-controlled)
 if [ -f ~/.local/dot/rc ]; then
