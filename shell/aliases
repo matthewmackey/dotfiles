@@ -5,13 +5,15 @@ DOT_DIR=~/dotfiles
 #-------------------------------------------------------------------------------
 ALIASES=${DOT_DIR}/shell/aliases
 LOCAL_ALIASES=~/.local/dot/aliases
+LOCAL_RC=~/.local/dot/rc
 
 #-------------------------------------
-# Shell - [Aliases]
+# Shell - [aliases/rc]
 #-------------------------------------
 alias al="vim ${ALIASES}"
 alias lal="vim ${LOCAL_ALIASES}"
 alias sa=". ${ALIASES}; [ -f ${LOCAL_ALIASES} ] && . ${LOCAL_ALIASES}"
+alias lrc="vim ${LOCAL_RC}"
 
 #-------------------------------------
 # [bin]

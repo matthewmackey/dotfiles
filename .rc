@@ -49,6 +49,9 @@ export DOT_DIR=~/dotfiles
 # SOUCE - common shell aliases
 source $DOT_DIR/shell/aliases
 
+# SOUCE - Kubernetes aliases
+source $DOT_DIR/shell/aliases.kubernetes
+
 # SOURCE - common shell files
 for common_shell_file in $DOT_DIR/shell/*.common
 do

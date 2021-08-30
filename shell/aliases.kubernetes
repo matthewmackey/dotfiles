@@ -1,0 +1,47 @@
+#-----------------------
+# kubectl
+#-----------------------
+alias certs="kubectl get Issuers,ClusterIssuers,Certificates,CertificateRequests,Orders,Challenges"
+
+alias configmaps="kubectl get configmaps"
+
+alias context="kubectl config get-contexts"
+alias contexts="kubectl config get-contexts | tail -n +2 | awk '{print \$2}'"
+
+alias describe="kubectl describe"
+alias describep="kubectl describe pod"
+
+alias deployment="kubectl get deployments"
+alias deployments="kubectl get deployments -o wide"
+
+alias ingress="kubectl get ingress"
+
+alias issuers="kubectl get issuers"
+
+alias logs="kubectl logs"
+
+alias nodes="kubectl get nodes"
+alias nodesw="kubectl get nodes -o wide"
+
+alias pod="kubectl get pods"
+alias pods="kubectl get pods -o wide"
+
+alias podcidr="kubectl get nodes -o jsonpath='{.items[*].spec.podCIDR}'"
+
+alias pvs="kubectl get persistentvolumes"
+alias pvcs="kubectl get persistentvolumeclaims"
+
+alias secrets="kubectl get secrets"
+
+alias service="kubectl get services"
+alias servicea="kubectl get services -A"
+alias services="kubectl get services -o wide"
+alias servicesa="kubectl get services -A -o wide"
+
+alias storageclasses="kubectl get storageclasses"
+
+#-----------------------
+# Tools
+#-----------------------
+alias kctx="kubectx"
+alias kns="kubens"
