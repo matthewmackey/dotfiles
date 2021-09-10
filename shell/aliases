@@ -4,6 +4,8 @@ DOT_DIR=~/dotfiles
 # [SHELL]
 #-------------------------------------------------------------------------------
 ALIASES=${DOT_DIR}/shell/aliases
+KUBERNETES_ALIASES=${DOT_DIR}/shell/aliases.kubernetes
+ZSH_ALIASES=${DOT_DIR}/shell/zsh.aliases
 LOCAL_ALIASES=~/.local/dot/aliases
 LOCAL_RC=~/.local/dot/rc
 
@@ -11,9 +13,14 @@ LOCAL_RC=~/.local/dot/rc
 # Shell - [aliases/rc]
 #-------------------------------------
 alias al="vim ${ALIASES}"
+alias kal="vim ${KUBERNETES_ALIASES}"
+alias zal="vim ${ZSH_ALIASES}"
 alias lal="vim ${LOCAL_ALIASES}"
-alias sa=". ${ALIASES}; [ -f ${LOCAL_ALIASES} ] && . ${LOCAL_ALIASES}"
-alias lrc="vim ${LOCAL_RC}"
+alias sa="source ${ALIASES}; source ${KUBERNETES_ALIASES}; source ${ZSH_ALIASES}; [ -f ${LOCAL_ALIASES} ] && . ${LOCAL_ALIASES}"
+alias rc="vim ${DOT_DIR}/.rc"
+alias rcl="vim ${LOCAL_RC}"
+alias rcb="vim ~/.bashrc"
+alias rcz="vim ~/.zshrc"
 
 #-------------------------------------
 # [bin]
@@ -148,10 +155,10 @@ alias gbd="git branch -d"
 alias gbm="git branch -m"
 
 # Diff
-alias gd="clrgit diff"
+alias gd="clrgit diff --"
 
 # Diff --staged
-alias gds="clrgit diff --staged"
+alias gds="clrgit diff --staged --"
 
 # Log
 alias gl="clrgit l"

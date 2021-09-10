@@ -1,12 +1,14 @@
 #-----------------------
 # kubectl
 #-----------------------
+
 alias certs="kubectl get Issuers,ClusterIssuers,Certificates,CertificateRequests,Orders,Challenges"
 
 alias configmaps="kubectl get configmaps"
 
 alias context="kubectl config get-contexts"
 alias contexts="kubectl config get-contexts | tail -n +2 | awk '{print \$2}'"
+alias rcontext="kubectl config rename-context"
 
 alias describe="kubectl describe"
 alias describep="kubectl describe pod"
@@ -14,9 +16,14 @@ alias describep="kubectl describe pod"
 alias deployment="kubectl get deployments"
 alias deployments="kubectl get deployments -o wide"
 
+alias get="kubectl get all"
+alias geta="kubectl get all -A"
+
 alias ingress="kubectl get ingress"
+alias ingressa="kubectl get ingress -A"
 
 alias issuers="kubectl get issuers"
+alias issuersa="kubectl get issuers -A"
 
 alias logs="kubectl logs"
 
@@ -25,6 +32,7 @@ alias nodesw="kubectl get nodes -o wide"
 
 alias pod="kubectl get pods"
 alias pods="kubectl get pods -o wide"
+alias podsa="kubectl get pods -o wide -A"
 
 alias podcidr="kubectl get nodes -o jsonpath='{.items[*].spec.podCIDR}'"
 
@@ -43,5 +51,6 @@ alias storageclasses="kubectl get storageclasses"
 #-----------------------
 # Tools
 #-----------------------
+alias kupdateconf='{ cp ~/.kube/config ~/.kube/config.bak ; kubectl config view --flatten > ~/.kube/config.new ; mv ~/.kube/config.new ~/.kube/config ; unset KUBECONFIG ; }'
 alias kctx="kubectx"
 alias kns="kubens"
