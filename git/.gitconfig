@@ -6,13 +6,6 @@
 # color scheme; see link below for more info:
 #    - https://superuser.com/questions/337985/how-can-i-achieve-separate-colors-for-current-local-and-remote-ref-names-when
 #-------------------------------------------------------------------------------
-
-[user]
-  name = Matthew Machaj
-  email = 73896224+matthewmachaj@users.noreply.github.com
-#  name = Matthew Mackey
-#  email = 21043873+matthewmackey@users.noreply.github.com
-
 [alias]
   #----------------------------------
   # Add
