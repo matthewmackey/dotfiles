@@ -28,3 +28,7 @@ runtime config/lsp-config.vim
 "----------------------------------------------
 runtime config/colors.vim
 
+"----------------------------------------------
+" Local-overrides
+"----------------------------------------------
+runtime .vimrc-local

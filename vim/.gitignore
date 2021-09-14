@@ -1,5 +1,6 @@
 .vim/autoload/plug.vim
 plugged/
+.vim/.vimrc-local
 
 # Used for things like persistent undo files
 tmp/
