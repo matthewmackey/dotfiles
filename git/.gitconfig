@@ -47,9 +47,13 @@
   # Log
   #----------------------------------
   l   = log --pretty=format:'%C(yellow)%h%C(reset) %C(green)(%><(12)%cr%><|(12))%C(reset) - %s %C(blue)<%an>%C(reset)%C(auto)%d%C(reset)'
+  lf   = log --pretty=format:'%C(yellow)%h%C(reset) %C(green)(%cs / %as)%C(reset) - %s %C(blue)<C:%cn, A:%an>%C(reset)%C(auto)%d%C(reset)'
   ln  = l -n
   lg  = l --graph
+  lgf  = lf --graph
   lga = l --all --graph
+  lgaf = lf --all --graph
+
   # c = Complete History
   lgc  = l --graph
   lgca  = l --graph --all
@@ -97,6 +101,10 @@
 
 [credential "https://github.com"]
 #  username = matthewmachaj
+
+[format]
+  pretty = fuller
+  pretty = medium
 
 [merge]
   #tool = ??
