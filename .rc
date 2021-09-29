@@ -56,5 +56,9 @@ source $DOT_DIR/shell/aliases.kubernetes
 for common_shell_file in $DOT_DIR/shell/*.common
 do
   echo "Sourcing -> [$common_shell_file]"
+  #timer=$(($(date +%s%N)/1000000))
   source "$common_shell_file"
+  #now=$(($(date +%s%N)/1000000))
+  #elapsed=$(($now-$timer))
+  #echo $elapsed
 done

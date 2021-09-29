@@ -60,7 +60,11 @@ source $DOT_DIR/shell/zsh.aliases
 for zsh_shell_file in $DOT_DIR/shell/*.zsh
 do
   echo "Sourcing -> [$zsh_shell_file]"
+  # timer=$(($(date +%s%N)/1000000))
   source "$zsh_shell_file"
+  # now=$(($(date +%s%N)/1000000))
+  # elapsed=$(($now-$timer))
+  # echo $elapsed
 done
 
 # Must be sourced after fzf.zsh is b/c that file puts `fzf` on the PATH, which
@@ -73,9 +77,17 @@ autoload -U compinit && compinit
 # Source LOCAL (files in local dir that can be source-controlled)
 if [ -f ~/.local/dot/rc ]; then
   echo "Sourcing -> [~/.local/dot/rc]"
+  # timer=$(($(date +%s%N)/1000000))
   source ~/.local/dot/rc
+  # now=$(($(date +%s%N)/1000000))
+  # elapsed=$(($now-$timer))
+  # echo $elapsed
 fi
 if [ -f ~/.local/dot/aliases ]; then
   echo "Sourcing -> [~/.local/dot/aliases]"
+  # timer=$(($(date +%s%N)/1000000))
   source ~/.local/dot/aliases
+  # now=$(($(date +%s%N)/1000000))
+  # elapsed=$(($now-$timer))
+  # echo $elapsed
 fi
