@@ -16,6 +16,9 @@ alias describep="kubectl describe pod"
 alias deployment="kubectl get deployments"
 alias deployments="kubectl get deployments -o wide"
 
+alias endpoint="kubectl get endpoints"
+alias endpoints="kubectl get endpoints -A"
+
 alias get="kubectl get all"
 alias geta="kubectl get all -A"
 

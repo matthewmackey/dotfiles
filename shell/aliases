@@ -89,9 +89,9 @@ alias syslog="tail -f /var/log/syslog"
 
 TREE_BIN=/usr/bin/tree
 alias treee="cl; $TREE_BIN"
-alias tree="cl; $TREE_BIN -a -I '.git|build|dist|node_modules'"
+alias tree="cl; $TREE_BIN -a -I '.git|build|dist|node_modules|.terraform'"
 alias treea="cl; $TREE_BIN -a"
-alias treeg="cl; $TREE_BIN -I '.git|build|dist|node_modules'"
+alias treeg="cl; $TREE_BIN -I '.git|build|dist|node_modules|.terraform'"
 alias tree1="tree -L 1"
 alias tree2="tree -L 2"
 alias tree3="tree -L 3"
@@ -138,6 +138,7 @@ alias gitconf="vim ${DOT_DIR}/git/.gitconfig"
 alias glb="vim .gitlab-ci.yml"
 alias tmconf="vim ~/.tmux.conf"
 alias vimrc="vim ${DOT_DIR}/vim/.vimrc"
+alias vimrcl="vim ${DOT_DIR}/vim/.vim/.vimrc-local"
 
 
 #-------------------------------------------------------------------------------
@@ -156,20 +157,25 @@ alias gbm="git branch -m"
 
 # Diff
 alias gd="clrgit diff --"
+alias gdp="clrgit diff -- . ':!package-lock.json'"
 
 # Diff --staged
 alias gds="clrgit diff --staged --"
+alias gdsp="clrgit diff --staged -- . ':!package-lock.json'"
 
 # Log
 alias gl="clrgit l"
+alias gln="clrgit l --name-only"
+alias gls="clrgit l --stat"
+alias glnopage="clrgit -c pager.log=false l"
 
 # Log - Graph
 alias glg="clrgit lg"
+alias glgf="clrgit lgf"
 
 # Log - Graph (Quarter/Half/Full-screen)
 alias glgq="glg -n 15"
 alias glgh="glg -n 22"
-alias glgf="glg -n 45"
 
 # Log - Graph --all
 alias glga="clrgit lga"
@@ -194,6 +200,7 @@ alias gst="clrgit st"
 alias gss="clrgit ss"
 
 # MISCELLANEOUS
+alias remote="git remote -v"
 alias remotes="clrgit remote -v"
 
 
