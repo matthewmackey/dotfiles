@@ -333,3 +333,32 @@ function drm() {
   [ -n "$cid" ] && docker rm "$cid"
 }
 
+# Start VM from disk image (usually qcow2)
+# SEE: https://powersj.io/posts/ubuntu-qemu-cli/
+#
+# Use "Ctrl-A X" to get out of VM cli console & kill VM
+qemuStart() {
+  local vm_disk=$1
+  local use_graphics=${2:-n}
+
+  local graphics_arg="-nographic"
+
+  if [ ! -f "${vm_disk}" ]; then
+    echo "You must provide a path to a VM disk file: <vm_disk> [use_graphics(y|n)]"
+    return 1
+  fi
+
+  if [ "${use_graphics}" != "n" ]; then
+    graphics_arg=("-vga" "std")
+  fi
+
+  qemu-system-x86_64 \
+    -accel kvm \
+    -cpu host \
+    -m 2048 \
+    -drive file="${vm_disk}",media=disk,if=virtio \
+    -device virtio-net-pci,netdev=net0 \
+    -netdev user,id=net0,hostfwd=tcp::2222-:22 \
+    "${graphics_arg[@]}"
+}
+
