@@ -223,6 +223,7 @@ alias lmysql="mysql -h 0.0.0.0 -P 3306 -u root -ppw"
 # [networking]
 #-------------------------------------------------------------------------------
 alias hosts="cat /etc/hosts"
+alias ibas="sudo ip -br addr show"
 alias ns="sudo netstat -tlpn"
 alias nsg="sudo netstat -tlpn | grep"
 
