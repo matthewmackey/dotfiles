@@ -115,22 +115,35 @@ nnoremap <C-PageDown> :tabnext<CR>
 
 " Go to prev tab page; wraps around from 1st to last
 " (can't use HJKL alone because I need those standard Vim bindings))
-nnoremap <Leader>.   :tabprev<CR>
+nnoremap <Leader>;   :tabprev<CR>
 nnoremap <Leader>H   :tabprev<CR>
-nnoremap <Leader>tj  :tabprev<CR>
 nnoremap <Leader>P   :tabprev<CR>
 
 " Go to next tab page; wraps around from last to 1st
-nnoremap <Leader>,   :tabnext<CR>
+nnoremap <Leader>.   :tabnext<CR>
 nnoremap <Leader>L   :tabnext<CR>
-nnoremap <Leader>tk  :tabnext<CR>
-nnoremap <Leader>N   :tabprev<CR>
+nnoremap <Leader>N   :tabnext<CR>
 
 " Go to 1st tab
 nnoremap <Leader>th  :tabfirst<CR>
 
 " Go to last tab
 nnoremap <Leader>tl  :tablast<CR>
+
+" Go to exact tab number (tabs are 1-indexed)
+nnoremap <Leader>t1   :tabnext 1<CR>
+nnoremap <Leader>t2   :tabnext 2<CR>
+nnoremap <Leader>t3   :tabnext 3<CR>
+nnoremap <Leader>t4   :tabnext 4<CR>
+nnoremap <Leader>t5   :tabnext 5<CR>
+
+" Go to last 'active' tab
+if !exists('g:lasttab')
+  let g:lasttab = 1
+endif
+nnoremap <Leader>, :exe "tabnext ".g:lasttab<CR>
+au TabLeave * let g:lasttab = tabpagenr()
+
 
 "-----------------------------
 " Completion mappings

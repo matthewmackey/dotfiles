@@ -32,3 +32,22 @@ runtime config/colors.vim
 " Local-overrides
 "----------------------------------------------
 runtime .vimrc-local
+
+
+"---------------------------------------------------------------
+" NOTES - things I can't remember from Help Pages
+"---------------------------------------------------------------
+"
+"--------------------------------
+" Ex-mode w/ command-line window
+" From: Vim Help Pages
+"--------------------------------
+" OPEN						*c_CTRL-F* *q:* *q/* *q?*
+
+" There are two ways to open the command-line window:
+" 1. From Command-line mode, use the key specified with the 'cedit' option.
+"    The default is CTRL-F when 'compatible' is not set.
+" 2. From Normal mode, use the "q:", "q/" or "q?" command.
+"    This starts editing an Ex command-line ("q:") or search string ("q/" or
+"   "q?").  Note that this is not possible while recording is in progress (the
+"   "q" stops recording then).
