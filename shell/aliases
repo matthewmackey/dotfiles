@@ -67,6 +67,20 @@ alias hg="history | grep"
 alias ll="ls -alh"
 alias mx="chmod +x"
 
+
+################################################################################
+
+#-------------------------------------------------------------------------------
+# [GUI]
+#-------------------------------------------------------------------------------
+# SEE: https://unix.stackexchange.com/questions/422111/linux-mint-cinnamon-18-in-what-file-are-the-keyboard-shortcuts-saved
+alias keybindingsdump="dconf dump /org/cinnamon/desktop/keybindings/ | tee $DOT_DIR/gui/cinnamon/keybindings.conf"
+alias keybindingsload="dconf load /org/cinnamon/desktop/keybindings/"
+
+alias workspacesettingsdump="dconf dump /org/cinnamon/desktop/wm/ | tee $DOT_DIR/gui/cinnamon/workspace.conf"
+alias workspacesettingsload="dconf load /org/cinnamon/desktop/wm/"
+
+
 ################################################################################
 
 #-------------------------------------------------------------------------------
