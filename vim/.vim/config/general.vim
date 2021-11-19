@@ -51,6 +51,15 @@ set nohlsearch                    " Highlight found searches
 "set ignorecase                  " Search case insensitive...
 "set smartcase                   " ... but not it begins with upper case
 
+" FROM help:
+" If you don't want to turn 'hlsearch' on, but want to highlight all
+" matches while searching, you can turn on and off 'hlsearch' with
+augroup vimrc-incsearch-highlight
+  autocmd!
+  autocmd CmdlineEnter /,\? :set hlsearch
+  autocmd CmdlineLeave /,\? :set nohlsearch
+augroup END
+
 " Text & Indentation
 set expandtab                    " Use spaces, no tabs
 set shiftwidth=2                 " # of spaces to use for each indent

@@ -33,6 +33,10 @@ map <Leader>s :call MmSynUnderCursor()<CR>
 "-------------------------------------------------------
 " See theme screenshots here:
 "   https://github.com/vim-airline/vim-airline/wiki/Screenshots
+
+"--------------------------
+" DEFAULT Airline Theme
+"--------------------------
 let g:airline_theme = 'papercolor'
 
 let g:mm_airline_themes = ['dark', 'light', 'murmur', 'papercolor', 'solarized']
