@@ -19,7 +19,8 @@ if filereadable(expand("~/.vim/plugged/base16-vim/colors/base16-seti.vim"))
 endif
 
 " Must be after sourcing ~/.vimrc_background to override for all colorschemes
-highlight ColorColumn ctermbg=gray
+" highlight ColorColumn ctermbg=None cterm=underline
+highlight ColorColumn ctermbg=DarkGray
 
 " Toggle the colorcolumn on/off
 "
@@ -28,7 +29,10 @@ highlight ColorColumn ctermbg=gray
 " NOTE - the +1 sets colorcolumn to +1 of current textwidth value;
 "        the normal textwidth set in the general settings is 80
 noremap <Leader>5 :windo exec (&colorcolumn == '0' ? ':set colorcolumn=+1' : ':set colorcolumn=0')<CR>
-noremap <F5>      :windo exec (&colorcolumn == '0' ? ':set colorcolumn=+1' : ':set colorcolumn=0')<CR>
+
+" Underline anything over '&colorcolumn'
+highlight OverLength cterm=underline
+execute 'match OverLength /\%>' . &textwidth . 'v.\+/'
 
 "---------------------"
 "   Git with Vim      "
@@ -41,4 +45,3 @@ set colorcolumn=+1
 
 " In Git commit messages, also colour the 51st column (for titles)
 autocmd FileType gitcommit set colorcolumn+=51
-
