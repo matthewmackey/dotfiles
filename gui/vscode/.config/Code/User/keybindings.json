@@ -4,10 +4,41 @@
    * General Key Bindings
    ****************************************************************************/
   /**
+   * This is default setting to bring up main modal toolbar for VS Code, but
+   * putting in this file so I can't easily lookup what is is
+   */
+  {
+    "key": "ctrl+shift+p",
+    "command": "workbench.action.showCommands"
+  },
+  /**
+   * Toggle Side-Bar (one w/ Explorer tab)
+   */
+  {
+    "key": "ctrl+b s",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  /**
+   * Show User Keybindings
+   */
+  {
+    "key": "alt+k u",
+    "command": "workbench.action.openGlobalKeybindingsFile"
+  },
+  /**
+   * Show Default Keybindings
+   */
+  {
+    "key": "alt+k d",
+    "command": "workbench.action.openDefaultKeybindingsFile"
+  },
+  /**
    * Override: find-and-replace (ctrl+h) which doesn't work with Vim
    */
-  { "key": "ctrl+shift+r", "command": "editor.action.startFindReplaceAction" },
-
+  {
+    "key": "ctrl+shift+r",
+    "command": "editor.action.startFindReplaceAction"
+  },
   /*****************************************************************************
    * Navigation Key Bindings
    ****************************************************************************/
@@ -18,15 +49,19 @@
     "key": "ctrl+b x",
     "command": "workbench.action.closeActiveEditor"
   },
-
   /**
    * Switch to next/previous tab within tab group
    */
-  { "key": "ctrl+j", "command": "workbench.action.previousEditorInGroup" },
-  { "key": "ctrl+k", "command": "workbench.action.nextEditorInGroup" },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.previousEditorInGroup"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.nextEditorInGroup"
+  },
   // { "key": "ctrl+pageup", "command": "workbench.action.previousEditor" },
   // { "key": "ctrl+pagedown", "command": "workbench.action.nextEditor" }
-
   /**
    * Shift tabs left/right within tab group
    */
@@ -38,9 +73,8 @@
     "key": "ctrl+shift+.",
     "command": "workbench.action.moveEditorRightInGroup"
   },
-
   /**
-   * Move tabs between tab groups (panes)
+   * Move tabs between tab groups
    */
   {
     "key": "ctrl+shift+j",
@@ -58,15 +92,13 @@
     "key": "ctrl+shift+l",
     "command": "workbench.action.moveEditorToRightGroup"
   },
-
   /**
-   * Switch between tab groups (panes)
+   * Switch between tab groups
    */
   {
     "key": "ctrl+b o",
     "command": "workbench.action.navigateEditorGroups"
   },
-
   /**
    * Navigate between all UI groups (Explorer, Terminal, Tab Groups, etc.)
    */
@@ -85,5 +117,5 @@
   {
     "key": "ctrl+l",
     "command": "workbench.action.navigateRight"
-  }
+  },
 ]

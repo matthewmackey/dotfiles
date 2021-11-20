@@ -51,5 +51,7 @@
   //  - simple: Assumes that all characters are of the same width. This is a fast algorithm that works correctly for monospace fonts and certain scripts (like Latin characters) where glyphs are of equal width.
   //  - advanced: Delegates wrapping points computation to the browser. This is a slow algorithm, that might cause freezes for large files, but it works correctly in all cases.
   "editor.wrappingStrategy": "simple",
-  "python.languageServer": "Microsoft"
+  "python.languageServer": "Microsoft",
+  "window.zoomLevel": -1,
+  "extensions.ignoreRecommendations": true
 }
