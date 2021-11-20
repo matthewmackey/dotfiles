@@ -187,6 +187,7 @@ alias gdsp="clrgit diff --staged -- . ':!package-lock.json'"
 # Log
 alias gl="clrgit l"
 alias gln="clrgit l --name-only"
+alias glf="gln"
 alias gls="clrgit l --stat"
 alias glnopage="clrgit -c pager.log=false l"
 
