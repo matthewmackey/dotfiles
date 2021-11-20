@@ -71,6 +71,11 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'leafgarland/typescript-vim'
 
 "---------------------------------------------"
+" Python
+"---------------------------------------------"
+Plug 'tmhedberg/SimpylFold'    " Python-specific folding
+
+"---------------------------------------------"
 " Web
 "---------------------------------------------"
 Plug 'mattn/emmet-vim'

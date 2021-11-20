@@ -19,8 +19,6 @@ set nocursorcolumn              " Do not highlight column cursor is on(speeds up
 set nocursorline                " Do not highlight line cursor is on (speeds up highlighting)
 set encoding=utf8             " UTF-8 encoding and en_US as default encoding/language
 set ffs=unix,dos,mac          " Define standard filetype
-set foldmethod=marker
-set foldmarker={{,}}
 set hidden                    " Buffer should still exist if window is closed
 set lazyredraw                " Wait to redraw
 set mouse=a                   " Allow mouse to move cursor
@@ -39,6 +37,12 @@ set textwidth=80                 " Force the cursor onto a new line after 80 cha
 set nobackup                  " Remove backup file after file is successfully overwritten
 set noswapfile                " Don't create swap files
 set writebackup               " Make a backup before overwriting a file
+
+" Folding
+set foldmethod=indent
+" set foldmethod=marker
+" set foldmarker={{,}}
+set foldlevelstart=99         " All folds open to start
 
 " Menus
 set completeopt=menu,menuone    " Show popup menu, even if there is one entry

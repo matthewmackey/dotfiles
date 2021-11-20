@@ -76,6 +76,9 @@ nnoremap N Nzzzv
 " Act like D and C
 nnoremap Y y$
 
+" IDE: Enable folding with spacebar
+nnoremap <Space> za
+
 "----------------------------------------------------------------"
 " Tabs                                                           "
 "----------------------------------------------------------------"
