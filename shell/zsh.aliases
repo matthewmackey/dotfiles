@@ -51,12 +51,15 @@ background() {
 #----------------------------------#
 # Global Aliases                   #
 #----------------------------------#
-alias -g L='| less'
+alias -g B='| base64 -d'
 alias -g G='| grep'
+alias -g J='| jq'
+alias -g L='| less'
 alias -g N='> /dev/null 2>&1'
 alias -g P="':!package-lock.json'"
 alias -g R="-o jsonpath='{.spec.containers[0].resources}' | jq"
-
+alias -g Y='| yh'
+#
 #----------------------------------#
 # Suffix Aliases                   #
 #----------------------------------#
