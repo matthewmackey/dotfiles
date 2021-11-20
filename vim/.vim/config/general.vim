@@ -71,6 +71,14 @@ set smarttab                     " Use smart tabs
 " Remap `:help` in command-mode to `:tab help`
 cnoreabbrev <expr> help getcmdtype() == ":" && getcmdline() == 'help' ? 'tab help' : 'help'
 
+" Change working directory of window to be the directory of current file anytime
+" we change windows (ie - each window has a workdir of where its file resides)
+"
+" 'When a |:lcd| command has been used for a window, the specified directory
+" becomes the current directory for that window.  Windows where the |:lcd|
+" command has not been used stick to the global or tab-local current directory.'
+autocmd BufEnter * silent! lcd %:p:h
+
 " Persistent undo
 let s:tmp_undodir = $HOME . '/.vim/tmp/undo'
 if has('persistent_undo')

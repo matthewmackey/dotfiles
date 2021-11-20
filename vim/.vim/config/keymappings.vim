@@ -32,7 +32,13 @@ nnoremap <F3>      :windo set norelativenumber! nonu!<Cr>
 
 nnoremap <Leader>4 :set list!<CR>
 nnoremap <F4>      :set list!<CR>
-"
+
+" Mainly used to close window when only NERDTree is open
+nnoremap <Leader>q :wqa<CR>
+
+"----------------------------------------------------------------"
+" Windows                                                        "
+"----------------------------------------------------------------"
 " Switch between different windows by their direction in ANY mode
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -59,6 +65,9 @@ noremap          <Leader>= <C-w>=                      " Make windows all equal 
 nnoremap <silent> <Leader>n :exe "vertical resize +10"<CR>
 nnoremap <silent> <Leader>m :exe "vertical resize -10"<CR>
 
+"----------------------------------------------------------------"
+" Other                                                          "
+"----------------------------------------------------------------"
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
 nnoremap n nzzzv
@@ -67,17 +76,9 @@ nnoremap N Nzzzv
 " Act like D and C
 nnoremap Y y$
 
-" Change working directory of window to be the directory of current file anytime
-" we change windows (ie - each window has a workdir of where its file resides)
-"
-" 'When a |:lcd| command has been used for a window, the specified directory
-" becomes the current directory for that window.  Windows where the |:lcd|
-" command has not been used stick to the global or tab-local current directory.'
-autocmd BufEnter * silent! lcd %:p:h
-
-"-------------------------------------------------
-" Tabs
-"-------------------------------------------------
+"----------------------------------------------------------------"
+" Tabs                                                           "
+"----------------------------------------------------------------"
 " From - https://vim.fandom.com/wiki/Alternative_tab_navigation#Vim_navigation_2
 nnoremap <C-t>  :tabnew<CR>
 inoremap <C-t>  <Esc>:tabnew<CR>
