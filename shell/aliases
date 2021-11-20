@@ -1,3 +1,5 @@
+# vim: set filetype=sh: #
+
 DOT_DIR=~/dotfiles
 
 #-------------------------------------------------------------------------------
@@ -74,10 +76,15 @@ alias mx="chmod +x"
 # [GUI]
 #-------------------------------------------------------------------------------
 # SEE: https://unix.stackexchange.com/questions/422111/linux-mint-cinnamon-18-in-what-file-are-the-keyboard-shortcuts-saved
-alias keybindingsdump="dconf dump /org/cinnamon/desktop/keybindings/ | tee $DOT_DIR/gui/cinnamon/keybindings.conf"
+KEYBINDINGS_FILE="$DOT_DIR/gui/cinnamon/keybindings.conf"
+WORKSPACE_FILE="$DOT_DIR/gui/cinnamon/keybindings.conf"
+
+alias keybindingsdump="dconf dump /org/cinnamon/desktop/keybindings/"
+alias keybindingsdumpsave="echo 'Writing to: $KEYBINDINGS_FILE\n'; dconf dump /org/cinnamon/desktop/keybindings/ | tee $KEYBINDINGS_FILE"
 alias keybindingsload="dconf load /org/cinnamon/desktop/keybindings/"
 
-alias workspacesettingsdump="dconf dump /org/cinnamon/desktop/wm/ | tee $DOT_DIR/gui/cinnamon/workspace.conf"
+alias workspacesettingsdump="dconf dump /org/cinnamon/desktop/wm/"
+alias workspacesettingsdumpsave="echo 'Writing to: $WORKSPACE_FILE\n'; dconf dump /org/cinnamon/desktop/wm/ | tee $WORKSPACE_FILE"
 alias workspacesettingsload="dconf load /org/cinnamon/desktop/wm/"
 
 
@@ -273,6 +280,7 @@ alias phpscript='docker run -it --rm --name php-script-tmp -v $PWD:/usr/src/myap
 alias sconf="vim ~/.ssh/config"
 alias sconfl="vim ~/.ssh/config-local"
 alias rmsock="rm -rf ~/.ssh/sockets/*"
+alias sshagent='eval $(ssh-agent -s); ssh-add'
 
 #-------------------------------------------------------------------------------
 # [Terminals]
