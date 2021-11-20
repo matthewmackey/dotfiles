@@ -31,17 +31,23 @@ highlight ColorColumn ctermbg=DarkGray
 noremap <Leader>5 :windo exec (&colorcolumn == '0' ? ':set colorcolumn=+1' : ':set colorcolumn=0')<CR>
 
 " Underline anything over '&colorcolumn'
+" SEE: link below; need '2match' to allow ExtraWhitespace & OverLength matches
+"   - https://unix.stackexchange.com/questions/139466/highlight-extra-white-spaces-and-fixed-length-column-in-vim
 highlight OverLength cterm=underline
-execute 'match OverLength /\%>' . &textwidth . 'v.\+/'
+autocmd BufWinEnter * execute '2match OverLength /\%>' . &textwidth . 'v.\+/'
+autocmd InsertEnter * execute '2match OverLength /\%>' . &textwidth . 'v.\+/'
+autocmd InsertLeave * execute '2match OverLength /\%>' . &textwidth . 'v.\+/'
+autocmd BufWinLeave * call clearmatches()
 
 "---------------------"
 "   Git with Vim      "
 "---------------------"
-" However, in Git commit messages, let’s make it 72 characters
+" Colour the 73rd column so that we don’t type over our limit
 autocmd FileType gitcommit set textwidth=72
-
-" Colour the 81st (or 73rd) column so that we don’t type over our limit
-set colorcolumn=+1
+autocmd FileType gitcommit set colorcolumn=+1
 
 " In Git commit messages, also colour the 51st column (for titles)
 autocmd FileType gitcommit set colorcolumn+=51
+
+" Turn off colorcolumn to start for all other files
+set colorcolumn=0
