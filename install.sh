@@ -46,14 +46,16 @@ create_symlink_with_backup() {
 #-------------------------------#
 # MAIN                          #
 #-------------------------------#
-install_packages
-create_symlink_with_backup ~/dotfiles/.bashrc .bashrc ~
-create_symlink_with_backup ~/dotfiles/.zshrc .zshrc ~
+# install_packages
+# create_symlink_with_backup ~/dotfiles/.bashrc .bashrc ~
+# create_symlink_with_backup ~/dotfiles/.zshrc .zshrc ~
+create_symlink_with_backup ~/dotfiles/alacritty.yml alacritty.yml ~/.config/alacritty
 
-./git/install.sh
-./shell/install.sh
-./tmux/install.sh
-./vim/install.sh
+# ./git/install.sh
+# ./shell/install.sh
+# ./tmux/install.sh
+# ./vim/install.sh
+# ./vifm/install.sh
 
 # NOT for remote machines - TODO figure out how to flag when to run these
 #./ssh/install.sh
