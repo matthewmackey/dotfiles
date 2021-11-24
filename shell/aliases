@@ -297,6 +297,7 @@ alias tango="setTermColor Tango"
 # See ~/bin/tm
 alias tmls="tmux ls"
 alias tma="tmux attach -t"
+alias 0="tma 0"
 alias 1="tmux select-window -t 1"
 alias 2="tmux select-window -t 2"
 alias 3="tmux select-window -t 3"
