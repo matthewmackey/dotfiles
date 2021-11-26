@@ -44,6 +44,7 @@ set foldmethod=indent
 " set foldmarker={{,}}
 set foldlevelstart=99         " All folds open to start
 
+
 " Menus
 set completeopt=menu,menuone    " Show popup menu, even if there is one entry
 set pumheight=10                " Completion window max size

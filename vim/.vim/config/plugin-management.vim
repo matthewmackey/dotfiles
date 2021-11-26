@@ -23,6 +23,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 "Plug 'airblade/vim-rooter'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 
@@ -50,6 +51,10 @@ if has('nvim')
   Plug 'hrsh7th/nvim-compe'
 endif
 
+" General Syntax Checking plugin - uses external tools for checking
+" Plug 'vim-syntastic/syntastic'
+
+
 "  --- Languages ---
 " Opted-out of `vim-polygot; see link below for reasoning that I agreed with:
 "   - https://www.barbarianmeetscoding.com/blog/polyglot-programming-in-vim#1-syntax-highlighting
@@ -59,7 +64,7 @@ endif
 "---------------------------------------------"
 Plug 'fatih/vim-go'
 
-" HCL
+" Go
 " Not specifically a vim-plug plugin
 Plug 'jvirtanen/vim-hcl'
 
@@ -74,6 +79,14 @@ Plug 'leafgarland/typescript-vim'
 " Python
 "---------------------------------------------"
 Plug 'tmhedberg/SimpylFold'    " Python-specific folding
+" Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+Plug 'nvie/vim-flake8'
+
+" Run after install:
+"  cd ~/.vim/plugged/jedi-vim; git submodule update --init --recursive
+Plug 'davidhalter/jedi-vim'
+
+Plug 'dense-analysis/ale'
 
 "---------------------------------------------"
 " Web
@@ -85,3 +98,10 @@ Plug 'mattn/emmet-vim'
 " Automatically executes filetype plugin indent on and syntax enable.
 call plug#end()
 
+let g:ale_linters = {
+    \   'python': ['flake8', 'pylint'],
+    \   'javascript': ['eslint'],
+    \}
+let g:ale_fixers = {
+    \    'python': ['autoflake'],
+    \}
