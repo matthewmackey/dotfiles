@@ -129,7 +129,12 @@ alias yqd4='docker run --name yqtmp --rm -v"${PWD}":/workdir mikefarah/yq:latest
 #-------------------------------------------------------------------------------
 # [Colors]
 #-------------------------------------------------------------------------------
-alias b='find ~/.config/base16-shell/scripts/*.sh | fzf | xargs -I{} zsh -c "FILE={}; NAME=\${FILE##*base16-}; NAME=\${NAME%*.sh}; $(functions _base16); _base16 \$FILE \$NAME"'
+alias b='find ~/.config/base16-shell/scripts/*.sh \
+  | sed -r "s|(.*)/base16-(.*)\.sh|\2\t\1/base16-\2.sh|" \
+  | column -t \
+  | fzf \
+  | xargs -I {} zsh -c \
+  "eval $(functions _base16); _base16 \$(echo "{}" | awk '"'"'{ print \$2,\$1; }'"'"';) "'
 
 #-------------------------------------------------------------------------------
 # [Docker]
