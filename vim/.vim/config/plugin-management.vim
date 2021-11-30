@@ -80,13 +80,13 @@ Plug 'leafgarland/typescript-vim'
 "---------------------------------------------"
 Plug 'tmhedberg/SimpylFold'    " Python-specific folding
 " Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-Plug 'nvie/vim-flake8'
+" Plug 'nvie/vim-flake8'
 
 " Run after install:
 "  cd ~/.vim/plugged/jedi-vim; git submodule update --init --recursive
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
 
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 
 "---------------------------------------------"
 " Web
@@ -98,10 +98,10 @@ Plug 'mattn/emmet-vim'
 " Automatically executes filetype plugin indent on and syntax enable.
 call plug#end()
 
-let g:ale_linters = {
-    \   'python': ['flake8', 'pylint'],
-    \   'javascript': ['eslint'],
-    \}
-let g:ale_fixers = {
-    \    'python': ['autoflake'],
-    \}
+" let g:ale_linters = {
+"     \   'python': ['flake8', 'pylint'],
+"     \   'javascript': ['eslint'],
+"     \}
+" let g:ale_fixers = {
+"     \    'python': ['autoflake'],
+"     \}
