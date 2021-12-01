@@ -1,79 +1,86 @@
-# vim: set filetype=sh: #
+# vim: set filetype=sh foldmethod=marker foldlevel=0:
 
 DOT_DIR=~/dotfiles
 
 #-------------------------------------------------------------------------------
-# [SHELL]
+# [Console] {{{
 #-------------------------------------------------------------------------------
-ALIASES=${DOT_DIR}/shell/aliases
-KUBERNETES_ALIASES=${DOT_DIR}/shell/aliases.kubernetes
-ZSH_ALIASES=${DOT_DIR}/shell/zsh.aliases
-LOCAL_ALIASES=~/.local/dot/aliases
-LOCAL_RC=~/.local/dot/rc
+  ALIASES=${DOT_DIR}/shell/aliases
+  KUBERNETES_ALIASES=${DOT_DIR}/shell/aliases.kubernetes
+  ZSH_ALIASES=${DOT_DIR}/shell/zsh.aliases
+  LOCAL_ALIASES=~/.local/dot/aliases
+  LOCAL_RC=~/.local/dot/rc
 
-#-------------------------------------
-# Shell - [aliases/rc]
-#-------------------------------------
-alias al="vim ${ALIASES}"
-alias kal="vim ${KUBERNETES_ALIASES}"
-alias zal="vim ${ZSH_ALIASES}"
-alias lal="vim ${LOCAL_ALIASES}"
-alias sa="source ${ALIASES}; source ${KUBERNETES_ALIASES}; source ${ZSH_ALIASES}; [ -f ${LOCAL_ALIASES} ] && . ${LOCAL_ALIASES}"
-alias rc="vim ${DOT_DIR}/.rc"
-alias rcl="vim ${LOCAL_RC}"
-alias rcb="vim ~/.bashrc"
-alias rcz="vim ~/.zshrc"
+  #-------------------------------------
+  # Shell - [aliases/rc]
+  #-------------------------------------
+  alias al="vim ${ALIASES}"
+  alias kal="vim ${KUBERNETES_ALIASES}"
+  alias zal="vim ${ZSH_ALIASES}"
+  alias lal="vim ${LOCAL_ALIASES}"
+  alias sa="source ${ALIASES}; source ${KUBERNETES_ALIASES}; source ${ZSH_ALIASES}; [ -f ${LOCAL_ALIASES} ] && . ${LOCAL_ALIASES}"
+  alias rc="vim ${DOT_DIR}/.rc"
+  alias rcl="vim ${LOCAL_RC}"
+  alias rcb="vim ~/.bashrc"
+  alias rcz="vim ~/.zshrc"
 
-#-------------------------------------
-# [bin]
-#-------------------------------------
-alias bin="cd ~/bin"
-alias lbin="cd ~/.local/bin"
-alias mmbin="cd ~/mmbin"
+  #-------------------------------------
+  # [bin]
+  #-------------------------------------
+  alias bin="cd ~/bin"
+  alias lbin="cd ~/.local/bin"
+  alias mmbin="cd ~/mmbin"
 
-#-------------------------------------
-# [clear]
-#-------------------------------------
-alias cl="clear"
-alias cll="cl; pwd; ll"
+  #-------------------------------------
+  # [clear]
+  #-------------------------------------
+  alias cl="clear"
+  alias cll="cl; pwd; ll"
 
-#-------------------------------------
-# [cd]
-#-------------------------------------
-alias .l="cd -"
-alias .ll="cd -; cll"
-alias ..="cd ../"
-alias ...="cd ../../"
-alias ....="cd ../../../"
-alias .....="cd ../../../../"
-alias ......="cd ../../../../../"
+  #-------------------------------------
+  # [cd]
+  #-------------------------------------
+  alias .l="cd -"
+  alias .ll="cd -; cll"
+  alias ..="cd ../"
+  alias ...="cd ../../"
+  alias ....="cd ../../../"
+  alias .....="cd ../../../../"
+  alias ......="cd ../../../../../"
 
-# Go up directories then do directory listing
-alias cddl="cdd; cll "
-alias cdddl="cddd; cll "
-alias cddddl="cdddd; cll "
-alias cdddddl="cddddd; cll"
-alias cddddddl="cdddddd; cll "
+  # Go up directories then do directory listing
+  alias cddl="cdd; cll "
+  alias cdddl="cddd; cll "
+  alias cddddl="cdddd; cll "
+  alias cdddddl="cddddd; cll"
+  alias cddddddl="cdddddd; cll "
 
-# Go up directories then change to directory specified after alias on command-line
-alias cddf="cdd; cd "
-alias cdddf="cddd; cd "
-alias cddddf="cdddd; cd "
-alias cdddddf="cddddd; cd "
-alias cddddddf="cdddddd; cd "
+  # Go up directories then change to directory specified after alias on command-line
+  alias cddf="cdd; cd "
+  alias cdddf="cddd; cd "
+  alias cddddf="cdddd; cd "
+  alias cdddddf="cddddd; cd "
+  alias cddddddf="cdddddd; cd "
 
-#-------------------------------------
-# console - other
-#-------------------------------------
-alias hg="history | grep"
-alias ll="ls -alh"
-alias mx="chmod +x"
+  #-------------------------------------
+  # console - other
+  #-------------------------------------
+  alias hg="history | grep"
+  alias ll="ls -alh"
+  alias mx="chmod +x"
 
+  #-------------------------------------
+  # [xmodmap]
+  #-------------------------------------
+  alias xmboth="xmodmap ~/.config/xmodmap/.xmodmap-both_escape"
+  alias xmnormal="xmodmap ~/.config/xmodmap/.xmodmap-normal"
+  alias xmswitch="xmodmap ~/.config/xmodmap/.xmodmap-switch"
 
-################################################################################
+# }}}
+#-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
-# [GUI]
+# [GUI] {{{
 #-------------------------------------------------------------------------------
 # SEE: https://unix.stackexchange.com/questions/422111/linux-mint-cinnamon-18-in-what-file-are-the-keyboard-shortcuts-saved
 KEYBINDINGS_FILE="$DOT_DIR/gui/cinnamon/keybindings.conf"
@@ -87,11 +94,11 @@ alias workspacesettingsdump="dconf dump /org/cinnamon/desktop/wm/"
 alias workspacesettingsdumpsave="echo 'Writing to: $WORKSPACE_FILE\n'; dconf dump /org/cinnamon/desktop/wm/ | tee $WORKSPACE_FILE"
 alias workspacesettingsload="dconf load /org/cinnamon/desktop/wm/"
 
-
-################################################################################
+# }}}
+#-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
-# [tools]
+# [tools] {{{
 #-------------------------------------------------------------------------------
 # backwards-compatibility for some scripts
 alias ack-grep="ack"
@@ -110,9 +117,9 @@ alias syslog="tail -f /var/log/syslog"
 
 TREE_BIN=/usr/bin/tree
 alias treee="cl; $TREE_BIN"
-alias tree="cl; $TREE_BIN -a -I '.git|build|dist|node_modules|.terraform'"
+alias tree="cl; $TREE_BIN -a -I '.git|build|dist|node_modules|__pycache__|.terraform'"
 alias treea="cl; $TREE_BIN -a"
-alias treeg="cl; $TREE_BIN -I '.git|build|dist|node_modules|.terraform'"
+alias treeg="cl; $TREE_BIN -I '.git|build|dist|node_modules|__pycache__.terraform'"
 alias tree1="tree -L 1"
 alias tree2="tree -L 2"
 alias tree3="tree -L 3"
@@ -123,11 +130,11 @@ alias whatismyip="wget http://ipinfo.io/ip -qO -"
 alias yqd='docker run --name yqtmp --rm -i mikefarah/yq:3.3.4 yq "$@"'
 alias yqd4='docker run --name yqtmp --rm -v"${PWD}":/workdir mikefarah/yq:latest "$@"'
 
-
-################################################################################
+# }}}
+#-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
-# [Colors]
+# [Colors] {{{
 #-------------------------------------------------------------------------------
 alias b='find ~/.config/base16-shell/scripts/*.sh \
   | sed -r "s|(.*)/base16-(.*)\.sh|\2\t\1/base16-\2.sh|" \
@@ -136,8 +143,11 @@ alias b='find ~/.config/base16-shell/scripts/*.sh \
   | xargs -I {} zsh -c \
   "eval $(functions _base16); _base16 \$(echo "{}" | awk '"'"'{ print \$2,\$1; }'"'"';) "'
 
+# }}}
 #-------------------------------------------------------------------------------
-# [Docker]
+
+#-------------------------------------------------------------------------------
+# [Docker] {{{
 #-------------------------------------------------------------------------------
 alias dps="cl; docker ps"
 alias dpsa="cl; docker ps -a"
@@ -148,9 +158,11 @@ alias images="cl; docker images"
 alias up="docker-compose up"
 alias upd="docker-compose up -d"
 
+# }}}
+#-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
-# [Dotfiles]
+# [Dotfiles] {{{
 #-------------------------------------------------------------------------------
 IS_GIT_STAGED='[ "$(git status -s | grep "^A" | wc -l)" != 0 ] && (echo -e "CANNOT: already staged files\n"; git status -s) ||'
 
@@ -170,10 +182,20 @@ alias glb="vim .gitlab-ci.yml"
 alias tmconf="vim ~/.tmux.conf"
 alias vimrc="vim ${DOT_DIR}/vim/.vimrc"
 alias vimrcl="vim ${DOT_DIR}/vim/.vim/.vimrc-local"
-
+# }}}
+#-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
-# [Git]
+# [gcloud] {{{
+#-------------------------------------------------------------------------------
+alias gcl="gcloud auth login"
+alias gcld="gcloud auth application-default login"
+alias gclall="gcal; gcaadl"
+# }}}
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# [Git] {{{
 #-------------------------------------------------------------------------------
 alias clrgit="cl; git"
 
@@ -234,34 +256,39 @@ alias gss="clrgit ss"
 # MISCELLANEOUS
 alias remote="git remote -v"
 alias remotes="clrgit remote -v"
-
+# }}}
+#-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
-# [Maven]
+# [Maven] {{{
 #-------------------------------------------------------------------------------
 alias mvcc="mvn clean compile"
 alias mvci="mvn clean install"
 alias mvcist="mvn clean install -DskipTests=true"
 alias sbr="mvn spring-boot:run"
-
+# }}}
+#-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
-# [MySQL]
+# [MySQL] {{{
 #-------------------------------------------------------------------------------
 alias lmysql="mysql -h 0.0.0.0 -P 3306 -u root -ppw"
-
+# }}}
+#-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
-# [networking]
+# [networking] {{{
 #-------------------------------------------------------------------------------
 alias hosts="cat /etc/hosts"
 alias ibas="sudo ip -br addr show"
 alias ns="sudo netstat -tlpn"
 alias nsg="sudo netstat -tlpn | grep"
+# }}}
+#-------------------------------------------------------------------------------
 
-#------------------------------------------------
-# [proxies]
-#------------------------------------------------
+#-------------------------------------------------------------------------------
+# [proxies] {{{
+#-------------------------------------------------------------------------------
 alias pxoff="tmuxsendall '. proxytoggle off'"
 alias pxon="tmuxsendall '. proxytoggle on'"
 alias pxon8090="tmuxsendall '. proxytoggle on 127.0.0.1 8090'"
@@ -272,37 +299,47 @@ alias pxon8090=". proxytoggle on 127.0.0.1 8090"
 
 alias pxs="proxystatus"
 alias pxt="proxytoggle"
+# }}}
+#-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
-# [node/npm]
+# [node/npm] {{{
 #-------------------------------------------------------------------------------
 alias npml="npm ls --depth=0"
+# }}}
+#-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
-# [PHP]
+# [PHP] {{{
 #-------------------------------------------------------------------------------
 alias php='docker run -it --rm --name php-cli-tmp php:latest php -a'
 alias phpcli='php'
 alias phpscript='docker run -it --rm --name php-script-tmp -v $PWD:/usr/src/myapp -w /usr/src/myapp php:latest php'
+# }}}
+#-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
-# [SSH]
+# [SSH] {{{
 #-------------------------------------------------------------------------------
 alias sconf="vim ~/.ssh/config"
 alias sconfl="vim ~/.ssh/config-local"
 alias rmsock="rm -rf ~/.ssh/sockets/*"
 alias sshagent='eval $(ssh-agent -s); ssh-add'
+# }}}
+#-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
-# [Terminals]
+# [Terminals] {{{
 #-------------------------------------------------------------------------------
 alias dark="setTermColor solarized-dark"
 alias default="setTermColor Default"
 alias light="setTermColor solarized-light"
 alias tango="setTermColor Tango"
+# }}}
+#-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
-# [tmux]
+# [tmux] {{{
 #-------------------------------------------------------------------------------
 # See ~/bin/tm
 alias tmls="tmux ls"
@@ -321,16 +358,20 @@ alias tmrenamesession='tmux rename-session -t "$(tmux display-message -p "#S")"'
 alias tmrenamewindow='tmux rename-window -t "$(tmux display-message -p "#{window_id}")"'
 alias tmrs="tmrenamesession"
 alias tmrw="tmrenamewindow"
+# }}}
+#-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
+# [VMs] {{{
 # [Multipass]
 # [Vagrant]
 # [VirtualBox]
-# [VMs]
 #-------------------------------------------------------------------------------
 alias mp="multipass"
 alias mpls="multipass ls"
 alias mpsh="multipass shell"
+# }}}
+#-------------------------------------------------------------------------------
 
 
 #------------------------------------------------------------------------------#
