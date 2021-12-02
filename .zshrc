@@ -30,15 +30,15 @@ fi
 #--------------------------------#
 # Oh My Zsh Config
 #--------------------------------#
-export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="robbyrussell"
+# export ZSH="$HOME/.oh-my-zsh"
+# ZSH_THEME="robbyrussell"
 
-plugins=(copydir copyfile git kubectl vi-mode)
-VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
-VI_MODE_SET_CURSOR=true
-MODE_INDICATOR="%F{yellow}<<<%f"
+# plugins=(copydir copyfile git kubectl vi-mode)
+# VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+# VI_MODE_SET_CURSOR=true
+# MODE_INDICATOR="%F{yellow}<<<%f"
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 
 # Fix git paging issues w/ oh-my-zsh
 # https://superuser.com/questions/820943/typing-git-log-oneline-in-oh-my-zsh-pipes-to-less
@@ -71,6 +71,9 @@ done
 # this plugin requires to be on the PATH in order to be sourced properly
 source "$FZF_MARKS_PLUGIN"
 
+source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # Reload any completions that were loaded
 autoload -U compinit && compinit
 
@@ -91,3 +94,17 @@ if [ -f ~/.local/dot/aliases ]; then
   # elapsed=$(($now-$timer))
   # echo $elapsed
 fi
+
+fpath=( ~/.config/zsh/.zfunctions $fpath )
+
+if [ ! -L ~/.config/zsh/.zfunctions/prompt_spaceship_setup ]; then
+  ln -sf ~/.config/zsh/spaceship-prompt/spaceship.zsh ~/.config/zsh/.zfunctions/prompt_spaceship_setup
+fi
+autoload -U promptinit; promptinit
+prompt spaceship
+SPACESHIP_DIR_TRUNC_REPO=false
+SPACESHIP_KUBECTL_VERSION_SHOW=false
+SPACESHIP_KUBECTL_SHOW=true
+SPACESHIP_GCLOUD_SHOW=false
+SPACESHIP_VENV_PREFIX="("
+SPACESHIP_VENV_SUFFIX=")"

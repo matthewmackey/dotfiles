@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Install oh-my-zsh
 if [ ! -d ~/.oh-my-zsh ]; then
@@ -6,7 +6,7 @@ if [ ! -d ~/.oh-my-zsh ]; then
 fi
 
 # Install `yh` YAML formatter
-go get github.com/andreazorzetto/yh
+#go get github.com/andreazorzetto/yh
 
 # Install kubectx
 if [ ! -f ~/bin/kubectx -a ! -f ~/bin/kubens ]; then
@@ -19,3 +19,15 @@ if [ ! -f ~/bin/kubectx -a ! -f ~/bin/kubens ]; then
     rm LICENSE
   }
 fi
+
+DIRS=(
+  ~/.config/bash
+  ~/.config/zsh/.zfunctions
+)
+
+for d in ${DIRS[@]}; do
+  if [ ! -d $d ]; then
+    mkdir -p $d
+    echo "Created dir: [$d]"
+  fi
+done
