@@ -95,16 +95,21 @@ if [ -f ~/.local/dot/aliases ]; then
   # echo $elapsed
 fi
 
-fpath=( ~/.config/zsh/.zfunctions $fpath )
+# SPACESHIP
+# fpath=( ~/.config/zsh/.zfunctions $fpath )
 
-if [ ! -L ~/.config/zsh/.zfunctions/prompt_spaceship_setup ]; then
-  ln -sf ~/.config/zsh/spaceship-prompt/spaceship.zsh ~/.config/zsh/.zfunctions/prompt_spaceship_setup
-fi
-autoload -U promptinit; promptinit
-prompt spaceship
-SPACESHIP_DIR_TRUNC_REPO=false
-SPACESHIP_KUBECTL_VERSION_SHOW=false
-SPACESHIP_KUBECTL_SHOW=true
-SPACESHIP_GCLOUD_SHOW=false
-SPACESHIP_VENV_PREFIX="("
-SPACESHIP_VENV_SUFFIX=")"
+# if [ ! -L ~/.config/zsh/.zfunctions/prompt_spaceship_setup ]; then
+#   ln -sf ~/.config/zsh/spaceship-prompt/spaceship.zsh ~/.config/zsh/.zfunctions/prompt_spaceship_setup
+# fi
+# autoload -U promptinit; promptinit
+# prompt spaceship
+# SPACESHIP_DIR_TRUNC_REPO=false
+# SPACESHIP_KUBECTL_VERSION_SHOW=false
+# SPACESHIP_KUBECTL_SHOW=true
+# SPACESHIP_GCLOUD_SHOW=false
+# SPACESHIP_VENV_PREFIX="("
+# SPACESHIP_VENV_SUFFIX=")"
+
+export STARSHIP_CONFIG=~/.config/starship/config.toml
+eval "$(starship init zsh)"
+

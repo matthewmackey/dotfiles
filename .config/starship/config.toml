@@ -1,0 +1,76 @@
+# Inserts a blank line between shell prompts
+add_newline = true
+
+# Which is equivalent to
+format = """
+$username\
+$hostname\
+$shlvl\
+$singularity\
+$directory\
+$vcsh\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$kubernetes\
+$docker_context\
+$gcloud\
+$python\
+$hg_branch\
+$package\
+$cmake\
+$golang\
+$helm\
+$java\
+$kotlin\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$perl\
+$php\
+$rlang\
+$red\
+$ruby\
+$rust\
+$terraform\
+$vagrant\
+$nix_shell\
+$conda\
+$memory_usage\
+$aws\
+$env_var\
+$custom\
+$cmd_duration\
+$line_break\
+$jobs\
+$battery\
+$time\
+$status\
+$shell\
+$character"""
+
+[battery]
+disabled = false
+
+[[battery.display]]
+threshold = 90
+
+# Replace the "❯" symbol in the prompt with "➜"
+[character]                            # The name of the module we are configuring is "character"
+success_symbol = "[➜](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
+
+[directory]
+truncation_length = 4
+truncate_to_repo = false
+
+[gcloud]
+format = 'on [\[$symbol$active\]]($style) '
+
+[kubernetes]
+disabled = false
+
+[package]
+disabled = false
