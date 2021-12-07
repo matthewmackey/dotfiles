@@ -44,9 +44,9 @@ esac
 
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
+    source /usr/share/bash-completion/bash_completion
   elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
+    source /etc/bash_completion
   fi
 fi
 # }}}
@@ -58,10 +58,12 @@ fi
 # append to the history file, don't overwrite it
 shopt -s histappend
 
-HISTCONTROL=ignoreboth
+export HISTCONTROL="ignorespace:erasedups"
+export HISTSIZE=10000
+export HISTFILESIZE=10000
 
-HISTSIZE=10000
-HISTFILESIZE=10000
+# Give history timestamps.
+export HISTTIMEFORMAT="[%F %T] "
 # }}}
 
 
