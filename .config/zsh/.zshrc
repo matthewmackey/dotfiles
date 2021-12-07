@@ -40,6 +40,7 @@ printf "Sourcing -> [~/.config/zsh/.zshrc]\n"
     mkdir_if_not_exist $d
   done
 
+  autoload -Uz compinit && compinit
 # }}}
 
 
@@ -97,7 +98,7 @@ printf "Sourcing -> [~/.config/zsh/.zshrc]\n"
   for _file in ${FILES_TO_SOURCE[@]}; do
     source_file_if_exists $_file
   done
-  # }}}
+# }}}
 
 
 # Reload any completions that were loaded
