@@ -1,35 +1,42 @@
 #!/bin/bash
 
+set -e
+set -o pipefail
+
 ln -s ~/dotfiles/git/.gitignore_global ~/.gitignore_global || true
 ln -s ~/dotfiles/git/.gitmessage.txt   ~/.gitmessage.txt || true
 
 delete_symlink_or_create_backup() {
   local _file=$1
 
-  if [ -L "$_file" ]; then
+  if [ -L $_file ]; then
     echo "[$_file] exists AND is symlink"
 
     echo "Deleting [$(ls -al $_file)]"
-    rm "$_file"
+    rm $_file
   else
-    echo "[$_file] exists AND is NOT a symlink"
-    local _backup=$_file.bak."$(date '+%F-%H%M%S')"
+    if [ -e $_file ]; then
+      echo "[$_file] exists AND is NOT a symlink"
+      local _backup=$_file.bak."$(date '+%F-%H%M%S')"
 
-    echo "Moving existing [$_file] to -> [$_backup]"
-    mv "$_file" "$_backup"
+      echo "Moving existing [$_file] to -> [$_backup]"
+      mv $_file $_backup
+    fi
   fi
 }
 
 DEFAULT_NAME="Matthew Machaj"
+DEFAULT_NAME2="Matthew Mackey"
 DEFAULT_EMAIL="73896224+matthewmachaj@users.noreply.github.com"
+DEFAULT_EMAIL2="21043873+matthewmackey@users.noreply.github.com"
 echo
 echo "#------------------------------------------------------------------------"
 echo "# Setting name & email in ~/.gitconfig"
 echo "#------------------------------------------------------------------------"
 delete_symlink_or_create_backup ~/.gitconfig
 
-read -p "Provide ~/.gitconfig user.name [$DEFAULT_NAME]: " GIT_USER_NAME
-read -p "Provide ~/.gitconfig user.email: " GIT_USER_EMAIL
+read -p "Provide ~/.gitconfig user.name [$DEFAULT_NAME / $DEFAULT_NAME2]: " GIT_USER_NAME
+read -p "$(printf "Provide ~/.gitconfig user.email (must type out):\n - $DEFAULT_EMAIL\n - $DEFAULT_EMAIL2\n - Other\n\nEnter: ")" GIT_USER_EMAIL
 
 cat > ~/.gitconfig <<GIT_CONFIG
 [user]
