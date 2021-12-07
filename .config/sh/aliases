@@ -2,7 +2,6 @@
 # ~/.config/sh/aliases
 #
 
-
 #-------------------------------------------------------------------------------
 # [Console] {{{
 #-------------------------------------------------------------------------------
@@ -129,18 +128,16 @@
 
   TREE_BIN=/usr/bin/tree
   TREE_IGNORES='.git|build|dist|node_modules|__pycache__|.pytest_cache|.terraform'
-  alias treee="cl; $TREE_BIN"
-  alias te="treee"
-  alias tree="cl; $TREE_BIN -a -I '$TREE_IGNORES'"
-  alias treea="cl; $TREE_BIN -a"
-  alias ta="treea"
-  alias treeg="cl; $TREE_BIN -I '$TREE_IGNORES'"
-  alias tree1="tree -L 1"
-  alias t1="tree1"
-  alias tree2="tree -L 2"
-  alias t2="tree2"
-  alias tree3="tree -L 3"
-  alias t3="tree3"
+
+  alias t="cl;  $TREE_BIN"
+  alias te="cl; $TREE_BIN -a -I '$TREE_IGNORES'"
+  alias ta="cl; $TREE_BIN -a"
+  alias ti="cl; $TREE_BIN -I '$TREE_IGNORES'"
+  alias tv="cl; $TREE_BIN -I '.git|plugged|tmp|view'"
+
+  alias t1="tree -L 1"
+  alias t2="tree -L 2"
+  alias t3="tree -L 3"
 
   alias whatismyip="wget http://ipinfo.io/ip -qO -"
 
@@ -518,4 +515,4 @@ tms() {
   fi
 }
 
-# vim: set ft=sh foldlevel=0 foldmarker={{{,}}} foldmethod=marker
+# vim: set ft=sh foldmarker={{{,}}} foldmethod=marker foldlevel=0
