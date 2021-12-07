@@ -48,6 +48,7 @@ create_symlink_with_backup() {
 BASE_DIR=~/dotfiles/.config
 CONFIGS=(
   alacritty
+  awesome
   bash
   sh
   starship
