@@ -10,6 +10,26 @@ install_packages() {
   sudo apt install -y tmux vim zsh
 }
 
+install_yh() {
+  # Install `yh` YAML formatter
+  go get github.com/andreazorzetto/yh
+}
+
+
+install_kubectx() {
+  # Install kubectx
+  if [ ! -f ~/bin/kubectx -a ! -f ~/bin/kubens ]; then
+    curl -L https://github.com/ahmetb/kubectx/releases/download/v0.9.4/kubectx_v0.9.4_linux_x86_64.tar.gz -o /tmp/kubectx-0.9.4.tar.gz
+    curl -L https://github.com/ahmetb/kubectx/releases/download/v0.9.4/kubens_v0.9.4_linux_x86_64.tar.gz -o /tmp/kubens-0.9.4.tar.gz
+    {
+      cd ~/bin
+      tar xzf /tmp/kubectx-0.9.4.tar.gz
+      tar xzf /tmp/kubens-0.9.4.tar.gz
+      rm LICENSE
+    }
+  fi
+}
+
 create_symlink_with_backup() {
   local _target=$1
   local _link_name=$2
@@ -47,6 +67,9 @@ create_symlink_with_backup() {
 # MAIN                          #
 #-------------------------------#
 # install_packages
+# install_yh
+# install_kubectx
+
 # create_symlink_with_backup ~/dotfiles/.bashrc .bashrc ~
 # create_symlink_with_backup ~/dotfiles/.zshrc .zshrc ~
 create_symlink_with_backup ~/dotfiles/alacritty.yml alacritty.yml ~/.config/alacritty
