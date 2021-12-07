@@ -17,7 +17,6 @@ $git_status\
 $kubernetes\
 $docker_context\
 $gcloud\
-$python\
 $hg_branch\
 $package\
 $cmake\
@@ -45,6 +44,7 @@ $env_var\
 $custom\
 $cmd_duration\
 $line_break\
+$python\
 $jobs\
 $battery\
 $time\
@@ -60,7 +60,7 @@ threshold = 90
 
 # Replace the "❯" symbol in the prompt with "➜"
 [character]                            # The name of the module we are configuring is "character"
-success_symbol = "[➜](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
+# success_symbol = "[➜](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
 
 [directory]
 truncation_length = 4
