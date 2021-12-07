@@ -128,13 +128,19 @@
   alias syslog="tail -f /var/log/syslog"
 
   TREE_BIN=/usr/bin/tree
+  TREE_IGNORES='.git|build|dist|node_modules|__pycache__|.pytest_cache|.terraform'
   alias treee="cl; $TREE_BIN"
-  alias tree="cl; $TREE_BIN -a -I '.git|build|dist|node_modules|__pycache__|.terraform'"
+  alias te="treee"
+  alias tree="cl; $TREE_BIN -a -I '$TREE_IGNORES'"
   alias treea="cl; $TREE_BIN -a"
-  alias treeg="cl; $TREE_BIN -I '.git|build|dist|node_modules|__pycache__.terraform'"
+  alias ta="treea"
+  alias treeg="cl; $TREE_BIN -I '$TREE_IGNORES'"
   alias tree1="tree -L 1"
+  alias t1="tree1"
   alias tree2="tree -L 2"
+  alias t2="tree2"
   alias tree3="tree -L 3"
+  alias t3="tree3"
 
   alias whatismyip="wget http://ipinfo.io/ip -qO -"
 
@@ -191,6 +197,10 @@
   alias tmconf="vim ~/.tmux.conf"
   alias vimrc="vim ${DOTDIR}/vim/.vimrc"
   alias vimrcl="vim ${DOTDIR}/vim/.vim/.vimrc-local"
+
+  alias vimalacritty="vim ${DOT_DIR}/.config/alacritty/alacritty.yml"
+  alias vimawesome="vim ${DOT_DIR}/.config/awesome/rc.lua"
+  alias vimstarship="vim ${DOT_DIR}/.config/starship/config.toml"
 # }}}
 
 
