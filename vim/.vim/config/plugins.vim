@@ -32,7 +32,7 @@ Plug 'tpope/vim-surround'
 "--------------------------------
 Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'PhilRunninger/nerdtree-visual-selection'
 
 "--------------------------------
@@ -78,7 +78,7 @@ Plug 'leafgarland/typescript-vim'
 "---------------------------------------------"
 " Python
 "---------------------------------------------"
-Plug 'tmhedberg/SimpylFold'    " Python-specific folding
+" Plug 'tmhedberg/SimpylFold'    " Python-specific folding
 " Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 " Plug 'nvie/vim-flake8'
 
