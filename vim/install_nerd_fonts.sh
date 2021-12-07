@@ -12,56 +12,56 @@ set -o pipefail
 
 NERD_FONTS_RELEASE=v2.1.0
 NERD_FONT_FILES=(
-  3270.zip
-  Agave.zip
-  AnonymousPro.zip
-  Arimo.zip
-  AurulentSansMono.zip
-  BigBlueTerminal.zip
-  BitstreamVeraSansMono.zip
-  CascadiaCode.zip
-  CodeNewRoman.zip
-  Cousine.zip
-  DaddyTimeMono.zip
+  # 3270.zip
+  # Agave.zip
+  # AnonymousPro.zip
+  # Arimo.zip
+  # AurulentSansMono.zip
+  # BigBlueTerminal.zip
+  # BitstreamVeraSansMono.zip
+  # CascadiaCode.zip
+  # CodeNewRoman.zip
+  # Cousine.zip
+  # DaddyTimeMono.zip
   DejaVuSansMono.zip
   DroidSansMono.zip
-  FantasqueSansMono.zip
-  FiraCode.zip
-  FiraMono.zip
-  Go-Mono.zip
-  Gohu.zip
-  Hack.zip
-  Hasklig.zip
-  HeavyData.zip
-  Hermit.zip
-  iA-Writer.zip
-  IBMPlexMono.zip
+  # FantasqueSansMono.zip
+  # FiraCode.zip
+  # FiraMono.zip
+  # Go-Mono.zip
+  # Gohu.zip
+  # Hack.zip
+  # Hasklig.zip
+  # HeavyData.zip
+  # Hermit.zip
+  # iA-Writer.zip
+  # IBMPlexMono.zip
   Inconsolata.zip
-  InconsolataGo.zip
-  InconsolataLGC.zip
-  Iosevka.zip
+  # InconsolataGo.zip
+  # InconsolataLGC.zip
+  # Iosevka.zip
   JetBrainsMono.zip
-  Lekton.zip
-  LiberationMono.zip
-  Meslo.zip
-  Monofur.zip
-  Monoid.zip
-  Mononoki.zip
-  MPlus.zip
-  Noto.zip
-  OpenDyslexic.zip
-  Overpass.zip
-  ProFont.zip
-  ProggyClean.zip
-  RobotoMono.zip
-  ShareTechMono.zip
-  SourceCodePro.zip
-  SpaceMono.zip
-  Terminus.zip
-  Tinos.zip
-  Ubuntu.zip
+  # Lekton.zip
+  # LiberationMono.zip
+  # Meslo.zip
+  # Monofur.zip
+  # Monoid.zip
+  # Mononoki.zip
+  # MPlus.zip
+  # Noto.zip
+  # OpenDyslexic.zip
+  # Overpass.zip
+  # ProFont.zip
+  # ProggyClean.zip
+  # RobotoMono.zip
+  # ShareTechMono.zip
+  # SourceCodePro.zip
+  # SpaceMono.zip
+  # Terminus.zip
+  # Tinos.zip
+  # Ubuntu.zip
   UbuntuMono.zip
-  VictorMono.zip
+  # VictorMono.zip
 )
 
 NERD_FONTS_DIR=~/.local/share/nerdfonts
