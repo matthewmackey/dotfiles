@@ -1,0 +1,13 @@
+#
+# ~/.config/sh/env
+#
+
+export DOTDIR=~/dotfiles
+
+export EDITOR="vim"
+export FCEDIT="$EDITOR"
+export VISUAL="$EDITOR"
+
+export PAGER="less"
+
+# vim: ft=sh

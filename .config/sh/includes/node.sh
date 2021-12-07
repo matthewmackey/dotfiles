@@ -1,3 +1,6 @@
+#
+# node.sh
+#
 export NVM_DIR="$HOME/.nvm"
 
 # Create alias to lazy load NVM to keep shell load time down

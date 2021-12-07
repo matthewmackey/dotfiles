@@ -1,0 +1,97 @@
+#
+# ~/.config/sh/rc
+#
+
+#-------------------------------------------------------------------------------
+# Simply RETURN when this is NOT sourced in an interactive session
+# (SCP will not work w/o this b/c if you have 'echo' statements in your .rc's)
+#
+# NOTE: Ansible runs in non-interactive session so this applies to Ansible as well
+# SEE: https://unix.stackexchange.com/a/18647/408519
+#-------------------------------------------------------------------------------
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# Must be after interactive shell confirmation
+printf "Sourcing -> [~/.config/sh/rc]\n"
+
+
+#---------------------------------------
+# [Helper Functions] {{{
+#---------------------------------------
+mkdir_if_not_exist() {
+  local _dir=$1
+  if [[ ! -d $_dir ]]; then
+    printf "Making $_dir\n"
+    mkdir -p $_dir
+  fi
+}
+
+source_file_if_exists() {
+  local _file=$1
+  if [[ -f $_file ]]; then
+    printf "Sourcing -> [$_file]\n"
+    # timer=$(($(date +%s%N)/1000000))
+    source $_file
+    # now=$(($(date +%s%N)/1000000))
+    # elapsed=$(($now-$timer))
+    # echo $elapsed
+  fi
+}
+# }}}
+
+
+#---------------------------------------
+# [PATH Setup] {{{
+#---------------------------------------
+mkdir_if_not_exist $HOME/bin
+mkdir_if_not_exist $HOME/.local/bin
+
+BIN_DIRS=(
+  $HOME/bin
+  $HOME/.local/bin
+  $HOME/mmbin
+  /opt/bin
+)
+
+for _dir in ${BIN_DIRS[@]}; do
+  if [[ -d $_dir ]]; then
+    export PATH="$_dir:$PATH"
+  fi
+done
+# }}}
+
+
+#---------------------------------------
+# [SOURCE Common Shell Files] {{{
+#---------------------------------------
+export DOTDIR=~/dotfiles
+export SH_DOTDIR=$DOTDIR/.config/sh
+export LOCAL_DOTDIR=~/.local/dot
+
+FILES_TO_SOURCE=()
+FILES_TO_SOURCE+=($SH_DOTDIR/aliases)
+FILES_TO_SOURCE+=($(find $SH_DOTDIR/includes -type f))
+FILES_TO_SOURCE+=($LOCAL_DOTDIR/rc)
+FILES_TO_SOURCE+=($LOCAL_DOTDIR/aliases)
+
+for _file in ${FILES_TO_SOURCE[@]}; do
+  source_file_if_exists $_file
+done
+# }}}
+
+
+#---------------------------------------
+# [base16-shell] {{{
+#---------------------------------------
+if [[ ! -d ~/.config/base16-shell/.git ]]; then
+  git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+fi
+
+BASE16_SHELL="$HOME/.config/base16-shell"
+[[ -n "$PS1" ]] \
+  && [[ -s "$BASE16_SHELL/profile_helper.sh" ]] \
+    && eval "$("$BASE16_SHELL/profile_helper.sh")"
+# }}}
+
+# vim: ft=sh  foldlevel=0 foldmarker={{{,}}} foldmethod=marker

@@ -1,6 +1,15 @@
-if [ ! -d $HOME/.fzf ]; then
-  git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
-  $HOME/.fzf/install --no-bash --no-fish --no-zsh --no-key-bindings --no-completion --no-update-rc
+#
+# fzf.sh
+#
+export FZF_HOME=$HOME/.config/fzf
+
+if [[ ! -d $FZF_HOME ]]; then
+  git clone --depth 1 https://github.com/junegunn/fzf.git $FZF_HOME
+  $FZF_HOME/install --no-bash --no-fish --no-zsh --no-key-bindings --no-completion --no-update-rc
+fi
+
+if [[ ! "$PATH" == *$FZF_HOME/bin* ]]; then
+  export PATH="$FZF_HOME/bin:$PATH"
 fi
 
 # Use `--color=never` b/c otherwise Bash color escape codes show in fzf results
@@ -26,3 +35,5 @@ export FZF_DEFAULT_OPTS="
 --bind 'ctrl-f:page-down,ctrl-b:page-up'
 "
 # --preview '([[ -f {} ]] && (batcat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
+
+# vim: ft=sh
