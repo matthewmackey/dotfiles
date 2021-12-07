@@ -18,6 +18,12 @@ if [ ! -L ~/.vim ]; then
 fi
 
 #-------------------------------#
+# SYMLINK - .config/nvim        #
+#-------------------------------#
+if [ ! -L ~/.config/nvim ]; then
+  ln -s ~/dotfiles/vim/.config/nvim ~/.config/nvim
+fi
+#-------------------------------#
 # Install vim-plug              #
 #-------------------------------#
 sudo apt install -y curl

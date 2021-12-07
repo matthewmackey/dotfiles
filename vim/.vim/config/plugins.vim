@@ -49,6 +49,7 @@ Plug 'vim-airline/vim-airline-themes'
 if has('nvim')
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/nvim-compe'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 endif
 
 " General Syntax Checking plugin - uses external tools for checking

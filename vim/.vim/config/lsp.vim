@@ -1,3 +1,4 @@
+" vim: set ft=lua
 
 if has('nvim')
   lua << EOF
@@ -85,9 +86,9 @@ if has('nvim')
     --
 
     -- Golang
-    nvim_lsp.gopls.setup {
-      on_attach = on_attach,
-    }
+    -- nvim_lsp.gopls.setup {
+    --   on_attach = on_attach,
+    -- }
 
     -- Python
     nvim_lsp.pyright.setup{
@@ -95,9 +96,9 @@ if has('nvim')
     }
 
     -- Ruby
-    nvim_lsp.solargraph.setup{
-      on_attach = on_attach,
-    }
+    -- nvim_lsp.solargraph.setup{
+    --   on_attach = on_attach,
+    -- }
 
     -- Typescript
     nvim_lsp.tsserver.setup {
@@ -191,5 +192,3 @@ EOF
 " highlight link CompeDocumentation NormalFloat
 
 endif
-
-" vim: set ft=lua
