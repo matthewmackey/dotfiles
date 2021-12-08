@@ -72,5 +72,9 @@ format = 'on [\[$symbol$active\]]($style) '
 [kubernetes]
 disabled = false
 
+[nodejs]
+disabled = false
+detect_extensions = ["*", "js", "mjs", "py", "cjs", "ts"]
+
 [package]
 disabled = false
