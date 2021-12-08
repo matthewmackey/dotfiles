@@ -45,20 +45,24 @@ create_symlink_with_backup() {
 #-------------------------------#
 # MAIN                          #
 #-------------------------------#
-BASE_DIR=~/dotfiles/.config
+CONFIG_DIR=~/dotfiles/.config
 CONFIGS=(
   alacritty
   awesome
   bash
+  nvim
   sh
   starship
+  vim
   xmodmap
   zsh
 )
 for conf in ${CONFIGS[@]}; do
-  create_symlink_with_backup $BASE_DIR/$conf ~/.config/$conf
+  create_symlink_with_backup $CONFIG_DIR/$conf ~/.config/$conf
 done
 
-create_symlink_with_backup $BASE_DIR/bash/.bash_profile ~/.bash_profile
-create_symlink_with_backup $BASE_DIR/bash/.bashrc ~/.bashrc
-create_symlink_with_backup $BASE_DIR/zsh/.zshenv ~/.zshenv
+create_symlink_with_backup $CONFIG_DIR/bash/.bash_profile ~/.bash_profile
+create_symlink_with_backup $CONFIG_DIR/bash/.bashrc ~/.bashrc
+create_symlink_with_backup $CONFIG_DIR/zsh/.zshenv ~/.zshenv
+
+create_symlink_with_backup ~/.config/vim ~/.vim

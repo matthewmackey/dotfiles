@@ -1,0 +1,9 @@
+plugged/
+autoload/plug.vim
+pack
+Session.vim
+view
+.vimrc-local
+
+# Used for things like persistent undo files
+tmp/
