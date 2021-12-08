@@ -12,6 +12,9 @@ local on_attach = function(client, bufnr)
 
   local opts = { noremap = true, silent = true }
 
+  -- Enable omnicompletion
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
 
@@ -24,11 +27,47 @@ local on_attach = function(client, bufnr)
   end
 
   print "LSP Server loaded"
+
+  --protocol.SymbolKind = { }
+  -- NOT Working: not sure why??
+  protocol.CompletionItemKind = {
+    '', -- Text
+    '', -- Method
+    '', -- Function
+    '', -- Constructor
+    '', -- Field
+    '', -- Variable
+    '', -- Class
+    'ﰮ', -- Interface
+    '', -- Module
+    '', -- Property
+    '', -- Unit
+    '', -- Value
+    '', -- Enum
+    '', -- Keyword
+    '﬌', -- Snippet
+    '', -- Color
+    '', -- File
+    '', -- Reference
+    '', -- Folder
+    '', -- EnumMember
+    '', -- Constant
+    '', -- Struct
+    '', -- Event
+    'ﬦ', -- Operator
+    '', -- TypeParameter
+  }
 end
 
+-- Set up completion using nvim_cmp with LSP source
+local capabilities = require('cmp_nvim_lsp').update_capabilities(
+  vim.lsp.protocol.make_client_capabilities()
+)
+
 nvim_lsp.pyright.setup {
+  capabilities = capabilities,
+  filetypes = { "python" },
   on_attach = on_attach,
-  filetypes = { "python" }
 }
 EOF
 
