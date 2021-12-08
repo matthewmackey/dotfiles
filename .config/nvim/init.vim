@@ -1,5 +1,5 @@
-set runtimepath^=~/.config/vim runtimepath+=~/.config/vim/after
-let &packpath = &runtimepath
+" set runtimepath^=~/.config/vim runtimepath+=~/.config/vim/after
+" let &packpath = &runtimepath
 source ~/.config/vim/vimrc-common.vim
 
 " DISABLE python provider support until I get my installed Pythons reconfigured

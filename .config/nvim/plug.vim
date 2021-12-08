@@ -5,11 +5,12 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 " Specify a directory for plugins
-call plug#begin(data_dir . '/plugged')
+call plug#begin(data_dir . '/../plugged')
 
+  " Colors
   Plug 'chriskempson/base16-vim'
 
-
+  " General
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
   Plug 'tpope/vim-commentary'
@@ -21,21 +22,22 @@ call plug#begin(data_dir . '/plugged')
   " https://github.com/svermeulen/vim-easyclip.git
   " https://github.com/glts/vim-radical.git
 
-  Plug 'scrooloose/nerdtree'
-  Plug 'ryanoasis/vim-devicons'
-  Plug 'PhilRunninger/nerdtree-visual-selection'
-
 if has('nvim')
+  " LSP
   Plug 'neovim/nvim-lspconfig'
   Plug 'glepnir/lspsaga.nvim'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+  " Completion
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-buffer'
   Plug 'hrsh7th/nvim-cmp'
+
+  " File Explore
+  Plug 'kyazdani42/nvim-web-devicons' " for file icons
+  Plug 'kyazdani42/nvim-tree.lua'
 endif
 
-  " Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
   " Plug 'vim-syntastic/syntastic'
 
 
@@ -51,8 +53,6 @@ endif
 " Plug 'davidhalter/jedi-vim'
 
 " Plug 'dense-analysis/ale'
-
-
 
 " call plug#end() to update &runtimepath and initialize plugin system
 " Automatically executes filetype plugin indent on and syntax enable.
