@@ -17,4 +17,7 @@ tnoremap <C-Space>    <C-\><C-n>
 tnoremap <C-PageDown> <C-\><C-n> :tabnext<CR>
 tnoremap <C-PageUp>   <C-\><C-n> :tabprevious<CR>
 
+" Persistent undo
+set undofile
+
 runtime plug.vim

@@ -27,6 +27,21 @@ source ~/.vim/vimrc-common.vim
 
 
 "-------------------------------------------------------------------------------
+"               Persistent undo {{{
+"-------------------------------------------------------------------------------
+let s:tmp_undodir = $HOME . '/.vim/tmp/undo'
+if has('persistent_undo')
+  if !isdirectory(s:tmp_undodir)
+    call mkdir(s:tmp_undodir, 'p')
+    display 'Created undo directory at: ' . s:tmp_undodir
+  endif
+  set undofile
+  let &undodir=s:tmp_undodir
+endif
+" }}}
+
+
+"-------------------------------------------------------------------------------
 "               CLIPBOARD Settings {{{
 "
 " From - https://vim.fandom.com/wiki/Highlight_unwanted_spaces

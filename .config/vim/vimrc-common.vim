@@ -74,17 +74,6 @@ cnoreabbrev <expr> help getcmdtype() == ":" && getcmdline() == 'help' ? 'tab hel
 " becomes the current directory for that window.  Windows where the |:lcd|
 " command has not been used stick to the global or tab-local current directory.'
 autocmd BufEnter * silent! lcd %:p:h
-
-" Persistent undo
-let s:tmp_undodir = $HOME . '/.vim/tmp/undo'
-if has('persistent_undo')
-  if !isdirectory(s:tmp_undodir)
-    call mkdir(s:tmp_undodir, 'p')
-    display 'Created undo directory at: ' . s:tmp_undodir
-  endif
-  set undofile
-  let &undodir=s:tmp_undodir
-endif
 " }}} General Settings
 
 
