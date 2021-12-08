@@ -219,7 +219,7 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s , height = 20})
+    s.mywibox = awful.wibar({ position = "top", screen = s , height = 30})
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -596,3 +596,5 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+-- vim: foldlevel=0 foldmarker={{{,}}} foldmethod=marker
