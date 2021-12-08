@@ -29,8 +29,11 @@ if has('nvim')
   Plug 'neovim/nvim-lspconfig'
   Plug 'glepnir/lspsaga.nvim'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/nvim-cmp'
 endif
-  " Plug 'hrsh7th/nvim-compe'
 
   " Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
   " Plug 'vim-syntastic/syntastic'
