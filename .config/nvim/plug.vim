@@ -28,6 +28,7 @@ call plug#begin(data_dir . '/plugged')
 if has('nvim')
   Plug 'neovim/nvim-lspconfig'
   Plug 'glepnir/lspsaga.nvim'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 endif
   " Plug 'hrsh7th/nvim-compe'
 
