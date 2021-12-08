@@ -36,7 +36,9 @@
   #-------------------------------------
   # [DEFAULTS - used by others below]
   #-------------------------------------
-  if [ -x /usr/bin/dircolors ]; then
+  if [ -x ~/.local/bin/exa ]; then
+    alias ls="exa"
+  elif [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
     alias grep='grep --color=auto'
@@ -192,12 +194,12 @@
   alias gitconf="vim ${DOTDIR}/git/.gitconfig"
   alias glb="vim .gitlab-ci.yml"
   alias tmconf="vim ~/.tmux.conf"
-  alias vimrc="vim ${DOTDIR}/vim/.vimrc"
-  alias vimrcl="vim ${DOTDIR}/vim/.vim/.vimrc-local"
+  alias vimrc="vim ${DOTDIR}/.config/vim/vimrc"
+  alias vimrcl="vim ${DOTDIR}/.config/vim/.vimrc-local"
 
-  alias vimalacritty="vim ${DOT_DIR}/.config/alacritty/alacritty.yml"
-  alias vimawesome="vim ${DOT_DIR}/.config/awesome/rc.lua"
-  alias vimstarship="vim ${DOT_DIR}/.config/starship/config.toml"
+  alias vimalacritty="vim ${DOTDIR}/.config/alacritty/alacritty.yml"
+  alias vimawesome="vim ${DOTDIR}/.config/awesome/rc.lua"
+  alias vimstarship="vim ${DOTDIR}/.config/starship/config.toml"
 # }}}
 
 
