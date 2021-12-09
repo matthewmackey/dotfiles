@@ -10,8 +10,6 @@
 - scratch windows
 - easily zoom current window to max
 - fuzzy finding buffers/windows/files/etc.
-- highlight line numbers like in SpaceVim
-- reduce darkness of line cursor
 - auto-eliminate trailing whitespace on save
 - show some sort of tab/indention indicator like in SpaceVim
 - allow file tree to be different on different tabs
@@ -32,6 +30,7 @@
 - Increase key repeat speed (OS level change)
 - Plugin that turns quickfix window into a buffer w/ operations
 - Implement vim sessions
+x cursorline is just underline vs highlight
 
 - Clean-up hard-coded ~/.vim / ~/.config/vim paths in \*.vim files
 - Ensure all if('nvim') code is moved to ~/.config/nvim

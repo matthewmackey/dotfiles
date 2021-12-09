@@ -202,6 +202,10 @@ nnoremap Y y$
 
 " IDE: Enable folding with spacebar
 nnoremap , za
+
+" Maintain visual selection after indenting
+vnoremap < <gv
+vnoremap > >gv
 "   }}} Keymaps - Other
 
 "----------------------------------------------------------------"
