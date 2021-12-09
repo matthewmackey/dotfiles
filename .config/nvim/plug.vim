@@ -33,6 +33,9 @@ call plug#begin(data_dir . '/../plugged')
   Plug 'coachshea/vim-textobj-markdown'
   Plug 'bps/vim-textobj-python'
 
+  " Languages
+  Plug 'Chiel92/vim-autoformat'
+
 if has('nvim')
   " LSP
   Plug 'neovim/nvim-lspconfig'
