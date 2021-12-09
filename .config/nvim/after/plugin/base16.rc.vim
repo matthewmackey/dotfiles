@@ -11,4 +11,6 @@ endif
 " highlight ColorColumn ctermbg=None cterm=underline
 highlight ColorColumn ctermbg=DarkGray
 
-" colorscheme default
+" Use underline for cursorline vs. highlighting
+highlight clear CursorLine
+highlight CursorLine gui=underline cterm=underline
