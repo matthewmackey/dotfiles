@@ -3,7 +3,7 @@
 if filereadable(expand("~/.local/share/nvim/plugged/base16-vim/colors/base16-seti.vim"))
       \ && filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
-  set background=light
+  set background=dark
   source ~/.vimrc_background
 endif
 
