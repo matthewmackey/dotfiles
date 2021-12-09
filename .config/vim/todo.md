@@ -40,9 +40,9 @@ Desired Shortcuts
 =================
 - Add blank line above w/o entering insert mode (ie - 'O')
 - auto-indent brackets & cursor when coding
-- auto-close brackets/parens/etc.
-- keep visual selection after operation
-- move multiple lines up and down easily
+x auto-close brackets/parens/etc.
+x keep visual selection after operation
+x move multiple lines up and down easily
 - Command to move line/visual selection up or down (multiple times easily w/o numeric modifiers;
   ie - like repeat-time in Tmux)
 x Remap ESC to Caps Lock (either at OS or in Vim)
