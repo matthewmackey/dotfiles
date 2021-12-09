@@ -22,6 +22,15 @@ call plug#begin(data_dir . '/../plugged')
   " https://github.com/svermeulen/vim-easyclip.git
   " https://github.com/glts/vim-radical.git
 
+  " Text Objects
+  Plug 'kana/vim-textobj-user'
+  Plug 'kana/vim-textobj-entire'
+  Plug 'kana/vim-textobj-fold'
+  Plug 'kana/vim-textobj-indent'
+  Plug 'kana/vim-textobj-line'
+  Plug 'coachshea/vim-textobj-markdown'
+  Plug 'bps/vim-textobj-python'
+
 if has('nvim')
   " LSP
   Plug 'neovim/nvim-lspconfig'
