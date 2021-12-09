@@ -36,14 +36,16 @@
   #-------------------------------------
   # [DEFAULTS - used by others below]
   #-------------------------------------
-  if [ -x ~/.local/bin/exa ]; then
-    alias ls="exa"
-  elif [ -x /usr/bin/dircolors ]; then
+  if [[ -x /usr/bin/dircolors ]]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
+  fi
+
+  if [[ -x ~/.local/bin/exa ]]; then
+    alias ls="exa"
   fi
 
   alias ll='ls -alhF'
@@ -518,4 +520,4 @@ tms() {
   fi
 }
 
-# vim: set ft=sh foldmarker={{{,}}} foldmethod=marker foldlevel=0
+# vim: set ft=sh foldmarker={{{,}}} foldmethod=marker foldlevel=0 :
