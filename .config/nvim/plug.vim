@@ -34,8 +34,10 @@ call plug#begin(data_dir . '/../plugged')
   Plug 'bps/vim-textobj-python'
 
   " Languages
-  " Plug 'Chiel92/vim-autoformat'
   Plug 'dense-analysis/ale'
+
+  " Tag bar
+  Plug 'liuchengxu/vista.vim'
 
 if has('nvim')
   " LSP
