@@ -11,4 +11,4 @@ endif
 " highlight ColorColumn ctermbg=None cterm=underline
 highlight ColorColumn ctermbg=DarkGray
 
-colorscheme default
+" colorscheme default
