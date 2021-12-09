@@ -23,6 +23,8 @@ call plug#begin(data_dir . '/../plugged')
   " https://github.com/glts/vim-radical.git
 
   " Text Objects
+  Plug 'wellle/targets.vim'
+
   Plug 'kana/vim-textobj-user'
   Plug 'kana/vim-textobj-entire'
   Plug 'kana/vim-textobj-fold'
