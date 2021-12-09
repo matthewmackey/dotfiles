@@ -31,9 +31,14 @@
 - Plugin that turns quickfix window into a buffer w/ operations
 - Implement vim sessions
 x cursorline is just underline vs highlight
+- Ability to select inner quotes from anywhere on line
 
 - Clean-up hard-coded ~/.vim / ~/.config/vim paths in \*.vim files
 - Ensure all if('nvim') code is moved to ~/.config/nvim
+- Markdown text objects and functionality
+- Figure out how to take advantage of Treesitter indent and incremental
+  selection
+
 
 
 Desired Shortcuts

@@ -51,6 +51,11 @@ if has('nvim')
   Plug 'hrsh7th/cmp-buffer'
   Plug 'hrsh7th/nvim-cmp'
 
+  " Snippets (w/ completion integration)
+  Plug 'hrsh7th/cmp-vsnip'
+  Plug 'hrsh7th/vim-vsnip'
+  Plug 'rafamadriz/friendly-snippets'
+
   " File Explore
   Plug 'kyazdani42/nvim-web-devicons' " for file icons
   Plug 'kyazdani42/nvim-tree.lua'
