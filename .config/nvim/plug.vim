@@ -68,6 +68,10 @@ if has('nvim')
 
   " Lualine
   Plug 'nvim-lualine/lualine.nvim'
+
+  " Look/Feel
+  " Must have 'pynvim' on PATH when running PlugInstall for this plugin
+  Plug 'TaDaa/vimade'
 endif
 
   " Plug 'vim-syntastic/syntastic'
