@@ -36,6 +36,11 @@ if has('nvim')
   " File Explore
   Plug 'kyazdani42/nvim-web-devicons' " for file icons
   Plug 'kyazdani42/nvim-tree.lua'
+
+  " Telescope
+  Plug 'nvim-lua/popup.nvim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
 endif
 
   " Plug 'vim-syntastic/syntastic'
