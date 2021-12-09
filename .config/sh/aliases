@@ -259,6 +259,7 @@
   # Push/Pull
   alias pull="git pl"
   alias push="git ps"
+  alias p="git ps"
 
   # Restore
   alias rs="git restore"

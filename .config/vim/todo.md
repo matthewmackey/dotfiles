@@ -33,6 +33,9 @@
 - Plugin that turns quickfix window into a buffer w/ operations
 - Implement vim sessions
 
+- Clean-up hard-coded ~/.vim / ~/.config/vim paths in \*.vim files
+- Ensure all if('nvim') code is moved to ~/.config/nvim
+
 
 Desired Shortcuts
 =================
@@ -55,4 +58,4 @@ Utilities to install
 - vifm
 - dust
 - bat
-
+- exa
