@@ -35,6 +35,7 @@ call plug#begin(data_dir . '/../plugged')
 
   " Languages
   Plug 'dense-analysis/ale'
+  Plug 'vim-test/vim-test' " Generic test framework
 
   " Tag bar
   Plug 'liuchengxu/vista.vim'
