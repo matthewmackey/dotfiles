@@ -1,0 +1,16 @@
+! -----------------------------
+! Switch Esc & Caps_Lock
+! -----------------------------
+! SEE: https://vim.fandom.com/wiki/Map_caps_lock_to_escape_in_XWindows#Comments
+
+! Normal mappings:
+!   Escape    ->  9 (0x9)
+!   Caps_Lock -> 66 (0x42)
+
+keycode 9  = NoSymbol NoSymbol NoSymbol
+keycode 66 = Escape NoSymbol Escape
+clear Lock
+
+! Do NOT need to do the following or else when you press the Caps_Lock key it
+! will trigger BOTH an "Escape" AND a "Caps_Lock" (not sure why ??)
+!add Lock = Escape

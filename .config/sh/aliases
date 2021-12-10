@@ -93,6 +93,8 @@
   alias xmboth="xmodmap ~/.config/xmodmap/.xmodmap-both_escape"
   alias xmnormal="xmodmap ~/.config/xmodmap/.xmodmap-normal"
   alias xmswitch="xmodmap ~/.config/xmodmap/.xmodmap-switch"
+  # xmod - switch no escape
+  alias xmsne="xmodmap ~/.config/xmodmap/.xmodmap-switch_no_escape"
 
 # }}}
 
