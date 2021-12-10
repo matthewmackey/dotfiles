@@ -448,14 +448,27 @@
 #                                 FUNCTIONS                                    #
 #------------------------------------------------------------------------------#
 # Colored man pages
+# See: kubernetes.github.io/ingress-nginx/deploy/
 man() {
-  env LESS_TERMCAP_mb=$'\E[01;31m' \
-  LESS_TERMCAP_md=$'\E[01;38;5;74m' \
-  LESS_TERMCAP_me=$'\E[0m' \
-  LESS_TERMCAP_se=$'\E[0m' \
-  LESS_TERMCAP_so=$'\E[38;5;246m' \
-  LESS_TERMCAP_ue=$'\E[0m' \
-  LESS_TERMCAP_us=$'\E[04;38;5;146m' \
+  # md -> start bold effect (double-bright)
+  # me -> stop bold effect
+  #
+  # Stand-out is used to highlight searches in `less`:
+  # so -> start stand-out effect
+  # se -> stop stand-out effect
+  #
+  # us -> start underline
+  # ue -> stop underline
+
+  env \
+    LESS_TERMCAP_md=$'\E[01;31m' \
+    LESS_TERMCAP_me=$'\E[0m' \
+    \
+    LESS_TERMCAP_so=$'\E[30;43m' \
+    LESS_TERMCAP_se=$'\E[0m' \
+    \
+    LESS_TERMCAP_us=$'\E[01;32m' \
+    LESS_TERMCAP_ue=$'\E[0m' \
   man "$@"
 }
 
