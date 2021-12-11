@@ -77,7 +77,7 @@ if [[ ! -f ~/.local/bin/bashmarks.sh ]]; then
   mkdir_if_not_exist ~/.local/bin
   curl -o $BASHMARKS_SH "https://raw.githubusercontent.com/huyng/bashmarks/master/bashmarks.sh"
 fi
-source $BASHMARKS_SH`
+source $BASHMARKS_SH
 # }}}
 
 
