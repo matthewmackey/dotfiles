@@ -471,6 +471,29 @@ clientbuttons = gears.table.join(
     end)
 )
 
+-- See: https://github.com/msjche/Awesome_WM_Laptop/blob/master/rc.lua
+globalkeys = gears.table.join(globalkeys,
+
+    -- Brightness
+    awful.key({ }, "XF86MonBrightnessUp", function ()
+        awful.util.spawn("xbacklight -inc 15")
+    end),
+    awful.key({ }, "XF86MonBrightnessDown", function ()
+        awful.util.spawn("xbacklight -dec 15")
+    end),
+
+    -- ALSA volume control
+    awful.key({ }, "XF86AudioRaiseVolume", function ()
+        awful.util.spawn("amixer set Master 5%+", false)
+    end),
+    awful.key({ }, "XF86AudioLowerVolume", function ()
+        awful.util.spawn("amixer set Master 5%-", false)
+    end),
+    awful.key({ }, "XF86AudioMute", function ()
+      awful.util.spawn("amixer set Master toggle", false)
+    end)
+)
+
 -- Set keys
 root.keys(globalkeys)
 -- }}}
