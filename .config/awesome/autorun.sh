@@ -8,4 +8,5 @@ function run {
 }
 
 run parcellite
+run slack
 run synapse
