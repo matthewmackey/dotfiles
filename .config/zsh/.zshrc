@@ -30,7 +30,12 @@ printf "Sourcing -> [~/.config/zsh/.zshrc]\n"
 
   export ZSH_COMP_DIR=~/.config/zsh/completions
   export ZSH_PLUGIN_DIR=~/.config/zsh/plugins
+
+  # Needed for some oh-my-zsh plugins
+  export ZSH_CACHE_DIR=~/.cache/zsh
+
   DIRS=(
+    $ZSH_CACHE_DIR
     $ZSH_COMP_DIR
     ~/.config/zsh/functions
     $ZSH_PLUGIN_DIR
@@ -52,16 +57,17 @@ printf "Sourcing -> [~/.config/zsh/.zshrc]\n"
     local _gh_plugin_repo=$1
     local _plugin_source_file=$2
 
-    _plugin_dir=$ZSH_PLUGIN_DIR/${_gh_plugin_repo}
+    _plugin_clone_dir=$ZSH_PLUGIN_DIR/${_gh_plugin_repo}
 
-    if [ ! -d $_plugin_dir ]; then
+    if [ ! -d $_plugin_clone_dir ]; then
       _gh_url="https://github.com/${_gh_plugin_repo}.git"
-      printf "Cloning [$_gh_url] into [$_plugin_dir]\n\n"
-      git clone $_gh_url $_plugin_dir
+      printf "Cloning [$_gh_url] into [$_plugin_clone_dir]\n\n"
+      git clone $_gh_url $_plugin_clone_dir
     fi
-    source $_plugin_dir/$_plugin_source_file
+    source $_plugin_clone_dir/$_plugin_source_file
   }
 
+  installZshPlugin ohmyzsh/ohmyzsh plugins/kubectl/kubectl.plugin.zsh
   installZshPlugin zsh-users/zsh-syntax-highlighting zsh-syntax-highlighting.zsh
 # }}}
 
