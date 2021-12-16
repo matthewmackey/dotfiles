@@ -150,6 +150,9 @@
   #alias yqd='docker run --name yqtmp --rm -v"${PWD}":/workdir mikefarah/yq:3.3.4 yq "$@"'
   alias yqd='docker run --name yqtmp --rm -i mikefarah/yq:3.3.4 yq "$@"'
   alias yqd4='docker run --name yqtmp --rm -v"${PWD}":/workdir mikefarah/yq:latest "$@"'
+
+  alias za="zoxide add"
+  alias zq="zoxide query -ls"
 # }}}
 
 
