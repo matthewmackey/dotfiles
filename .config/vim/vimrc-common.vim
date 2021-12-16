@@ -21,6 +21,7 @@ set showcmd                   " show last command in the bottom right
 set noshowmatch                 " Do not show matching brackets by flickering
 set noshowmode                  " We show the mode with airline or lightline
 set nospell                   " Turn off spell check
+set scrolloff=8
 set splitright                  " Vertical windows should be split to right
 set splitbelow                  " Horizontal windows should split to bottom
 set textwidth=80                 " Force the cursor onto a new line after 80 characters
@@ -136,6 +137,7 @@ nnoremap <Leader>/ q/i
 
 imap jj <Esc>
 
+nnoremap <Leader>pc :PlugClean<CR>
 nnoremap <Leader>pi :PlugInstall<CR>
 nnoremap <Leader>ps :PlugStatus<CR>
 
@@ -144,7 +146,8 @@ nnoremap <Leader>ps :PlugStatus<CR>
 cnoreabbrev <expr> help getcmdtype() == ":" && getcmdline() == 'help' ? 'tab help' : 'help'
 
 " _ = forward slash
-nnoremap <Leader>_ :source ~/.config/vimrc<CR>
+nnoremap .. :source ~/.config/nvim/init.vim<CR>
+nnoremap .c :tabedit ~/.config/vim/vimrc-common.vim<CR>
 
 nnoremap <Leader>2 :set invpaste<CR>
 nnoremap <F2>      :set invpaste<CR>
@@ -157,7 +160,20 @@ nnoremap <F4>      :set list!<CR>
 
 " Mainly used to close window when only NERDTree is open
 nnoremap <Leader>q :wqa<CR>
-"   }}} Keymaps - General
+" }}} Keymaps - General
+
+"----------------------------------------------------------------"
+" Keymaps - Buffers {{{
+"----------------------------------------------------------------"
+nnoremap <Leader>a  <C-^>
+nnoremap <Leader>l  :buffers<CR>
+nnoremap <Leader>bb :buffers<CR>
+nnoremap <Leader>bf :bfirst<CR>
+nnoremap <Leader>bn :bnext<CR>
+nnoremap <Leader>bp :bprevious<CR>
+nnoremap <Leader>bl :blast<CR>
+
+" }}} Keymaps - Buffers
 
 "----------------------------------------------------------------"
 " Keymaps - Windows {{{
@@ -168,10 +184,10 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 
-inoremap <C-j> <C-\><C-N><C-w>j
-inoremap <C-k> <C-\><C-N><C-w>k
-inoremap <C-l> <C-\><C-N><C-w>l
-inoremap <C-h> <C-\><C-N><C-w>h
+" inoremap <C-j> <C-\><C-N><C-w>j
+" inoremap <C-k> <C-\><C-N><C-w>k
+" inoremap <C-l> <C-\><C-N><C-w>l
+" inoremap <C-h> <C-\><C-N><C-w>h
 
 tnoremap <C-j> <C-\><C-N><C-w>j
 tnoremap <C-k> <C-\><C-N><C-w>k
@@ -183,7 +199,7 @@ noremap <silent> <Leader>z :resize 99999<CR>:vertical resize 99999<CR>
 
 " noremap <silent> <Leader>ww :vertical resize 99999<CR> " Maximize window horizontally ("my horizontal")
 " noremap <silent> <Leader>wv <C-w>_                     " Maximize window vertically ("my vertical")
-noremap          <Leader>= <C-w>=                      " Make windows all equal size
+noremap <Leader>= <C-w>=                      " Make windows all equal size
 
 nnoremap <silent> <Leader>n :exe "vertical resize +10"<CR>
 nnoremap <silent> <Leader>m :exe "vertical resize -10"<CR>
@@ -196,6 +212,32 @@ nnoremap <silent> <Leader>m :exe "vertical resize -10"<CR>
 " search will center on the line it's found in.
 nnoremap n nzzzv
 nnoremap N Nzzzv
+nnoremap J mzJ`z
+
+nnoremap zj zjzz
+nnoremap zk zkzz
+
+" Add undo break points for various punctuation
+inoremap , ,<C-g>u
+inoremap . .<C-g>u
+inoremap ! !<C-g>u
+inoremap ? ?<C-g>u
+
+" Add any j/k movements over 5 lines to jumplist (not normally recorded)
+nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
+
+" Text movements (that preserve prior indentation)
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+inoremap <C-j> <Esc>:m .+1<CR>==i
+inoremap <C-k> <Esc>:m .-2<CR>==i
+nnoremap <Leader>j :m .+1<CR>==
+nnoremap <Leader>k :m .-2<CR>==
+
+" Maintain visual selection after indenting
+vnoremap < <gv
+vnoremap > >gv
 
 " Act like D and C
 nnoremap Y y$
@@ -203,10 +245,6 @@ nnoremap Y y$
 " IDE: Enable folding with spacebar
 nnoremap , za
 
-" Maintain visual selection after indenting
-vnoremap < <gv
-vnoremap > >gv
-"   }}} Keymaps - Other
 
 "----------------------------------------------------------------"
 " Keymaps - Tabs {{{
@@ -347,7 +385,6 @@ autocmd FileType gitcommit set colorcolumn+=51
 " Turn off colorcolumn to start for all other files
 set colorcolumn=0
 " }}} Colors
-
 
 
 " vim: ft=vim foldmarker={{{,}}} foldmethod=marker foldlevel=0
