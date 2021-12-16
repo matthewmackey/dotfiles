@@ -53,6 +53,7 @@ CONFIGS=(
   nvim
   sh
   starship
+  tmux
   vim
   xmodmap
   zsh
