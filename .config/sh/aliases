@@ -201,7 +201,8 @@
 
   alias gitconf="vim ${DOTDIR}/git/.gitconfig"
   alias glb="vim .gitlab-ci.yml"
-  alias tmconf="vim ~/.tmux.conf"
+  alias tmc="vim ~/.config/tmux/tmux.conf"
+  alias tmcl="vim $LOCAL_DOTDIR/tmux.conf"
   alias vimrc="vim ${DOTDIR}/.config/vim/vimrc"
   alias vimrcl="vim ${DOTDIR}/.config/vim/.vimrc-local"
 
