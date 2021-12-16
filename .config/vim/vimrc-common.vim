@@ -132,6 +132,9 @@ nnoremap : <nop>
 nnoremap <Leader>w :wq<CR>
 nnoremap <Leader>q :q!<CR>
 
+" Exit terminal-mode
+tnoremap <C-\> <C-\><C-n>
+
 nnoremap <Leader>: q:i
 nnoremap <Leader>/ q/i
 
@@ -189,6 +192,7 @@ nnoremap <C-h> <C-w>h
 " inoremap <C-l> <C-\><C-N><C-w>l
 " inoremap <C-h> <C-\><C-N><C-w>h
 
+" Terminal-mode
 tnoremap <C-j> <C-\><C-N><C-w>j
 tnoremap <C-k> <C-\><C-N><C-w>k
 tnoremap <C-l> <C-\><C-N><C-w>l
