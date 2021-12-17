@@ -25,6 +25,7 @@ set scrolloff=8
 set splitright                  " Vertical windows should be split to right
 set splitbelow                  " Horizontal windows should split to bottom
 set textwidth=80                 " Force the cursor onto a new line after 80 characters
+set virtualedit=all           " Allow moving columns passed the last character on a line
 
 " Backup/Swap files
 set nobackup                  " Remove backup file after file is successfully overwritten
