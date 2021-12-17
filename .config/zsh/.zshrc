@@ -64,7 +64,7 @@ printf "Sourcing -> [~/.config/zsh/.zshrc]\n"
       printf "Cloning [$_gh_url] into [$_plugin_clone_dir]\n\n"
       git clone $_gh_url $_plugin_clone_dir
     fi
-    source $_plugin_clone_dir/$_plugin_source_file
+    source_file_if_exists $_plugin_clone_dir/$_plugin_source_file
   }
 
   installZshPlugin ohmyzsh/ohmyzsh plugins/kubectl/kubectl.plugin.zsh
@@ -106,8 +106,5 @@ printf "Sourcing -> [~/.config/zsh/.zshrc]\n"
   done
 # }}}
 
-
-# Reload any completions that were loaded
-autoload -U compinit && compinit
 
 # vim: ft=sh  foldlevel=0 foldmarker={{{,}}} foldmethod=marker
