@@ -68,6 +68,17 @@ nvim_lsp.pyright.setup {
   capabilities = capabilities,
   filetypes = { "python" },
   on_attach = on_attach,
+  settings = {
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        diagnosticMode = "workspace",
+        extraPaths = {"./src/main/python"},
+        logLevel = "Information",
+        useLibraryCodeForTypes = true
+      }
+    }
+  }
 }
 EOF
 
