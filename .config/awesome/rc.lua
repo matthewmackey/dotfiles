@@ -6,23 +6,29 @@ pcall(require, "luarocks.loader")
 local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
+
 -- Widget and layout library
 local wibox = require("wibox")
+
 -- Theme handling library
 local beautiful = require("beautiful")
+
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
+
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
-
+--
 -- mm: don't clutter Help popup w/ Tmux/Vim/etc. helpers
 -- require("awful.hotkeys_popup.keys")
 
 -- Load Debian menu entries
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
+
+local lain = require("lain")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -131,6 +137,33 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
 
+bat1icon = wibox.widget.imagebox(beautiful.bat)
+
+local mybattery = lain.widget.bat({
+  battery = "BAT0",
+  timeout = 10,
+  settings = function()
+     if bat_now.perc == "N/A" or bat_now.perc == "100" then
+         widget:set_markup(" AC ")
+         bat1icon:set_image(beautiful.ac)
+         return
+     else
+         bat_perc = tonumber(bat_now.perc)
+         if bat_perc > 50 then
+             widget:set_markup(" " .. bat_now.perc .. "% ")
+             bat1icon:set_image(beautiful.bat)
+         elseif bat_perc > 15 then
+             widget:set_markup(markup("#EB8F8F", bat_now.perc .. "% "))
+             bat1icon:set_image(beautiful.bat_low)
+         else
+             widget:set_markup(markup("#D91E1E", bat_now.perc .. "% "))
+             bat1icon:set_image(beautiful.bat_no)
+         end
+    end
+    naughty.notify({ title = "BAT0".. bat_now.perc})
+  end
+})
+
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
                     awful.button({ }, 1, function(t) t:view_only() end),
@@ -235,6 +268,8 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
             wibox.widget.systray(),
+            bat1icon,
+            mybattery,
             mytextclock,
             s.mylayoutbox,
         },
@@ -619,6 +654,7 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
 
 -- Autostart {{{
 awful.spawn.with_shell("~/.config/awesome/autorun.sh")
