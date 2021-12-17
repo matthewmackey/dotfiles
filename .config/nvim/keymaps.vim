@@ -17,10 +17,10 @@ nnoremap <silent> K <Cmd>Lspsaga hover_doc<CR>
 " inoremap <silent> <C-K> <Cmd>Lspsaga signature_help<CR>
 
 " Diagnostics
-nnoremap <silent> <C-]> :Lspsaga diagnostic_jump_next<CR>
-nnoremap <silent> <C-[> :Lspsaga diagnostic_jump_prev<CR>
-nnoremap <silent> <leader>cc :Lspsaga show_cursor_diagnostics<CR>
-nnoremap <silent> <leader>cd :Lspsaga show_line_diagnostics<CR>
+nnoremap <c-n> :Lspsaga diagnostic_jump_next<CR>
+nnoremap :Lspsaga diagnostic_jump_prev<CR>
+nnoremap <leader>cc :Lspsaga show_cursor_diagnostics<CR>
+nnoremap <leader>cl :Lspsaga show_line_diagnostics<CR>
 
 "----------------------------------------#
 "    NvimTree                            #
