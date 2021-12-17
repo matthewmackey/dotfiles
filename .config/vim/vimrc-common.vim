@@ -132,9 +132,6 @@ nnoremap : <nop>
 nnoremap <Leader>w :wq<CR>
 nnoremap <Leader>q :q!<CR>
 
-" Exit terminal-mode
-tnoremap <C-\> <C-\><C-n>
-
 nnoremap <Leader>: q:i
 nnoremap <Leader>/ q/i
 
@@ -264,10 +261,10 @@ inoremap <C-t>  <Esc>:tabnew<CR>
 nnoremap <Leader>tn  :tabnew<CR>
 
 " Open a new tab & edit {file} after curr tab
-nnoremap <Leader>tt  :tabedit<Space>
+nnoremap <Leader>tt  :tabedit<CR>
 
 " Close current tab
-nnoremap <Leader>x   :tabclose<CR>
+nnoremap <Leader>x   :tabclose<CnitR>
 nnoremap <Leader>tx  :tabclose<CR>
 
 " Move the current tab page to after tab page N
@@ -279,30 +276,9 @@ nnoremap <Leader><< :tabmove -1<CR>
 " Move the tab page to the left
 nnoremap <Leader>>> :tabmove +1<CR>
 
-" UPDATE 5/12/2021 - this seems to work now for tab switching
-"
-" Couldn't get <C-PageUp/Down> to work even after I disabled those keybindings
-" in my terminal settings "Edit -> Preferences -> Shortcuts'
-" See here for some info:
-"   https://stackoverflow.com/questions/1814373/why-do-c-pageup-and-c-pagedown-not-work-in-vim
-nnoremap <C-PageUp>   :tabprev<CR>
-nnoremap <C-PageDown> :tabnext<CR>
-
-" Go to prev tab page; wraps around from 1st to last
-" (can't use HJKL alone because I need those standard Vim bindings))
 nnoremap <Leader>;   :tabprev<CR>
-nnoremap <Leader>H   :tabprev<CR>
-nnoremap <Leader>P   :tabprev<CR>
-
-" Go to next tab page; wraps around from last to 1st
 nnoremap <Leader>.   :tabnext<CR>
-nnoremap <Leader>L   :tabnext<CR>
-nnoremap <Leader>N   :tabnext<CR>
-
-" Go to 1st tab
 nnoremap <Leader>th  :tabfirst<CR>
-
-" Go to last tab
 nnoremap <Leader>tl  :tablast<CR>
 
 " Go to exact tab number (tabs are 1-indexed)
