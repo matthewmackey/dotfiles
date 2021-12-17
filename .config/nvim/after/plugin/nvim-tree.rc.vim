@@ -145,13 +145,3 @@ set termguicolors
 
 " a list of groups can be found at `:help nvim_tree_highlight`
 " highlight NvimTreeSymlink guifg=blue gui=bold,underline
-
-" Mappings
-nnoremap <C-n> :NvimTreeToggle<CR>
-nnoremap <leader>r :NvimTreeFocus<CR>
-nnoremap <leader>ff :NvimTreeFindFile<CR>
-nnoremap <leader>ft :NvimTreeFindFileToggle<CR>
-nnoremap <leader>fz :NvimTreeResize 40
-" nnoremap <leader>fr :NvimTreeRefresh<CR>
-" nnoremap <leader>fo :NvimTreeOpen<CR>
-" nnoremap <leader>fc :NvimTreeClose<CR>

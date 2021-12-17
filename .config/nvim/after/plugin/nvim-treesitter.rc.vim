@@ -52,4 +52,3 @@ nt_configs.setup {
   }
 }
 EOF
-

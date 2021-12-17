@@ -96,4 +96,3 @@ lualine.setup {
   },
   extensions = {'fugitive'}
 }
-

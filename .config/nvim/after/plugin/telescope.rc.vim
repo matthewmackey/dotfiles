@@ -24,11 +24,4 @@ require('telescope').setup {
 -- load_extension, somewhere after setup function:
 require('telescope').load_extension('fzf')
 EOF
-
-nnoremap <silent> ,b <cmd>Telescope buffers<CR>
-nnoremap <silent> ,c <cmd>Telescope commands<CR>
-nnoremap <silent> ,f <cmd>Telescope find_files<CR>
-nnoremap <silent> ,g <cmd>Telescope live_grep<CR>
-nnoremap <silent> ,h <cmd>Telescope help_tags<CR>
-
 " vim: set ft=lua
