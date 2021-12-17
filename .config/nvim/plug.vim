@@ -45,6 +45,7 @@ if has('nvim')
   Plug 'neovim/nvim-lspconfig'
   Plug 'glepnir/lspsaga.nvim'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-treesitter/playground'
 
   " Completion
   Plug 'hrsh7th/cmp-nvim-lsp'
