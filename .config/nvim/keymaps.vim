@@ -35,21 +35,6 @@ nnoremap <leader>fz :NvimTreeResize 40
 " nnoremap <leader>fc :NvimTreeClose<CR>
 
 "----------------------------------------#
-"    Telescope                           #
-"----------------------------------------#
-nnoremap <silent> ,b <cmd>Telescope buffers<CR>
-nnoremap <silent> ,c <cmd>Telescope commands<CR>
-nnoremap <silent> ,f <cmd>Telescope find_files<CR>
-nnoremap <silent> ,g <cmd>Telescope live_grep<CR>
-nnoremap <silent> ,h <cmd>Telescope help_tags<CR>
-
-nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
-
-
-"----------------------------------------#
 "    'Test' Plugin                       #
 "----------------------------------------#
 nnoremap <silent> <Leader>tn :TestNearest<CR>
@@ -59,8 +44,25 @@ nnoremap <silent> <Leader>tl :TestLast<CR>
 nnoremap <silent> <Leader>tg :TestVisit<CR>
 
 
+"----------------------------------------#
+"    UndoTree                            #
+"----------------------------------------#
+nnoremap <leader>5 :UndotreeToggle<cr>
 
-nnoremap <Leader>pp :lua require'telescope.builtin'.planets{}
+
+"----------------------------------------#
+"    Telescope {{{                       #
+"----------------------------------------#
+" nnoremap <silent> ,b <cmd>Telescope buffers<CR>
+" nnoremap <silent> ,c <cmd>Telescope commands<CR>
+" nnoremap <silent> ,f <cmd>Telescope find_files<CR>
+" nnoremap <silent> ,g <cmd>Telescope live_grep<CR>
+" nnoremap <silent> ,h <cmd>Telescope help_tags<CR>
+
+" nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+" nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+" nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+" nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 
 "-----------------------------------------------"
@@ -224,3 +226,5 @@ nnoremap <leader>ld <cmd>lua require('telescope.builtin').lsp_definitions()<cr>
 
 " builtin.lsp_type_definitions - Goto the definition of the type of the word under the cursor, if there's only one, otherwise show all options in Telescope
 nnoremap <leader>ltd <cmd>lua require('telescope.builtin').lsp_type_definitions()<cr>
+
+" }}} Telescope

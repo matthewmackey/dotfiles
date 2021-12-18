@@ -13,13 +13,14 @@ call plug#begin(data_dir . '/../plugged')
   " General
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
+  Plug 'cohama/lexima.vim'
+  Plug 'mbbill/undotree'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-obsession'
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-unimpaired'
-  Plug 'cohama/lexima.vim'
   " https://github.com/svermeulen/vim-easyclip.git
   " https://github.com/glts/vim-radical.git
 
