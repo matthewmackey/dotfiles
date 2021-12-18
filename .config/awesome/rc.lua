@@ -29,6 +29,7 @@ local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
 
 local lain = require("lain")
+local markup = lain.util.markup
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -149,18 +150,21 @@ local mybattery = lain.widget.bat({
          return
      else
          bat_perc = tonumber(bat_now.perc)
-         if bat_perc > 50 then
+         if bat_perc > 40 then
              widget:set_markup(" " .. bat_now.perc .. "% ")
              bat1icon:set_image(beautiful.bat)
          elseif bat_perc > 15 then
-             widget:set_markup(markup("#EB8F8F", bat_now.perc .. "% "))
+             -- widget:set_markup(markup("#EB8F8F", bat_now.perc .. "% "))
+             widget:set_markup(markup.bold(markup("#FF0000", bat_now.perc .. "% ")))
              bat1icon:set_image(beautiful.bat_low)
+             naughty.notify({ title = "Battery0 -> ".. bat_now.perc .. "% "})
          else
-             widget:set_markup(markup("#D91E1E", bat_now.perc .. "% "))
+             -- widget:set_markup(markup("#D91E1E", bat_now.perc .. "% "))
+             widget:set_markup(markup.bold(markup("#FF0000", bat_now.perc .. "% ")))
              bat1icon:set_image(beautiful.bat_no)
+             naughty.notify({ title = "Battery0 -> ".. bat_now.perc .. "% "})
          end
     end
-    naughty.notify({ title = "BAT0".. bat_now.perc})
   end
 })
 
