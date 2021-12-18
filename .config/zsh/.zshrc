@@ -48,7 +48,6 @@ printf "Sourcing -> [~/.config/zsh/.zshrc]\n"
   autoload -Uz compinit && compinit
 # }}}
 
-
 #---------------------------------------
 # [Plugins] {{{
 #---------------------------------------
@@ -63,7 +62,9 @@ printf "Sourcing -> [~/.config/zsh/.zshrc]\n"
       _gh_url="https://github.com/${_gh_plugin_repo}.git"
       printf "Cloning [$_gh_url] into [$_plugin_clone_dir]\n\n"
       git clone $_gh_url $_plugin_clone_dir
-    else
+    fi
+
+    if [ ! -f $_plugin_clone_dir/$_plugin_source_file ]; then
       { cd $_plugin_clone_dir; git pull ; }
     fi
     source_file_if_exists $_plugin_clone_dir/$_plugin_source_file
