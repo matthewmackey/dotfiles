@@ -11,11 +11,6 @@
   LOCAL_RC=~/.local/dot/rc
 
   #-------------------------------------
-  # Vim [Sessions]
-  #-------------------------------------
-  alias vim="[ -f ./Session.vim ] && vim -S Session.vim || vim"
-
-  #-------------------------------------
   # Shell - [aliases]
   #-------------------------------------
   alias al="vim ${ALIASES}"
