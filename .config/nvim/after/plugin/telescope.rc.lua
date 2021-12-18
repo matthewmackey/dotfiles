@@ -1,4 +1,3 @@
-lua <<EOF
 local actions = require('telescope.actions')
 
 require('telescope').setup {
@@ -17,11 +16,17 @@ require('telescope').setup {
       case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
                                          -- the default case_mode is "smart_case"
     },
+    fzf_writer = {
+      minimum_grep_characters = 2,
+      minimum_files_characters = 2,
+
+      -- Disabled by default.
+      -- Will probably slow down some aspects of the sorter, but can make color highlights.
+      -- I will work on this more later.
+      use_highlighter = true,
+    }
   },
 }
 
--- To get fzf loaded and working with telescope, you need to call
--- load_extension, somewhere after setup function:
 require('telescope').load_extension('fzf')
-EOF
-" vim: set ft=lua
+require('telescope').load_extension('fzf_writer')
