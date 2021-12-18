@@ -100,6 +100,47 @@
 # }}}
 
 #-------------------------------------------------------------------------------
+# [Dotfiles - Commit] {{{
+#-------------------------------------------------------------------------------
+  IS_GIT_STAGED='[ "$(git status -s | grep "^A" | wc -l)" != 0 ] && (echo -e "CANNOT: already staged files\n"; git status -s) ||'
+
+  alias commitaliases='cd ${DOTDIR}/bash/bash; '$IS_GIT_STAGED' (git add .bash_aliases; git ci -m"bash_aliases: updated aliases"); cd -'
+  alias commitbashrc='cd ${DOTDIR}/bash/;      '$IS_GIT_STAGED' (git add .bashrc; git ci -m"bashrc: updated"); cd -'
+  alias commitdesktop='cd ${DOTDIR}/desktop;   '$IS_GIT_STAGED' (git add .local; git ci -m"desktop: updated .desktop shortcuts"); cd -'
+  alias commitgitconf='cd ${DOTDIR}/git;       '$IS_GIT_STAGED' (git add .gitconfig; git ci -m"git: updated .gitconfig"); cd -'
+  alias committmux='cd ${DOTDIR}/tmux;         '$IS_GIT_STAGED' (git add .tmux.conf; git ci -m"tmux: updated .tmux.conf"); cd -'
+  alias commitvimrc='cd ${DOTDIR}/vim;         '$IS_GIT_STAGED' (git add .vimrc; git ci -m"vim: updated .vimrc"); cd -'
+  alias commitvscode='cd ${DOTDIR}/vscode;     '$IS_GIT_STAGED' (git add .config; git ci -m"vscode: updated VSCode config settings"); cd -'
+
+  alias commitglb=''$IS_GIT_STAGED'       (git add .gitlab-ci.yml; git ci -m "Updated .gitlab-ci.yml")'
+  alias commitgitignore=''$IS_GIT_STAGED' (git add .gitignore; git ci -m "Updated .gitignore")'
+# }}}  Dotfiles Commit
+
+
+#-------------------------------------------------------------------------------
+# [Dotfile - EDIT] {{{
+#-------------------------------------------------------------------------------
+
+  # Git/Gitlab
+  alias gitconf="vim ${DOTDIR}/git/.gitconfig"
+  alias glb="vim .gitlab-ci.yml"
+
+  # TMUX
+  alias tmc="vim ~/.config/tmux/tmux.conf"
+  alias tmcl="vim $LOCAL_DOTDIR/tmux.conf"
+
+  # Vimrc
+  alias vimrc="vim ${DOTDIR}/.config/vim/vimrc-common.vim"
+  alias vimrcl="vim ${DOTDIR}/.config/vim/.vimrc-local"
+
+  # Other configs
+  alias vimal="vim ${DOTDIR}/.config/alacritty/alacritty.yml"
+  alias vimaw="vim ${DOTDIR}/.config/awesome/rc.lua"
+  alias vimstar="vim ${DOTDIR}/.config/starship/config.toml"
+# }}} Dotfiles EDIT
+
+
+#-------------------------------------------------------------------------------
 # [GUI] {{{
 #-------------------------------------------------------------------------------
   # SEE: https://unix.stackexchange.com/questions/422111/linux-mint-cinnamon-18-in-what-file-are-the-keyboard-shortcuts-saved
@@ -114,6 +155,7 @@
   alias workspacesettingsdumpsave="echo 'Writing to: $WORKSPACE_FILE\n'; dconf dump /org/cinnamon/desktop/wm/ | tee $WORKSPACE_FILE"
   alias workspacesettingsload="dconf load /org/cinnamon/desktop/wm/"
 # }}}
+
 
 #-------------------------------------------------------------------------------
 # [tools] {{{
@@ -145,6 +187,7 @@
   alias t1="tree -L 1"
   alias t2="tree -L 2"
   alias t3="tree -L 3"
+  alias t4="tree -L 4"
 
   alias whatismyip="wget http://ipinfo.io/ip -qO -"
 
@@ -166,49 +209,6 @@
     | fzf \
     | xargs -I {} zsh -c \
     "eval $(functions _base16); _base16 \$(echo "{}" | awk '"'"'{ print \$2,\$1; }'"'"';) "'
-# }}}
-
-
-#-------------------------------------------------------------------------------
-# [Docker] {{{
-#-------------------------------------------------------------------------------
-  alias dps="cl; docker ps"
-  alias dpsa="cl; docker ps -a"
-  alias dpsaf="cl; dps -a --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}'"
-  alias dpsf="cl; dps --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}'"
-  alias dpsinfo="docker ps -q |xargs docker inspect --format '{{ printf \"%s\t\t|%s\t|%s\n\" .Name .Config.Hostname .HostConfig.NetworkMode }}'"
-  alias images="cl; docker images"
-  alias up="docker-compose up"
-  alias upd="docker-compose up -d"
-# }}}
-
-
-#-------------------------------------------------------------------------------
-# [Dotfiles] {{{
-#-------------------------------------------------------------------------------
-  IS_GIT_STAGED='[ "$(git status -s | grep "^A" | wc -l)" != 0 ] && (echo -e "CANNOT: already staged files\n"; git status -s) ||'
-
-  alias commitaliases='cd ${DOTDIR}/bash/bash; '$IS_GIT_STAGED' (git add .bash_aliases; git ci -m"bash_aliases: updated aliases"); cd -'
-  alias commitbashrc='cd ${DOTDIR}/bash/;      '$IS_GIT_STAGED' (git add .bashrc; git ci -m"bashrc: updated"); cd -'
-  alias commitdesktop='cd ${DOTDIR}/desktop;   '$IS_GIT_STAGED' (git add .local; git ci -m"desktop: updated .desktop shortcuts"); cd -'
-  alias commitgitconf='cd ${DOTDIR}/git;       '$IS_GIT_STAGED' (git add .gitconfig; git ci -m"git: updated .gitconfig"); cd -'
-  alias committmux='cd ${DOTDIR}/tmux;         '$IS_GIT_STAGED' (git add .tmux.conf; git ci -m"tmux: updated .tmux.conf"); cd -'
-  alias commitvimrc='cd ${DOTDIR}/vim;         '$IS_GIT_STAGED' (git add .vimrc; git ci -m"vim: updated .vimrc"); cd -'
-  alias commitvscode='cd ${DOTDIR}/vscode;     '$IS_GIT_STAGED' (git add .config; git ci -m"vscode: updated VSCode config settings"); cd -'
-
-  alias commitglb=''$IS_GIT_STAGED'       (git add .gitlab-ci.yml; git ci -m "Updated .gitlab-ci.yml")'
-  alias commitgitignore=''$IS_GIT_STAGED' (git add .gitignore; git ci -m "Updated .gitignore")'
-
-  alias gitconf="vim ${DOTDIR}/git/.gitconfig"
-  alias glb="vim .gitlab-ci.yml"
-  alias tmc="vim ~/.config/tmux/tmux.conf"
-  alias tmcl="vim $LOCAL_DOTDIR/tmux.conf"
-  alias vimrc="vim ${DOTDIR}/.config/vim/vimrc-common.vim"
-  alias vimrcl="vim ${DOTDIR}/.config/vim/.vimrc-local"
-
-  alias vimalacritty="vim ${DOTDIR}/.config/alacritty/alacritty.yml"
-  alias vimawesome="vim ${DOTDIR}/.config/awesome/rc.lua"
-  alias vimstarship="vim ${DOTDIR}/.config/starship/config.toml"
 # }}}
 
 
@@ -284,66 +284,6 @@
   # MISCELLANEOUS
   alias remote="git remote -v"
   alias remotes="clrgit remote -v"
-# }}}
-
-
-#-------------------------------------------------------------------------------
-# [Kubernetes] {{{
-#-------------------------------------------------------------------------------
-  alias certs="kubectl get Issuers,ClusterIssuers,Certificates,CertificateRequests,Orders,Challenges"
-
-  alias configmaps="kubectl get configmaps"
-
-  alias context="kubectl config get-contexts"
-  alias contexts="kubectl config get-contexts | tail -n +2 | awk '{print \$2}'"
-  alias rcontext="kubectl config rename-context"
-
-  alias describe="kubectl describe"
-  alias describep="kubectl describe pod"
-
-  alias deployment="kubectl get deployments"
-  alias deployments="kubectl get deployments -o wide"
-
-  alias endpoint="kubectl get endpoints"
-  alias endpoints="kubectl get endpoints -A"
-
-  alias get="kubectl get all"
-  alias geta="kubectl get all -A"
-
-  alias ingress="kubectl get ingress"
-  alias ingressa="kubectl get ingress -A"
-
-  alias issuers="kubectl get issuers"
-  alias issuersa="kubectl get issuers -A"
-
-  alias logs="kubectl logs"
-
-  alias nodes="kubectl get nodes"
-  alias nodesw="kubectl get nodes -o wide"
-
-  alias pod="kubectl get pods"
-  alias pods="kubectl get pods -o wide"
-  alias podsa="kubectl get pods -o wide -A"
-
-  alias podcidr="kubectl get nodes -o jsonpath='{.items[*].spec.podCIDR}'"
-
-  alias pvs="kubectl get persistentvolumes"
-  alias pvcs="kubectl get persistentvolumeclaims"
-
-  alias secrets="kubectl get secrets"
-
-  alias service="kubectl get services"
-  alias servicea="kubectl get services -A"
-  alias services="kubectl get services -o wide"
-  alias servicesa="kubectl get services -A -o wide"
-
-  alias storageclasses="kubectl get storageclasses"
-
-  #-----------------------
-  # K8s Tools
-  #-----------------------
-  alias kctx="kubectx"
-  alias kns="kubens"
 # }}}
 
 
@@ -477,24 +417,6 @@ man() {
     LESS_TERMCAP_us=$'\E[01;32m' \
     LESS_TERMCAP_ue=$'\E[0m' \
   man "$@"
-}
-
-# From: https://betterprogramming.pub/boost-your-command-line-productivity-with-fuzzy-finder-985aa162ba5d#451c
-# Select a running docker container to stop
-ds() {
-  local cid
-  cid=$(docker ps | sed 1d | fzf -q "$1" | awk '{print $1}')
-
-  [ -n "$cid" ] && docker stop "$cid"
-}
-
-# From: https://betterprogramming.pub/boost-your-command-line-productivity-with-fuzzy-finder-985aa162ba5d#451c
-# Select a docker container to remove
-drm() {
-  local cid
-  cid=$(docker ps -a | sed 1d | fzf -q "$1" | awk '{print $1}')
-
-  [ -n "$cid" ] && docker rm "$cid"
 }
 
 # Start VM from disk image (usually qcow2)
