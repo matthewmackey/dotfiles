@@ -11,7 +11,7 @@ set nocursorcolumn              " Do not highlight column cursor is on(speeds up
 set cursorline                " Do not highlight line cursor is on (speeds up highlighting)
 set encoding=utf8             " UTF-8 encoding and en_US as default encoding/language
 set ffs=unix,dos,mac          " Define standard filetype
-set hidden                    " Buffer should still exist if window is closed
+set nohidden                    " Buffer should not still exist if window is closed
 set lazyredraw                " Wait to redraw
 set mouse=a                   " Allow mouse to move cursor
 set number                  " Show line numbers
@@ -128,51 +128,48 @@ let mapleader=","
 nnoremap <Space> <nop>
 let mapleader=" "
 
+nnoremap <leader>so :so %<cr>
+
 nnoremap ; :
 nnoremap : <nop>
-nnoremap <Leader>w :wq<CR>
-nnoremap <Leader>q :q!<CR>
+nnoremap <leader>w :wq<cr>
+nnoremap <leader>q :q!<cr>
 
-nnoremap <Leader>: q:i
-nnoremap <Leader>/ q/i
+nnoremap <leader>: q:i
+nnoremap <leader>/ q/i
 
 imap jj <Esc>
 
-nnoremap <Leader>pc :PlugClean<CR>
-nnoremap <Leader>pi :PlugInstall<CR>
-nnoremap <Leader>ps :PlugStatus<CR>
+nnoremap <leader>pc :PlugClean<cr>
+nnoremap <leader>pi :PlugInstall<cr>
+nnoremap <leader>ps :PlugStatus<cr>
 
 " Remap `:help` in command-mode to `:tab help`
 " See: https://stackoverflow.com/questions/7513380/vim-change-x-function-to-delete-buffer-instead-of-save-quit/7515418#7515418
 cnoreabbrev <expr> help getcmdtype() == ":" && getcmdline() == 'help' ? 'tab help' : 'help'
 
 " _ = forward slash
-nnoremap .. :source ~/.config/nvim/init.vim<CR>
-nnoremap .c :tabedit ~/.config/vim/vimrc-common.vim<CR>
+nnoremap .. :source ~/.config/nvim/init.vim<cr>
+nnoremap .c :tabedit ~/.config/vim/vimrc-common.vim<cr>
 
-nnoremap <Leader>2 :set invpaste<CR>
-nnoremap <F2>      :set invpaste<CR>
-
-nnoremap <Leader>3 :windo set norelativenumber! nonu!<Cr>
-nnoremap <F3>      :windo set norelativenumber! nonu!<Cr>
-
-nnoremap <Leader>4 :set list!<CR>
-nnoremap <F4>      :set list!<CR>
+nnoremap <leader>2 :set invpaste<cr>
+nnoremap <leader>3 :windo set norelativenumber! nonu!<cr>
+nnoremap <leader>4 :set list!<cr>
 
 " Mainly used to close window when only NERDTree is open
-nnoremap <Leader>q :wqa<CR>
+nnoremap <leader>q :wqa<cr>
 " }}} Keymaps - General
 
 "----------------------------------------------------------------"
 " Keymaps - Buffers {{{
 "----------------------------------------------------------------"
-nnoremap <Leader>a  <C-^>
-nnoremap <Leader>l  :buffers<CR>
-nnoremap <Leader>bb :buffers<CR>
-nnoremap <Leader>bf :bfirst<CR>
-nnoremap <Leader>bn :bnext<CR>
-nnoremap <Leader>bp :bprevious<CR>
-nnoremap <Leader>bl :blast<CR>
+nnoremap <leader>a  <C-^>
+nnoremap <leader>l  :buffers<cr>
+nnoremap <leader>bb :buffers<cr>
+nnoremap <leader>bf :bfirst<cr>
+nnoremap <leader>bn :bnext<cr>
+nnoremap <leader>bp :bprevious<cr>
+nnoremap <leader>bl :blast<cr>
 
 " }}} Keymaps - Buffers
 
@@ -197,14 +194,14 @@ tnoremap <C-l> <C-\><C-N><C-w>l
 tnoremap <C-h> <C-\><C-N><C-w>h
 
 " Maximize window all directions
-noremap <silent> <Leader>z :resize 99999<CR>:vertical resize 99999<CR>
+noremap <silent> <leader>z :resize 99999<cr>:vertical resize 99999<cr>
 
-" noremap <silent> <Leader>ww :vertical resize 99999<CR> " Maximize window horizontally ("my horizontal")
-" noremap <silent> <Leader>wv <C-w>_                     " Maximize window vertically ("my vertical")
-noremap <Leader>= <C-w>=                      " Make windows all equal size
+" noremap <silent> <leader>ww :vertical resize 99999<cr> " Maximize window horizontally ("my horizontal")
+" noremap <silent> <leader>wv <C-w>_                     " Maximize window vertically ("my vertical")
+noremap <leader>= <C-w>=                      " Make windows all equal size
 
-nnoremap <silent> <Leader>n :exe "vertical resize +10"<CR>
-nnoremap <silent> <Leader>m :exe "vertical resize -10"<CR>
+nnoremap <silent> <leader>n :exe "vertical resize +10"<cr>
+nnoremap <silent> <leader>m :exe "vertical resize -10"<cr>
 "   }}} Keymaps - Windows
 
 "----------------------------------------------------------------"
@@ -230,12 +227,12 @@ nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
 
 " Text movements (that preserve prior indentation)
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-inoremap <C-j> <Esc>:m .+1<CR>==i
-inoremap <C-k> <Esc>:m .-2<CR>==i
-nnoremap <Leader>j :m .+1<CR>==
-nnoremap <Leader>k :m .-2<CR>==
+vnoremap J :m '>+1<cr>gv=gv
+vnoremap K :m '<-2<cr>gv=gv
+inoremap <C-j> <Esc>:m .+1<cr>==i
+inoremap <C-k> <Esc>:m .-2<cr>==i
+nnoremap <leader>j :m .+1<cr>==
+nnoremap <leader>k :m .-2<cr>==
 
 " Maintain visual selection after indenting
 vnoremap < <gv
@@ -252,48 +249,48 @@ nnoremap , za
 " Keymaps - Tabs {{{
 "----------------------------------------------------------------"
 " From - https://vim.fandom.com/wiki/Alternative_tab_navigation#Vim_navigation_2
-nnoremap <C-t>  :tabnew<CR>
-inoremap <C-t>  <Esc>:tabnew<CR>
+nnoremap <C-t>  :tabnew<cr>
+inoremap <C-t>  <Esc>:tabnew<cr>
 
 " tabnew & tabedit are actually same command, but I'm using tabedit when I
 " want to select file to open
 "
 " Open a new tab w/ empty window after curr tab
-nnoremap <Leader>tn  :tabnew<CR>
+nnoremap <leader>tn  :tabnew<cr>
 
 " Open a new tab & edit {file} after curr tab
-nnoremap <Leader>tt  :tabedit<CR>
+nnoremap <leader>tt  :tabedit<cr>
 
 " Close current tab
-nnoremap <Leader>x   :tabclose<CnitR>
-nnoremap <Leader>tx  :tabclose<CR>
+nnoremap <leader>x   :tabclose<CnitR>
+nnoremap <leader>tx  :tabclose<cr>
 
 " Move the current tab page to after tab page N
-nnoremap <Leader>tm  :tabmove<Space>
+nnoremap <leader>tm  :tabmove<Space>
 
 " Move the tab page to the left
-nnoremap <Leader><< :tabmove -1<CR>
+nnoremap <leader><< :tabmove -1<cr>
 "
 " Move the tab page to the left
-nnoremap <Leader>>> :tabmove +1<CR>
+nnoremap <leader>>> :tabmove +1<cr>
 
-nnoremap <Leader>;   :tabprev<CR>
-nnoremap <Leader>.   :tabnext<CR>
-nnoremap <Leader>th  :tabfirst<CR>
-nnoremap <Leader>tl  :tablast<CR>
+nnoremap <leader>;   :tabprev<cr>
+nnoremap <leader>.   :tabnext<cr>
+nnoremap <leader>th  :tabfirst<cr>
+nnoremap <leader>tl  :tablast<cr>
 
 " Go to exact tab number (tabs are 1-indexed)
-nnoremap <Leader>t1   :tabnext 1<CR>
-nnoremap <Leader>t2   :tabnext 2<CR>
-nnoremap <Leader>t3   :tabnext 3<CR>
-nnoremap <Leader>t4   :tabnext 4<CR>
-nnoremap <Leader>t5   :tabnext 5<CR>
+nnoremap <leader>t1   :tabnext 1<cr>
+nnoremap <leader>t2   :tabnext 2<cr>
+nnoremap <leader>t3   :tabnext 3<cr>
+nnoremap <leader>t4   :tabnext 4<cr>
+nnoremap <leader>t5   :tabnext 5<cr>
 
 " Go to last 'active' tab
 if !exists('g:lasttab')
   let g:lasttab = 1
 endif
-nnoremap <Leader><Space> :exe "tabnext ".g:lasttab<CR>
+nnoremap <leader><Space> :exe "tabnext ".g:lasttab<cr>
 au TabLeave * let g:lasttab = tabpagenr()
 "   }}} Keymaps - Tabs
 
@@ -342,7 +339,7 @@ syntax on
 "
 " NOTE - the +1 sets colorcolumn to +1 of current textwidth value;
 "        the normal textwidth set in the general settings is 80
-noremap <Leader>5 :windo exec (&colorcolumn == '0' ? ':set colorcolumn=+1' : ':set colorcolumn=0')<CR>
+noremap <leader>5 :windo exec (&colorcolumn == '0' ? ':set colorcolumn=+1' : ':set colorcolumn=0')<cr>
 
 " Underline anything over '&colorcolumn'
 " SEE: link below; need '2match' to allow ExtraWhitespace & OverLength matches
