@@ -63,7 +63,8 @@ for conf in ${CONFIGS[@]}; do
 done
 
 create_symlink_with_backup $CONFIG_DIR/bash/.bash_profile ~/.bash_profile
-create_symlink_with_backup $CONFIG_DIR/bash/.bashrc ~/.bashrc
-create_symlink_with_backup $CONFIG_DIR/zsh/.zshenv ~/.zshenv
+create_symlink_with_backup $CONFIG_DIR/bash/.bashrc       ~/.bashrc
+create_symlink_with_backup $CONFIG_DIR/zsh/.zshenv        ~/.zshenv
 
-create_symlink_with_backup ~/.config/vim ~/.vim
+create_symlink_with_backup $CONFIG_DIR/tmux/tmux.conf ~/.tmux.conf
+create_symlink_with_backup $CONFIG_DIR/vim            ~/.vim
