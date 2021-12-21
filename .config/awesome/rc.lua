@@ -153,12 +153,12 @@ local mybattery = lain.widget.bat({
          if bat_perc > 40 then
              widget:set_markup(" " .. bat_now.perc .. "% ")
              bat1icon:set_image(beautiful.bat)
-         elseif bat_perc > 15 then
+         elseif bat_perc <= 40 and bat_perc > 20 then
              -- widget:set_markup(markup("#EB8F8F", bat_now.perc .. "% "))
-             widget:set_markup(markup.bold(markup("#FF0000", bat_now.perc .. "% ")))
+             widget:set_markup(markup.bold(markup("#FFFF00", bat_now.perc .. "% ")))
              bat1icon:set_image(beautiful.bat_low)
-             naughty.notify({ title = "Battery0 -> ".. bat_now.perc .. "% "})
-         else
+             -- naughty.notify({ title = "Battery0 -> ".. bat_now.perc .. "% "})
+         elseif bat_perc <= 20 then
              -- widget:set_markup(markup("#D91E1E", bat_now.perc .. "% "))
              widget:set_markup(markup.bold(markup("#FF0000", bat_now.perc .. "% ")))
              bat1icon:set_image(beautiful.bat_no)
