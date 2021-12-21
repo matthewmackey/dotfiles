@@ -43,6 +43,9 @@ call plug#begin(data_dir . '/../plugged')
   Plug 'liuchengxu/vista.vim'
 
 if has('nvim')
+  " Colors
+  Plug 'lukas-reineke/indent-blankline.nvim'
+
   " LSP
   Plug 'neovim/nvim-lspconfig'
   Plug 'glepnir/lspsaga.nvim'
