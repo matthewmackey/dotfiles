@@ -1,13 +1,8 @@
 "----------------------------------------#
-"    Terminal mode                       #
+"    ALE                                 #
 "----------------------------------------#
-" Terminal Mode Escape Key - not using <Esc> b/c I need that for Bash's vim-mode
-" Exit terminal-mode
-" tnoremap <C-?> <C-\><C-n>
+nnoremap ,lf <Cmd>ALEFix<CR>
 
-" Exit terminal mode then switch tabs
-tnoremap <C-PageDown> <C-\><C-n> :tabnext<CR>
-tnoremap <C-PageUp>   <C-\><C-n> :tabprevious<CR>
 
 "----------------------------------------#
 "    LspSaga                             #
@@ -22,6 +17,7 @@ nnoremap :Lspsaga diagnostic_jump_prev<CR>
 nnoremap <leader>cc :Lspsaga show_cursor_diagnostics<CR>
 nnoremap <leader>cl :Lspsaga show_line_diagnostics<CR>
 
+
 "----------------------------------------#
 "    NvimTree                            #
 "----------------------------------------#
@@ -33,6 +29,25 @@ nnoremap <leader>fz :NvimTreeResize 40
 " nnoremap <leader>fr :NvimTreeRefresh<CR>
 " nnoremap <leader>fo :NvimTreeOpen<CR>
 " nnoremap <leader>fc :NvimTreeClose<CR>
+
+
+"----------------------------------------#
+"    NvimTreesitter                      #
+"----------------------------------------#
+nnoremap ,lt <cmd>TSBufToggle highlight<CR>
+
+
+"----------------------------------------#
+"    Terminal mode                       #
+"----------------------------------------#
+" Terminal Mode Escape Key - not using <Esc> b/c I need that for Bash's vim-mode
+" Exit terminal-mode
+" tnoremap <C-?> <C-\><C-n>
+
+" Exit terminal mode then switch tabs
+tnoremap <C-PageDown> <C-\><C-n> :tabnext<CR>
+tnoremap <C-PageUp>   <C-\><C-n> :tabprevious<CR>
+
 
 "----------------------------------------#
 "    'Test' Plugin                       #
