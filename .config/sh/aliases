@@ -5,18 +5,33 @@
 #-------------------------------------------------------------------------------
 # [Console] {{{
 #-------------------------------------------------------------------------------
+  MM_SHELL_PLUGIN_DIR="${ZDOTDIR}/plugins/matthewmackey/shell-plugins/plugins"
+
   ALIASES=${DOTDIR}/.config/sh/aliases
-  ZSH_ALIASES=${DOTDIR}/.config/zsh/aliases
   LOCAL_ALIASES=~/.local/dot/aliases
+  ZSH_ALIASES=${DOTDIR}/.config/zsh/aliases
+  DOCKER_ALIASES=${MM_SHELL_PLUGIN_DIR}/docker/common.sh
+  KUBECTL_ALIASES=${MM_SHELL_PLUGIN_DIR}/kubectl/common.sh
+
   LOCAL_RC=~/.local/dot/rc
+
+  alias es="eval 'exec \$SHELL'"
 
   #-------------------------------------
   # Shell - [aliases]
   #-------------------------------------
   alias al="vim ${ALIASES}"
-  alias zal="vim ${ZSH_ALIASES}"
   alias lal="vim ${LOCAL_ALIASES}"
-  alias sa="source ${ALIASES}; source ${ZSH_ALIASES}; [ -f ${LOCAL_ALIASES} ] && source ${LOCAL_ALIASES}"
+  alias zal="vim ${ZSH_ALIASES}"
+
+  alias dal="vim ${MM_SHELL_PLUGIN_DIR}/docker/common.sh"
+  alias kal="vim ${MM_SHELL_PLUGIN_DIR}/kubectl/common.sh"
+
+  alias sa="source ${ALIASES}; \
+            source ${ZSH_ALIASES}; \
+            [ -f ${LOCAL_ALIASES} ] && source ${LOCAL_ALIASES} \
+            [ -f ${DOCKER_ALIASES} ] && source ${DOCKER_ALIASES} \
+            [ -f ${KUBECTL_ALIASES} ] && source ${KUBECTL_ALIASES}"
 
   #-------------------------------------
   # Shell - [rc]
@@ -197,6 +212,13 @@
 
   alias za="zoxide add"
   alias zq="zoxide query -ls"
+# }}}
+
+
+#-------------------------------------------------------------------------------
+# [ansible] {{{
+#-------------------------------------------------------------------------------
+  alias play="ansible-playbook"
 # }}}
 
 
