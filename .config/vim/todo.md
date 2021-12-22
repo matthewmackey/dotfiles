@@ -39,6 +39,7 @@ x cursorline is just underline vs highlight
 - Figure out how to take advantage of Treesitter indent and incremental
   selection
 
+- Review plugins described here for possible use: https://alpha2phi.medium.com/neovim-lsp-enhanced-a3d313abee65
 
 
 Desired Shortcuts
