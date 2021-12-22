@@ -241,9 +241,6 @@ vnoremap > >gv
 " Act like D and C
 nnoremap Y y$
 
-" IDE: Enable folding with spacebar
-nnoremap , za
-
 
 "----------------------------------------------------------------"
 " Keymaps - Tabs {{{
