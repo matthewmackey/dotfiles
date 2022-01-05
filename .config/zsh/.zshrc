@@ -45,7 +45,7 @@ printf "Sourcing -> [~/.config/zsh/.zshrc]\n"
     mkdir_if_not_exist $d
   done
 
-  autoload -Uz compinit && compinit
+  autoload -Uz compinit && compinit                                                                              _
 # }}}
 
 #---------------------------------------
@@ -84,6 +84,8 @@ printf "Sourcing -> [~/.config/zsh/.zshrc]\n"
 
   export STARSHIP_CONFIG=~/.config/starship/config.toml
   eval "$(starship init zsh)"
+
+  source $ZSH_COMP_DIR/gcloud.zsh
 
 # plugins=(copydir copyfile git kubectl vi-mode)
 # VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
