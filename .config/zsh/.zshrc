@@ -103,7 +103,7 @@ printf "Sourcing -> [~/.config/zsh/.zshrc]\n"
 # [SOURCE Zsh Includes] {{{
 #---------------------------------------
   FILES_TO_SOURCE=()
-  FILES_TO_SOURCE+=($DOTDIR/.config/zsh/aliases)
+  FILES_TO_SOURCE+=($DOTDIR/.config/zsh/aliases.zsh)
   FILES_TO_SOURCE+=($(find $DOTDIR/.config/zsh/includes -type f))
   FILES_TO_SOURCE+=($LOCAL_DOTDIR/zshrc)
   FILES_TO_SOURCE+=($LOCAL_DOTDIR/aliases.zsh)

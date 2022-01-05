@@ -77,25 +77,10 @@
   #-------------------------------------
   alias .l="cd -"
   alias .ll="cd -; cll"
-  alias ..="cd ../"
-  alias ...="cd ../../"
-  alias ....="cd ../../../"
-  alias .....="cd ../../../../"
-  alias ......="cd ../../../../../"
-
-  # Go up directories then do directory listing
-  alias cddl="cdd; cll "
-  alias cdddl="cddd; cll "
-  alias cddddl="cdddd; cll "
-  alias cdddddl="cddddd; cll"
-  alias cddddddl="cdddddd; cll "
-
-  # Go up directories then change to directory specified after alias on command-line
-  alias cddf="cdd; cd "
-  alias cdddf="cddd; cd "
-  alias cddddf="cdddd; cd "
-  alias cdddddf="cddddd; cd "
-  alias cddddddf="cdddddd; cd "
+  alias 2c.="cd ../"
+  alias 3c.="cd ../../"
+  alias 4c.="cd ../../../"
+  alias 5c.="cd ../../../../"
 
   #-------------------------------------
   # console - other
@@ -210,7 +195,7 @@
   alias yqd='docker run --name yqtmp --rm -i mikefarah/yq:3.3.4 yq "$@"'
   alias yqd4='docker run --name yqtmp --rm -v"${PWD}":/workdir mikefarah/yq:latest "$@"'
 
-  alias za="zoxide add"
+  alias za="zoxide add ."
   alias zq="zoxide query -ls"
 # }}}
 
@@ -375,6 +360,7 @@
   alias sconfl="vim ~/.ssh/config-local"
   alias rmsock="rm -rf ~/.ssh/sockets/*"
   alias sshagent='eval $(ssh-agent -s); ssh-add'
+  alias sag='eval $(ssh-agent -s); ssh-add'
 # }}}
 
 
