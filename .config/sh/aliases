@@ -9,7 +9,7 @@
 
   ALIASES=${DOTDIR}/.config/sh/aliases
   LOCAL_ALIASES=~/.local/dot/aliases
-  ZSH_ALIASES=${DOTDIR}/.config/zsh/aliases
+  ZSH_ALIASES=${DOTDIR}/.config/zsh/aliases.zsh
   DOCKER_ALIASES=${MM_SHELL_PLUGIN_DIR}/docker/common.sh
   KUBECTL_ALIASES=${MM_SHELL_PLUGIN_DIR}/kubectl/common.sh
 
@@ -95,12 +95,12 @@
   alias xmnormal="xmodmap ~/.config/xmodmap/.xmodmap-normal"
   alias xmswitch="xmodmap ~/.config/xmodmap/.xmodmap-switch"
   # xmod - switch no escape
-  alias xmsne="xmodmap ~/.config/xmodmap/.xmodmap-switch_no_escape"
-
+  alias xmswitchnoescape="xmodmap ~/.config/xmodmap/.xmodmap-switch_no_escape"
+                   
 # }}}
 
 #-------------------------------------------------------------------------------
-# [Dotfiles - Commit] {{{
+# [Dotfiles - Commit them] {{{
 #-------------------------------------------------------------------------------
   IS_GIT_STAGED='[ "$(git status -s | grep "^A" | wc -l)" != 0 ] && (echo -e "CANNOT: already staged files\n"; git status -s) ||'
 
@@ -118,7 +118,7 @@
 
 
 #-------------------------------------------------------------------------------
-# [Dotfile - EDIT] {{{
+# [Dotfile - EDIT them] {{{
 #-------------------------------------------------------------------------------
 
   # Git/Gitlab
@@ -138,6 +138,14 @@
   alias vimaw="vim ${DOTDIR}/.config/awesome/rc.lua"
   alias vimstar="vim ${DOTDIR}/.config/starship/config.toml"
 # }}} Dotfiles EDIT
+
+
+#-------------------------------------------------------------------------------
+# [cd - shortcuts] {{{
+#-------------------------------------------------------------------------------
+  alias d="cd ~/downloads"
+  alias tmp="cd ~/tmp"
+# }}} cd - shortcuts
 
 
 #-------------------------------------------------------------------------------
@@ -176,7 +184,7 @@
   alias syslog="tail -f /var/log/syslog"
 
   TREE_BIN=/usr/bin/tree
-  TREE_IGNORES='.git|build|dist|node_modules|__pycache__|.pytest_cache|.terraform'
+  TREE_IGNORES='.git|build|dist|node_modules|packer_cache|__pycache__|.pytest_cache|.terraform'
 
   alias t="cl;  $TREE_BIN"
   alias te="cl; $TREE_BIN -a -I '$TREE_IGNORES'"

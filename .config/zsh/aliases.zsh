@@ -63,9 +63,10 @@ alias -g N='> /dev/null 2>&1'
 alias -g P="':!package-lock.json'"
 alias -g R="-o jsonpath='{.spec.containers[0].resources}' | jq"
 alias -g Y='| yh'
-alias -g 2.='../'
-alias -g 3.='../../'
-alias -g 4.='../../../'
+alias -g 1.='../'
+alias -g 2.='../../'
+alias -g 3.='../../../'
+alias -g 4.='../../../../'
 alias -g 5.='../../../../'
 #
 #----------------------------------#
