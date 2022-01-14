@@ -20,4 +20,6 @@ fi
 
 # Create alias to load Virtualenvwrapper so we can lazy load it to decrease
 # shell startup time
-alias spyenv="source $default_python_bin/virtualenvwrapper.sh"
+#
+# "source pyenv"
+alias sp="source $default_python_bin/virtualenvwrapper.sh"

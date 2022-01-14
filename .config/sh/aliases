@@ -96,7 +96,7 @@
   alias xmswitch="xmodmap ~/.config/xmodmap/.xmodmap-switch"
   # xmod - switch no escape
   alias xmswitchnoescape="xmodmap ~/.config/xmodmap/.xmodmap-switch_no_escape"
-                   
+
 # }}}
 
 #-------------------------------------------------------------------------------
@@ -144,6 +144,8 @@
 # [cd - shortcuts] {{{
 #-------------------------------------------------------------------------------
   alias d="cd ~/downloads"
+  alias l="cd ~/.local/bin"
+  alias m="cd ~/mmbin"
   alias tmp="cd ~/tmp"
 # }}} cd - shortcuts
 
@@ -174,6 +176,7 @@
   # Copy flie contents to clipboard
   alias clip="xclip -sel clip <"
   alias cmv="command -v"
+  alias diffu="diff -u"
   alias fd="fdfind"
   alias fr="file-roller"
   # search bashmarks
@@ -231,8 +234,8 @@
 # [gcloud] {{{
 #-------------------------------------------------------------------------------
   alias gcl="gcloud auth login"
-  alias gcld="gcloud auth application-default login"
-  alias gclall="gcal; gcaadl"
+  alias gcal="gcloud auth application-default login"
+  alias gclall="gcl; gcal"
 # }}}
 
 
