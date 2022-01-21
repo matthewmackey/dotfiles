@@ -74,6 +74,7 @@ printf "Sourcing -> [~/.config/zsh/.zshrc]\n"
   installZshPlugin zsh-users/zsh-syntax-highlighting zsh-syntax-highlighting.zsh
   installZshPlugin matthewmackey/shell-plugins plugins/docker/common.sh
   installZshPlugin matthewmackey/shell-plugins plugins/kubectl/common.sh
+  installZshPlugin matthewmackey/shell-plugins plugins/systemctl/common.sh
 # }}}
 
 

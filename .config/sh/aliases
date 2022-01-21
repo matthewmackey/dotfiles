@@ -12,6 +12,7 @@
   ZSH_ALIASES=${DOTDIR}/.config/zsh/aliases.zsh
   DOCKER_ALIASES=${MM_SHELL_PLUGIN_DIR}/docker/common.sh
   KUBECTL_ALIASES=${MM_SHELL_PLUGIN_DIR}/kubectl/common.sh
+  SYSTEMCTL_ALIASES=${MM_SHELL_PLUGIN_DIR}/systemctl/common.sh
 
   LOCAL_RC=~/.local/dot/rc
 
@@ -24,14 +25,16 @@
   alias lal="vim ${LOCAL_ALIASES}"
   alias zal="vim ${ZSH_ALIASES}"
 
-  alias dal="vim ${MM_SHELL_PLUGIN_DIR}/docker/common.sh"
-  alias kal="vim ${MM_SHELL_PLUGIN_DIR}/kubectl/common.sh"
+  alias dal="vim ${DOCKER_ALIASES}"
+  alias kal="vim ${KUBECTL_ALIASES}"
+  alias sal="vim ${SYSTEMCTL_ALIASES}"
 
   alias sa="source ${ALIASES}; \
             source ${ZSH_ALIASES}; \
             [ -f ${LOCAL_ALIASES} ] && source ${LOCAL_ALIASES} \
             [ -f ${DOCKER_ALIASES} ] && source ${DOCKER_ALIASES} \
-            [ -f ${KUBECTL_ALIASES} ] && source ${KUBECTL_ALIASES}"
+            [ -f ${KUBECTL_ALIASES} ] && source ${KUBECTL_ALIASES} \
+            [ -f ${SYSTEMCTL_ALIASES} ] && source ${SYSTEMCTL_ALIASES}"
 
   #-------------------------------------
   # Shell - [rc]
