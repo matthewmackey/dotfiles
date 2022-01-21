@@ -13,3 +13,6 @@ set undofile
 
 runtime plug.vim
 runtime keymaps.vim
+
+" LOCAL common-Vim overrides
+source ~/.config/vim/.vimrc-local

@@ -12,5 +12,5 @@ endif
 highlight ColorColumn ctermbg=DarkGray
 
 " Use underline for cursorline vs. highlighting
-highlight clear CursorLine
-highlight CursorLine gui=underline cterm=underline
+" highlight clear CursorLine
+" highlight CursorLine gui=underline cterm=underline

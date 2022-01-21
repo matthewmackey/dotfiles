@@ -5,6 +5,7 @@ endif
 lua <<EOF
 local nvim_lsp = require('lspconfig')
 local protocol = require('vim.lsp.protocol')
+local util = require('lspconfig.util')
 
 local on_attach = function(client, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -149,8 +150,34 @@ end
 -- Set up completion using nvim_cmp with LSP source
 local capabilities = require('cmp_nvim_lsp').update_capabilities(
     vim.lsp.protocol.make_client_capabilities()
-  )
+)
 
+-- JAVASCRIPT
+-- npm install -g typescript typescript-language-server eslint prettier
+nvim_lsp.tsserver.setup {
+    capabilities = capabilities,
+    cmd = { "typescript-language-server", "--stdio" },
+    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+    init_options = {
+      hostInfo = "neovim"
+    },
+    on_attach = on_attach,
+    root_dir = util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
+    settings = {
+        python = {
+            analysis = {
+                autosearchpaths = true,
+                diagnosticmode = "workspace",
+                extrapaths = {"./src/main/python"},
+                loglevel = "information",
+                uselibrarycodefortypes = true
+            }
+        }
+    }
+}
+
+-- PYTHON
+-- npm install -g pyright
 nvim_lsp.pyright.setup {
     capabilities = capabilities,
     filetypes = { "python" },
