@@ -23,8 +23,8 @@ NERD_FONT_FILES=(
   # CodeNewRoman.zip
   # Cousine.zip
   # DaddyTimeMono.zip
-  DejaVuSansMono.zip
-  DroidSansMono.zip
+  # DejaVuSansMono.zip
+  # DroidSansMono.zip
   # FantasqueSansMono.zip
   # FiraCode.zip
   # FiraMono.zip
@@ -36,7 +36,7 @@ NERD_FONT_FILES=(
   # Hermit.zip
   # iA-Writer.zip
   # IBMPlexMono.zip
-  Inconsolata.zip
+  # Inconsolata.zip
   # InconsolataGo.zip
   # InconsolataLGC.zip
   # Iosevka.zip
@@ -86,7 +86,11 @@ fi
   done
 }
 
+LOCAL_SHARE_FONTS_DIR=~/.local/share/fonts
 {
+  if [ ! -d $LOCAL_SHARE_FONTS_DIR ]; then
+    mkdir -p $LOCAL_SHARE_FONTS_DIR
+  fi
   cd ~/.local/share/fonts
   find ../nerdfonts \
     \( -name '*.otf' -o -name '*.ttf' -o -name '*.TTF' -type f \) \

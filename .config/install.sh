@@ -7,6 +7,14 @@ msg() {
   printf "%s\n" "$1"
 }
 
+install_packages() {
+  sudo apt install -y curl tmux vim zsh
+}
+
+install_starship() {
+  sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+}
+
 create_symlink_with_backup() {
   local _target=$1
   local _link_name=$2
@@ -50,6 +58,7 @@ CONFIGS=(
   alacritty
   awesome
   bash
+  git
   nvim
   sh
   starship
@@ -68,3 +77,6 @@ create_symlink_with_backup $CONFIG_DIR/zsh/.zshenv        ~/.zshenv
 
 create_symlink_with_backup $CONFIG_DIR/tmux/tmux.conf ~/.tmux.conf
 create_symlink_with_backup $CONFIG_DIR/vim            ~/.vim
+
+install_packages
+install_starship
