@@ -22,6 +22,7 @@ CONFIGS=(
   awesome
   bash
   nvim
+  parcellite
   sh
   starship
   tmux
