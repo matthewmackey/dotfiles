@@ -3,62 +3,24 @@
 set -e
 set -o pipefail
 
-msg() {
-  printf "%s\n" "$1"
-}
-
-install_packages() {
-  sudo apt install -y curl tmux vim zsh
-}
-
-install_starship() {
-  sh -c "$(curl -fsSL https://starship.rs/install.sh)"
-}
-
-create_symlink_with_backup() {
-  local _target=$1
-  local _link_name=$2
-  local _target_dir=${3:-$HOME}
-
-  (
-    cd "$_target_dir"
-    if [ ! -e "$_link_name" ]; then
-      msg "[$_link_name] does not exist -> creating symlink"
-      ln -s "$_target" "$_link_name"
-
-    elif [ -L "$_link_name" ]; then
-      msg "[$_link_name] exists AND is symlink"
-
-      msg "Deleting [$(ls -al $_link_name)]"
-      rm "$_link_name"
-
-      ln -s "$_target" "$_link_name"
-      msg "Created [$_link_name] symlink"
-
-    else
-      msg "[$_link_name] exists AND is NOT a symlink"
-      local _backup=$_link_name.bak."$(date '+%F-%H%M%S')"
-
-      msg "Moving existing [$_link_name] to -> [$_backup]"
-      mv "$_link_name" "$_backup"
-
-      ln -s "$_target" "$_link_name"
-      msg "Created [$_link_name] symlink"
-    fi
-
-    echo
-  )
-}
+source $LIB_DIR/common.sh
 
 #-------------------------------#
 # MAIN                          #
 #-------------------------------#
-CONFIG_DIR=~/dotfiles/.config
+CONFIG_DIR=$DOTFILES_DIR/.config
+
+print_step "Setting up dotfile symlinks in root of ~/ directory"
+create_symlink_with_backup $CONFIG_DIR/bash/.bash_profile  ~/.bash_profile
+create_symlink_with_backup $CONFIG_DIR/bash/.bashrc        ~/.bashrc
+create_symlink_with_backup $CONFIG_DIR/tmux/tmux.conf      ~/.tmux.conf
+create_symlink_with_backup $CONFIG_DIR/vim                 ~/.vim
+create_symlink_with_backup $CONFIG_DIR/zsh/.zshenv         ~/.zshenv
+
 CONFIGS=(
   alacritty
   awesome
   bash
-  git
   nvim
   sh
   starship
@@ -67,16 +29,9 @@ CONFIGS=(
   xmodmap
   zsh
 )
+
+print_step "Setting up ~/.config symlinks"
 for conf in ${CONFIGS[@]}; do
   create_symlink_with_backup $CONFIG_DIR/$conf ~/.config/$conf
 done
 
-create_symlink_with_backup $CONFIG_DIR/bash/.bash_profile ~/.bash_profile
-create_symlink_with_backup $CONFIG_DIR/bash/.bashrc       ~/.bashrc
-create_symlink_with_backup $CONFIG_DIR/zsh/.zshenv        ~/.zshenv
-
-create_symlink_with_backup $CONFIG_DIR/tmux/tmux.conf ~/.tmux.conf
-create_symlink_with_backup $CONFIG_DIR/vim            ~/.vim
-
-install_packages
-install_starship

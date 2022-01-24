@@ -110,6 +110,25 @@ create_symlink_with_backup() {
   )
 }
 
+delete_symlink_or_create_backup() {
+  local _file=$1
+
+  if [ -L $_file ]; then
+    msg "[$_file] exists AND is symlink"
+
+    msg "Deleting [$(ls -al $_file)]"
+    rm $_file
+  else
+    if [ -e $_file ]; then
+      msg "[$_file] exists AND is NOT a symlink"
+      local _backup=$_file.bak."$(date '+%F-%H%M%S')"
+
+      msg "Moving existing [$_file] to -> [$_backup]"
+      mv $_file $_backup
+    fi
+  fi
+}
+
 #-------------------------------------------------------------------------------
 # Validation
 #-------------------------------------------------------------------------------
