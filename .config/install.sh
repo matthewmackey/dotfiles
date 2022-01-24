@@ -45,15 +45,21 @@ if [ ! -d $LOCAL_DOTDIR ]; then
   cd $LOCAL_DOTDIR
   git init
 
-  msg "Creating empty local 'aliases' file"
+  msg "Creating empty 'desktop' directory in repo for .desktop files"
+  mkdir desktop
+
+  msg "Creating symlink to .desktop files directory in ~/.local/share/applications"
+  create_symlink_with_backup $LOCAL_DOTDIR/desktop ~/.local/share/applications/local_dotdir
+
+  msg "Creating empty local 'aliases' file in repo"
   touch aliases
 
-  msg "Creating empty local 'rc' file"
+  msg "Creating empty local 'rc' file in repo"
   touch rc
 
   msg "Committing empty local aliases/rc files"
   git add aliases rc
   git commit -m"Initial commit - adding empty aliases/rc files"
 else
-  msg "Local dotfiles directory at $LOCAL_DOTDIR already exists"
+  skipping "Local dotfiles directory at $LOCAL_DOTDIR already exists"
 fi
