@@ -5,7 +5,7 @@
 [[ -f ~/.config/sh/rc ]] && source ~/.config/sh/rc
 
 # Must be after interactive shell confirmation
-printf "Sourcing -> [~/.config/zsh/.zshrc]\n"
+section "Sourcing -> ~/.config/zsh/.zshrc"
 
 
 #---------------------------------------
@@ -60,12 +60,15 @@ printf "Sourcing -> [~/.config/zsh/.zshrc]\n"
 
     if [ ! -d $_plugin_clone_dir ]; then
       _gh_url="https://github.com/${_gh_plugin_repo}.git"
-      printf "Cloning [$_gh_url] into [$_plugin_clone_dir]\n\n"
+      msg "Cloning [$_gh_url] into [$_plugin_clone_dir]"
       git clone $_gh_url $_plugin_clone_dir
     fi
 
     if [ ! -f $_plugin_clone_dir/$_plugin_source_file ]; then
-      { cd $_plugin_clone_dir; git pull ; }
+      (
+        cd $_plugin_clone_dir
+        git pull >/dev/null
+      )
     fi
     source_file_if_exists $_plugin_clone_dir/$_plugin_source_file
   }
@@ -81,12 +84,14 @@ printf "Sourcing -> [~/.config/zsh/.zshrc]\n"
 #---------------------------------------
 # [Miscellaneous] {{{
 #---------------------------------------
-  eval "$(zoxide init zsh)"
+  if which zoxide >&/dev/null; then
+    eval "$(zoxide init zsh)"
+  fi
 
   export STARSHIP_CONFIG=~/.config/starship/config.toml
-  eval "$(starship init zsh)"
-
-  source $ZSH_COMP_DIR/gcloud.zsh
+  if which starship >&/dev/null; then
+    eval "$(starship init zsh)"
+  fi
 
 # plugins=(copydir copyfile git kubectl vi-mode)
 # VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true

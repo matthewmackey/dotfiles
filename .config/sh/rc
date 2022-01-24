@@ -12,33 +12,11 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# Must be after interactive shell confirmation
-printf "Sourcing -> [~/.config/sh/rc]\n"
+# Include common shell functions
+source $DOTDIR/lib/common.sh
 
-
-#---------------------------------------
-# [Helper Functions] {{{
-#---------------------------------------
-mkdir_if_not_exist() {
-  local _dir=$1
-  if [[ ! -d $_dir ]]; then
-    printf "Making $_dir\n"
-    mkdir -p $_dir
-  fi
-}
-
-source_file_if_exists() {
-  local _file=$1
-  if [[ -f $_file ]]; then
-    printf "Sourcing -> [$_file]\n"
-    # timer=$(($(date +%s%N)/1000000))
-    source $_file
-    # now=$(($(date +%s%N)/1000000))
-    # elapsed=$(($now-$timer))
-    # echo $elapsed
-  fi
-}
-# }}}
+# Any printing must be after interactive shell confirmation
+section "Sourcing -> ~/.config/sh/rc"
 
 
 #---------------------------------------
@@ -65,7 +43,6 @@ done
 #---------------------------------------
 # [SOURCE Common Shell Files] {{{
 #---------------------------------------
-export DOTDIR=~/dotfiles
 export SH_DOTDIR=$DOTDIR/.config/sh
 export LOCAL_DOTDIR=~/.local/dot
 
