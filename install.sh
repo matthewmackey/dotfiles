@@ -3,12 +3,7 @@
 set -e
 set -o pipefail
 
-SCRIPT_DIR=$(cd $(dirname $0); pwd)
-
-export LIB_DIR=$SCRIPT_DIR/lib
-export DOTFILES_DIR=$SCRIPT_DIR
-
-source $LIB_DIR/common.sh
+source $DOTDIR/lib/common.sh
 
 #-------------------------------#
 # Helper Methods                #
@@ -36,8 +31,8 @@ install_starship() {
 # install_starship
 
 .config/install.sh
+
 git/install.sh
 
 # NOT for remote machines - TODO figure out how to flag when to run these
 ssh/install.sh
-

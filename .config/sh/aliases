@@ -8,13 +8,13 @@
   MM_SHELL_PLUGIN_DIR="${ZDOTDIR}/plugins/matthewmackey/shell-plugins/plugins"
 
   ALIASES=${DOTDIR}/.config/sh/aliases
-  LOCAL_ALIASES=~/.local/dot/aliases
+  LOCAL_ALIASES=$LOCAL_DOTDIR/aliases
   ZSH_ALIASES=${DOTDIR}/.config/zsh/aliases.zsh
   DOCKER_ALIASES=${MM_SHELL_PLUGIN_DIR}/docker/common.sh
   KUBECTL_ALIASES=${MM_SHELL_PLUGIN_DIR}/kubectl/common.sh
   SYSTEMCTL_ALIASES=${MM_SHELL_PLUGIN_DIR}/systemctl/common.sh
 
-  LOCAL_RC=~/.local/dot/rc
+  LOCAL_RC=$LOCAL_DOTDIR/rc
 
   alias es="eval 'exec \$SHELL'"
 
