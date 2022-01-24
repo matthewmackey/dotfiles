@@ -8,7 +8,9 @@ export VISUAL="$EDITOR"
 
 export PAGER="less"
 
-export DOTDIR=~/.personal/dotfiles
+export PERSONAL=~/.personal
+
+export DOTDIR=$PERSONAL/dotfiles
 export LOCAL_DOTDIR=~/.local/dot
 export VIMRC=~/.config/vim/vimrc-common.vim
 

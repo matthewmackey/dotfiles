@@ -147,9 +147,15 @@
 # [cd - shortcuts] {{{
 #-------------------------------------------------------------------------------
   alias d="cd ~/downloads"
+  alias desk="cd ~/Desktop"
   alias l="cd ~/.local/bin"
   alias m="cd ~/mmbin"
   alias tmp="cd ~/tmp"
+
+  # .personal shorcuts
+  alias pbin="cd $PERSONAL/bin"
+  alias pconf="cd $PERSONAL/config-mgmt"
+  alias pdot="cd $PERSONAL/dotfiles"
 # }}} cd - shortcuts
 
 

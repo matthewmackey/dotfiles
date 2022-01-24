@@ -22,13 +22,11 @@ section "Sourcing -> ~/.config/sh/rc"
 #---------------------------------------
 # [PATH Setup] {{{
 #---------------------------------------
-mkdir_if_not_exist $HOME/bin
 mkdir_if_not_exist $HOME/.local/bin
 
 BIN_DIRS=(
-  $HOME/bin
   $HOME/.local/bin
-  $HOME/mmbin
+  $PERSONAL/bin
   /opt/bin
 )
 
@@ -44,7 +42,7 @@ done
 # [SOURCE Common Shell Files] {{{
 #---------------------------------------
 export SH_DOTDIR=$DOTDIR/.config/sh
-export LOCAL_DOTDIR=~/.local/dot
+export LOCAL_DOTDIR=~/.local/dotfiles
 
 FILES_TO_SOURCE=()
 FILES_TO_SOURCE+=($SH_DOTDIR/aliases)
