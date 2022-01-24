@@ -39,5 +39,5 @@ install_starship() {
 git/install.sh
 
 # NOT for remote machines - TODO figure out how to flag when to run these
-#./ssh/install.sh
+ssh/install.sh
 

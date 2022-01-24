@@ -25,7 +25,7 @@ print_step() {
 }
 
 section() {
-  printf "[${BOLD}%s${NC}]\n" $1
+  printf "[${BOLD}%s${NC}]\n" "$1"
 }
 
 msg() {
