@@ -49,7 +49,6 @@
   #-------------------------------------
   alias bin="cd ~/bin"
   alias lbin="cd ~/.local/bin"
-  alias mmbin="cd ~/mmbin"
 
   #-------------------------------------
   # [DEFAULTS - used by others below]
@@ -152,9 +151,11 @@
   alias m="cd ~/mmbin"
   alias tmp="cd ~/tmp"
 
+  alias ldot="cd $LOCAL_DOTDIR"
+
   # .personal shorcuts
   alias pbin="cd $PERSONAL/bin"
-  alias pconf="cd $PERSONAL/config-mgmt"
+  alias pconf="cd $PERSONAL/config-mgmt/ansible_root"
   alias pdot="cd $PERSONAL/dotfiles"
 # }}} cd - shortcuts
 
