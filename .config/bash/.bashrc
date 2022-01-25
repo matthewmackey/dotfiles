@@ -84,7 +84,9 @@ source $BASHMARKS_SH
 #---------------------------------------
 # [directory management] {{{
 #---------------------------------------
-eval "$(zoxide init bash)"
+if which zoxide >&/dev/null; then
+  eval "$(zoxide init bash)"
+fi
 # }}}
 
 
