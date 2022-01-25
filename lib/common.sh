@@ -33,16 +33,27 @@ msg() {
 }
 
 ok() {
-  printf "  [ ${GREEN_BOLD}OK${NC} ] $1\n"
+  printf "  [${GREEN_BOLD}OK${NC}] $1\n"
 }
 
-skipping() {
-  printf "  [ ${YELLOW}Skipping${NC} ] $1\n"
+warn() {
+  printf "  [${YELLOW}WARN${NC}] $1\n"
 }
 
 fail() {
-  printf "  [ ${RED_BOLD}FAIL${NC} ] $1\n"
+  printf "  [${RED_BOLD}FAIL${NC}] $1\n"
 }
+
+skipping() {
+  printf "  [${YELLOW}Skipping${NC}] $1\n"
+}
+
+alert() {
+  local _heading=$1
+  local _msg=$2
+  printf "  [${YELLOW_BOLD}$_heading${NC}] $_msg\n"
+}
+
 
 #-------------------------------------------------------------------------------
 # File Operations

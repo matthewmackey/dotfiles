@@ -31,6 +31,7 @@ install_starship() {
 # install_starship
 
 .config/install.sh
+.config/tmux/install.sh
 
 git/install.sh
 
