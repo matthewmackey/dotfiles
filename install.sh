@@ -33,6 +33,7 @@ install_starship() {
 .config/install.sh
 .config/tmux/install.sh
 
+desktop/install.sh
 git/install.sh
 
 # NOT for remote machines - TODO figure out how to flag when to run these
