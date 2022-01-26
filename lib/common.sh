@@ -25,11 +25,17 @@ print_step() {
 }
 
 section() {
-  printf "[${BOLD}%s${NC}]\n" "$1"
+  printf "\n[${BOLD}%s${NC}]\n" "$1"
 }
 
 msg() {
   printf " ${LIGHT}%s${NC}\n" "$1"
+}
+
+bold() {
+  local _heading=$1
+  local _msg=$2
+  printf " ${BOLD}$_heading${NC} -> $_msg\n"
 }
 
 ok() {
@@ -61,8 +67,10 @@ alert() {
 mkdir_if_not_exist() {
   local _dir=$1
   if [ ! -d $_dir ]; then
-    msg "Making [$_dir]"
+    msg "Making $_dir"
     mkdir -p $_dir
+  else
+    skipping "$_dir exists already so not creating"
   fi
 }
 
@@ -86,7 +94,7 @@ create_symlink_with_backup() {
   local _link_name=$2
   local _target_dir=${3:-$HOME}
 
-  section "$_link_name"
+  bold "$_link_name" "creating symlink & backing up current file/dir if one exists"
   (
     cd "$_target_dir"
 
