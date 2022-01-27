@@ -8,10 +8,21 @@ export VISUAL="$EDITOR"
 
 export PAGER="less"
 
+# machine-agnostic dotfiles & configuration
 export PERSONAL=~/.personal
 
+# machine-specific dotfiles & configuration profiles
+export PROFILE=~/profile
+
+
+# PROFILE_DOTDIR will end up geting symlinked to LOCAL_DOTDIR
+# It is not done here b/c eventually there will be the facility
+# for multiple, local dotfile "profiles" under PROFILE_DIR which
+# would be done outside this file.
 export DOTDIR=$PERSONAL/dotfiles
-export LOCAL_DOTDIR=~/.local/dot
+export PROFILE_DOTDIR=$PROFILE/dotfiles
+export LOCAL_DOTDIR=~/.local/dotfiles
+
 export VIMRC=~/.config/vim/vimrc-common.vim
 
 # vim: ft=sh
