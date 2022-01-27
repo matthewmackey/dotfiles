@@ -23,3 +23,5 @@ fi
 #
 # "source pyenv"
 alias sp="source $default_python_bin/virtualenvwrapper.sh"
+
+alias w="workon"
