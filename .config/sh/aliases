@@ -98,6 +98,7 @@
   alias xmswitch="xmodmap ~/.config/xmodmap/.xmodmap-switch"
   # xmod - switch no escape
   alias xmswitchnoescape="xmodmap ~/.config/xmodmap/.xmodmap-switch_no_escape"
+  alias x="xmswitchnoescape"
 
 # }}}
 
@@ -157,6 +158,10 @@
   alias pbin="cd $PERSONAL/bin"
   alias pconf="cd $PERSONAL/config-mgmt/ansible_root"
   alias pdot="cd $PERSONAL/dotfiles"
+
+  # profile shorcuts
+  alias profile="cd $PROFILE"
+
 # }}} cd - shortcuts
 
 
@@ -294,9 +299,9 @@
   alias glgaf="glg -n 45"
 
   # Push/Pull
-  alias pull="git pl"
-  alias push="git ps"
-  alias p="git ps"
+  alias p="git push"
+  alias pl="git pull"
+  alias pu="git push -u origin main"
 
   # Restore
   alias rs="git restore"
@@ -307,6 +312,7 @@
 
   # Status
   alias gst="clrgit st"
+  alias g="gst"
   alias gss="clrgit ss"
 
   # MISCELLANEOUS

@@ -10,13 +10,6 @@ source $DOTDIR/lib/common.sh
 #-------------------------------#
 CONFIG_DIR=$DOTDIR/.config
 
-print_step "Setting up dotfile symlinks in root of ~/ directory"
-create_symlink_with_backup $CONFIG_DIR/bash/.bash_profile  ~/.bash_profile
-create_symlink_with_backup $CONFIG_DIR/bash/.bashrc        ~/.bashrc
-create_symlink_with_backup $CONFIG_DIR/tmux/tmux.conf      ~/.tmux.conf
-create_symlink_with_backup $CONFIG_DIR/vim                 ~/.vim
-create_symlink_with_backup $CONFIG_DIR/zsh/.zshenv         ~/.zshenv
-
 CONFIGS=(
   alacritty
   awesome
@@ -35,6 +28,14 @@ print_step "Setting up ~/.config symlinks"
 for conf in ${CONFIGS[@]}; do
   create_symlink_with_backup $CONFIG_DIR/$conf ~/.config/$conf
 done
+
+
+print_step "Setting up dotfile symlinks in root of ~/ directory"
+create_symlink_with_backup ~/.config/bash/.bash_profile  ~/.bash_profile
+create_symlink_with_backup ~/.config/bash/.bashrc        ~/.bashrc
+create_symlink_with_backup ~/.config/tmux/tmux.conf      ~/.tmux.conf
+create_symlink_with_backup ~/.config/vim                 ~/.vim
+create_symlink_with_backup ~/.config/zsh/.zshenv         ~/.zshenv
 
 
 print_step "Setup local dotfiles directory if it does not exist"
