@@ -1,0 +1,37 @@
+-- Largely based off: https://raw.githubusercontent.com/thoughtbot/dotfiles/master/psqlrc
+
+-- See Also:
+--   https://github.com/hgmnz/dotfiles/blob/master/psqlrc
+--   https://www.craigkerstiens.com/2013/02/13/how-i-work-with-postgres/
+--   http://www.postgresql.org/docs/9.3/static/app-psql.html
+--   http://robots.thoughtbot.com/improving-the-command-line-postgres-experience
+
+-- Don't display the messages on startup
+\set QUIET 1
+
+-- Set a value to display for NULL values vs. empty whitespace values
+\pset null '(null)'
+
+-- http://www.postgresql.org/docs/9.3/static/app-psql.html#APP-PSQL-PROMPTING
+\set PROMPT1 '%[%033[1m%]%M %n@%/%R%[%033[0m%]%# '
+
+-- PROMPT2 is printed when the prompt expects more input, like when you type
+-- SELECT * FROM<enter>. %R shows what type of input it expects.
+\set PROMPT2 '[more] %R > '
+
+-- Show how long each query takes to execute
+\timing
+
+-- History settings
+\set HISTFILE ~/.psql_history-:DBNAME
+\set HISTCONTROL ignoredups
+
+-- Improve table formatting for large tables
+\x auto
+
+-- Various other settings
+\set VERBOSITY verbose
+\set COMP_KEYWORD_CASE upper
+
+-- Turn messaging back on
+\unset QUIET

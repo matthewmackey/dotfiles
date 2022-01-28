@@ -31,11 +31,12 @@ done
 
 
 print_step "Setting up dotfile symlinks in root of ~/ directory"
-create_symlink_with_backup ~/.config/bash/.bash_profile  ~/.bash_profile
-create_symlink_with_backup ~/.config/bash/.bashrc        ~/.bashrc
-create_symlink_with_backup ~/.config/tmux/tmux.conf      ~/.tmux.conf
-create_symlink_with_backup ~/.config/vim                 ~/.vim
-create_symlink_with_backup ~/.config/zsh/.zshenv         ~/.zshenv
+create_symlink_with_backup ~/.config/bash/.bash_profile ~/.bash_profile
+create_symlink_with_backup ~/.config/bash/.bashrc       ~/.bashrc
+create_symlink_with_backup ~/.config/psql/.psqlrc       ~/.psqlrc
+create_symlink_with_backup ~/.config/tmux/tmux.conf     ~/.tmux.conf
+create_symlink_with_backup ~/.config/vim                ~/.vim
+create_symlink_with_backup ~/.config/zsh/.zshenv        ~/.zshenv
 
 
 print_step "Setup local dotfiles directory if it does not exist"
