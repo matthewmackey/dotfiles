@@ -31,6 +31,7 @@ install_starship() {
 # install_starship
 
 .config/install.sh
+.config/nvim/install.sh
 .config/tmux/install.sh
 
 desktop/install.sh

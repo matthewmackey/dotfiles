@@ -16,6 +16,7 @@ CONFIGS=(
   bash
   nvim
   parcellite
+  psql
   sh
   starship
   tmux

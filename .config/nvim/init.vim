@@ -15,4 +15,6 @@ runtime plug.vim
 runtime keymaps.vim
 
 " LOCAL common-Vim overrides
-source ~/.config/vim/.vimrc-local
+" if filereadable($HOME . '/.config/vim/.vimrc-local')
+"   source ~/.config/vim/.vimrc-local
+" end
