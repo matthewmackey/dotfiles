@@ -52,7 +52,8 @@ tnoremap <C-PageUp>   <C-\><C-n> :tabprevious<CR>
 "----------------------------------------#
 "    'Test' Plugin                       #
 "----------------------------------------#
-nnoremap <silent> <Leader>tn :TestNearest<CR>
+" Don't want to override :tabnew keybinding for now
+" nnoremap <silent> <Leader>tn :TestNearest<CR>
 nnoremap <silent> <Leader>tf :TestFile<CR>
 nnoremap <silent> <Leader>ts :TestSuite<CR>
 nnoremap <silent> <Leader>tl :TestLast<CR>
