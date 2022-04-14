@@ -61,8 +61,10 @@ alias -g J='| jq'
 alias -g L='| less'
 alias -g N='> /dev/null 2>&1'
 alias -g P="':!package-lock.json'"
+alias -g jp="-ojsonpath='{.data."
 alias -g R="-o jsonpath='{.spec.containers[0].resources}' | jq"
-alias -g Y='| yh'
+alias -g S="| sops -d --input-type yaml --output-type yaml /dev/stdin"
+alias -g Y='-oyaml| yh'
 alias -g 1.='../'
 alias -g 2.='../../'
 alias -g 3.='../../../'
