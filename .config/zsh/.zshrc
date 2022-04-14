@@ -120,4 +120,8 @@ section "Sourcing -> ~/.config/zsh/.zshrc"
 # }}}
 
 
+# [OTHER]
+source_local_dotfiles
+xmswitch
+
 # vim: ft=sh  foldlevel=0 foldmarker={{{,}}} foldmethod=marker

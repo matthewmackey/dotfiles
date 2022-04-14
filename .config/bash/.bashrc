@@ -103,4 +103,9 @@ for _file in ${FILES_TO_SOURCE[@]}; do
 done
 # }}}
 
+
+# [OTHER]
+source_local_dotfiles
+
+
 # vim: ft=sh  foldlevel=0 foldmarker={{{,}}} foldmethod=marker

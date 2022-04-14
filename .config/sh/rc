@@ -42,13 +42,10 @@ done
 # [SOURCE Common Shell Files] {{{
 #---------------------------------------
 export SH_DOTDIR=$DOTDIR/.config/sh
-export LOCAL_DOTDIR=~/.local/dotfiles
 
 FILES_TO_SOURCE=()
 FILES_TO_SOURCE+=($SH_DOTDIR/aliases)
 FILES_TO_SOURCE+=($(find $SH_DOTDIR/includes -type f))
-FILES_TO_SOURCE+=($LOCAL_DOTDIR/rc)
-FILES_TO_SOURCE+=($LOCAL_DOTDIR/aliases)
 
 for _file in ${FILES_TO_SOURCE[@]}; do
   source_file_if_exists $_file
@@ -68,5 +65,25 @@ BASE16_SHELL="$HOME/.config/base16-shell"
   && [[ -s "$BASE16_SHELL/profile_helper.sh" ]] \
     && eval "$("$BASE16_SHELL/profile_helper.sh")"
 # }}}
+
+
+#---------------------------------------
+# [Function - Source Local Dotfiles ] {{{
+#---------------------------------------
+# Define common function to be called after other main shell initializations
+# complete (Bash, ZSH, etc.) that will source local dotfile overrides
+source_local_dotfiles() {
+  section "Sourcing -> ~/.local/dotfiles"
+
+  local _files_to_source=()
+  _files_to_source+=($LOCAL_DOTDIR/rc)
+  _files_to_source+=($LOCAL_DOTDIR/aliases)
+
+  for _file in ${_files_to_source[@]}; do
+    source_file_if_exists $_file
+  done
+}
+# }}}
+
 
 # vim: ft=sh  foldlevel=0 foldmarker={{{,}}} foldmethod=marker
