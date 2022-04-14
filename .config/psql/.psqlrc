@@ -20,7 +20,7 @@
 \set PROMPT2 '[more] %R > '
 
 -- Show how long each query takes to execute
-\timing
+-- \timing
 
 -- History settings
 \set HISTFILE ~/.psql_history-:DBNAME
