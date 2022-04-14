@@ -25,4 +25,7 @@ export LOCAL_DOTDIR=~/.local/dotfiles
 
 export VIMRC=~/.config/vim/vimrc-common.vim
 
+# Standard XDG variables:
+export XDG_CONFIG_HOME=$HOME/.config
+
 # vim: ft=sh
