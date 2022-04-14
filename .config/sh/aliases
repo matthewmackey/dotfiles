@@ -17,6 +17,9 @@
   LOCAL_RC=$LOCAL_DOTDIR/rc
 
   alias es="eval 'exec \$SHELL'"
+  alias eg="env | grep"
+
+  alias s="source"
 
   #-------------------------------------
   # Shell - [aliases]
@@ -87,6 +90,7 @@
   #-------------------------------------
   # console - other
   #-------------------------------------
+  alias cpr="cp -r"
   alias hg="history | grep"
   alias mx="chmod +x"
 
@@ -101,6 +105,14 @@
   alias x="xmswitchnoescape"
 
 # }}}
+
+
+#-------------------------------------------------------------------------------
+# [Dotfiles] {{{
+#-------------------------------------------------------------------------------
+  alias vimcheat="vim ~/.config/vim/cheatsheet.md"
+# }}}  Dotfiles
+
 
 #-------------------------------------------------------------------------------
 # [Dotfiles - Commit them] {{{
@@ -261,10 +273,12 @@
 
   # Add
   alias ga="git add"
+  alias ga.="git add ."
 
   # Branch
   alias gb="git branch"
   alias gbav="git branch -av"
+  alias gb="gbav"
   alias gbd="git branch -d"
   alias gbm="git branch -m"
 
@@ -300,8 +314,15 @@
 
   # Push/Pull
   alias p="git push"
+  alias pdo="git push -d origin"
   alias pl="git pull"
+  alias ppt="git push; git push --tags"
+  alias pt="git push --tags"
   alias pu="git push -u origin main"
+
+
+  # Remote
+  alias grao="git remote add origin"
 
   # Restore
   alias rs="git restore"
@@ -314,6 +335,9 @@
   alias gst="clrgit st"
   alias g="gst"
   alias gss="clrgit ss"
+
+  # Tag
+  alias gtl="git tag -l"
 
   # MISCELLANEOUS
   alias remote="git remote -v"
@@ -343,6 +367,9 @@
 #-------------------------------------------------------------------------------
   alias hosts="cat /etc/hosts"
   alias ibas="sudo ip -br addr show"
+
+  alias nc2="nc -zvw 2"
+
   alias ns="sudo netstat -tlpn"
   alias nsg="sudo netstat -tlpn | grep"
 # }}}
@@ -397,6 +424,7 @@
 # See ~/bin/tm
   alias tmls="tmux ls"
   alias tma="tmux attach -t"
+  alias tmk="tmux kill-session -t"
   # alias 0="tma 0"
   # alias 1="tmux select-window -t 1"
   # alias 2="tmux select-window -t 2"
