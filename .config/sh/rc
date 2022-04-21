@@ -68,10 +68,12 @@ BASE16_SHELL="$HOME/.config/base16-shell"
 
 
 #---------------------------------------
-# [Function - Source Local Dotfiles ] {{{
+# [Function - Source Local Dotfiles] {{{
 #---------------------------------------
 # Define common function to be called after other main shell initializations
 # complete (Bash, ZSH, etc.) that will source local dotfile overrides
+#
+# NOTE: this can only work if the local dotfiles are cross-shell-compatible
 source_local_dotfiles() {
   section "Sourcing -> ~/.local/dotfiles"
 
