@@ -42,7 +42,7 @@
   #-------------------------------------
   # Shell - [rc]
   #-------------------------------------
-  alias rc="vim ${DOTDIR}/.config/sh/.rc"
+  alias rc="vim ${DOTDIR}/.config/sh/rc"
   alias lrc="vim ${LOCAL_RC}"
   alias brc="vim ${DOTDIR}/.config/bash/.bashrc"
   alias zrc="vim ${DOTDIR}/.config/zsh/.zshrc"
@@ -93,6 +93,11 @@
   alias cpr="cp -r"
   alias hg="history | grep"
   alias mx="chmod +x"
+
+  #-------------------------------------
+  # [crypt]
+  #-------------------------------------
+  alias mountcrypt="pass show -c crypt; encfs ~/.crypt ~/crypt"
 
   #-------------------------------------
   # [xmodmap]
@@ -263,6 +268,7 @@
   alias gcl="gcloud auth login"
   alias gcal="gcloud auth application-default login"
   alias gclall="gcl; gcal"
+  alias gcla="gcl; gcal"
 # }}}
 
 
@@ -425,6 +431,8 @@
   alias tmls="tmux ls"
   alias tma="tmux attach -t"
   alias tmk="tmux kill-session -t"
+  alias 0="tmux switch-client -t 0"
+
   # alias 0="tma 0"
   # alias 1="tmux select-window -t 1"
   # alias 2="tmux select-window -t 2"
@@ -439,6 +447,7 @@
   alias tmrenamewindow='tmux rename-window -t "$(tmux display-message -p "#{window_id}")"'
   alias tmrs="tmrenamesession"
   alias tmrw="tmrenamewindow"
+
 # }}}
 
 
