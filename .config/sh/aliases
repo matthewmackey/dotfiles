@@ -209,6 +209,7 @@
   alias clip="xclip -sel clip <"
   alias cmv="command -v"
   alias diffu="diff -u"
+  alias dlg="dpkg -l | grep -i"
   alias fd="fdfind"
   alias fr="file-roller"
   # search bashmarks
@@ -318,6 +319,9 @@
   alias glgah="glg -n 22"
   alias glgaf="glg -n 45"
 
+  # lst-remote
+  alias glsr="git ls-remote"
+
   # Push/Pull
   alias p="git push"
   alias pdo="git push -d origin"
@@ -325,7 +329,6 @@
   alias ppt="git push; git push --tags"
   alias pt="git push --tags"
   alias pu="git push -u origin main"
-
 
   # Remote
   alias grao="git remote add origin"
@@ -533,5 +536,61 @@ tms() {
     echo "Must provide: <session_name>"
   fi
 }
+
+#---------------------------------------------
+# gnome-pomodoro Applet
+#---------------------------------------------
+# > gsettings list-recursively org.gnome.pomodoro
+# org.gnome.pomodoro.preferences show-screen-notifications false
+# org.gnome.pomodoro.preferences short-break-duration 180.0
+# org.gnome.pomodoro.preferences long-break-duration 600.0
+# org.gnome.pomodoro.preferences enabled-plugins ['sounds']
+# org.gnome.pomodoro.preferences pomodoro-duration 60.0
+# org.gnome.pomodoro.preferences long-break-interval 10.0
+# org.gnome.pomodoro.preferences toggle-timer-key ['<Ctrl><Alt>p']
+# org.gnome.pomodoro.preferences pause-when-idle true
+# org.gnome.pomodoro.state open-uri ''
+# org.gnome.pomodoro.state timer-state-duration 180.0
+# org.gnome.pomodoro.state timer-elapsed 0.0
+# org.gnome.pomodoro.state timer-state 'short-break'
+# org.gnome.pomodoro.state timer-state-date '2022-05-05T15:52:45+0000'
+# org.gnome.pomodoro.state timer-paused false
+# org.gnome.pomodoro.state timer-score 2.0
+# org.gnome.pomodoro.state timer-date '2022-05-05T15:52:45+0000'
+
+# > gsettings list-recursively org.gnome.pomodoro.plugins.sounds
+# org.gnome.pomodoro.plugins.sounds pomodoro-start-sound 'loud-bell.ogg'
+# org.gnome.pomodoro.plugins.sounds ticking-sound 'timer.ogg'
+# org.gnome.pomodoro.plugins.sounds ticking-sound-volume 0.30252100840336132
+# org.gnome.pomodoro.plugins.sounds pomodoro-end-sound 'bell.ogg'
+# org.gnome.pomodoro.plugins.sounds pomodoro-end-sound-volume 1.0
+# org.gnome.pomodoro.plugins.sounds pomodoro-start-sound-volume 1.0
+
+pomols() {
+  echo -e "[org/gnome/pomodoro/preferences]"
+  gsettings list-recursively org.gnome.pomodoro.preferences
+
+  echo -e "\n[org/gnome/pomodoro/state]"
+  gsettings list-recursively org.gnome.pomodoro.state
+
+  echo -e "\n[org/gnome/pomodoro/plugins/sounds]"
+  gsettings list-recursively org.gnome.pomodoro.plugins.sounds
+}
+
+pdur() {
+  local _mins=$1
+  local _secs=$(($_mins * 60))
+  gsettings set org.gnome.pomodoro.preferences pomodoro-duration $_secs
+}
+alias pdur="pomodur"
+
+# Set ticking sound from range of 1-10
+pomovol() {
+  local _tick_level=$1
+  local _tick_percent=$(($_tick_level * 0.1))
+  gsettings set org.gnome.pomodoro.plugins.sounds ticking-sound-volume $_tick_percent
+}
+alias pvol="pomovol"
+
 
 # vim: set ft=sh foldmarker={{{,}}} foldmethod=marker foldlevel=0 :
