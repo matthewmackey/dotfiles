@@ -175,6 +175,7 @@
   alias pbin="cd $PERSONAL/bin"
   alias pconf="cd $PERSONAL/config-mgmt/ansible_root"
   alias pdot="cd $PERSONAL/dotfiles"
+  alias pn="cd $PERSONAL/notes"
 
   # profile shorcuts
   alias profile="cd $PROFILE"
@@ -212,6 +213,7 @@
   alias dlg="dpkg -l | grep -i"
   alias fd="fdfind"
   alias fr="file-roller"
+  alias j="jq <"
   # search bashmarks
   alias lg="l | grep -i"
   alias op="xdg-open"
@@ -291,10 +293,12 @@
 
   # Diff
   alias gd="clrgit diff --"
+  alias gd="clrgit diff -- . ':!package-lock.json'"
   alias gdp="clrgit diff -- . ':!package-lock.json'"
 
   # Diff --staged
   alias gds="clrgit diff --staged --"
+  alias gds="clrgit diff --staged -- . ':!package-lock.json'"
   alias gdsp="clrgit diff --staged -- . ':!package-lock.json'"
 
   # Log
@@ -336,6 +340,7 @@
   # Restore
   alias rs="git restore"
   alias rss="git restore --staged"
+  alias rssa="git restore --staged \*"
 
   # Show
   alias gsh="clrgit show"
@@ -403,7 +408,10 @@
 #-------------------------------------------------------------------------------
 # [node/npm] {{{
 #-------------------------------------------------------------------------------
+  alias jqp="jq < package.json"
   alias npml="npm ls --depth=0"
+  alias nr="npm run"
+  alias nun="sn; nvm use node"
 # }}}
 
 
@@ -413,6 +421,16 @@
   alias php='docker run -it --rm --name php-cli-tmp php:latest php -a'
   alias phpcli='php'
   alias phpscript='docker run -it --rm --name php-script-tmp -v $PWD:/usr/src/myapp -w /usr/src/myapp php:latest php'
+# }}}
+
+
+#-------------------------------------------------------------------------------
+# [sound] {{{
+#-------------------------------------------------------------------------------
+  alias micoff="amixer set Capture nocap"
+  alias micon="amixer set Capture cap"
+  alias mute="amixer -q -D pulse sset Master toggle"
+  alias unmute="mute"
 # }}}
 
 
@@ -431,26 +449,15 @@
 # [tmux] {{{
 #-------------------------------------------------------------------------------
 # See ~/bin/tm
-  alias tmls="tmux ls"
-  alias tma="tmux attach -t"
-  alias tmk="tmux kill-session -t"
   alias 0="tmux switch-client -t 0"
 
-  # alias 0="tma 0"
-  # alias 1="tmux select-window -t 1"
-  # alias 2="tmux select-window -t 2"
-  # alias 3="tmux select-window -t 3"
-  # alias 4="tmux select-window -t 4"
-  # alias 5="tmux select-window -t 5"
-  # alias 6="tmux select-window -t 6"
-  # alias 7="tmux select-window -t 7"
-  # alias 8="tmux select-window -t 8"
-  # alias 9="tmux select-window -t 9"
+  alias tma="tmux attach -t"
+  alias tmls="tmux ls"
+  alias tmk="tmux kill-session -t"
   alias tmrenamesession='tmux rename-session -t "$(tmux display-message -p "#S")"'
   alias tmrenamewindow='tmux rename-window -t "$(tmux display-message -p "#{window_id}")"'
   alias tmrs="tmrenamesession"
   alias tmrw="tmrenamewindow"
-
 # }}}
 
 
@@ -577,12 +584,13 @@ pomols() {
   gsettings list-recursively org.gnome.pomodoro.plugins.sounds
 }
 
-pdur() {
+pomodur() {
   local _mins=$1
   local _secs=$(($_mins * 60))
   gsettings set org.gnome.pomodoro.preferences pomodoro-duration $_secs
 }
 alias pdur="pomodur"
+alias pd="pomodur"
 
 # Set ticking sound from range of 1-10
 pomovol() {
