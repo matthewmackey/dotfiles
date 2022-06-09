@@ -294,12 +294,12 @@
   # Diff
   alias gd="clrgit diff --"
   alias gd="clrgit diff -- . ':!package-lock.json'"
-  alias gdp="clrgit diff -- . ':!package-lock.json'"
+  alias gdp="clrgit diff"
 
   # Diff --staged
   alias gds="clrgit diff --staged --"
   alias gds="clrgit diff --staged -- . ':!package-lock.json'"
-  alias gdsp="clrgit diff --staged -- . ':!package-lock.json'"
+  alias gdsp="clrgit diff --staged"
 
   # Log
   alias gl="clrgit l"
@@ -319,9 +319,9 @@
   # Log - Graph --all
   alias glga="clrgit lga"
   # Log - Graph --all (Quarter/Half/Full-screen)
-  alias glgaq="glg -n 15"
-  alias glgah="glg -n 22"
-  alias glgaf="glg -n 45"
+  alias glgaq="glga -n 15"
+  alias glgah="glga -n 22"
+  alias glgaf="glga -n 45"
 
   # lst-remote
   alias glsr="git ls-remote"
@@ -343,7 +343,8 @@
   alias rssa="git restore --staged \*"
 
   # Show
-  alias gsh="clrgit show"
+  alias gsh="clrgit show -- . ':!package-lock.json'"
+  alias gshp="clrgit show"
 
   # Status
   alias gst="clrgit st"
