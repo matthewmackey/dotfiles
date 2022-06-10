@@ -1,3 +1,10 @@
+" --------------------------------------------------------------------------------------------------------------
+" ALLOWED Keymappings:
+"
+"   https://stackoverflow.com/questions/8033779/is-there-a-way-to-map-ctrl-period-and-ctrl-comma-in-vim
+"
+" --------------------------------------------------------------------------------------------------------------
+
 "----------------------------------------#
 "    ALE                                 #
 "----------------------------------------#
@@ -42,7 +49,7 @@ nnoremap ,lt <cmd>TSBufToggle highlight<CR>
 "----------------------------------------#
 " Terminal Mode Escape Key - not using <Esc> b/c I need that for Bash's vim-mode
 " Exit terminal-mode
-" tnoremap <C-?> <C-\><C-n>
+tnoremap <C-BS> <C-\><C-n>
 
 " Exit terminal mode then switch tabs
 tnoremap <C-PageDown> <C-\><C-n> :tabnext<CR>
