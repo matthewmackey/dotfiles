@@ -1,2 +1,5 @@
+# From: https://wiki.archlinux.org/title/SSH_keys#ssh-agent
+AddKeysToAgent confirm
+
 Include ~/.ssh/config-local
 Include ~/.ssh/conf.d/*.conf
