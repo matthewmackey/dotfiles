@@ -302,26 +302,29 @@
   alias gdsp="clrgit diff --staged"
 
   # Log
-  alias gl="clrgit l"
-  alias gln="clrgit l --name-only"
-  alias glf="gln"
-  alias gls="clrgit l --stat"
+  alias gln="clrgit l --name-only -n 1"
+  alias glnn="clrgit l --name-only -n"
+  alias gls="clrgit l --stat -n 1"
+  alias glsn="clrgit l --stat -n"
   alias glnopage="clrgit -c pager.log=false l"
 
   # Log - Graph
-  alias glg="clrgit lg"
-  alias glgf="clrgit lgf"
+  alias glgraph="clrgit lg"
+  alias glf="clrgit lgf"
 
   # Log - Graph (Quarter/Half/Full-screen)
-  alias glgq="glg -n 15"
-  alias glgh="glg -n 22"
+  alias glq="glgraph -n 15"
+  alias glh="glgraph -n 22"
+  alias gl="glh"
 
   # Log - Graph --all
-  alias glga="clrgit lga"
+  alias glgall="clrgit lga"
+
   # Log - Graph --all (Quarter/Half/Full-screen)
-  alias glgaq="glga -n 15"
-  alias glgah="glga -n 22"
-  alias glgaf="glga -n 45"
+  alias glaq="glgall -n 15"
+  alias glah="glgall -n 22"
+  alias glaf="glgall -n 45"
+  alias gla="glah"
 
   # lst-remote
   alias glsr="git ls-remote"
@@ -438,6 +441,11 @@
 #-------------------------------------------------------------------------------
 # [SSH] {{{
 #-------------------------------------------------------------------------------
+  alias add="pass show -c ssh/default; ssh-add"
+  alias addl="ssh-add -l"
+  alias addL="ssh-add -L"
+  alias addd="ssh-add -d"
+  alias addD="ssh-add -D"
   alias sconf="vim ~/.ssh/config"
   alias sconfl="vim ~/.ssh/config-local"
   alias rmsock="rm -rf ~/.ssh/sockets/*"
