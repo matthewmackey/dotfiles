@@ -37,5 +37,7 @@ install_starship() {
 desktop/install.sh
 git/install.sh
 
+gui/vscode/install.sh
+
 # NOT for remote machines - TODO figure out how to flag when to run these
 ssh/install.sh
