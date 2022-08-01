@@ -11,7 +11,9 @@
   LOCAL_ALIASES=$LOCAL_DOTDIR/aliases
   ZSH_ALIASES=${DOTDIR}/.config/zsh/aliases.zsh
   DOCKER_ALIASES=${MM_SHELL_PLUGIN_DIR}/docker/common.sh
+  GCLOUD_ALIASES=${MM_SHELL_PLUGIN_DIR}/gcloud/common.sh
   KUBECTL_ALIASES=${MM_SHELL_PLUGIN_DIR}/kubectl/common.sh
+  NODE_ALIASES=${MM_SHELL_PLUGIN_DIR}/node/common.sh
   SYSTEMCTL_ALIASES=${MM_SHELL_PLUGIN_DIR}/systemctl/common.sh
 
   LOCAL_RC=$LOCAL_DOTDIR/rc
@@ -29,14 +31,18 @@
   alias zal="vim ${ZSH_ALIASES}"
 
   alias dal="vim ${DOCKER_ALIASES}"
+  alias gal="vim ${GCLOUD_ALIASES}"
   alias kal="vim ${KUBECTL_ALIASES}"
+  alias nal="vim ${NODE_ALIASES}"
   alias sal="vim ${SYSTEMCTL_ALIASES}"
 
   alias sa="source ${ALIASES}; \
             source ${ZSH_ALIASES}; \
             [ -f ${LOCAL_ALIASES} ] && source ${LOCAL_ALIASES} \
             [ -f ${DOCKER_ALIASES} ] && source ${DOCKER_ALIASES} \
+            [ -f ${GCLOUD_ALIASES} ] && source ${GCLOUD_ALIASES} \
             [ -f ${KUBECTL_ALIASES} ] && source ${KUBECTL_ALIASES} \
+            [ -f ${NODE_ALIASES} ] && source ${NODE_ALIASES} \
             [ -f ${SYSTEMCTL_ALIASES} ] && source ${SYSTEMCTL_ALIASES}"
 
   #-------------------------------------
@@ -60,6 +66,7 @@
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
     alias grep='grep --color=auto'
+    alias grepp='grep'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
   fi
@@ -90,6 +97,8 @@
   #-------------------------------------
   # console - other
   #-------------------------------------
+  alias cat="bat"
+  alias catp="cat"
   alias cpr="cp -r"
   alias hg="history | grep"
   alias mx="chmod +x"
@@ -203,9 +212,15 @@
 #-------------------------------------------------------------------------------
 # [tools] {{{
 #-------------------------------------------------------------------------------
+  alias a1="awk '{ print \$1; }'"
+  alias a2="awk '{ print \$2; }'"
+  alias a3="awk '{ print \$3; }'"
+  alias a4="awk '{ print \$4; }'"
+  alias a5="awk '{ print \$5; }'"
+
   # backwards-compatibility for some scripts
   alias ack-grep="ack"
-  alias bat="batcat"
+
   # Copy flie contents to clipboard
   alias clip="xclip -sel clip <"
   alias cmv="command -v"
@@ -222,7 +237,7 @@
   alias syslog="tail -f /var/log/syslog"
 
   TREE_BIN=/usr/bin/tree
-  TREE_IGNORES='.git|build|dist|node_modules|packer_cache|__pycache__|.pytest_cache|.terraform'
+  TREE_IGNORES='.git|build|dist|node_modules|packer_cache|__pycache__|.pytest_cache|.terraform|*.egg-info'
 
   alias t="cl;  $TREE_BIN"
   alias te="cl; $TREE_BIN -a -I '$TREE_IGNORES'"
@@ -250,6 +265,7 @@
 # [ansible] {{{
 #-------------------------------------------------------------------------------
   alias play="ansible-playbook"
+  alias playl="ansible-playbook -i local playbook.yml -v -t"
 # }}}
 
 
@@ -262,6 +278,10 @@
     | fzf \
     | xargs -I {} zsh -c \
     "eval $(functions _base16); _base16 \$(echo "{}" | awk '"'"'{ print \$2,\$1; }'"'"';) "'
+
+  # Black
+  alias colorcodes="open https://www.tweaking4all.com/software/linux-software/xterm-color-cheat-sheet/"
+  alias desktopbg='gsettings set org.gnome.desktop.background picture-uri ""; gsettings set org.gnome.desktop.background primary-color "#000000"'
 # }}}
 
 
@@ -278,8 +298,6 @@
 #-------------------------------------------------------------------------------
 # [Git] {{{
 #-------------------------------------------------------------------------------
-  alias clrgit="cl; git"
-
   # Add
   alias ga="git add"
   alias ga.="git add ."
@@ -289,48 +307,77 @@
   alias gbav="git branch -av"
   alias gb="gbav"
   alias gbd="git branch -d"
+  alias gbD="git branch -D"
   alias gbm="git branch -m"
 
+  # Checkout
+  alias co="git checkout \*"
+  alias cop="git checkout"
+
   # Diff
-  alias gd="clrgit diff --"
-  alias gd="clrgit diff -- . ':!package-lock.json'"
-  alias gdp="clrgit diff"
+  alias gd="clear; git diff"
+  alias gdp="clear; git diff -- . ':!package-lock.json'"
 
   # Diff --staged
-  alias gds="clrgit diff --staged --"
-  alias gds="clrgit diff --staged -- . ':!package-lock.json'"
-  alias gdsp="clrgit diff --staged"
+  alias gds="clear; git diff --staged --"
+  alias gdsp="clear; git diff --staged -- . ':!package-lock.json'"
 
+  # Fetch
+  alias f="git fetch"
+  alias fa="git fetch --all"
+  alias fp="git fetch --prune"
+
+  # Init
+  alias gi="git init"
+
+  #--------------------------------------------------------------
   # Log
-  alias gln="clrgit l --name-only -n 1"
-  alias glnn="clrgit l --name-only -n"
-  alias gls="clrgit l --stat -n 1"
-  alias glsn="clrgit l --stat -n"
-  alias glnopage="clrgit -c pager.log=false l"
+  #--------------------------------------------------------------
+  HALF_SCREEN=25
+  FULL_SCREEN=40
+  PRETTY="--pretty=format:'%C(yellow)%h%C(reset) C(green)(%><(12)%cr%><|(12))%C(reset) - %s C(blue)<%an>%C(reset)%C(auto)%d%C(reset)'"
+  PRETTYF="--pretty=format:'%C(yellow)%h%C(reset) %C(green)(%cs / %as)%C(reset) %s %C(blue)<C:%cn, A:%an>%C(reset)%C(auto)%d%C(reset)'"
 
-  # Log - Graph
-  alias glgraph="clrgit lg"
-  alias glf="clrgit lgf"
+  alias glnopage="clear; git -c pager.log=false log"
 
-  # Log - Graph (Quarter/Half/Full-screen)
-  alias glq="glgraph -n 15"
-  alias glh="glgraph -n 22"
-  alias gl="glh"
+  # Log - Graph Branch (Quarter/Half/Full-screen)
+  alias glb="clear; git log $PRETTY --graph"
+  alias glbh="clear; git log $PRETTY --graph -n $HALF_SCREEN"
+  alias glbf="clear; git log $PRETTY --graph -n $FULL_SCREEN"
 
-  # Log - Graph --all
-  alias glgall="clrgit lga"
+  # Log - Graph All (Quarter/Half/Full-screen)
+  alias gla="clear; git log $PRETTY --all --graph"
+  alias glah="clear; git log $PRETTY --all --graph -n $HALF_SCREEN"
+  alias glaf="clear; git log $PRETTY --all --graph -n $FULL_SCREEN"
+  alias gl="glah"
 
-  # Log - Graph --all (Quarter/Half/Full-screen)
-  alias glaq="glgall -n 15"
-  alias glah="glgall -n 22"
-  alias glaf="glgall -n 45"
-  alias gla="glah"
+  # Log - name-only
+  alias gln="clear; git log $PRETTY --name-only"
+  alias glnh="clear; git log $PRETTY --name-only -n $HALF_SCREEN"
+  alias glnf="clear; git log $PRETTY --name-only -n $FULL_SCREEN"
 
-  # lst-remote
+  # Log - oneline
+  alias glo="clear; git log --oneline"
+  alias gloh="clear; git log --oneline -n $HALF_SCREEN"
+  alias glof="clear; git log --oneline -n $FULL_SCREEN"
+
+  # Log - stat
+  alias gls="clear; git log $PRETTY --stat"
+  alias glsh="clear; git log $PRETTY --stat -n $HALF_SCREEN"
+  alias glsf="clear; git log $PRETTY --stat -n $FULL_SCREEN"
+
+  unset HALF_SCREEN
+  unset FULL_SCREEN
+  unset PRETTY
+  unset PRETTYF
+
+
+  # ls-remote
   alias glsr="git ls-remote"
 
   # Push/Pull
   alias p="git push"
+  alias pa="git push --all"
   alias pdo="git push -d origin"
   alias pl="git pull"
   alias ppt="git push; git push --tags"
@@ -342,24 +389,30 @@
 
   # Restore
   alias rs="git restore"
-  alias rss="git restore --staged"
-  alias rssa="git restore --staged \*"
+  alias rss="git restore --staged \*"
+  alias rssp="git restore --staged"
 
   # Show
-  alias gsh="clrgit show -- . ':!package-lock.json'"
-  alias gshp="clrgit show"
+  alias gsh="clear; git show"
+  alias gshp="clear; git show -- . ':!package-lock.json'"
 
   # Status
-  alias gst="clrgit st"
+  alias gst="clear; git st"
   alias g="gst"
-  alias gss="clrgit ss"
+  alias gs="gst"
+  alias gss="clear; git ss"
+
+  # Switch
+  alias sw="git switch"
 
   # Tag
   alias gtl="git tag -l"
+  alias tag="git tag \$TAG"
+  alias deltag="git tag -d \$TAG; git push -d origin refs/tags/\$TAG"
 
   # MISCELLANEOUS
   alias remote="git remote -v"
-  alias remotes="clrgit remote -v"
+  alias remotes="clear; git remote -v"
 # }}}
 
 
@@ -458,7 +511,7 @@
 # [tmux] {{{
 #-------------------------------------------------------------------------------
 # See ~/bin/tm
-  alias 0="tmux switch-client -t 0"
+  alias 0="tmux switch-client -t 0-SHELL"
 
   alias tma="tmux attach -t"
   alias tmls="tmux ls"
