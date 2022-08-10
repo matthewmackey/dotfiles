@@ -1,9 +1,13 @@
 #
 # node.sh
 #
+
 export NVM_DIR=$HOME/.nvm
 
 if [ ! -f $NVM_DIR/nvm.sh ]; then
+  if [ ! -d $NVM_DIR ]; then
+    mkdir -p $NVM_DIR
+  fi
    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 fi
 
