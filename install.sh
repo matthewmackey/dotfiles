@@ -3,6 +3,10 @@
 set -e
 set -o pipefail
 
+# Override any DOTDIR currently set in environment since we are doing an install
+# that is changing the DOTDIR to the standard set for this repository
+export DOTDIR=~/.personal/dotfiles
+
 source $DOTDIR/lib/common.sh
 
 #-------------------------------#
@@ -10,7 +14,7 @@ source $DOTDIR/lib/common.sh
 #-------------------------------#
 install_packages() {
   print_step "Installing required packages"
-  sudo apt install -y curl tmux vim zsh
+  sudo apt-get install -y curl tmux vim zsh
 }
 
 install_starship() {
@@ -28,12 +32,11 @@ install_starship() {
 # MAIN                          #
 #-------------------------------#
 # install_packages
-# install_starship
+install_starship
 
 .config/install.sh
 .config/nvim/install.sh
 .config/tmux/install.sh
-
 desktop/install.sh
 git/install.sh
 
