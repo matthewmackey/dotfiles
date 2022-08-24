@@ -36,12 +36,12 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 
     -- Auto-format on save (if available)
-    if client.resolved_capabilities.document_formatting then
-       vim.api.nvim_command [[augroup Format]]
-       vim.api.nvim_command [[autocmd! * <buffer>]]
-       vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
-       vim.api.nvim_command [[augroup END]]
-    end
+    -- if client.resolved_capabilities.document_formatting then
+    --    vim.api.nvim_command [[augroup Format]]
+    --    vim.api.nvim_command [[autocmd! * <buffer>]]
+    --    vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
+    --    vim.api.nvim_command [[augroup END]]
+    -- end
 
     print "LSP Server loaded"
 
@@ -152,8 +152,11 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(
     vim.lsp.protocol.make_client_capabilities()
 )
 
--- JAVASCRIPT
--- npm install -g typescript typescript-language-server eslint prettier
+-- JAVASCRIPT --
+-- npm install -g typescript typescript-language-server
+--
+-- Might hold off on eslint/prettier b/c those might be project-specific:
+--   npm install -g typescript typescript-language-server eslint prettier
 nvim_lsp.tsserver.setup {
     capabilities = capabilities,
     cmd = { "typescript-language-server", "--stdio" },
@@ -163,20 +166,9 @@ nvim_lsp.tsserver.setup {
     },
     on_attach = on_attach,
     root_dir = util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
-    settings = {
-        python = {
-            analysis = {
-                autosearchpaths = true,
-                diagnosticmode = "workspace",
-                extrapaths = {"./src/main/python"},
-                loglevel = "information",
-                uselibrarycodefortypes = true
-            }
-        }
-    }
 }
 
--- PYTHON
+-- PYTHON --
 -- npm install -g pyright
 nvim_lsp.pyright.setup {
     capabilities = capabilities,
