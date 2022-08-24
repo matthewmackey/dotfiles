@@ -72,9 +72,9 @@ Plug 'jvirtanen/vim-hcl'
 "---------------------------------------------"
 " javascript/typescript/jsx/tsx
 "---------------------------------------------"
-Plug 'yuezk/vim-js'
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'leafgarland/typescript-vim'
+" Plug 'yuezk/vim-js'
+" Plug 'maxmellon/vim-jsx-pretty'
+" Plug 'leafgarland/tyPescript-vim'
 
 "---------------------------------------------"
 " Python

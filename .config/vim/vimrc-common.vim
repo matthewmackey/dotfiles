@@ -182,6 +182,9 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 
+" Swap windows
+nnoremap <C-x> <C-w>x
+
 " inoremap <C-j> <C-\><C-N><C-w>j
 " inoremap <C-k> <C-\><C-N><C-w>k
 " inoremap <C-l> <C-\><C-N><C-w>l
