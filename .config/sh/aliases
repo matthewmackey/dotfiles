@@ -333,23 +333,28 @@
   #--------------------------------------------------------------
   # Log
   #--------------------------------------------------------------
-  HALF_SCREEN=25
-  FULL_SCREEN=40
-  PRETTY="--pretty=format:'%C(yellow)%h%C(reset) C(green)(%><(12)%cr%><|(12))%C(reset) - %s C(blue)<%an>%C(reset)%C(auto)%d%C(reset)'"
+  HALF_SCREEN=35
+  FULL_SCREEN=50
+  PRETTY="--pretty=format:'%C(yellow)%h%C(reset) %C(green)(%><(12)%cr%><|(12))%C(reset) - %s %C(blue)<%an>%C(reset)%C(auto)%d%C(reset)'"
   PRETTYF="--pretty=format:'%C(yellow)%h%C(reset) %C(green)(%cs / %as)%C(reset) %s %C(blue)<C:%cn, A:%an>%C(reset)%C(auto)%d%C(reset)'"
 
   alias glnopage="clear; git -c pager.log=false log"
 
   # Log - Graph Branch (Quarter/Half/Full-screen)
-  alias glb="clear; git log $PRETTY --graph"
+  # p = paged
+  alias glbp="clear; git log $PRETTY --graph"
   alias glbh="clear; git log $PRETTY --graph -n $HALF_SCREEN"
   alias glbf="clear; git log $PRETTY --graph -n $FULL_SCREEN"
+  alias glb="glbh"
 
   # Log - Graph All (Quarter/Half/Full-screen)
-  alias gla="clear; git log $PRETTY --all --graph"
+  # p = paged
+  alias glap="clear; git log $PRETTY --all --graph"
   alias glah="clear; git log $PRETTY --all --graph -n $HALF_SCREEN"
   alias glaf="clear; git log $PRETTY --all --graph -n $FULL_SCREEN"
-  alias gl="glah"
+  alias gla="glah"
+
+  alias gl="glbh"
 
   # Log - name-only
   alias gln="clear; git log $PRETTY --name-only"
@@ -382,10 +387,12 @@
   alias pl="git pull"
   alias ppt="git push; git push --tags"
   alias pt="git push --tags"
-  alias pu="git push -u origin main"
+  alias pu="git push -u origin"
+  alias pum="git push -u origin main"
 
   # Remote
   alias grao="git remote add origin"
+  alias grro="git remote remove origin"
 
   # Restore
   alias rs="git restore"
