@@ -45,7 +45,6 @@ section "Sourcing -> ~/.config/zsh/.zshrc"
     mkdir_if_not_exist $d
   done
 
-  autoload -Uz compinit && compinit                                                                              _
 # }}}
 
 #---------------------------------------
@@ -122,9 +121,14 @@ section "Sourcing -> ~/.config/zsh/.zshrc"
 # }}}
 
 
-# [OTHER]
+#---------------------------------------
+# [OTHER] {{{
+#---------------------------------------
 source_local_dotfiles
 xmswitch
 
+autoload -Uz compinit && compinit
+
+# }}}
 
 # vim: ft=sh  foldlevel=0 foldmarker={{{,}}} foldmethod=marker
