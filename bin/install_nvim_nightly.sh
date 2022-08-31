@@ -46,14 +46,6 @@ symlink_global_nvim_to_nightly_version() {
   replace_global_symlink /usr/bin/nvim "${_VERSIONED_DOWNLOAD_FILE}"
 }
 
-symlink_global_vim_to_nvim() {
-  replace_global_symlink /usr/bin/vim /usr/bin/nvim
-}
-
-symlink_global_vi_to_nvim() {
-  replace_global_symlink /usr/bin/vi /usr/bin/nvim
-}
-
 replace_global_symlink() {
   local _link=$1
   local _new_target=$2
@@ -71,5 +63,3 @@ download_current_nightly_version
 NVIM_NIGHTLY_VERSION=$(get_current_nightly_version_number)
 rename_nightly_version_to_real_version_number
 symlink_global_nvim_to_nightly_version
-symlink_global_vim_to_nvim
-symlink_global_vi_to_nvim
