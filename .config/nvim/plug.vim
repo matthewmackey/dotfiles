@@ -8,7 +8,9 @@ endif
 call plug#begin(data_dir . '/../plugged')
 
   " Colors
-  Plug 'chriskempson/base16-vim'
+  " The RRethy plugin seems to work better w/ lualine plugin then then the chriskempson one
+  " Plug 'chriskempson/base16-vim'
+  Plug 'RRethy/nvim-base16'
 
   " General
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
