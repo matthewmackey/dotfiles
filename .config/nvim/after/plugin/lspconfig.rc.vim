@@ -186,5 +186,24 @@ nvim_lsp.pyright.setup {
         }
     }
 }
+
+-- RUBY --
+-- gem install solargraph
+nvim_lsp.solargraph.setup {
+    capabilities = capabilities,
+    cmd = { "solargraph", "stdio" },
+    filetypes = { "ruby" },
+    init_options = {
+      formatting = true,
+    },
+    on_attach = on_attach,
+    root_dir = util.root_pattern("Gemfile", ".git"),
+    settings = {
+        solargraph = {
+            diagnostics = true,
+        }
+    }
+}
 EOF
+
 " vim: ft=lua tabstop=4 softtabstop=4 shiftwidth=4:
