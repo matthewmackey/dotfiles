@@ -55,10 +55,12 @@ tnoremap <C-BS> <C-\><C-n>
 tnoremap <C-PageDown> <C-\><C-n> :tabnext<CR>
 tnoremap <C-PageUp>   <C-\><C-n> :tabprevious<CR>
 
-" Remap `:terminal` in command-mode to `:tab terminal`
-" See: https://stackoverflow.com/questions/7513380/vim-change-x-function-to-delete-buffer-instead-of-save-quit/7515418#7515418
+" Create abbreviations for various `:terminal` commands in command-mode
+"  - SEE: https://stackoverflow.com/questions/7513380/vim-change-x-function-to-delete-buffer-instead-of-save-quit/7515418#7515418
 cnoreabbrev <expr> term getcmdtype() == ":" && getcmdline() == 'term' ? 'tabnew \| term' : 'term'
 cnoreabbrev <expr> terminal getcmdtype() == ":" && getcmdline() == 'terminal' ? 'tabnew \| terminal' : 'terminal'
+cnoreabbrev <expr> vterm getcmdtype() == ":" && getcmdline() == 'vterm' ? 'vnew \| term' : 'vterm'
+cnoreabbrev <expr> hterm getcmdtype() == ":" && getcmdline() == 'hterm' ? 'new \| term' : 'hterm'
 
 "----------------------------------------#
 "    'Test' Plugin                       #
