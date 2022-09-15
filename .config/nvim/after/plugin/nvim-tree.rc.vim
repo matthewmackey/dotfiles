@@ -6,9 +6,10 @@ require'nvim-tree'.setup {
   open_on_setup       = true,
   ignore_ft_on_setup  = {},
   open_on_tab         = true,
-  hijack_cursor       = false,
+  hijack_cursor       = true,
 
-  -- 1 by default, When creating files, sets the path of a file when cursor is on a closed folder to the parent folder when 0, and inside the folder when 1.
+  -- true by default. When creating files, sets the path of a file when cursor is on a
+  -- closed folder to the parent folder when false, and inside the folder when true.
   create_in_closed_folder = true,
 
   -- 0 by default, will change cwd of nvim-tree to that of new buffer's when opening nvim-tree.
@@ -33,21 +34,41 @@ require'nvim-tree'.setup {
     cmd  = nil,
     args = {}
   },
-  filters = {
-    dotfiles = false,
-    custom = {}
-  },
   git = {
     enable = true,
     ignore = true,
     timeout = 500,
   },
+  view = {
+    hide_root_folder = false,
+    width = 30,
+    height = 30,
+    side = 'left',
+    auto_resize = true,
+    number = true,
+    relativenumber = false,
+    -- yes, no, or auto
+    signcolumn = "no",
+    mappings = {
+      custom_only = false,
+      list = {}
+    },
+  },
+  filters = {
+    dotfiles = false,
+    custom = {}
+  },
+  trash = {
+    cmd = "trash",
+    require_confirm = true
+  },
+
   actions = {
     use_system_clipboard = true,
     open_file = {
       -- 0 by default, closes the tree when you open a file
       quit_on_open = false,
-      resize_window = false,
+      resize_window = true,
       window_picker = {
         enable = true,
         chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
@@ -144,22 +165,6 @@ require'nvim-tree'.setup {
     special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md", "TODO", "TODO.md" },
     symlink_destination = true,
   },
-  view = {
-    width = 30,
-    height = 30,
-    hide_root_folder = false,
-    side = 'left',
-    mappings = {
-      custom_only = false,
-      list = {}
-    },
-    number = false,
-    relativenumber = false
-  },
-  trash = {
-    cmd = "trash",
-    require_confirm = true
-  }
 }
 EOF
 
