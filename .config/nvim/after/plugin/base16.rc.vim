@@ -1,9 +1,10 @@
-" 1st test: naive test to see if base16-vim is installed to avoid error message
+" 1st test: naive test to see if nvim-base16 is installed to avoid error message
 "           on 1st vim startup before plugins installed the 1st time
-if filereadable(expand("~/.local/share/nvim/plugged/base16-vim/colors/base16-seti.vim"))
+if filereadable(expand("~/.local/share/nvim/plugged/nvim-base16/colors/base16-3024.vim"))
       \ && filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   set background=dark
+  colorscheme base16-gruvbox-dark-medium
   source ~/.vimrc_background
 endif
 
