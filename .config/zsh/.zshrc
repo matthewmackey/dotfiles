@@ -79,6 +79,7 @@ section "Sourcing -> ~/.config/zsh/.zshrc"
   installZshPlugin matthewmackey/shell-plugins plugins/kubectl/common.sh
   installZshPlugin matthewmackey/shell-plugins plugins/node/common.sh
   installZshPlugin matthewmackey/shell-plugins plugins/systemctl/common.sh
+  installZshPlugin matthewmackey/shell-plugins plugins/terraform/common.sh
 # }}}
 
 
