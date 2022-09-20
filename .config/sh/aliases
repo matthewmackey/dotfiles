@@ -15,6 +15,7 @@
   KUBECTL_ALIASES=${MM_SHELL_PLUGIN_DIR}/kubectl/common.sh
   NODE_ALIASES=${MM_SHELL_PLUGIN_DIR}/node/common.sh
   SYSTEMCTL_ALIASES=${MM_SHELL_PLUGIN_DIR}/systemctl/common.sh
+  TERRAFORM_ALIASES=${MM_SHELL_PLUGIN_DIR}/terraform/common.sh
 
   LOCAL_RC=$LOCAL_DOTDIR/rc
 
@@ -35,6 +36,7 @@
   alias kal="vim ${KUBECTL_ALIASES}"
   alias nal="vim ${NODE_ALIASES}"
   alias sal="vim ${SYSTEMCTL_ALIASES}"
+  alias tal="vim ${TERRAFORM_ALIASES}"
 
   alias sa="source ${ALIASES}; \
             source ${ZSH_ALIASES}; \
@@ -43,7 +45,8 @@
             [ -f ${GCLOUD_ALIASES} ] && source ${GCLOUD_ALIASES} \
             [ -f ${KUBECTL_ALIASES} ] && source ${KUBECTL_ALIASES} \
             [ -f ${NODE_ALIASES} ] && source ${NODE_ALIASES} \
-            [ -f ${SYSTEMCTL_ALIASES} ] && source ${SYSTEMCTL_ALIASES}"
+            [ -f ${SYSTEMCTL_ALIASES} ] && source ${SYSTEMCTL_ALIASES} \
+            [ -f ${TERRAFORM_ALIASES} ] && source ${TERRAFORM_ALIASES}"
 
   #-------------------------------------
   # Shell - [rc]
