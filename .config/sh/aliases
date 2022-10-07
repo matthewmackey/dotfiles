@@ -101,7 +101,7 @@
   # console - other
   #-------------------------------------
   alias cat="bat"
-  alias catp="cat"
+  alias catp="/bin/cat"
   alias cpr="cp -r"
   alias hg="history | grep"
   alias mx="chmod +x"
@@ -226,8 +226,9 @@
 
   # Copy flie contents to clipboard
   alias clip="xclip -sel clip <"
+  alias clipstdin="xclip -sel clip < /dev/stdin"
   alias cmv="command -v"
-  alias diffu="diff -u"
+  alias diff="diff -u --color"
   alias dlg="dpkg -l | grep -i"
   alias fd="fdfind"
   alias fr="file-roller"
@@ -315,6 +316,7 @@
   alias gbd="git branch -d"
   alias gbD="git branch -D"
   alias gbm="git branch -m"
+  alias gbmm="git branch -m main"
 
   # Checkout
   alias co="git checkout \*"

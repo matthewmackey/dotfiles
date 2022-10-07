@@ -56,7 +56,8 @@ background() {
 # Global Aliases                   #
 #----------------------------------#
 alias -g B='| base64 -d'
-alias -g B0='| base64 --wrap=0'
+alias -g b0='| base64 --wrap=0'
+alias -g B0='base64 --wrap=0'
 alias -g C='| xclip -sel clip /dev/stdin'
 alias -g G='| grep'
 alias -g gi='| grep -i'
