@@ -547,6 +547,20 @@
   alias mp="multipass"
   alias mpls="multipass ls"
   alias mpsh="multipass shell"
+
+  # See: https://www.dedoimedo.com/computers/kvm-virtualbox.html
+  vboxEnable() {
+    sudo /sbin/rmmod kvm_intel
+    sudo /sbin/rmmod kvm
+    sudo systemctl start vboxdrv.service
+  }
+
+  vboxDisable() {
+    sudo systemctl stop vboxdrv.service
+    sudo /sbin/insmod /lib/modules/$(uname -r)/kernel/arch/x86/kvm/kvm.ko
+    sudo /sbin/insmod /lib/modules/$(uname -r)/kernel/arch/x86/kvm/kvm-intel.ko
+  }
+
 # }}}
 
 
