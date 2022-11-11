@@ -407,6 +407,25 @@
   alias rss="git restore --staged \*"
   alias rssp="git restore --staged"
 
+  # Shortlog (summarize `git log` output)
+  # SEE: https://stackoverflow.com/questions/9597410/list-all-developers-on-a-project-in-git
+
+  # Print all uniq authors AND committers in one command
+  alias gsluniq="git log --pretty='%an <%ae>%n%cn <%ce>' | sort | uniq"
+
+  # Print commit count by author (current branch)
+  alias gsl="git shortlog --summary --numbered --email"
+
+  # Print commit count by author (all branches)
+  alias gsla="git shortlog --summary --numbered --email --all"
+
+  # Print commit count by committer (current branch)
+  alias gslc="git shortlog --summary --numbered --email --committer"
+
+  # Print commit count by committer (all branches)
+  alias gslca="git shortlog --summary --numbered --email --committer --all"
+
+
   # Show
   alias gsh="clear; git show"
   alias gshp="clear; git show -- . ':!package-lock.json'"
@@ -427,7 +446,9 @@
 
   # MISCELLANEOUS
   alias remote="git remote -v"
+  alias rem="git remote -v"
   alias remotes="clear; git remote -v"
+  alias rems="clear; git remote -v"
 # }}}
 
 
