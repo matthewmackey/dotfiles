@@ -1,5 +1,33 @@
 #!/bin/bash
 
+# -------------------------------------------------------------------------------
+# Dependency Installation
+# -------------------------------------------------------------------------------
+installRemotePackages() {
+  print_step "Installing REMOTE packages"
+  sudo apt-get install -y curl vim zsh
+}
+
+installLocalPackages() {
+  print_step "Installing LOCAL packages"
+  sudo apt-get install -y tmux
+}
+
+installStarship() {
+  print_step "Installing Starship terminal prompt"
+
+  STARSHIP_EXEC=/usr/local/bin/starship
+  if [ -f $STARSHIP_EXEC ]; then
+    skipping "Starship already installed at [$STARSHIP_EXEC]"
+  else
+    sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+  fi
+}
+
+
+# -------------------------------------------------------------------------------
+# Dotfile Symlinking
+# -------------------------------------------------------------------------------
 CONFIG_DIR=$DOTDIR/.config
 
 REMOTE_CONFIGS=(
@@ -81,4 +109,32 @@ setupLocalDotfiles() {
   else
     skipping "Local dotfiles directory at $LOCAL_DOTDIR already exists"
   fi
+}
+
+
+# -------------------------------------------------------------------------------
+# Dotfile "Profile" Methods
+# -------------------------------------------------------------------------------
+setupPersonalSystem() {
+  installRemotePackages
+  installLocalPackages
+  installStarship
+
+  # .config Setup
+  setupRemoteConfigDirSymlinks
+  setupLocalConfigDirSymlinks
+  setupRemoteHomeDirSymlinks
+  setupLocalHomeDirSymlinks
+  setupLocalDotfiles
+
+  # .config/nvim/install.sh
+  # .config/tmux/install.sh
+
+  # desktop/install.sh
+  # git/install.sh
+
+  # gui/vscode/install.sh
+
+  # # NOT for remote machines - TODO figure out how to flag when to run these
+  # ssh/install.sh
 }
