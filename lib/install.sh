@@ -24,6 +24,22 @@ installStarship() {
   fi
 }
 
+installNeovimPythonProvider() {
+  print_step "Install Python 3 'neovim' module into default virtualenv if it exists yet"
+
+  if [ ! -z ${DEFAULT_PYTHON+x} ]; then
+    if [ -f $DEFAULT_PYTHON/bin/python3 ]; then
+      msg "Virtualenv exists so installing/re-installing 'neovim' module"
+      $DEFAULT_PYTHON/bin/pip3 install neovim
+    else
+      skipping "Python 3 default virtualenv does NOT exist so installing module"
+      warn "Some parts of Neovim may not work; make sure you run Ansible to install your default Python 3"
+    fi
+  else
+      warn "DEFAULT_PYTHON is not set in the environment so not installing Python 3 'neovim' provider"
+  fi
+}
+
 
 # -------------------------------------------------------------------------------
 # Dotfile Symlinking
@@ -113,8 +129,16 @@ setupLocalDotfiles() {
 
 
 # -------------------------------------------------------------------------------
-# Dotfile "Profile" Methods
+#  Dotfile "Profile" Methods
 # -------------------------------------------------------------------------------
+setupMinimalSystem() {
+  installRemotePackages
+  installStarship
+  setupRemoteConfigDirSymlinks
+  setupRemoteHomeDirSymlinks
+  installNeovimPythonProvider
+}
+
 setupPersonalSystem() {
   installRemotePackages
   installLocalPackages
@@ -127,14 +151,14 @@ setupPersonalSystem() {
   setupLocalHomeDirSymlinks
   setupLocalDotfiles
 
-  # .config/nvim/install.sh
-  # .config/tmux/install.sh
+  installNeovimPythonProvider
+  .config/tmux/install.sh
 
-  # desktop/install.sh
-  # git/install.sh
+  desktop/install.sh
+  git/install.sh
 
-  # gui/vscode/install.sh
+  gui/vscode/install.sh
 
-  # # NOT for remote machines - TODO figure out how to flag when to run these
+  # NOT for remote machines - TODO figure out how to flag when to run these
   # ssh/install.sh
 }
