@@ -8,6 +8,7 @@ set -o pipefail
 export DOTDIR=~/.personal/dotfiles
 
 source $DOTDIR/lib/common.sh
+source $DOTDIR/lib/install.sh
 
 #-------------------------------#
 # Helper Methods                #
@@ -34,9 +35,15 @@ install_starship() {
 # install_packages
 install_starship
 
-.config/install.sh
+# .config Setup
+setupRemoteConfigDirSymlinks
+setupLocalConfigDirSymlinks
+setupRemoteHomeDirSymlinks
+setupLocalHomeDirSymlinks
+setupLocalDotfiles
 .config/nvim/install.sh
 .config/tmux/install.sh
+
 desktop/install.sh
 git/install.sh
 
