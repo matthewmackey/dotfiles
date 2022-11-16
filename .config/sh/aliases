@@ -1,4 +1,4 @@
-#
+;#
 # ~/.config/sh/aliases
 #
 
@@ -534,16 +534,27 @@
 #-------------------------------------------------------------------------------
 # [SSH] {{{
 #-------------------------------------------------------------------------------
+  alias rmsock="rm -rf ~/.ssh/sockets/*"
+
+  # SSH Keys
+  # Print SSH key fingerprint
+  alias sshhash="ssh-keygen -l -f ~/.ssh/id_rsa.pub"
+
+  # SSH Config
+  alias sconf="vim ~/.ssh/config"
+  alias sconfl="vim ~/.ssh/config-local"
+
+  # SSH Agent
+  alias sshagent='eval $(ssh-agent -s); ssh-add'
+  alias sag='eval $(ssh-agent -s); ssh-add'
+
+  # SSH Agent - `add`
   alias add="pass show -c ssh/default; ssh-add"
   alias addl="ssh-add -l"
   alias addL="ssh-add -L"
   alias addd="ssh-add -d"
   alias addD="ssh-add -D"
-  alias sconf="vim ~/.ssh/config"
-  alias sconfl="vim ~/.ssh/config-local"
-  alias rmsock="rm -rf ~/.ssh/sockets/*"
-  alias sshagent='eval $(ssh-agent -s); ssh-add'
-  alias sag='eval $(ssh-agent -s); ssh-add'
+
 # }}}
 
 
