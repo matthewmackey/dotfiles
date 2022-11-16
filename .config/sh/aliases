@@ -1,4 +1,4 @@
-;#
+#
 # ~/.config/sh/aliases
 #
 
@@ -538,7 +538,7 @@
 
   # SSH Keys
   # Print SSH key fingerprint
-  alias sshhash="ssh-keygen -l -f ~/.ssh/id_rsa.pub"
+  alias sshhash="find ~/.ssh/ -name '*.pub' | xargs -n 1 -I {} sh -c '{ printf \"%s\t%s\n\" \"\$(basename {})\" \"\$(ssh-keygen -l -f {})\" ; }' | column -t | sort"
 
   # SSH Config
   alias sconf="vim ~/.ssh/config"
