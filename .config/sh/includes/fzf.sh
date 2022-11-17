@@ -31,4 +31,4 @@ export FZF_DEFAULT_OPTS="
 "
 # --preview '([[ -f {} ]] && (batcat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
 
-# vim: ft=sh
+# vim: ft=bash
