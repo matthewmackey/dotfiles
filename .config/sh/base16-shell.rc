@@ -1,0 +1,15 @@
+#-------------------------------------------------------------------------------
+#
+# sh/base16-shell.rc
+#
+# base16-shell is a shell library and we need to use the BASE16_SHELL
+# environment variable to configure PS1 early in our shell configs in `sh/rc`.
+# We need to re-use that variable in a post-install script, but we decided not
+# to put the variable in an .sh file in the standard `sh/includes` folder because
+# it is somewhat special in that it would not be sourced like all the other
+# `sh/includes/*.sh` files would be.  It needs to be sourced on its own in `sh/rc`.
+# That is why it is being defined here in a "special" .rc file
+#-------------------------------------------------------------------------------
+export BASE16_SHELL="$HOME/.config/base16-shell"
+
+# vim: ft=sh
