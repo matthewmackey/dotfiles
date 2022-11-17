@@ -10,6 +10,8 @@ ASDF_PLUGIN_HOME=$ASDF_HOME/plugins
 # Enable `asdf` to get access to `asdf plugin` commands
 source $ASDF_HOME/asdf.sh
 
+sudo apt-get update
+
 # NODE.JS
 if [ ! -d $ASDF_PLUGIN_HOME/nodejs ]; then
   # Install Node.js plugin pre-requisites
