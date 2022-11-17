@@ -17,7 +17,7 @@ section "Installing asdf"
 
 print_step "Cloning asdf repository to $ASDF_HOME"
 if [ ! -d ${ASDF_HOME} ]; then
-  git clone https://github.com/asdf-vm/asdf.git $ASDF_HOME} --branch $ASDF_VERSION
+  git clone https://github.com/asdf-vm/asdf.git $ASDF_HOME --branch $ASDF_VERSION
 else
   skipping "asdf repository has already been cloned to $ASDF_HOME-> asdf is considered already installed"
 fi
