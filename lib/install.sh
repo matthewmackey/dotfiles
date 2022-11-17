@@ -144,7 +144,7 @@ setupMinimalSystem() {
   setupRemoteConfigDirSymlinks
   setupRemoteHomeDirSymlinks
   installNeovimPythonProvider
-  $DOTDIR/lib/install-asdf.sh
+  # $DOTDIR/lib/install-asdf.sh
 }
 
 setupPersonalSystem() {
@@ -161,7 +161,7 @@ setupPersonalSystem() {
   setupLocalDotfiles
 
   installNeovimPythonProvider
-  $DOTDIR/lib/install-asdf.sh
+  # $DOTDIR/lib/install-asdf.sh
 
   .config/tmux/install.sh
 
