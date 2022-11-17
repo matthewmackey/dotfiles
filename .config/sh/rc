@@ -17,11 +17,31 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+
 # Include common shell functions
 source $DOTDIR/lib/common.sh
 
 # Any printing must be after interactive shell confirmation
 section "Sourcing -> ~/.config/sh/rc"
+
+#---------------------------------------
+# [Determine if SSH Session] {{{
+#---------------------------------------
+# See: https://unix.stackexchange.com/questions/9605/how-can-i-detect-if-the-shell-is-controlled-from-ssh
+
+SESSION_TYPE=standard
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+  SESSION_TYPE=remote/ssh
+else
+  # print command for parent process
+  case "$(ps -o comm= -p "$PPID")" in
+    sshd|*/sshd)
+      SESSION_TYPE=remote/ssh;;
+  esac
+fi
+
+msg "Using SESSION_TYPE=$SESSION_TYPE"
+# }}}
 
 
 #---------------------------------------
@@ -61,11 +81,14 @@ done
 #---------------------------------------
 # [base16-shell] {{{
 #---------------------------------------
-# Load BASE16_SHELL
-source $SH_DOTDIR/base16-shell.rc
-[[ -n "$PS1" ]] \
-  && [[ -s "$BASE16_SHELL/profile_helper.sh" ]] \
-    && eval "$("$BASE16_SHELL/profile_helper.sh")"
+if [ "$SESSION_TYPE" != 'remote/ssh' ]; then
+  msg "Loading base16-shell"
+
+  source $SH_DOTDIR/base16-shell.rc     # Load BASE16_SHELL
+  [[ -n "$PS1" ]] \
+    && [[ -s "$BASE16_SHELL/profile_helper.sh" ]] \
+      && eval "$("$BASE16_SHELL/profile_helper.sh")"
+fi
 # }}}
 
 
