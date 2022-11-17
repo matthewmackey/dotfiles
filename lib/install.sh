@@ -49,11 +49,9 @@ CONFIG_DIR=$DOTDIR/.config
 
 REMOTE_CONFIGS=(
   bash
-  nvim
   psql
   readline
   sh
-  starship
   vim
   zsh
 )
@@ -62,6 +60,8 @@ LOCAL_CONFIGS=(
   alacritty
   awesome
   parcellite
+  nvim
+  starship
   tmux
   xmodmap
 )
