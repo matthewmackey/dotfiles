@@ -133,7 +133,6 @@ setupLocalDotfiles() {
 # -------------------------------------------------------------------------------
 setupMinimalSystem() {
   installRemotePackages
-  installStarship
   setupRemoteConfigDirSymlinks
   setupRemoteHomeDirSymlinks
   installNeovimPythonProvider
