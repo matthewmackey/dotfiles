@@ -100,7 +100,8 @@
   #-------------------------------------
   # console - other
   #-------------------------------------
-  alias cat="bat"
+  # See Non-SSH aliases
+  # alias cat="bat"
   alias catp="/bin/cat"
   alias cpr="cp -r"
   alias hg="history | grep"
@@ -194,6 +195,15 @@
 
 # }}} cd - shortcuts
 
+#-------------------------------------------------------------------------------
+# [Non-SSH Aliases] {{{
+#-------------------------------------------------------------------------------
+if [ "$SESSION_TYPE" != 'remote/ssh' ]; then
+  alias cat="bat"
+  alias vim="nvim"
+fi
+# }}}  Non-SSH Aliases
+
 
 #-------------------------------------------------------------------------------
 # [GUI] {{{
@@ -255,7 +265,8 @@
   alias t4="tree -L 4"
 
   alias vi="vim"
-  alias vim="nvim"
+  # See Non-SSH aliases
+  # alias vim="nvim"
 
   alias whatismyip="wget http://ipinfo.io/ip -qO -"
 
