@@ -1,6 +1,11 @@
-#
+#-------------------------------------------------------------------------------
 # ~/.config/sh/rc
 #
+# This is a common "rc" script but it is not strict Bourne-shell syntax.  It
+# contains Bash shell syntax, like arrays, which will work in both Bash and Zsh
+# shells.
+#
+#-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
 # Simply RETURN when this is NOT sourced in an interactive session
@@ -88,4 +93,4 @@ source_local_dotfiles() {
 # }}}
 
 
-# vim: ft=sh  foldlevel=0 foldmarker={{{,}}} foldmethod=marker
+# vim: ft=bash  foldlevel=0 foldmarker={{{,}}} foldmethod=marker
