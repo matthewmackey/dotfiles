@@ -69,6 +69,7 @@ LOCAL_CONFIGS=(
 
 # on new systems, like VMS, the Standard .config directory doesn't exist
 ensureStdDotConfigDirExists() {
+  print_step "Ensuring $STD_DOT_CONFIG_DIR exists"
   mkdir -p $STD_DOT_CONFIG_DIR
 }
 
