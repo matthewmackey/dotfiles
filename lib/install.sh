@@ -44,6 +44,8 @@ installNeovimPythonProvider() {
 # -------------------------------------------------------------------------------
 # Dotfile Symlinking
 # -------------------------------------------------------------------------------
+STD_DOT_CONFIG_DIR=~/.config
+
 CONFIG_DIR=$DOTDIR/.config
 
 REMOTE_CONFIGS=(
@@ -65,35 +67,40 @@ LOCAL_CONFIGS=(
   xmodmap
 )
 
+# on new systems, like VMS, the Standard .config directory doesn't exist
+ensureStdDotConfigDirExists() {
+  mkdir -p $STD_DOT_CONFIG_DIR
+}
+
 setupRemoteConfigDirSymlinks() {
-  print_step "Setting up REMOTE dotfile symlinks in ~/.config"
+  print_step "Setting up REMOTE dotfile symlinks in $STD_DOT_CONFIG_DIR"
   for conf in ${REMOTE_CONFIGS[@]}; do
-    create_symlink_with_backup $CONFIG_DIR/$conf ~/.config/$conf
+    create_symlink_with_backup $CONFIG_DIR/$conf $STD_DOT_CONFIG_DIR/$conf
   done
 }
 
 setupLocalConfigDirSymlinks() {
-  print_step "Setting up LOCAL dotfile symlinks in ~/.config"
+  print_step "Setting up LOCAL dotfile symlinks in $STD_DOT_CONFIG_DIR"
   for conf in ${LOCAL_CONFIGS[@]}; do
-    create_symlink_with_backup $CONFIG_DIR/$conf ~/.config/$conf
+    create_symlink_with_backup $CONFIG_DIR/$conf $STD_DOT_CONFIG_DIR/$conf
   done
 }
 
 setupRemoteHomeDirSymlinks() {
   print_step "Setting up REMOTE dotfile symlinks in ~/ directory"
-  create_symlink_with_backup ~/.config/bash/.bash_profile ~/.bash_profile
-  create_symlink_with_backup ~/.config/bash/.bashrc       ~/.bashrc
-  create_symlink_with_backup ~/.config/psql/.psqlrc       ~/.psqlrc
-  create_symlink_with_backup ~/.config/readline/inputrc    ~/.inputrc
-  create_symlink_with_backup ~/.config/vim                ~/.vim
-  create_symlink_with_backup ~/.config/zsh/.zshenv        ~/.zshenv
+  create_symlink_with_backup $STD_DOT_CONFIG_DIR/bash/.bash_profile ~/.bash_profile
+  create_symlink_with_backup $STD_DOT_CONFIG_DIR/bash/.bashrc       ~/.bashrc
+  create_symlink_with_backup $STD_DOT_CONFIG_DIR/psql/.psqlrc       ~/.psqlrc
+  create_symlink_with_backup $STD_DOT_CONFIG_DIR/readline/inputrc   ~/.inputrc
+  create_symlink_with_backup $STD_DOT_CONFIG_DIR/vim                ~/.vim
+  create_symlink_with_backup $STD_DOT_CONFIG_DIR/zsh/.zshenv        ~/.zshenv
 
 }
 
 setupLocalHomeDirSymlinks() {
   print_step "Setting up LOCAL dotfile symlinks in ~/ directory"
-  create_symlink_with_backup ~/.config/tmux               ~/.tmux
-  create_symlink_with_backup ~/.config/tmux/tmux.conf     ~/.tmux.conf
+  create_symlink_with_backup $STD_DOT_CONFIG_DIR/tmux               ~/.tmux
+  create_symlink_with_backup $STD_DOT_CONFIG_DIR/tmux/tmux.conf     ~/.tmux.conf
 }
 
 
@@ -133,6 +140,7 @@ setupLocalDotfiles() {
 # -------------------------------------------------------------------------------
 setupMinimalSystem() {
   installRemotePackages
+  ensureStdDotConfigDirExists
   setupRemoteConfigDirSymlinks
   setupRemoteHomeDirSymlinks
   installNeovimPythonProvider
@@ -144,6 +152,7 @@ setupPersonalSystem() {
   installStarship
 
   # .config Setup
+  ensureStdDotConfigDirExists
   setupRemoteConfigDirSymlinks
   setupLocalConfigDirSymlinks
   setupRemoteHomeDirSymlinks
