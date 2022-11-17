@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -e
+set -o pipefail
+
 ASDF_VERSION=v0.10.2
 ASDF_PLUGIN_HOME=$ASDF_HOME/plugins
 
@@ -17,11 +20,11 @@ if [ ! -d $ASDF_PLUGIN_HOME/nodejs ]; then
   # Install Node.js plugin pre-requisites
   #   https://github.com/asdf-vm/asdf-nodejs
   #   https://github.com/nodejs/node/blob/main/BUILDING.md#unix-prerequisites
-  sudo apt-get install \
+  sudo apt-get install -y \
     g++ \
     make \
     python3 \
-    python3-pip && \
+    python3-pip
   asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git || \
   echo "[ERROR] installing Node.js plugin"
 fi
@@ -31,7 +34,7 @@ if [ ! -d $ASDF_PLUGIN_HOME/python ]; then
   # Install Python plugin pre-requisites
   #   https://github.com/asdf-community/asdf-python
   #   https://github.com/pyenv/pyenv/wiki#suggested-build-environment
-  sudo apt-get install \
+  sudo apt-get install -y \
     build-essential \
     curl \
     libbz2-dev \
@@ -58,7 +61,7 @@ if [ ! -d $ASDF_PLUGIN_HOME/ruby ]; then
   # Install Ruby plugin pre-requisites
   #   https://github.com/asdf-vm/asdf-ruby
   #   https://github.com/rbenv/ruby-build/wiki#suggested-build-environment
-  sudo apt-get install \
+  sudo apt-get install -y \
     autoconf \
     bison \
     build-essential \
