@@ -63,6 +63,7 @@ LOCAL_CONFIGS=(
   nvim
   starship
   tmux
+  xinput
   xmodmap
 )
 
