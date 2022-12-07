@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Setup Kensington Expert Trackball
+Exec=$HOME/.config/xinput/kensington_expert_trackball_setup.sh
+Encoding=UTF-8
+Type=Application
+
+# Whether it autostarts or not
+X-GNOME-Autostart-enabled=true
+
+# Whether it appears in "Startup Applications" listing
+Hidden=false
