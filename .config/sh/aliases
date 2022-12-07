@@ -264,6 +264,11 @@ fi
   alias t3="tree -L 3"
   alias t4="tree -L 4"
 
+  alias t1a="tree -L 1 -a -I '$TREE_IGNORES'"
+  alias t2a="tree -L 2 -a -I '$TREE_IGNORES'"
+  alias t3a="tree -L 3 -a -I '$TREE_IGNORES'"
+  alias t4a="tree -L 4 -a -I '$TREE_IGNORES'"
+
   alias vi="vim"
   # See Non-SSH aliases
   # alias vim="nvim"
@@ -283,6 +288,9 @@ fi
 # [ansible] {{{
 #-------------------------------------------------------------------------------
   alias play="ansible-playbook"
+  alias playi="ansible-playbook -i inventory -v"
+  alias playil="ansible-playbook -i inventory -v -l"
+  alias playit="ansible-playbook -i inventory -v -t"
   alias playl="ansible-playbook -i local playbook.yml -v -t"
 # }}}
 
@@ -464,6 +472,15 @@ fi
   alias rem="git remote -v"
   alias remotes="clear; git remote -v"
   alias rems="clear; git remote -v"
+# }}}
+
+
+#-------------------------------------------------------------------------------
+# [Java] {{{
+#-------------------------------------------------------------------------------
+  # SEE: https://petewan.com/blog-post/install-and-manage-multiple-java-jdk-and-jre-versions-on-ubuntu-20-04/
+  alias jreupdate="sudo update-alternatives --config java"
+  alias jdkupdate="sudo update-alternatives --config javac"
 # }}}
 
 
