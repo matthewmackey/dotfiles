@@ -2,13 +2,8 @@
   "vim.leader": ",",
   "vim.normalModeKeyBindings": [
     {
-      "before": [
-        "<leader>",
-        "a"
-      ],
-      "commands": [
-        "workbench.view.explorer"
-      ]
+      "before": ["<leader>", "a"],
+      "commands": ["workbench.view.explorer"]
     }
   ],
   "editor.tabSize": 2,
@@ -30,9 +25,7 @@
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "java.home": "/home/mmackey/.jdks/openjdk-14.0.2",
   // Render vertical rulers after a certain number of monospace characters. Use multiple values for multiple rulers. No rulers are drawn if array is empty.
-  "editor.rulers": [
-    80
-  ],
+  "editor.rulers": [80],
   // Controls how lines should wrap.
   //  - off: Lines will never wrap.
   //  - on: Lines will wrap at the viewport width.
@@ -51,7 +44,8 @@
   //  - simple: Assumes that all characters are of the same width. This is a fast algorithm that works correctly for monospace fonts and certain scripts (like Latin characters) where glyphs are of equal width.
   //  - advanced: Delegates wrapping points computation to the browser. This is a slow algorithm, that might cause freezes for large files, but it works correctly in all cases.
   "editor.wrappingStrategy": "simple",
-  "python.languageServer": "Microsoft",
+  "python.languageServer": "Default",
   "extensions.ignoreRecommendations": true,
-  "editor.fontSize": 11
+  "editor.fontSize": 11,
+  "window.zoomLevel": 1
 }

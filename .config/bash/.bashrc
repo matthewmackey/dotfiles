@@ -99,7 +99,7 @@ FILES_TO_SOURCE+=($LOCAL_DOTDIR/bashrc)
 FILES_TO_SOURCE+=($LOCAL_DOTDIR/aliases.bash)
 
 for _file in ${FILES_TO_SOURCE[@]}; do
-  skipping "source_file_if_exists $_file"
+  echo "[SKIPPING] source_file_if_exists $_file"
 done
 # }}}
 

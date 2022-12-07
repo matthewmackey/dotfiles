@@ -1,4 +1,4 @@
 completions
 plugins
-.zcompdump
+.zcompdump*
 .zsh_history
