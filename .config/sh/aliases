@@ -594,6 +594,7 @@ fi
 
   alias tma="tmux attach -t"
   alias tmls="tmux ls"
+  alias tmlsa="tmux ls | while read -r sess; do S=\$(echo \$sess | cut -f1 -d:); echo \$sess; tmux list-windows -t \$S | sed -E 's/(.*\)) .*/  \1/'; done"
   alias tmk="tmux kill-session -t"
   alias tmrenamesession='tmux rename-session -t "$(tmux display-message -p "#S")"'
   alias tmrenamewindow='tmux rename-window -t "$(tmux display-message -p "#{window_id}")"'
