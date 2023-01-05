@@ -243,12 +243,15 @@ fi
   alias fd="fdfind"
   alias fr="file-roller"
   alias j="jq <"
-  # search bashmarks
-  alias lg="l | grep -i"
-  alias op="xdg-open"
-  alias open="op"
-  alias pg="ps -efH | grep"
+  alias open="xdg-open"
+  # DISABLED: `op` is the 1Password CLI tool
+  # alias op="open"
+  alias pg="ps -efH | grep -i"
   alias syslog="tail -f /var/log/syslog"
+
+  # parcellite
+  # NOT SURE that this delete works b/c the file re-appears on parcellite restart
+  alias parcelliteclear="rm ~/.local/share/parcellite/history"
 
   TREE_BIN=/usr/bin/tree
   TREE_IGNORES='.git|build|dist|node_modules|packer_cache|__pycache__|.pytest_cache|.terraform|*.egg-info'
