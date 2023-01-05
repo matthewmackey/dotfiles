@@ -7,7 +7,6 @@
 # Must be after interactive shell confirmation
 section "Sourcing -> ~/.config/zsh/.zshrc"
 
-
 #---------------------------------------
 # [General] {{{
 #---------------------------------------
@@ -94,6 +93,9 @@ section "Sourcing -> ~/.config/zsh/.zshrc"
   if which starship >&/dev/null; then
     eval "$(starship init zsh)"
   fi
+
+  # Setup addf-direnv shell integration
+  source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
 
 # plugins=(copydir copyfile git kubectl vi-mode)
 # VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
