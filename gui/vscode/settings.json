@@ -46,6 +46,5 @@
   "editor.wrappingStrategy": "simple",
   "python.languageServer": "Default",
   "extensions.ignoreRecommendations": true,
-  "editor.fontSize": 11,
-  "window.zoomLevel": 1
+  "editor.fontSize": 12
 }

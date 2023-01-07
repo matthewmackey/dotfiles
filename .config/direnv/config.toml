@@ -1,0 +1,31 @@
+#------------------------------------------------------------------------------
+# WARNING:
+#
+# You must run:
+#
+#   - asdf direnv setup --shell <SHELL> --version <system|OTHER>
+#
+# whenever you install/update or want to change the `direnv` binary.  The Ubuntu
+# `direnv` binary is typically out-of-date so we may want to manually install a
+# new one from Github, which would require this command to be run.  This is
+# needed because we use the `asdf-direnv` plugin.
+#
+# You can see which `direnv` binary the `asdf direnv setup` command setup the
+# shell environment to use in ~/.config/asdf-direnv/zshrc.
+#
+#
+# NOTES:
+#
+# - Run `direnv status` to verify the options in this config file (??)
+#
+# - In versions >2.21.0, this file is supposed to be called `direnv.toml`,
+# however, version 2.21.2 didn't seem to work with `direnv.toml` and required
+# the older `config.toml` name.  Fortunately, it appears that newer versions
+# still respect `config.toml` so I'm going to leave it named that.  This way I
+# can use the older 2.21.2 version that is currently the default Ubuntu 20.0.4
+# package version, and it would still work if I upgrade versions later.
+#
+# - the 2.21.2 version in 20.04 doesn't seem to work w/ the `load_dotenv` option
+#------------------------------------------------------------------------------
+[global]
+load_dotenv = true

@@ -94,7 +94,13 @@ section "Sourcing -> ~/.config/zsh/.zshrc"
     eval "$(starship init zsh)"
   fi
 
-  # Setup addf-direnv shell integration
+  # Setup `asdf-direnv` shell integration
+  # SEE: https://github.com/asdf-community/asdf-direnv
+  #
+  # This will run end up running `eval "$(direnv hook zsh)"` so we don't need to
+  # explicitly do that in .zshrc as well.
+  #
+  # WARNING: you must manually run `asdf direnv setup` again if the `direnv` binary ever changes
   source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
 
 # plugins=(copydir copyfile git kubectl vi-mode)

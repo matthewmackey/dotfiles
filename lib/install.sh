@@ -49,6 +49,7 @@ CONFIG_DIR=$DOTDIR/.config
 
 REMOTE_CONFIGS=(
   bash
+  direnv
   git
   psql
   readline

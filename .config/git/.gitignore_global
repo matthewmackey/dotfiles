@@ -1,5 +1,7 @@
+# direnv
 .direnv
 .envrc
 
+# vim
 .*.swp
 Session.vim

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# echo "Running direnvrc"
+
+# An alternative to `load_dotenv` in config.toml if direnv has trouble using
+# that config file:
+# if [ -e ".env" ]; then
+#   dotenv
+# fi
