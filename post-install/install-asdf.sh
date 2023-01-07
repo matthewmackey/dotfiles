@@ -102,6 +102,17 @@ install_ruby_plugin() {
   fi
 }
 
+install_direnv() {
+  print_step "Installing [direnv] utility"
+  if [ ! -e $DIRENV_INSTALL_DIR/direnv ]; then
+    # NOTE the 'v' prefix before $DIRENV_VERSION
+    (export bin_path=$DIRENV_INSTALL_DIR ; export version="v$DIRENV_VERSION" ; curl -sfL https://direnv.net/install.sh | bash);
+    echo "[ERROR] installing direnv"
+  else
+    skipping "'direnv' is already installed"
+  fi
+}
+
 # asdf-direnv - https://github.com/asdf-community/asdf-direnv
 install_direnv_plugin() {
   print_step "Installing asdf [direnv] plugin"
@@ -118,9 +129,9 @@ setup_direnv_plugin() {
   print_step "Setting up asdf [direnv] plugin"
 
   if [ ! -e $DIRENV_ASDF_INTEGRATION_SCRIPT ]; then
-    # Install `direnv` to system & use that system `direnv` with the plugin
-    sudo apt-get install -y  direnv && \
-    asdf direnv setup --shell $SHELL --version system || \
+    # Install direnv, set version installed as global version (add to ~/.tool-versions), and setup plugin
+    asdf direnv setup --shell $SHELL --version $DIRENV_VERSION && \
+    asdf global direnv $DIRENV_VERSION && \
     echo "[ERROR] setting up direnv plugin"
   else
     skipping "asdf [direnv] plugin is already setup"
@@ -135,6 +146,8 @@ ASDF_VERSION=v0.10.2
 ASDF_PLUGIN_HOME=$ASDF_HOME/plugins
 APT_CACHE_LAST_UPDATE_MINS=60
 DIRENV_ASDF_INTEGRATION_SCRIPT=${XDG_CONFIG_HOME:-$HOME/.config}/direnv/lib/use_asdf.sh
+DIRENV_INSTALL_DIR=~/.local/bin
+DIRENV_VERSION=2.32.2
 
 source $DOTDIR/lib/common.sh
 
@@ -155,5 +168,8 @@ refresh_apt_cache
 install_node_plugin
 install_python_plugin
 install_ruby_plugin
+
+# Use the `asdf direnv` plugin to do the install instead of manually installing
+# install_direnv
 install_direnv_plugin
 setup_direnv_plugin
