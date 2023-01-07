@@ -102,6 +102,7 @@ install_ruby_plugin() {
   fi
 }
 
+# asdf-direnv - https://github.com/asdf-community/asdf-direnv
 install_direnv_plugin() {
   print_step "Installing asdf [direnv] plugin"
 

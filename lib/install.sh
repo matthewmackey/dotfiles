@@ -49,6 +49,7 @@ CONFIG_DIR=$DOTDIR/.config
 
 REMOTE_CONFIGS=(
   bash
+  git
   psql
   readline
   sh
@@ -91,6 +92,7 @@ setupRemoteHomeDirSymlinks() {
   print_step "Setting up REMOTE dotfile symlinks in ~/ directory"
   create_symlink_with_backup $STD_DOT_CONFIG_DIR/bash/.bash_profile ~/.bash_profile
   create_symlink_with_backup $STD_DOT_CONFIG_DIR/bash/.bashrc       ~/.bashrc
+  create_symlink_with_backup $STD_DOT_CONFIG_DIR/git/.gitconfig     ~/.gitconfig
   create_symlink_with_backup $STD_DOT_CONFIG_DIR/psql/.psqlrc       ~/.psqlrc
   create_symlink_with_backup $STD_DOT_CONFIG_DIR/readline/inputrc   ~/.inputrc
   create_symlink_with_backup $STD_DOT_CONFIG_DIR/vim                ~/.vim
@@ -161,9 +163,9 @@ setupPersonalSystem() {
   installNeovimPythonProvider
 
   .config/tmux/install.sh
+  .config/git/install.sh
 
   desktop/install.sh
-  git/install.sh
 
   gui/vscode/install.sh
 
