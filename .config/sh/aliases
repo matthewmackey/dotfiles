@@ -254,18 +254,23 @@ fi
   alias parcelliteclear="rm ~/.local/share/parcellite/history"
 
   TREE_BIN=/usr/bin/tree
-  RG_TREE_BIN="rg --files | $TREE_BIN --fromfile"
   TREE_ALL_IGNORES='.git'
   # TREE_IGNORES='.git|build|dist|node_modules|packer_cache|__pycache__|.pytest_cache|.terraform|*.egg-info'
 
-  alias t="cl;  $RG_TREE_BIN"
+  # A tree command that follows .gitignore
+  fdtree() {
+    if [ -z "$1" ]; then
+      fdfind | $TREE_BIN --fromfile
+    else
+      fdfind --max-depth $1 | $TREE_BIN --fromfile
+    fi
+  }
+
+  alias t="cl; fdtree"
   alias ta="cl; $TREE_BIN -a -I '$TREE_ALL_IGNORES'"
 
-  for i in {2..8}; do
-    # alias t2="$RG_TREE_BIN -L 2"
-    alias t$i="$RG_TREE_BIN -L $i"
-
-    # alias ta2="$TREE_BIN -a -I '$TREE_ALL_IGNORES' -L 2"
+  for i in {1..8}; do
+    alias t$i="fdtree $i"
     alias ta$i="$TREE_BIN -a -I '$TREE_ALL_IGNORES' -L $i"
   done
 
