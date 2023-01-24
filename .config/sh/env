@@ -4,16 +4,18 @@
 
 export EDITOR="vim"
 export FCEDIT="$EDITOR"
+export PAGER="less"
 export VISUAL="$EDITOR"
 
-export PAGER="less"
+# Standard XDG variables:
+export XDG_CONFIG_HOME=$HOME/.config
+
 
 # machine-agnostic dotfiles & configuration
-export PERSONAL=~/.personal
+export PERSONAL=$HOME/.personal
 
 # machine-specific dotfiles & configuration profiles
-export PROFILE=~/profile
-
+export PROFILE=$HOME/profile
 
 # PROFILE_DOTDIR will end up geting symlinked to LOCAL_DOTDIR
 # It is not done here b/c eventually there will be the facility
@@ -21,11 +23,13 @@ export PROFILE=~/profile
 # would be done outside this file.
 export DOTDIR=$PERSONAL/dotfiles
 export PROFILE_DOTDIR=$PROFILE/dotfiles
-export LOCAL_DOTDIR=~/.local/dotfiles
+export LOCAL_DOTDIR=$HOME/.local/dotfiles
 
-export VIMRC=~/.config/vim/vimrc-common.vim
 
-# Standard XDG variables:
-export XDG_CONFIG_HOME=$HOME/.config
+# SSH
+export SSH_LOCAL_CONFIG_DIR=$HOME/.ssh/conf.d
+
+# vim
+export VIMRC=$XDG_CONFIG_HOME/vim/vimrc-common.vim
 
 # vim: ft=sh

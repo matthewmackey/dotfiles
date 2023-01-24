@@ -49,6 +49,12 @@
             [ -f ${TERRAFORM_ALIASES} ] && source ${TERRAFORM_ALIASES}"
 
   #-------------------------------------
+  # Shell - [env]
+  #-------------------------------------
+  alias renv="vim ${DOTDIR}/.config/sh/env"
+  alias zenv="vim ${DOTDIR}/.config/zsh/.zshenv"
+
+  #-------------------------------------
   # Shell - [rc]
   #-------------------------------------
   alias rc="vim ${DOTDIR}/.config/sh/rc"
@@ -249,6 +255,10 @@ fi
   alias pg="ps -efH | grep -i"
   alias syslog="tail -f /var/log/syslog"
 
+  # direnv
+  alias dallow="direnv allow"
+  alias de="direnv edit"
+
   # parcellite
   # NOT SURE that this delete works b/c the file re-appears on parcellite restart
   alias parcelliteclear="rm ~/.local/share/parcellite/history"
@@ -285,7 +295,8 @@ fi
   alias yqd4='docker run --name yqtmp --rm -v"${PWD}":/workdir mikefarah/yq:latest "$@"'
 
   alias za="zoxide add ."
-  alias zq="zoxide query -ls"
+  alias zq="zoxide query --all --score --list"
+  alias ztop="for i in {1..10}; do zoxide add .; done"
 # }}}
 
 
@@ -293,10 +304,12 @@ fi
 # [ansible] {{{
 #-------------------------------------------------------------------------------
   alias play="ansible-playbook"
-  alias playi="ansible-playbook -i inventory -v"
-  alias playil="ansible-playbook -i inventory -v -l"
-  alias playit="ansible-playbook -i inventory -v -t"
-  alias playl="ansible-playbook -i local playbook.yml -v -t"
+  alias playi="ansible-playbook -i inventory"
+  alias playil="ansible-playbook -i inventory -l"
+  alias playit="ansible-playbook -i inventory -t"
+  alias playl="ansible-playbook -i local playbook.yml -t"
+
+  alias playdns="ansible-playbook -i inventory play-dns-etc-hosts.yml"
 # }}}
 
 
@@ -313,16 +326,6 @@ fi
   # Black
   alias colorcodes="open https://www.tweaking4all.com/software/linux-software/xterm-color-cheat-sheet/"
   alias desktopbg='gsettings set org.gnome.desktop.background picture-uri ""; gsettings set org.gnome.desktop.background primary-color "#000000"'
-# }}}
-
-
-#-------------------------------------------------------------------------------
-# [gcloud] {{{
-#-------------------------------------------------------------------------------
-  alias gcl="gcloud auth login"
-  alias gcal="gcloud auth application-default login"
-  alias gclall="gcl; gcal"
-  alias gcla="gcl; gcal"
 # }}}
 
 
@@ -605,6 +608,15 @@ fi
   alias tmrenamewindow='tmux rename-window -t "$(tmux display-message -p "#{window_id}")"'
   alias tmrs="tmrenamesession"
   alias tmrw="tmrenamewindow"
+
+  TM_RES_DIR=~/.tmux/resurrect
+
+  alias tmfix="rm $TM_RES_DIR/last || true && \
+    ln -s \$(find $TM_RES_DIR -name 'tmux_resurrect_*' -printf '%T@ %p\n' | sort -rn | head -n1 | cut -f2 -d ' ') last && \
+    ls --color=auto -alh $TM_RES_DIR/last"
+
+  unset TM_RES_DIR
+
 # }}}
 
 
@@ -752,6 +764,9 @@ pomodur() {
 }
 alias pdur="pomodur"
 alias pd="pomodur"
+alias pd1="pomodur 15"
+alias pd2="pomodur 25"
+alias pd3="pomodur 30"
 
 # Set ticking sound from range of 1-10
 pomovol() {
