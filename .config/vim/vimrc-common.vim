@@ -365,4 +365,11 @@ set colorcolumn=0
 " }}} Colors
 
 
+"-------------------------------------------------------------------------------
+"               OTHER Settings {{{
+"-------------------------------------------------------------------------------
+let g:markdown_fenced_languages = ['css', 'go', 'js=javascript', 'json=javascript', 'python', 'ruby', 'sh', 'vim', 'xml']
+" }}} Other
+
+
 " vim: ft=vim foldmarker={{{,}}} foldmethod=marker foldlevel=0
