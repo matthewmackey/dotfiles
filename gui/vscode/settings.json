@@ -1,31 +1,9 @@
 {
-  "vim.leader": ",",
-  "vim.normalModeKeyBindings": [
-    {
-      "before": ["<leader>", "a"],
-      "commands": ["workbench.view.explorer"]
-    }
-  ],
-  "editor.tabSize": 2,
-  "workbench.colorTheme": "Default Light+",
-  "editor.formatOnSave": true,
-  "workbench.startupEditor": "newUntitledFile",
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "editor.minimap.enabled": false,
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "workbench.iconTheme": "material-icon-theme",
   "csharp.suppressHiddenDiagnostics": false,
-  "omnisharp.enableDecompilationSupport": true,
-  "workbench.settings.openDefaultKeybindings": true,
-  "workbench.settings.openDefaultSettings": false,
-  "workbench.settings.useSplitJSON": false,
-  "editor.suggestSelection": "first",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-  "java.home": "/home/mmackey/.jdks/openjdk-14.0.2",
   // Render vertical rulers after a certain number of monospace characters. Use multiple values for multiple rulers. No rulers are drawn if array is empty.
-  "editor.rulers": [80],
+  "editor.rulers": [
+    80
+  ],
   // Controls how lines should wrap.
   //  - off: Lines will never wrap.
   //  - on: Lines will wrap at the viewport width.
@@ -44,7 +22,55 @@
   //  - simple: Assumes that all characters are of the same width. This is a fast algorithm that works correctly for monospace fonts and certain scripts (like Latin characters) where glyphs are of equal width.
   //  - advanced: Delegates wrapping points computation to the browser. This is a slow algorithm, that might cause freezes for large files, but it works correctly in all cases.
   "editor.wrappingStrategy": "simple",
-  "python.languageServer": "Default",
+  "editor.fontSize": 12,
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "editor.suggestSelection": "first",
+  "editor.minimap.enabled": false,
   "extensions.ignoreRecommendations": true,
-  "editor.fontSize": 12
+  "java.home": "/home/mmackey/.jdks/openjdk-14.0.2",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  // See: https://stackoverflow.com/questions/48369303/use-in-visual-studio-code-vim-extension-caps-instead-of-esc
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "keyboard.dispatch": "keyCode",
+  "omnisharp.enableDecompilationSupport": true,
+  "python.languageServer": "Default",
+  "vim.leader": ",",
+  "vim.normalModeKeyBindings": [
+    {
+      "before": [
+        "<leader>",
+        "<space>"
+      ],
+      "commands": [
+        "workbench.view.explorer"
+      ]
+    },
+    {
+      "before": [
+        ";"
+      ],
+      "after": [
+        ":"
+      ]
+    }
+  ],
+  // Have the Vim extension pass these keys back to VSCode instead of handling them
+  "vim.handleKeys": {
+    // "<C-a>": false,
+    // Find File
+    // "<C-f>": false
+  },
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.colorTheme": "Solarized Light",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.settings.openDefaultKeybindings": true,
+  "workbench.settings.openDefaultSettings": false,
+  "workbench.settings.useSplitJSON": false
 }

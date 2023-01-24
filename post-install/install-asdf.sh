@@ -169,7 +169,8 @@ install_node_plugin
 install_python_plugin
 install_ruby_plugin
 
-# Use the `asdf direnv` plugin to do the install instead of manually installing
+# Use the `asdf direnv` plugin to do the `direnv` install instead of manually installing
 # install_direnv
+
 install_direnv_plugin
 setup_direnv_plugin
