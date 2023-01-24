@@ -136,6 +136,10 @@ section "Sourcing -> ~/.config/zsh/.zshrc"
 source_local_dotfiles
 xmswitch
 
+#---------------------------------------
+# [COMPLETIONS]] {{{
+#---------------------------------------
+fpath=(${ASDF_DIR}/completions $fpath)
 autoload -Uz compinit && compinit
 
 # }}}
