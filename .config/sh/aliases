@@ -303,6 +303,8 @@ fi
 #-------------------------------------------------------------------------------
 # [ansible] {{{
 #-------------------------------------------------------------------------------
+  alias afacts="ansible -m setup"
+  alias aping="ansible -m ping"
   alias play="ansible-playbook"
   alias playi="ansible-playbook -i inventory"
   alias playil="ansible-playbook -i inventory -l"
@@ -579,6 +581,7 @@ fi
   # SSH Config
   alias sconf="vim ~/.ssh/config"
   alias sconfl="vim ~/.ssh/config-local"
+  alias sconfg="vim ~/.ssh/conf.d/gcp.conf"
 
   # SSH Agent
   alias sshagent='eval $(ssh-agent -s); ssh-add'
