@@ -1,8 +1,24 @@
-#
+#-------------------------------------------------------------------------------
 # ~/.bashrc
-#
+#-------------------------------------------------------------------------------
 
+# Source env vars we always want in either an interactive OR non-interactive session
+#
+# NOTE: needed here b/c Bash doesn't have a .zshenv analog where this gets
+#       sourced in a ZSH shell
 source ~/.config/sh/env
+
+#-------------------------------------------------------------------------------
+# Simply RETURN when this is NOT sourced in an interactive session
+# (SCP will not work w/o this b/c there are 'echo' statements in my .rc's)
+#
+# NOTE: Ansible runs in non-interactive session so this applies to Ansible as well
+# SEE: https://unix.stackexchange.com/a/18647/408519
+#-------------------------------------------------------------------------------
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+
 [[ -f ~/.config/sh/rc ]] && source ~/.config/sh/rc
 
 # Must be after interactive shell confirmation
