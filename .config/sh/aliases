@@ -423,14 +423,18 @@ fi
   alias glsr="git ls-remote"
 
   # Push/Pull
-  alias p="git push"
-  alias pa="git push --all"
-  alias pdo="git push -d origin"
-  alias pl="git pull"
-  alias ppt="git push; git push --tags"
-  alias pt="git push --tags"
-  alias pu="git push -u origin"
-  alias pum="git push -u origin main"
+  GIT_WITH_AGENT="ensureSSHAgent; git"
+
+  alias p="$GIT_WITH_AGENT push"
+  alias pa="$GIT_WITH_AGENT push --all"
+  alias pdo="$GIT_WITH_AGENT push -d origin"
+  alias pl="$GIT_WITH_AGENT pull"
+  alias ppt="$GIT_WITH_AGENT push; git push --tags"
+  alias pt="$GIT_WITH_AGENT push --tags"
+  alias pu="$GIT_WITH_AGENT push -u origin"
+  alias pum="$GIT_WITH_AGENT push -u origin main"
+
+  unset GIT_WITH_AGENT
 
   # Remote
   alias grao="git remote add origin"
@@ -594,6 +598,8 @@ fi
   alias addL="ssh-add -L"
   alias addd="ssh-add -d"
   alias addD="ssh-add -D"
+
+  alias ensureSSHAgent="if ssh-add -l | grep -q 'The agent has no identities'; then; add ; fi"
 
 # }}}
 
