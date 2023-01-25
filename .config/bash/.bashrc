@@ -94,12 +94,13 @@ fi
 # [SOURCE Bash Includes] {{{
 #---------------------------------------
 FILES_TO_SOURCE=()
-FILES_TO_SOURCE+=($(find $DOTDIR/.config/bash/includes -type f))
+FILES_TO_SOURCE+=($(find ~/.config/bash/includes-enabled -type f -name '*.bash'))
 FILES_TO_SOURCE+=($LOCAL_DOTDIR/bashrc)
 FILES_TO_SOURCE+=($LOCAL_DOTDIR/aliases.bash)
 
 for _file in ${FILES_TO_SOURCE[@]}; do
-  echo "[SKIPPING] source_file_if_exists $_file"
+  # echo "[SKIPPING] source_file_if_exists $_file"
+  source_file_if_exists $_file
 done
 # }}}
 

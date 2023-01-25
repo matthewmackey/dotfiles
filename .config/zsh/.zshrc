@@ -119,8 +119,8 @@ section "Sourcing -> ~/.config/zsh/.zshrc"
 # [SOURCE Zsh Includes] {{{
 #---------------------------------------
   FILES_TO_SOURCE=()
-  FILES_TO_SOURCE+=($DOTDIR/.config/zsh/aliases.zsh)
-  FILES_TO_SOURCE+=($(find $DOTDIR/.config/zsh/includes -type f))
+  FILES_TO_SOURCE+=(~/.config/zsh/aliases.zsh)
+  FILES_TO_SOURCE+=($(find ~/.config/zsh/includes-enabled -type f -name '*.zsh'))
   FILES_TO_SOURCE+=($LOCAL_DOTDIR/zshrc)
   FILES_TO_SOURCE+=($LOCAL_DOTDIR/aliases.zsh)
 

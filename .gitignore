@@ -1,1 +1,8 @@
 mmbin/mmbin/pomo
+
+.config/sh/includes-enabled/*
+!.config/sh/includes-enabled/.gitkeep
+.config/bash/includes-enabled/*
+!.config/bash/includes-enabled/.gitkeep
+.config/zsh/includes-enabled/*
+!.config/zsh/includes-enabled/.gitkeep
