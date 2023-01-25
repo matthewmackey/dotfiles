@@ -150,6 +150,7 @@
   alias committmux='cd ${DOTDIR};              '$IS_GIT_STAGED' (git add .config/tmux/tmux.conf; git ci -m"tmux: updated tmux.conf"); cd -'
   alias commitvimrc='cd ${DOTDIR}/vim;         '$IS_GIT_STAGED' (git add .vimrc; git ci -m"vim: updated .vimrc"); cd -'
   alias commitvscode='cd ${DOTDIR}/vscode;     '$IS_GIT_STAGED' (git add .config; git ci -m"vscode: updated VSCode config settings"); cd -'
+  alias commitzaliases='cd ${DOTDIR};          '$IS_GIT_STAGED' (git add ${ZSH_ALIASES}; git ci -m"zsh: updated ZSH aliases"); cd -'
 
   alias commitglb=''$IS_GIT_STAGED'       (git add .gitlab-ci.yml; git ci -m "Updated .gitlab-ci.yml")'
   alias commitgitignore=''$IS_GIT_STAGED' (git add .gitignore; git ci -m "Updated .gitignore")'
