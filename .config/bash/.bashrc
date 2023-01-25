@@ -94,7 +94,7 @@ fi
 # [SOURCE Bash Includes] {{{
 #---------------------------------------
 FILES_TO_SOURCE=()
-FILES_TO_SOURCE+=($(find ~/.config/bash/includes-enabled -type f -name '*.bash'))
+FILES_TO_SOURCE+=($(find ~/.config/bash/includes-enabled -name '*.bash'))
 FILES_TO_SOURCE+=($LOCAL_DOTDIR/bashrc)
 FILES_TO_SOURCE+=($LOCAL_DOTDIR/aliases.bash)
 

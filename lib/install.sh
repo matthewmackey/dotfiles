@@ -69,12 +69,60 @@ LOCAL_CONFIGS=(
   xmodmap
 )
 
+REMOTE_INCLUDES_ENABLED_SH=(
+  fzf
+  go
+  python
+)
+
+LOCAL_INCLUDES_ENABLED_SH=(
+  android
+  asdf
+  dotnet
+  fzf
+  go
+  kubectl
+  node
+  python
+  ssh
+)
+
+REMOTE_INCLUDES_ENABLED_BASH=(
+  fzf
+  prompt
+)
+
+LOCAL_INCLUDES_ENABLED_BASH=(
+  asdf
+  aws
+  fzf
+  kubernetes
+  node
+  prompt
+  ruby
+  ssh
+)
+
+REMOTE_INCLUDES_ENABLED_ZSH=(
+  fzf
+  pass
+)
+
+LOCAL_INCLUDES_ENABLED_ZSH=(
+  fzf
+  gcloud
+  pass
+)
+
 # on new systems, like VMS, the Standard .config directory doesn't exist
 ensureStdDotConfigDirExists() {
   print_step "Ensuring $STD_DOT_CONFIG_DIR exists"
   mkdir_if_not_exist $STD_DOT_CONFIG_DIR
 }
 
+#-------------------------------------------------------------------------------
+# Config Dir Symlinks
+#-------------------------------------------------------------------------------
 setupRemoteConfigDirSymlinks() {
   print_step "Setting up REMOTE dotfile symlinks in $STD_DOT_CONFIG_DIR"
   for conf in ${REMOTE_CONFIGS[@]}; do
@@ -89,6 +137,9 @@ setupLocalConfigDirSymlinks() {
   done
 }
 
+#-------------------------------------------------------------------------------
+# Home Dir Symlinks
+#-------------------------------------------------------------------------------
 setupRemoteHomeDirSymlinks() {
   print_step "Setting up REMOTE dotfile symlinks in ~/ directory"
   create_symlink_with_backup $STD_DOT_CONFIG_DIR/bash/.bash_profile ~/.bash_profile
@@ -107,7 +158,25 @@ setupLocalHomeDirSymlinks() {
   create_symlink_with_backup $STD_DOT_CONFIG_DIR/tmux/tmux.conf     ~/.tmux.conf
 }
 
+#-------------------------------------------------------------------------------
+# Includes Enabled Symlinks
+#-------------------------------------------------------------------------------
+setupIncludesEnabledSymlinks() {
+  # Valid values: remote|local
+  local include_type=$1
 
+  for shell in sh bash zsh; do
+    includes_enabled_var=${include_type^^}_INCLUDES_ENABLED_${shell^^}[@]
+
+    for conf in ${!includes_enabled_var}; do
+      create_symlink_with_backup ~/.config/$shell/includes/$conf.$shell ~/.config/$shell/includes-enabled/$conf.$shell
+    done
+  done
+}
+
+#-------------------------------------------------------------------------------
+# LOCAL Dotfiles
+#-------------------------------------------------------------------------------
 setupLocalDotfiles() {
   print_step "Setup local dotfiles directory if it does not exist"
   if [ ! -d $LOCAL_DOTDIR ]; then
@@ -146,6 +215,7 @@ setupMinimalSystem() {
   ensureStdDotConfigDirExists
   setupRemoteConfigDirSymlinks
   setupRemoteHomeDirSymlinks
+  setupIncludesEnabledSymlinks remote
 }
 
 setupPersonalSystem() {
@@ -159,6 +229,7 @@ setupPersonalSystem() {
   setupLocalConfigDirSymlinks
   setupRemoteHomeDirSymlinks
   setupLocalHomeDirSymlinks
+  setupIncludesEnabledSymlinks local
   setupLocalDotfiles
 
   installNeovimPythonProvider

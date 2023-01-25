@@ -70,7 +70,7 @@ export SH_DOTDIR=~/.config/sh
 
 FILES_TO_SOURCE=()
 FILES_TO_SOURCE+=($SH_DOTDIR/aliases)
-FILES_TO_SOURCE+=($(find $SH_DOTDIR/includes-enabled -type f -name '*.sh'))
+FILES_TO_SOURCE+=($(find $SH_DOTDIR/includes-enabled -name '*.sh'))
 
 for _file in ${FILES_TO_SOURCE[@]}; do
   source_file_if_exists $_file
