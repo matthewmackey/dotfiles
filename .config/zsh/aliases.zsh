@@ -61,7 +61,7 @@ alias -g B0='base64 --wrap=0'
 alias -g C='| xclip -sel clip /dev/stdin'
 alias -g G='| grep'
 alias -g gi='| grep -i'
-alias -g J='| jq'
+alias -g j,='| jq'
 alias -g L='| less'
 alias -g N='> /dev/null 2>&1'
 alias -g P="':!package-lock.json'"
@@ -69,7 +69,7 @@ alias -g PP="PYTHONPATH=./"
 alias -g jp="-ojsonpath='{.data."
 alias -g R="-o jsonpath='{.spec.containers[0].resources}' | jq"
 alias -g so="| sort"
-alias -g S="| sops -d --input-type yaml --output-type yaml /dev/stdin"
+alias -g s,="| sops -d --input-type yaml --output-type yaml /dev/stdin"
 alias -g y='| yh'
 alias -g Y='-oyaml| yh'
 alias -g 1.='../'
