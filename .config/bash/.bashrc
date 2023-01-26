@@ -121,8 +121,11 @@ done
 # }}}
 
 
-# [OTHER]
-#source_local_dotfiles
+#---------------------------------------
+# [SOURCE Local Dotfiles] {{{
+#---------------------------------------
+source_local_dotfiles
+# }}}
 
 
 # vim: ft=sh  foldlevel=0 foldmarker={{{,}}} foldmethod=marker

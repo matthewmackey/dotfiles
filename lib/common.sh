@@ -89,6 +89,22 @@ source_file_if_exists() {
   fi
 }
 
+# Define common function to be called after other main shell initializations
+# complete (Bash, ZSH, etc.) that will source local dotfile overrides
+#
+# NOTE: this can only work if the local dotfiles are cross-shell-compatible
+source_local_dotfiles() {
+  section "Sourcing -> ~/.local/dotfiles"
+
+  local _files_to_source=()
+  _files_to_source+=($LOCAL_DOTDIR/rc)
+  _files_to_source+=($LOCAL_DOTDIR/aliases)
+
+  for _file in ${_files_to_source[@]}; do
+    source_file_if_exists $_file
+  done
+}
+
 create_symlink_with_backup() {
   local _target=$1
   local _link_name=$2
@@ -182,3 +198,6 @@ check_aliases() {
     is_alias "$a"
   done
 }
+
+
+# vim: ft=bash  foldlevel=0 foldmarker={{{,}}} foldmethod=marker
