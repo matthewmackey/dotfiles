@@ -565,6 +565,20 @@ fi
 
 
 #-------------------------------------------------------------------------------
+# [Python] {{{
+#-------------------------------------------------------------------------------
+
+  # Create alias to load Virtualenvwrapper so we can lazy load it when we want
+  # to decrease shell startup time
+  #
+  # Short for: "source pyenv"
+  alias sp="source $DEFAULT_PYTHON/bin/virtualenvwrapper.sh"
+
+  alias w="workon"
+# }}}
+
+
+#-------------------------------------------------------------------------------
 # [sound] {{{
 #-------------------------------------------------------------------------------
   alias micoff="amixer set Capture nocap"
@@ -785,6 +799,7 @@ pomovol() {
   gsettings set org.gnome.pomodoro.plugins.sounds ticking-sound-volume $_tick_percent
 }
 alias pvol="pomovol"
+alias pv="pomovol"
 
 
 # vim: set ft=sh foldmarker={{{,}}} foldmethod=marker foldlevel=0 :
