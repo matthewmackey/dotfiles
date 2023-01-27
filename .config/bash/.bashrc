@@ -8,21 +8,11 @@
 #       sourced in a ZSH shell
 source ~/.config/sh/env
 
-#-------------------------------------------------------------------------------
-# Simply RETURN when this is NOT sourced in an interactive session
-# (SCP will not work w/o this b/c there are 'echo' statements in my .rc's)
-#
-# NOTE: Ansible runs in non-interactive session so this applies to Ansible as well
-# SEE: https://unix.stackexchange.com/a/18647/408519
-#-------------------------------------------------------------------------------
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
-
-
 [[ -f ~/.config/sh/rc ]] && source ~/.config/sh/rc
 
-# Must be after interactive shell confirmation
-printf "Sourcing -> [~/.config/bash/.bashrc]\n"
+# This statement is here and not in the sourcing file b/c the library print
+# commands are not yet available in that file.
+section "Sourcing -> ~/.config/bash/.bashrc"
 
 
 #---------------------------------------
@@ -115,7 +105,6 @@ FILES_TO_SOURCE+=($LOCAL_DOTDIR/bashrc)
 FILES_TO_SOURCE+=($LOCAL_DOTDIR/aliases.bash)
 
 for _file in ${FILES_TO_SOURCE[@]}; do
-  # echo "[SKIPPING] source_file_if_exists $_file"
   source_file_if_exists $_file
 done
 # }}}

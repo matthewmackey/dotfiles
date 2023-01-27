@@ -17,47 +17,59 @@ YELLOW_BOLD="\e[1;33m"
 
 CLEAR_SCREEN="\e[2K"
 
+safe_printf() {
+  if [[ $- == *i* ]]; then
+    return
+  else
+    printf "$@"
+  fi
+}
+
 print_step() {
-  printf "\n"
-  printf "#-------------------------------------------------------------------------------\n"
-  printf "# %s\n" "$1"
-  printf "#-------------------------------------------------------------------------------\n"
+  safe_printf "\n"
+  safe_printf "#-------------------------------------------------------------------------------\n"
+  safe_printf "# %s\n" "$1"
+  safe_printf "#-------------------------------------------------------------------------------\n"
 }
 
 section() {
-  printf "\n[${BOLD}%s${NC}]\n" "$1"
+  safe_printf "\n[${BOLD}%s${NC}]\n" "$1"
 }
 
 msg() {
-  printf " ${LIGHT}%s${NC}\n" "$1"
+  safe_printf " ${LIGHT}%s${NC}\n" "$1"
 }
 
 bold() {
   local _heading=$1
   local _msg=$2
-  printf " ${BOLD}$_heading${NC} -> $_msg\n"
+  safe_printf " ${BOLD}$_heading${NC} -> $_msg\n"
 }
 
 ok() {
-  printf "  [${GREEN_BOLD}OK${NC}] $1\n"
+  safe_printf "  [${GREEN_BOLD}OK${NC}] $1\n"
 }
 
 warn() {
-  printf "  [${YELLOW}WARN${NC}] $1\n"
+  safe_printf "  [${YELLOW}WARN${NC}] $1\n"
 }
 
 fail() {
-  printf "  [${RED_BOLD}FAIL${NC}] $1\n"
+  safe_printf "  [${RED_BOLD}FAIL${NC}] $1\n"
 }
 
 skipping() {
-  printf "  [${YELLOW}Skipping${NC}] $1\n"
+  safe_printf "  [${YELLOW}Skipping${NC}] $1\n"
 }
 
 alert() {
   local _heading=$1
   local _msg=$2
-  printf "  [${YELLOW_BOLD}$_heading${NC}] $_msg\n"
+  safe_printf "  [${YELLOW_BOLD}$_heading${NC}] $_msg\n"
+}
+
+newline() {
+  safe_printf "\n"
 }
 
 
@@ -141,7 +153,7 @@ create_symlink_with_backup() {
       msg "Created [$_link_name] symlink"
     fi
 
-    echo
+    newline
   )
 }
 

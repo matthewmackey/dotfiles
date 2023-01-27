@@ -2,17 +2,6 @@
 # .zshrc
 #-------------------------------------------------------------------------------
 
-#-------------------------------------------------------------------------------
-# Simply RETURN when this is NOT sourced in an interactive session
-# (SCP will not work w/o this b/c there are 'echo' statements in my .rc's)
-#
-# NOTE: Ansible runs in non-interactive session so this applies to Ansible as well
-# SEE: https://unix.stackexchange.com/a/18647/408519
-#-------------------------------------------------------------------------------
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
-
-
 [[ -f ~/.config/sh/rc ]] && source ~/.config/sh/rc
 
 # Must be after interactive shell confirmation
@@ -56,6 +45,7 @@ section "Sourcing -> ~/.config/zsh/.zshrc"
   done
 
 # }}}
+
 
 #---------------------------------------
 # [Plugins] {{{
@@ -147,6 +137,9 @@ section "Sourcing -> ~/.config/zsh/.zshrc"
 source_local_dotfiles
 xmswitch
 
+# }}}
+
+
 #---------------------------------------
 # [COMPLETIONS]] {{{
 #---------------------------------------
@@ -155,4 +148,5 @@ autoload -Uz compinit && compinit
 
 # }}}
 
-# vim: ft=sh  foldlevel=0 foldmarker={{{,}}} foldmethod=marker
+
+# vim: ft=bash  foldlevel=0 foldmarker={{{,}}} foldmethod=marker
