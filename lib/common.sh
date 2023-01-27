@@ -18,7 +18,7 @@ YELLOW_BOLD="\e[1;33m"
 CLEAR_SCREEN="\e[2K"
 
 safe_printf() {
-  if [[ $- == *i* ]]; then
+  if [[ $- != *i* ]]; then
     return
   else
     printf "$@"
