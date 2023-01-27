@@ -572,7 +572,7 @@ fi
   # to decrease shell startup time
   #
   # Short for: "source pyenv"
-  alias sp="source $DEFAULT_PYTHON/bin/virtualenvwrapper.sh"
+  alias sp="source \$DEFAULT_PYTHON/bin/virtualenvwrapper.sh"
 
   alias w="workon"
 # }}}
