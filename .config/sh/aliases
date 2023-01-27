@@ -791,6 +791,9 @@ alias pd="pomodur"
 alias pd1="pomodur 15"
 alias pd2="pomodur 25"
 alias pd3="pomodur 30"
+alias pd4="pomodur 40"
+alias pd45="pomodur 45"
+alias pd6="pomodur 60"
 
 # Set ticking sound from range of 1-10
 pomovol() {
