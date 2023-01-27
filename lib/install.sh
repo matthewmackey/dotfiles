@@ -51,6 +51,7 @@ REMOTE_CONFIGS=(
   bash
   direnv
   git
+  go
   psql
   readline
   sh
