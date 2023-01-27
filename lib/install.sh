@@ -72,6 +72,7 @@ LOCAL_CONFIGS=(
 REMOTE_INCLUDES_ENABLED_SH=(
   fzf
   go
+  hacker
   python
 )
 
