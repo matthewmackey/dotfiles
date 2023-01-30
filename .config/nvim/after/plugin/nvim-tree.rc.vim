@@ -6,7 +6,16 @@ require'nvim-tree'.setup {
   -- closed folder to the parent folder when false, and inside the folder when true.
   create_in_closed_folder = true,
 
-  disable_netrw       = true,
+  -- This specific combo for the following 2x settings seem to be what is needed to get
+  -- the `gx` shortcut to open the URL under the cursor in a browser properly.
+  --
+  -- It seems like netrw is a Vim plugin that provides the functionality of `gx`
+  -- to open URLs, so it needs to be enabled (??).
+  --
+  -- SEE:
+  --   - https://github.com/nvim-tree/nvim-tree.lua/issues/226
+  --   - https://stackoverflow.com/questions/39510377/how-to-make-the-gx-command-work-for-urls-in-vim-on-xfce4-desktop
+  disable_netrw       = false,
   hijack_netrw        = true,
 
   -- Keeps the cursor on the first letter of the filename when moving in the tree.
@@ -238,3 +247,5 @@ set termguicolors
 
 " a list of groups can be found at `:help nvim_tree_highlight`
 " highlight NvimTreeSymlink guifg=blue gui=bold,underline
+
+" vim: ft=lua
