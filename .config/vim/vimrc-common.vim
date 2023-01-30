@@ -138,6 +138,7 @@ nnoremap <leader>q :q!<cr>
 nnoremap <leader>: q:i
 nnoremap <leader>/ q/i
 
+" Leave insert mode w/ `jj`
 imap jj <Esc>
 
 nnoremap <leader>pc :PlugClean<cr>
@@ -158,6 +159,12 @@ nnoremap <leader>4 :set list!<cr>
 
 " Mainly used to close window when only NERDTree is open
 nnoremap <leader>q :wqa<cr>
+
+" Make all copy/pastes go to System clipboard (`unnamedplus` is what Ubuntu uses for system clipboard)
+"
+" SEE: https://vi.stackexchange.com/questions/84/how-can-i-copy-text-to-the-system-clipboard-from-vim
+set clipboard=unnamedplus
+
 " }}} Keymaps - General
 
 "----------------------------------------------------------------"
