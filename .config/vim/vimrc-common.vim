@@ -123,10 +123,12 @@ augroup END
 "-----------------------------------------
 " Keymaps - General {{{
 "-----------------------------------------
-" Change the mapleader from '\' to ','
-let mapleader=","
+" Change the mapleader from '\' to '<Space>'
+"
+" SEE: https://stackoverflow.com/questions/446269/can-i-use-space-as-mapleader-in-vim
 nnoremap <Space> <nop>
 let mapleader=" "
+" let mapleader=","
 
 nnoremap <leader>so :so %<cr>
 
@@ -162,8 +164,28 @@ nnoremap <leader>q :wqa<cr>
 
 " Make all copy/pastes go to System clipboard (`unnamedplus` is what Ubuntu uses for system clipboard)
 "
+" NOT USING the "automatic" coyp/paste method of using `set clipboard=unnamedplus` b/c with that
+" method, if you have something copied to the system clipboard and want to paste it in Vim, but
+" you have already done a yank in Vim, then that yank will have overwritten what you wanted to copy
+" from the system clipboard.  Then you have to open Parcellite again to
+" highlight what you originally wanted to copy, which is a pain.
+"
+" Therefore, I think having explicit keybindings for interacting with the system clipboard is preferred.
+"
+" Also, I am using capitalzed "p" in the `<leader>P` paste keybinding b/c the paste is really
+" slow if you do a lowercase `<leader>p` b/c there are other keybindings with `<leader>p*`
+" so it seems Vim needs to wait to see if you are going to press the 2nd letter after the `p`
+"
+" And for symmetry, I'm also making a capitalized yank keybinding (`<leader>Y`),
+" even though I will probably use the lowercase yank one b/c it is both easier
+" to type and fast b/c there are no `<leader>y*` keybindings currently.
+"
 " SEE: https://vi.stackexchange.com/questions/84/how-can-i-copy-text-to-the-system-clipboard-from-vim
-set clipboard=unnamedplus
+"
+" set clipboard=unnamedplus
+noremap <leader>y "+y
+noremap <leader>Y "+y
+noremap <leader>P "+p
 
 " }}} Keymaps - General
 
