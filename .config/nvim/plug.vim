@@ -4,8 +4,13 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+"-------------------------------------------------------------------------------
+" vim-plug Section {{{
+"-------------------------------------------------------------------------------
 " Specify a directory for plugins
 call plug#begin(data_dir . '/../plugged')
+  " TODO: do I want this?
+  " Plug 'vim-syntastic/syntastic'
 
   " Colors
   " The RRethy plugin seems to work better w/ lualine plugin then then the chriskempson one
@@ -37,53 +42,65 @@ call plug#begin(data_dir . '/../plugged')
   Plug 'coachshea/vim-textobj-markdown'
   Plug 'bps/vim-textobj-python'
 
-  " Languages
-  Plug 'dense-analysis/ale'
-  Plug 'vim-test/vim-test' " Generic test framework
-
   " Tag bar
   Plug 'liuchengxu/vista.vim'
 
-if has('nvim')
-  " Colors
-  Plug 'lukas-reineke/indent-blankline.nvim'
+  "------------------------------------------------------------
+  " Languages - Generic
+  "------------------------------------------------------------
+  Plug 'dense-analysis/ale'
+  Plug 'vim-test/vim-test' " Generic test framework
 
-  " LSP
-  Plug 'neovim/nvim-lspconfig'
-  Plug 'glepnir/lspsaga.nvim'
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  Plug 'nvim-treesitter/playground'
+  "------------------------------------------------------------
+  " Languages - Go
+  "------------------------------------------------------------
+  Plug 'fatih/vim-go'
 
-  " Completion
-  Plug 'hrsh7th/cmp-nvim-lsp'
-  Plug 'hrsh7th/cmp-buffer'
-  Plug 'hrsh7th/nvim-cmp'
+  "-------------------------------------------------------------------------------
+  " nvim-specific Plugins {{{
+  "-------------------------------------------------------------------------------
+  if has('nvim')
+    " Colors
+    Plug 'lukas-reineke/indent-blankline.nvim'
 
-  " Snippets (w/ completion integration)
-  Plug 'hrsh7th/cmp-vsnip'
-  Plug 'hrsh7th/vim-vsnip'
-  Plug 'rafamadriz/friendly-snippets'
+    " LSP
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'glepnir/lspsaga.nvim'
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'nvim-treesitter/playground'
 
-  " File Explore
-  Plug 'kyazdani42/nvim-web-devicons' " for file icons
-  Plug 'kyazdani42/nvim-tree.lua'
+    " Completion
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/nvim-cmp'
 
-  " Telescope
-  Plug 'nvim-lua/popup.nvim'
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-telescope/telescope.nvim'
-  Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-  Plug 'nvim-telescope/telescope-fzf-writer.nvim'
+    " Snippets (w/ completion integration)
+    Plug 'hrsh7th/cmp-vsnip'
+    Plug 'hrsh7th/vim-vsnip'
+    Plug 'rafamadriz/friendly-snippets'
 
-  " Lualine
-  Plug 'nvim-lualine/lualine.nvim'
+    " File Explore
+    Plug 'kyazdani42/nvim-web-devicons' " for file icons
+    Plug 'kyazdani42/nvim-tree.lua'
 
-  " Look/Feel
-  " Must have 'pynvim' on PATH when running PlugInstall for this plugin
-  Plug 'TaDaa/vimade'
-endif
+    " Telescope
+    Plug 'nvim-lua/popup.nvim'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
+    Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+    Plug 'nvim-telescope/telescope-fzf-writer.nvim'
 
-  " Plug 'vim-syntastic/syntastic'
+    " Lualine
+    Plug 'nvim-lualine/lualine.nvim'
+
+    " Look/Feel
+    " Must have 'pynvim' on PATH when running PlugInstall for this plugin
+    Plug 'TaDaa/vimade'
+  endif
+
+"   }}} nvim-specific Plugins
+
+" }}} - vim-plug
 
 
 "---------------------------------------------"
@@ -111,4 +128,4 @@ call plug#end()
 "     \    'python': ['autoflake'],
 "     \}
 
-" vim: ft=vim
+" vim: ft=vim foldmarker={{{,}}} foldmethod=marker foldlevel=100
