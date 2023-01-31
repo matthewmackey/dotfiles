@@ -2,10 +2,6 @@ lua <<EOF
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
 require'nvim-tree'.setup {
 
-  -- true by default. When creating files, sets the path of a file when cursor is on a
-  -- closed folder to the parent folder when false, and inside the folder when true.
-  create_in_closed_folder = true,
-
   -- This specific combo for the following 2x settings seem to be what is needed to get
   -- the `gx` shortcut to open the URL under the cursor in a browser properly.
   --
@@ -211,7 +207,8 @@ require'nvim-tree'.setup {
 
   view = {
     width = 35,
-    height = 30,
+    -- Not a valid setting anymore (??)
+    -- height = 30,
 
     hide_root_folder = false,
     side = "left",

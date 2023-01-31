@@ -67,7 +67,7 @@ call plug#begin(data_dir . '/../plugged')
     " LSP
     Plug 'neovim/nvim-lspconfig'
     Plug 'glepnir/lspsaga.nvim'
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'nvim-treesitter/nvim-treesitter', { 'tag': 'v0.8.0', 'do': ':TSUpdate' }
     Plug 'nvim-treesitter/playground'
 
     " Completion
@@ -82,7 +82,7 @@ call plug#begin(data_dir . '/../plugged')
 
     " File Explore
     Plug 'kyazdani42/nvim-web-devicons' " for file icons
-    Plug 'kyazdani42/nvim-tree.lua'
+    Plug 'kyazdani42/nvim-tree.lua', { 'commit': '3c4958ab3dd0e5fa470fb50b6b9cc6df48229a2e' }
 
     " Telescope
     Plug 'nvim-lua/popup.nvim'
