@@ -6,6 +6,15 @@
 " --------------------------------------------------------------------------------------------------------------
 
 "----------------------------------------#
+"    GENERAL {{{                         #
+"----------------------------------------#
+" map <leader>cn :cnext<CR>
+" map <leader>cp :cprevious<CR>
+
+" }}} GENERAL
+
+
+"----------------------------------------#
 "    ALE {{{                             #
 "----------------------------------------#
 nnoremap ,lf <Cmd>ALEFix<CR>
@@ -184,7 +193,9 @@ nnoremap <leader>tre <cmd>lua require('telescope.builtin').treesitter()<cr>
 " Telescope - Vim objects {{{
 "-----------------------------------------------"
 " builtin.buffers - Lists open buffers in current neovim instance
-nnoremap <leader>b <cmd>lua require('telescope.builtin').buffers()<cr>
+" TODO: disabling b/c it conflicts with vim-go shortcut for vim-go -> figure out
+" another way to do this mapping
+" nnoremap <leader>b <cmd>lua require('telescope.builtin').buffers()<cr>
 
 " builtin.oldfiles - Lists previously open files
 " nnoremap <leader>of <cmd>lua require('telescope.builtin').oldfiles()<cr>
@@ -253,7 +264,11 @@ nnoremap <leader>km <cmd>lua require('telescope.builtin').keymaps()<cr>
 " nnoremap <leader> <cmd>lua require('telescope.builtin').resume()<cr>
 
 " " builtin.pickers - Lists the previous pickers incl. multi-selections (see :h telescope.defaults.cache_picker)
-nnoremap <leader> <cmd>lua require('telescope.builtin').pickers()<cr>
+"
+" TODO: figure out another keybinding for this; when it is just `<leader>` it
+" will run this command for any `<leader>*`; disabling this for now
+" nnoremap <leader> <cmd>lua require('telescope.builtin').pickers()<cr>
+
 " }}} Telescope - Vim objects
 
 
