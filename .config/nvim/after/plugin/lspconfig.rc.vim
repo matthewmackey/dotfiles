@@ -206,4 +206,4 @@ nvim_lsp.solargraph.setup {
 }
 EOF
 
-" vim: ft=lua tabstop=4 softtabstop=4 shiftwidth=4:
+" vim: ft=vim tabstop=4 softtabstop=4 shiftwidth=4:
