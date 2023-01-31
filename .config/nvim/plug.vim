@@ -55,6 +55,7 @@ call plug#begin(data_dir . '/../plugged')
   " Languages - Go
   "------------------------------------------------------------
   Plug 'fatih/vim-go'
+  Plug 'AndrewRadev/splitjoin.vim'
 
   "-------------------------------------------------------------------------------
   " nvim-specific Plugins {{{
