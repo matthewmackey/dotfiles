@@ -82,6 +82,10 @@ call plug#begin(data_dir . '/../plugged')
 
     " File Explore
     Plug 'kyazdani42/nvim-web-devicons' " for file icons
+
+    " nvim-tree.lua unfortunately does not have any tags besides `nightly` so I
+    " just picked a random commit that was a bit before the latest commit on
+    " 1/31/2023 to help resolve issues I was seeing when updating to the latest commit
     Plug 'kyazdani42/nvim-tree.lua', { 'commit': '3c4958ab3dd0e5fa470fb50b6b9cc6df48229a2e' }
 
     " Telescope
