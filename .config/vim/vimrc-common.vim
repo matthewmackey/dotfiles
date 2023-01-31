@@ -4,7 +4,7 @@
 set nocompatible                " Enables us Vim specific features
 
 set autoread                    " Automatically read changed files
-" set autowrite                 " Used by 'go-vim' to save before Vim's ':make' hook
+set autowrite                 " Used by 'go-vim' to save before Vim's ':make' hook
 set backspace=indent,eol,start " modern backspace behavior
 set cmdheight=1               " Height of the command bar
 set nocursorcolumn              " Do not highlight column cursor is on(speeds up highlighting)
