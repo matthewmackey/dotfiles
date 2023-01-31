@@ -6,13 +6,14 @@
 " --------------------------------------------------------------------------------------------------------------
 
 "----------------------------------------#
-"    ALE                                 #
+"    ALE {{{                             #
 "----------------------------------------#
 nnoremap ,lf <Cmd>ALEFix<CR>
+" }}} ALE
 
 
 "----------------------------------------#
-"    LspSaga                             #
+"    LspSaga {{{                         #
 "----------------------------------------#
 nnoremap <silent> gh <Cmd>Lspsaga lsp_finder<CR>
 nnoremap <silent> K <Cmd>Lspsaga hover_doc<CR>
@@ -23,13 +24,14 @@ nnoremap <C-n> :Lspsaga diagnostic_jump_next<CR>
 nnoremap <C-p> :Lspsaga diagnostic_jump_prev<CR>
 nnoremap <leader>cc :Lspsaga show_cursor_diagnostics<CR>
 nnoremap <leader>cl :Lspsaga show_line_diagnostics<CR>
+" }}} LspSaga
 
 
 "----------------------------------------#
-"    NvimTree                            #
+"    NvimTree {{{                        #
 "----------------------------------------#
 nnoremap <C-\> :NvimTreeToggle<CR>
-nnoremap <leader>r :NvimTreeFocus<CR>
+nnoremap <leader>fr :NvimTreeFocus<CR>
 nnoremap <leader>ff :NvimTreeFindFile<CR>
 nnoremap <leader>ft :NvimTreeFindFileToggle<CR>
 nnoremap <leader>fz :NvimTreeResize 40
@@ -37,15 +39,18 @@ nnoremap <leader>fz :NvimTreeResize 40
 " nnoremap <leader>fo :NvimTreeOpen<CR>
 " nnoremap <leader>fc :NvimTreeClose<CR>
 
+" }}} NvimTree
+
 
 "----------------------------------------#
-"    NvimTreesitter                      #
+"    NvimTreesitter {{{                  #
 "----------------------------------------#
 nnoremap ,lt <cmd>TSBufToggle highlight<CR>
+" }}} NvimTreesitter
 
 
 "----------------------------------------#
-"    Terminal mode                       #
+"    Terminal mode {{{                   #
 "----------------------------------------#
 " Terminal Mode Escape Key - not using <Esc> b/c I need that for Bash's vim-mode
 " Exit terminal-mode
@@ -61,9 +66,11 @@ cnoreabbrev <expr> term getcmdtype() == ":" && getcmdline() == 'term' ? 'tabnew 
 cnoreabbrev <expr> terminal getcmdtype() == ":" && getcmdline() == 'terminal' ? 'tabnew \| terminal' : 'terminal'
 cnoreabbrev <expr> vterm getcmdtype() == ":" && getcmdline() == 'vterm' ? 'vnew \| term' : 'vterm'
 cnoreabbrev <expr> hterm getcmdtype() == ":" && getcmdline() == 'hterm' ? 'new \| term' : 'hterm'
+" }}} Terminal mode
+
 
 "----------------------------------------#
-"    'Test' Plugin                       #
+"    'Test' Plugin {{{                   #
 "----------------------------------------#
 " Don't want to override :tabnew keybinding for now
 " nnoremap <silent> <Leader>tn :TestNearest<CR>
@@ -72,30 +79,11 @@ nnoremap <silent> <Leader>ts :TestSuite<CR>
 nnoremap <silent> <Leader>tl :TestLast<CR>
 nnoremap <silent> <Leader>tg :TestVisit<CR>
 
-
-"----------------------------------------#
-"    UndoTree                            #
-"----------------------------------------#
-nnoremap <leader>5 :UndotreeToggle<cr>
-
-
-"----------------------------------------#
-"    Telescope {{{                       #
-"----------------------------------------#
-" nnoremap <silent> ,b <cmd>Telescope buffers<CR>
-" nnoremap <silent> ,c <cmd>Telescope commands<CR>
-" nnoremap <silent> ,f <cmd>Telescope find_files<CR>
-" nnoremap <silent> ,g <cmd>Telescope live_grep<CR>
-" nnoremap <silent> ,h <cmd>Telescope help_tags<CR>
-
-" nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
-" nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-" nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
-" nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+" }}} 'Test' Plugin
 
 
 "-----------------------------------------------"
-" Standard
+" Telescope - Standard {{{
 "-----------------------------------------------"
 " builtin.builtin
 nnoremap <leader>tb <cmd>lua require('telescope.builtin').builtin()<cr>
@@ -106,7 +94,7 @@ nnoremap <leader>f <cmd>lua require('telescope').extensions.fzf_writer.files()<c
 " builtin.find_files - Lists files in your current working directory, respects .gitignore
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
 
-" builtin.file_browser - ists files and folders in your current working directory, open files, navigate your filesystem, and create new files and folders
+" builtin.file_browser - Lists files and folders in your current working directory, open files, navigate your filesystem, and create new files and folders
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').file_browser()<cr>
 
 " builtin.git_files - Fuzzy search through the output of git ls-files command, respects .gitignore, optionally ignores untracked files
@@ -123,9 +111,12 @@ nnoremap <leader>gp lua require('telescope').extensions.fzf_writer.grep()<cr>
 
 " fzf_writer.staged_grep - more async version w/ enhancements of live_grep()
 nnoremap <leader>sg <cmd>lua require('telescope').extensions.fzf_writer.staged_grep()
+"
+" }}} Telescope - Standard
+
 
 "-----------------------------------------------"
-" Git
+" Telescope - Git {{{
 "-----------------------------------------------"
 " builtin.git_commits - Lists git commits with diff preview, checkout action <cr>, reset mixed <C-r>m, reset soft <C-r>s and reset hard <C-r>h
 nnoremap <leader>gc <cmd>lua require('telescope.builtin').git_commits()<cr>
@@ -141,21 +132,62 @@ nnoremap <leader>gs <cmd>lua require('telescope.builtin').git_status()<cr>
 
 " builtin.git_stash - Lists stash items in current repository with ability to apply them on <cr>
 nnoremap <leader>gsh <cmd>lua require('telescope.builtin').git_stash()<cr>
+" }}} Telescope - Git
+
 
 "-----------------------------------------------"
-" Treesitter
+" Telescope - LSP objects {{{
+"-----------------------------------------------"
+" builtin.lsp_references - Lists LSP references for word under the cursor
+nnoremap <leader>lr <cmd>lua require('telescope.builtin').lsp_references()<cr>
+
+" builtin.lsp_document_symbols - Lists LSP document symbols in the current buffer
+nnoremap <leader>lds <cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>
+
+" builtin.lsp_workspace_symbols - Lists LSP document symbols in the current workspace
+nnoremap <leader>lws <cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>
+
+" builtin.lsp_dynamic_workspace_symbols - Lists LSP for all workspace symbols
+nnoremap <leader>ldws <cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<cr>
+
+" builtin.lsp_code_actions - Lists any LSP actions for the word under the cursor, that can be triggered with <cr>
+nnoremap <leader>lca <cmd>lua require('telescope.builtin').lsp_code_actions()<cr>
+
+" builtin.lsp_range_code_actions - Lists any LSP actions for a given range, that can be triggered with <cr>
+" nnoremap <leader> <cmd>lua require('telescope.builtin').lsp_range_code_actions()<cr>
+
+" builtin.diagnostics - Lists Diagnostics for all open buffers or a specific buffer. Use option bufnr=0 for current buffer.
+nnoremap <leader>d <cmd>lua require('telescope.builtin').diagnostics()<cr>
+
+" builtin.lsp_implementations - Goto the implementation of the word under the cursor if there's only one, otherwise show all options in Telescope
+nnoremap <leader>li <cmd>lua require('telescope.builtin').lsp_implementations()<cr>
+
+" builtin.lsp_definitions - Goto the definition of the word under the cursor, if there's only one, otherwise show all options in Telescope
+nnoremap <leader>ld <cmd>lua require('telescope.builtin').lsp_definitions()<cr>
+
+" builtin.lsp_type_definitions - Goto the definition of the type of the word under the cursor, if there's only one, otherwise show all options in Telescope
+nnoremap <leader>ltd <cmd>lua require('telescope.builtin').lsp_type_definitions()<cr>
+
+" }}} Telescope - LSP objects
+
+
+"-----------------------------------------------"
+" Telescope - Treesitter {{{
 "-----------------------------------------------"
 " builtin.treesitter - Lists Function names, variables, from Treesitter!one
 nnoremap <leader>tre <cmd>lua require('telescope.builtin').treesitter()<cr>
+"
+" }}} Telescope - Treesitter
+
 
 "-----------------------------------------------"
-" Vim objects
+" Telescope - Vim objects {{{
 "-----------------------------------------------"
 " builtin.buffers - Lists open buffers in current neovim instance
 nnoremap <leader>b <cmd>lua require('telescope.builtin').buffers()<cr>
 
 " builtin.oldfiles - Lists previously open files
-" nnoremap <leader> <cmd>lua require('telescope.builtin').oldfiles()<cr>
+" nnoremap <leader>of <cmd>lua require('telescope.builtin').oldfiles()<cr>
 
 " builtin.commands - Lists available plugin/user commands and runs them on <cr>
 nnoremap <leader>c <cmd>lua require('telescope.builtin').commands()<cr>
@@ -222,38 +254,14 @@ nnoremap <leader>km <cmd>lua require('telescope.builtin').keymaps()<cr>
 
 " " builtin.pickers - Lists the previous pickers incl. multi-selections (see :h telescope.defaults.cache_picker)
 nnoremap <leader> <cmd>lua require('telescope.builtin').pickers()<cr>
+" }}} Telescope - Vim objects
 
-"-----------------------------------------------"
-" LSP objects
-"-----------------------------------------------"
-" builtin.lsp_references - Lists LSP references for word under the cursor
-nnoremap <leader>lr <cmd>lua require('telescope.builtin').lsp_references()<cr>
 
-" builtin.lsp_document_symbols - Lists LSP document symbols in the current buffer
-nnoremap <leader>lds <cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>
+"----------------------------------------#
+"    UndoTree {{{                        #
+"----------------------------------------#
+nnoremap <leader>5 :UndotreeToggle<cr>
+" }}} UndoTree
 
-" builtin.lsp_workspace_symbols - Lists LSP document symbols in the current workspace
-nnoremap <leader>lws <cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>
 
-" builtin.lsp_dynamic_workspace_symbols - Lists LSP for all workspace symbols
-nnoremap <leader>ldws <cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<cr>
-
-" builtin.lsp_code_actions - Lists any LSP actions for the word under the cursor, that can be triggered with <cr>
-nnoremap <leader>lca <cmd>lua require('telescope.builtin').lsp_code_actions()<cr>
-
-" builtin.lsp_range_code_actions - Lists any LSP actions for a given range, that can be triggered with <cr>
-" nnoremap <leader> <cmd>lua require('telescope.builtin').lsp_range_code_actions()<cr>
-
-" builtin.diagnostics - Lists Diagnostics for all open buffers or a specific buffer. Use option bufnr=0 for current buffer.
-nnoremap <leader>d <cmd>lua require('telescope.builtin').diagnostics()<cr>
-
-" builtin.lsp_implementations - Goto the implementation of the word under the cursor if there's only one, otherwise show all options in Telescope
-nnoremap <leader>li <cmd>lua require('telescope.builtin').lsp_implementations()<cr>
-
-" builtin.lsp_definitions - Goto the definition of the word under the cursor, if there's only one, otherwise show all options in Telescope
-nnoremap <leader>ld <cmd>lua require('telescope.builtin').lsp_definitions()<cr>
-
-" builtin.lsp_type_definitions - Goto the definition of the type of the word under the cursor, if there's only one, otherwise show all options in Telescope
-nnoremap <leader>ltd <cmd>lua require('telescope.builtin').lsp_type_definitions()<cr>
-
-" }}} Telescope
+" vim: ft=vim
