@@ -128,16 +128,21 @@ augroup END
 " SEE: https://stackoverflow.com/questions/446269/can-i-use-space-as-mapleader-in-vim
 nnoremap <Space> <nop>
 let mapleader=" "
+" let mapleader='\'
 " let mapleader=","
 
 nnoremap <leader>so :so %<cr>
 
 nnoremap ; :
 nnoremap : <nop>
-nnoremap <leader>w :wq<cr>
-nnoremap <leader>q :q!<cr>
+nnoremap <leader>w :wqa<cr>
+nnoremap <leader>q :qa!<cr>
 
+
+" Go to command-window in insert mode
 nnoremap <leader>: q:i
+
+" Go to search-window in insert mode
 nnoremap <leader>/ q/i
 
 " Leave insert mode w/ `jj`
@@ -158,9 +163,6 @@ nnoremap .c :tabedit ~/.config/vim/vimrc-common.vim<cr>
 nnoremap <leader>2 :set invpaste<cr>
 nnoremap <leader>3 :windo set norelativenumber! nonu!<cr>
 nnoremap <leader>4 :set list!<cr>
-
-" Mainly used to close window when only NERDTree is open
-nnoremap <leader>q :wqa<cr>
 
 " Make all copy/pastes go to System clipboard (`unnamedplus` is what Ubuntu uses for system clipboard)
 "
@@ -194,11 +196,11 @@ noremap <leader>P "+p
 "----------------------------------------------------------------"
 nnoremap <leader>a  <C-^>
 nnoremap <leader>l  :buffers<cr>
-nnoremap <leader>bb :buffers<cr>
-nnoremap <leader>bf :bfirst<cr>
-nnoremap <leader>bn :bnext<cr>
-nnoremap <leader>bp :bprevious<cr>
-nnoremap <leader>bl :blast<cr>
+nnoremap ,bb :buffers<cr>
+nnoremap ,bf :bfirst<cr>
+nnoremap ,bn :bnext<cr>
+nnoremap ,bp :bprevious<cr>
+nnoremap ,bl :blast<cr>
 
 " }}} Keymaps - Buffers
 
