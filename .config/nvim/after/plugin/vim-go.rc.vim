@@ -46,7 +46,7 @@ augroup go
   " autocmd BufNewFile *.go echomsg "BufNewFile - " . strftime("%c")
   " autocmd BufRead *.go echomsg "BufRead - " . strftime("%c")
   " autocmd FileType go echomsg "FileType go - " . strftime("%c")
-  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+  autocmd BufNewFile,BufRead *.go setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
 
   " :GoBuild and :GoTestCompile
   "
