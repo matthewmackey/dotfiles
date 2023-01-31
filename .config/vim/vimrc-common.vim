@@ -4,7 +4,7 @@
 set nocompatible                " Enables us Vim specific features
 
 set autoread                    " Automatically read changed files
-set autowrite                 " Used by 'go-vim' via ':make' hook
+" set autowrite                 " Used by 'go-vim' to save before Vim's ':make' hook
 set backspace=indent,eol,start " modern backspace behavior
 set cmdheight=1               " Height of the command bar
 set nocursorcolumn              " Do not highlight column cursor is on(speeds up highlighting)
@@ -291,7 +291,7 @@ nnoremap <leader>tn  :tabnew<cr>
 nnoremap <leader>tt  :tabedit<cr>
 
 " Close current tab
-nnoremap <leader>x   :tabclose<CnitR>
+nnoremap <leader>x   :tabclose<cr>
 nnoremap <leader>tx  :tabclose<cr>
 
 " Move the current tab page to after tab page N
