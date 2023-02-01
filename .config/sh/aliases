@@ -607,7 +607,7 @@ fi
   alias sag='eval $(ssh-agent -s); ssh-add'
 
   # SSH Agent - `add`
-  alias add="pass show -c ssh/default; ssh-add"
+  alias add="{ sleep .1 ; pass show ssh/default; } | script -q -c 'ssh-add' /dev/null"
   alias addl="ssh-add -l"
   alias addL="ssh-add -L"
   alias addd="ssh-add -d"
