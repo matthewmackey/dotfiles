@@ -44,7 +44,8 @@ let g:go_test_show_name = 1
 "                      be used to open a browser window to help debug gopls.
 "
 " shell-commands - Print any shell commands that are run by vim-go (like :GoMetaLinter) to `:messages`
-let g:go_debug=['shell-commands']
+let g:go_debug=[]
+" let g:go_debug=['shell-commands']
 " let g:go_debug=['lsp', 'shell-commands']
 
 
