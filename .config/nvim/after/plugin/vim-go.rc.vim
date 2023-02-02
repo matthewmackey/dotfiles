@@ -17,6 +17,17 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
 
+" I want to turn off end-of-line virtual text and have tried disabling these
+" here but it doesn't seem to work.  It seems like the ALE plugin is controlling
+" that text.  I'm leaving them disabled anyways for now.
+let g:go_highlight_diagnostic_errors = 0
+let g:go_highlight_diagnostic_warnings = 0
+
+" Specifies the `gopls` diagnostics level. Valid values are 0, 1, and 2. 0
+" ignores `gopls` diagnostics, 1 is for errors only, and 2 is for errors and
+" warnings. By default it is 0.
+" let g:go_diagnostics_level = 0
+
 " Use this option to change default path for vim-go tools when using
 " |:GoInstallBinaries| and |:GoUpdateBinaries|. If not set `go env GOBIN` or
 " `$GOPATH/bin` is used.
@@ -25,6 +36,10 @@ let g:go_highlight_generate_tags = 1
 "Show the name of each failed test before the errors and logs output by the
 "test. By default it is disabled.
 let g:go_test_show_name = 1
+
+" Use this option to use the popup-window for |K| and |:GoDoc|, rather than the
+" |preview-window|. Default is disabled.
+let g:go_doc_popup_window = 1
 
 
 "------------------------------------------------------------
