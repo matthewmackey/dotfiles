@@ -144,8 +144,10 @@ let g:go_auto_type_info = 0
 " :GoMetaLinter
 "------------------------------------------------------------
 " `vet` is a built-in Go tool (ie - `go vet` OR `go tool vet`)
-let g:go_metalinter_enabled = ['vet', 'golantci-lint', 'errcheck']
-let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+" DEFAULT:
+" let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_enabled = ['vet', 'golangci-lint', 'errcheck']
+let g:go_metalinter_autosave_enabled = ['vet', 'golangci-lint']
 let g:go_metalinter_autosave = 1
 let g:go_metalinter_deadline = "5s"
 
