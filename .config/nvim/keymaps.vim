@@ -8,8 +8,23 @@
 "----------------------------------------#
 "    GENERAL {{{                         #
 "----------------------------------------#
-" map <leader>cn :cnext<CR>
-" map <leader>cp :cprevious<CR>
+nnoremap <leader>M :messages<CR>
+
+" Location Lists
+nnoremap <leader>ln :lnext<CR>
+nnoremap <leader>lp :lprevious<CR>
+nnoremap <leader>lc :lclose<CR>
+
+" Quickfix windows
+"
+" TODO: figure out a good way to do single-key :cnext/:cprev - I currently have
+" them mapped to a leader mapping in the general keymap file.
+"
+" Jump to next error with Ctrl-n and previous error with Ctrl-m. Close the
+" quickfix window with <leader>cc
+nnoremap <C-n> :cnext<CR>
+nnoremap <C-m> :cprevious<CR>
+nnoremap <leader>cc :cclose<CR>
 
 " }}} GENERAL
 
@@ -31,8 +46,8 @@ nnoremap <silent> K <Cmd>Lspsaga hover_doc<CR>
 " Diagnostics
 nnoremap <C-n> :Lspsaga diagnostic_jump_next<CR>
 nnoremap <C-p> :Lspsaga diagnostic_jump_prev<CR>
-nnoremap <leader>cc :Lspsaga show_cursor_diagnostics<CR>
-nnoremap <leader>cl :Lspsaga show_line_diagnostics<CR>
+" nnoremap <leader>cc :Lspsaga show_cursor_diagnostics<CR>
+" nnoremap <leader>cl :Lspsaga show_line_diagnostics<CR>
 " }}} LspSaga
 
 
