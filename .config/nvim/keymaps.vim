@@ -26,6 +26,9 @@ nnoremap <C-n> :cnext<CR>
 nnoremap <C-m> :cprevious<CR>
 nnoremap <leader>cc :cclose<CR>
 
+" Location Lists & Quickfix Windows
+nnoremap <leader>C :cclose<CR>:lclose<CR>
+
 " }}} GENERAL
 
 
