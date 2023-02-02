@@ -195,7 +195,7 @@ noremap <leader>P "+p
 " Keymaps - Buffers {{{
 "----------------------------------------------------------------"
 nnoremap <leader>a  <C-^>
-nnoremap <leader>l  :buffers<cr>
+nnoremap <leader>lb :buffers<cr>
 nnoremap ,bb :buffers<cr>
 nnoremap ,bf :bfirst<cr>
 nnoremap ,bn :bnext<cr>
