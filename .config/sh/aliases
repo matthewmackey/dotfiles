@@ -208,6 +208,7 @@
 if [ "$SESSION_TYPE" != 'remote/ssh' ]; then
   alias cat="bat"
   alias vim="nvim"
+  alias nvs="if [ ! -f \$PWD/Session.vim ]; then echo 'No Session.vim in PWD' && false; else nvim -S Session.vim; fi"
 fi
 # }}}  Non-SSH Aliases
 
@@ -285,7 +286,6 @@ fi
     alias ta$i="$TREE_BIN -a -I '$TREE_ALL_IGNORES' -L $i"
   done
 
-  alias vi="vim"
   # See Non-SSH aliases
   # alias vim="nvim"
 
