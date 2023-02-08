@@ -607,13 +607,31 @@ fi
   alias sag='eval $(ssh-agent -s); ssh-add'
 
   # SSH Agent - `add`
-  alias add="{ sleep .1 ; pass show ssh/default; } | script -q -c 'ssh-add' /dev/null"
+  alias add="addAgent"
   alias addl="ssh-add -l"
   alias addL="ssh-add -L"
   alias addd="ssh-add -d"
   alias addD="ssh-add -D"
 
-  alias ensureSSHAgent="if ssh-add -l | grep -q 'The agent has no identities'; then; add ; fi"
+  addAgent() {
+    local passId=${1:-ssh/default}
+    local keyFile=${2:-~/.ssh/id_rsa}
+
+    { sleep .1 ; pass show "$passId" ; } | script -q -c "ssh-add $keyFile" /dev/null
+  }
+
+  ensureSSHAgent() {
+    local passId=$1
+    local keyFile=$2
+
+    if ssh-add -l | grep -q 'The agent has no identities'; then
+      if [ -z "$passId" -o -z "$keyFile" ]; then
+        addAgent
+      else
+        addAgent $passId "$keyFile"
+      fi
+    fi
+  }
 
 # }}}
 
