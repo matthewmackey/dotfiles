@@ -135,7 +135,7 @@ section "Sourcing -> ~/.config/zsh/.zshrc"
 # [OTHER] {{{
 #---------------------------------------
 source_local_dotfiles
-if command -v xmodmap; then
+if command -v xmodmap >/dev/null; then
   xmswitch
 fi
 
