@@ -135,7 +135,9 @@ section "Sourcing -> ~/.config/zsh/.zshrc"
 # [OTHER] {{{
 #---------------------------------------
 source_local_dotfiles
-xmswitch
+if command -v xmswitch; then
+  xmswitch
+fi
 
 # }}}
 
