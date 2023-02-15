@@ -12,9 +12,17 @@ GITCONFIG_LOCAL_SYMLINK=~/.config/git/.gitconfig_local
 
 GITCONFIG_LOCAL_TOUCH_FILE=$GIT_DOTDIR/.gitconfig_local.already_setup
 
-DEFAULT_GIT_NAME="Matthew Machaj"
+# DEFAULT_GIT_NAME="Matthew Machaj"
+DEFAULT_GIT_NAME="Matthew Mackey"
 DEFAULT_GIT_EMAIL="21043873+matthewmackey@users.noreply.github.com"
 DEFAULT_GIT_EMAIL2="73896224+matthewmachaj@users.noreply.github.com"
+
+ensure_local_dotdir_exists() {
+  if [ ! -d $LOCAL_DOTDIR ]; then
+    printf "local dotfiles directory does NOT exist. Creating at [$LOCAL_DOTDIR]\n"
+    mkdir -p $LOCAL_DOTDIR
+  fi
+}
 
 setup_gitconfig_local() {
   print_step "Setting name & email in $GITCONFIG_LOCAL"
@@ -51,4 +59,5 @@ GIT_CONFIG
   fi
 }
 
+ensure_local_dotdir_exists
 setup_gitconfig_local
