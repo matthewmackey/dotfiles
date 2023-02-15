@@ -11,6 +11,18 @@ _VERSIONED_DOWNLOAD_FILE=
 
 mkdir -p $DOWNLOADS_DIR 2>/dev/null || true
 
+ensure_libfuse_is_installed() {
+  printf "Ensuring proper libfuse dependency is installed\n"
+  local _ubuntu_version=$(lsb_release --short --release)
+
+  # See: https://askubuntu.com/questions/1363783/cant-run-an-appimage-on-ubuntu-20-04
+  if [ "$_ubuntu_version" = "22.04" ]; then
+    sudo apt-get install -y libfuse2
+  else
+    sudo apt-get install -y fuse libfuse2
+  fi
+}
+
 remove_last_download_if_exists() {
   if [ -e "${CURR_NIGHTLY_DOWNLOAD_FILE}" ]; then
     rm ${CURR_NIGHTLY_DOWNLOAD_FILE}
@@ -57,7 +69,7 @@ replace_global_symlink() {
 }
 
 
-
+ensure_libfuse_is_installed
 remove_last_download_if_exists
 download_current_nightly_version
 NVIM_NIGHTLY_VERSION=$(get_current_nightly_version_number)
