@@ -28,12 +28,17 @@ safe_printf() {
 print_step() {
   safe_printf "\n"
   safe_printf "#-------------------------------------------------------------------------------\n"
-  safe_printf "# %s\n" "$1"
+  safe_printf "# STEP: %s\n" "$1"
   safe_printf "#-------------------------------------------------------------------------------\n"
 }
 
 section() {
-  safe_printf "\n[${BOLD}%s${NC}]\n" "$1"
+  safe_printf "\n"
+  safe_printf "#===============================================================================\n"
+  safe_printf "# SECTION:\n"
+  safe_printf "#\n"
+  safe_printf "# ${BOLD}%s${NC}\n" "$1"
+  safe_printf "#===============================================================================\n"
 }
 
 msg() {
@@ -86,19 +91,29 @@ mkdir_if_not_exist() {
   fi
 }
 
-
 source_file_if_exists() {
   local _file=$1
-  if [ -f $_file ]; then
-    _tilde_unexpanded=$(cd $(dirname $_file); dirs | head -n 1)/$(basename $_file)
-
-    msg "Sourcing -> [$_tilde_unexpanded]"
-    # timer=$(($(date +%s%N)/1000000))
-    source $_file
-    # now=$(($(date +%s%N)/1000000))
-    # elapsed=$(($now-$timer))
-    # echo $elapsed
+  if [ -e $_file ]; then
+    source_file $_file
   fi
+}
+
+source_file_if_exists_or_fail() {
+  local _file=$1
+  if [ -e $_file ]; then
+    source_file $_file
+  else
+    fail "Attempted to source file that does not exist [$_file]"
+    exit 1
+  fi
+}
+
+source_file() {
+  local _file=$1
+  _tilde_unexpanded=$(cd $(dirname $_file); dirs | head -n 1)/$(basename $_file)
+
+  msg "Sourcing -> [$_tilde_unexpanded]"
+  source $_file
 }
 
 # Define common function to be called after other main shell initializations

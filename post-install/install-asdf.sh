@@ -143,34 +143,40 @@ setup_direnv_plugin() {
 # MAIN
 #-------------------------------------------------------------------------------
 ASDF_VERSION=v0.10.2
-ASDF_PLUGIN_HOME=$ASDF_HOME/plugins
 APT_CACHE_LAST_UPDATE_MINS=60
 DIRENV_ASDF_INTEGRATION_SCRIPT=${XDG_CONFIG_HOME:-$HOME/.config}/direnv/lib/use_asdf.sh
 DIRENV_INSTALL_DIR=~/.local/bin
 DIRENV_VERSION=2.32.2
 
+section "Setup: ASDF post-install"
+
+print_step "Sourcing [$DOTDIR/lib/common.sh]"
 source $DOTDIR/lib/common.sh
 
 # Ensure ASDF_HOME is in environment in case this script is running immediately
 # after dotfiles were installed and shell hasn't been reloaded
-source $DOTDIR/.config/sh/includes/asdf.sh
+print_step "Sourcing asdf include to load ASDF_HOME"
+source_file_if_exists_or_fail $DOTDIR/.config/sh/includes/asdf.sh
+ASDF_PLUGIN_HOME=$ASDF_HOME/plugins # Must be done after loading ASDF_HOME
 
 section "Installing asdf"
 
 clone_asdf_repo_to_asdf_home
 
-# Enable `asdf` to get access to `asdf plugin` commands
-source $ASDF_HOME/asdf.sh
+section "Enabling asdf command"
 
-section "Installing asdf Plugins"
+# Enable `asdf` to get access to `asdf plugin` commands
+source_file_if_exists_or_fail $ASDF_HOME/asdf.sh
+
+section "Installing language asdf Plugins"
 
 refresh_apt_cache
 install_node_plugin
 install_python_plugin
 install_ruby_plugin
 
+section "Installing 'direnv' asdf Plugins"
 # Use the `asdf direnv` plugin to do the `direnv` install instead of manually installing
-# install_direnv
-
 install_direnv_plugin
+# install_direnv
 setup_direnv_plugin
