@@ -613,14 +613,14 @@ fi
   alias addd="ssh-add -d"
   alias addD="ssh-add -D"
 
-  addAgent() {
+  function addAgent() {
     local passId=${1:-ssh/default}
     local keyFile=${2:-~/.ssh/id_rsa}
 
     { sleep .1 ; pass show "$passId" ; } | script -q -c "ssh-add $keyFile" /dev/null
   }
 
-  ensureSSHAgent() {
+  function ensureSSHAgent() {
     local passId=$1
     local keyFile=$2
 
