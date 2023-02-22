@@ -148,9 +148,6 @@ DIRENV_ASDF_INTEGRATION_SCRIPT=${XDG_CONFIG_HOME:-$HOME/.config}/direnv/lib/use_
 DIRENV_INSTALL_DIR=~/.local/bin
 DIRENV_VERSION=2.32.2
 
-section "Setup: ASDF post-install"
-
-print_step "Sourcing [$DOTDIR/lib/common.sh]"
 source $DOTDIR/lib/common.sh
 
 # Ensure ASDF_HOME is in environment in case this script is running immediately
