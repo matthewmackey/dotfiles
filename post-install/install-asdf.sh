@@ -102,16 +102,20 @@ install_ruby_plugin() {
   fi
 }
 
-install_direnv() {
-  print_step "Installing [direnv] utility"
-  if [ ! -e $DIRENV_INSTALL_DIR/direnv ]; then
-    # NOTE the 'v' prefix before $DIRENV_VERSION
-    (export bin_path=$DIRENV_INSTALL_DIR ; export version="v$DIRENV_VERSION" ; curl -sfL https://direnv.net/install.sh | bash);
-    echo "[ERROR] installing direnv"
-  else
-    skipping "'direnv' is already installed"
-  fi
-}
+# install_direnv() {
+#   print_step "Installing [direnv] utility"
+#   if [ ! -e $DIRENV_INSTALL_DIR/direnv ]; then
+#     # NOTE the 'v' prefix before $DIRENV_VERSION
+#     (
+#       export bin_path=$DIRENV_INSTALL_DIR
+#       export version="v$DIRENV_VERSION"
+#       curl -sfL https://direnv.net/install.sh | bash
+#     ) || \
+#     echo "[ERROR] installing direnv"
+#   else
+#     skipping "'direnv' is already installed"
+#   fi
+# }
 
 # asdf-direnv - https://github.com/asdf-community/asdf-direnv
 install_direnv_plugin() {
@@ -131,7 +135,7 @@ setup_direnv_plugin() {
   if [ ! -e $DIRENV_ASDF_INTEGRATION_SCRIPT ]; then
     # Install direnv, set version installed as global version (add to ~/.tool-versions), and setup plugin
     asdf direnv setup --shell $SHELL --version $DIRENV_VERSION && \
-    asdf global direnv $DIRENV_VERSION && \
+    asdf global direnv $DIRENV_VERSION || \
     echo "[ERROR] setting up direnv plugin"
   else
     skipping "asdf [direnv] plugin is already setup"
