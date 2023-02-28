@@ -10,6 +10,8 @@
   ALIASES=${DOTDIR}/.config/sh/aliases
   LOCAL_ALIASES=$LOCAL_DOTDIR/aliases
   ZSH_ALIASES=${DOTDIR}/.config/zsh/aliases.zsh
+
+  AWS_ALIASES=${MM_SHELL_PLUGIN_DIR}/aws/common.sh
   DOCKER_ALIASES=${MM_SHELL_PLUGIN_DIR}/docker/common.sh
   GCLOUD_ALIASES=${MM_SHELL_PLUGIN_DIR}/gcloud/common.sh
   KUBECTL_ALIASES=${MM_SHELL_PLUGIN_DIR}/kubectl/common.sh
@@ -31,6 +33,7 @@
   alias lal="vim ${LOCAL_ALIASES}"
   alias zal="vim ${ZSH_ALIASES}"
 
+  alias aal="vim ${AWS_ALIASES}"
   alias dal="vim ${DOCKER_ALIASES}"
   alias gal="vim ${GCLOUD_ALIASES}"
   alias kal="vim ${KUBECTL_ALIASES}"
@@ -40,13 +43,14 @@
 
   alias sa="source ${ALIASES}; \
             source ${ZSH_ALIASES}; \
-            [ -f ${LOCAL_ALIASES} ] && source ${LOCAL_ALIASES} \
+            [ -f ${AWS_ALIASES} ] && source ${AWS_ALIASES} \
             [ -f ${DOCKER_ALIASES} ] && source ${DOCKER_ALIASES} \
             [ -f ${GCLOUD_ALIASES} ] && source ${GCLOUD_ALIASES} \
             [ -f ${KUBECTL_ALIASES} ] && source ${KUBECTL_ALIASES} \
             [ -f ${NODE_ALIASES} ] && source ${NODE_ALIASES} \
             [ -f ${SYSTEMCTL_ALIASES} ] && source ${SYSTEMCTL_ALIASES} \
-            [ -f ${TERRAFORM_ALIASES} ] && source ${TERRAFORM_ALIASES}"
+            [ -f ${TERRAFORM_ALIASES} ] && source ${TERRAFORM_ALIASES} \
+            [ -f ${LOCAL_ALIASES} ] && source ${LOCAL_ALIASES}"
 
   #-------------------------------------
   # Shell - [env]
@@ -183,6 +187,7 @@
 #-------------------------------------------------------------------------------
 # [cd - shortcuts] {{{
 #-------------------------------------------------------------------------------
+  alias cr="cd ~/crypt"
   alias d="cd ~/downloads"
   alias desk="cd ~/Desktop"
   alias l="cd ~/.local/bin"
@@ -201,6 +206,7 @@
   alias profile="cd $PROFILE"
 
 # }}} cd - shortcuts
+
 
 #-------------------------------------------------------------------------------
 # [Non-SSH Aliases] {{{
