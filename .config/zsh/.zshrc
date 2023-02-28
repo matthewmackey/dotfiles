@@ -146,7 +146,19 @@ fi
 # [COMPLETIONS]] {{{
 #---------------------------------------
 fpath=(${ASDF_DIR}/completions $fpath)
-autoload -Uz compinit && compinit
+
+# AWS completer
+# See: https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-completion.html
+_AWS_COMPLETER=/usr/local/bin/aws_completer
+if [ -f $_AWS_COMPLETER ]; then
+  autoload bashcompinit && bashcompinit
+  autoload -Uz compinit && compinit
+  complete -C '/usr/local/bin/aws_completer' aws
+else
+  autoload -Uz compinit && compinit
+fi
+unset _AWS_COMPLETER
+
 # }}}
 
 
