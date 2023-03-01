@@ -275,6 +275,16 @@ vnoremap > >gv
 " Act like D and C
 nnoremap Y y$
 
+"-----------------------------------------
+" Markdown
+"-----------------------------------------
+nnoremap md- yyp0v$hr-o
+nnoremap md= yyp0v$hr=o
+nnoremap md1 I#<Space><Esc>
+nnoremap md2 I##<Space><Esc>
+nnoremap md3 I###<Space><Esc>
+nnoremap md4 I####<Space><Esc>
+nnoremap md5 I#####<Space><Esc>
 
 "----------------------------------------------------------------"
 " Keymaps - Tabs {{{
