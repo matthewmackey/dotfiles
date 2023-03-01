@@ -812,8 +812,10 @@ pomodur() {
 }
 alias pdur="pomodur"
 alias pd="pomodur"
-alias pd1="pomodur 15"
-alias pd2="pomodur 25"
+alias pd1="pomodur 10"
+alias pd15="pomodur 15"
+alias pd2="pomodur 20"
+alias pd25="pomodur 25"
 alias pd3="pomodur 30"
 alias pd35="pomodur 35"
 alias pd4="pomodur 40"
