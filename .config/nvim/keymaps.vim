@@ -47,8 +47,8 @@ nnoremap <silent> K <Cmd>Lspsaga hover_doc<CR>
 " inoremap <silent> <C-K> <Cmd>Lspsaga signature_help<CR>
 
 " Diagnostics
-nnoremap <C-n> :Lspsaga diagnostic_jump_next<CR>
-nnoremap <C-p> :Lspsaga diagnostic_jump_prev<CR>
+" nnoremap <C-n> :Lspsaga diagnostic_jump_next<CR>
+" nnoremap <C-p> :Lspsaga diagnostic_jump_prev<CR>
 " nnoremap <leader>cc :Lspsaga show_cursor_diagnostics<CR>
 " nnoremap <leader>cl :Lspsaga show_line_diagnostics<CR>
 " }}} LspSaga
