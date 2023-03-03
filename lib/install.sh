@@ -175,7 +175,13 @@ setupLocalDotfiles() {
     mkdir desktop
 
     msg "Creating symlink to .desktop files directory in ~/.local/share/applications"
-    create_symlink_with_backup $LOCAL_DOTDIR/desktop ~/.local/share/applications/local_dotdir
+    _LOCAL_SHARE_APP_DIR=~/.local/share/applications
+    if [ ! -d $_LOCAL_SHARE_APP_DIR ]; then
+      msg "Creating directory: $_LOCAL_SHARE_APP_DIR"
+      mkdir -p $_LOCAL_SHARE_APP_DIR
+    fi
+    create_symlink_with_backup $LOCAL_DOTDIR/desktop $_LOCAL_SHARE_APP_DIR/local_dotdir
+    unset _LOCAL_SHARE_APP_DIR
 
     msg "Creating empty local 'aliases' file in repo"
     touch aliases
