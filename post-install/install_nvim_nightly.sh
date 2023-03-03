@@ -68,6 +68,22 @@ replace_global_symlink() {
   ls -l --color=always $_link
 }
 
+install_neovim_python_provider() {
+  print_step "Install Python 3 'neovim' module into default virtualenv if it exists yet"
+
+  if [ ! -z ${DEFAULT_PYTHON+x} ]; then
+    if [ -f $DEFAULT_PYTHON/bin/python3 ]; then
+      msg "Virtualenv exists so installing/re-installing 'neovim' module"
+      $DEFAULT_PYTHON/bin/pip3 install neovim
+    else
+      skipping "Python 3 default virtualenv does NOT exist so NOT installing 'neovim' module"
+      warn "Some parts of Neovim may not work; make sure you run Ansible to install your default Python 3"
+    fi
+  else
+      warn "DEFAULT_PYTHON is not set in the environment so not installing Python 3 'neovim' provider"
+  fi
+}
+
 
 ensure_libfuse_is_installed
 remove_last_download_if_exists
@@ -75,3 +91,4 @@ download_current_nightly_version
 NVIM_NIGHTLY_VERSION=$(get_current_nightly_version_number)
 rename_nightly_version_to_real_version_number
 symlink_global_nvim_to_nightly_version
+install_neovim_python_provider
