@@ -5,12 +5,12 @@
 # -------------------------------------------------------------------------------
 installRemotePackages() {
   print_step "Installing REMOTE packages"
-  sudo apt-get install -y curl vim zsh
+  sudo apt-get install -y curl tmux vim zsh
 }
 
 installLocalPackages() {
   print_step "Installing LOCAL packages"
-  sudo apt-get install -y tmux
+  msg "NONE to install"
 }
 
 installStarship() {
@@ -21,22 +21,6 @@ installStarship() {
     skipping "Starship already installed at [$STARSHIP_EXEC]"
   else
     sh -c "$(curl -fsSL https://starship.rs/install.sh)"
-  fi
-}
-
-installNeovimPythonProvider() {
-  print_step "Install Python 3 'neovim' module into default virtualenv if it exists yet"
-
-  if [ ! -z ${DEFAULT_PYTHON+x} ]; then
-    if [ -f $DEFAULT_PYTHON/bin/python3 ]; then
-      msg "Virtualenv exists so installing/re-installing 'neovim' module"
-      $DEFAULT_PYTHON/bin/pip3 install neovim
-    else
-      skipping "Python 3 default virtualenv does NOT exist so installing module"
-      warn "Some parts of Neovim may not work; make sure you run Ansible to install your default Python 3"
-    fi
-  else
-      warn "DEFAULT_PYTHON is not set in the environment so not installing Python 3 'neovim' provider"
   fi
 }
 
@@ -125,14 +109,14 @@ ensureStdDotConfigDirExists() {
 #-------------------------------------------------------------------------------
 # Config Dir Symlinks
 #-------------------------------------------------------------------------------
-setupRemoteConfigDirSymlinks() {
+setupRemoteDotConfigDirSymlinks() {
   print_step "Setting up REMOTE dotfile symlinks in $STD_DOT_CONFIG_DIR"
   for conf in ${REMOTE_CONFIGS[@]}; do
     create_symlink_with_backup $CONFIG_DIR/$conf $STD_DOT_CONFIG_DIR/$conf
   done
 }
 
-setupLocalConfigDirSymlinks() {
+setupLocalDotConfigDirSymlinks() {
   print_step "Setting up LOCAL dotfile symlinks in $STD_DOT_CONFIG_DIR"
   for conf in ${LOCAL_CONFIGS[@]}; do
     create_symlink_with_backup $CONFIG_DIR/$conf $STD_DOT_CONFIG_DIR/$conf
@@ -151,13 +135,13 @@ setupRemoteHomeDirSymlinks() {
   create_symlink_with_backup $STD_DOT_CONFIG_DIR/readline/inputrc   ~/.inputrc
   create_symlink_with_backup $STD_DOT_CONFIG_DIR/vim                ~/.vim
   create_symlink_with_backup $STD_DOT_CONFIG_DIR/zsh/.zshenv        ~/.zshenv
-
+  create_symlink_with_backup $STD_DOT_CONFIG_DIR/tmux               ~/.tmux
+  create_symlink_with_backup $STD_DOT_CONFIG_DIR/tmux/tmux.conf     ~/.tmux.conf
 }
 
 setupLocalHomeDirSymlinks() {
   print_step "Setting up LOCAL dotfile symlinks in ~/ directory"
-  create_symlink_with_backup $STD_DOT_CONFIG_DIR/tmux               ~/.tmux
-  create_symlink_with_backup $STD_DOT_CONFIG_DIR/tmux/tmux.conf     ~/.tmux.conf
+  msg "NONE to setup"
 }
 
 #-------------------------------------------------------------------------------
@@ -214,10 +198,35 @@ setupLocalDotfiles() {
 #  Dotfile "Profile" Methods
 # -------------------------------------------------------------------------------
 setupMinimalSystem() {
+  installRemotePackages
+
+  # .config Setup
   ensureStdDotConfigDirExists
-  setupRemoteConfigDirSymlinks
+
+  setupRemoteDotConfigDirSymlinks
   setupRemoteHomeDirSymlinks
+
   setupIncludesEnabledSymlinks remote
+}
+
+setupMinimalGuiSystem() {
+  installRemotePackages
+  installStarship
+
+  # .config Setup
+  ensureStdDotConfigDirExists
+
+  setupRemoteDotConfigDirSymlinks
+  setupRemoteHomeDirSymlinks
+
+  setupLocalDotConfigDirSymlinks
+  setupLocalHomeDirSymlinks
+
+  setupIncludesEnabledSymlinks remote
+
+  setupLocalDotfiles
+
+  .config/tmux/install.sh
 }
 
 setupPersonalSystem() {
@@ -227,14 +236,16 @@ setupPersonalSystem() {
 
   # .config Setup
   ensureStdDotConfigDirExists
-  setupRemoteConfigDirSymlinks
-  setupLocalConfigDirSymlinks
-  setupRemoteHomeDirSymlinks
-  setupLocalHomeDirSymlinks
-  setupIncludesEnabledSymlinks local
-  setupLocalDotfiles
 
-  installNeovimPythonProvider
+  setupRemoteDotConfigDirSymlinks
+  setupRemoteHomeDirSymlinks
+
+  setupLocalDotConfigDirSymlinks
+  setupLocalHomeDirSymlinks
+
+  setupIncludesEnabledSymlinks local
+
+  setupLocalDotfiles
 
   .config/tmux/install.sh
   .config/git/install.sh

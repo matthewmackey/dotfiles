@@ -22,6 +22,8 @@ DESCRIPTION
 
   -h  print this help message
 
+  -g  setup a system with a minimal GUI configuration
+
   -m  setup a system with a minimal remote configuration
 
   -p setup a system with a full personal, local GUI configuration
@@ -32,10 +34,13 @@ EOF
 # -------------------------------------------------------------------------------
 #  MAIN
 # -------------------------------------------------------------------------------
-while getopts ":hmp" opt; do
+while getopts ":ghmp" opt; do
   case "$opt" in
     h)
       usage
+      ;;
+    g)
+      setupMinimalGuiSystem
       ;;
     m)
       setupMinimalSystem
