@@ -120,7 +120,8 @@
   #-------------------------------------
   # [crypt]
   #-------------------------------------
-  alias mountcrypt="pass show -c crypt; encfs ~/.crypt ~/crypt"
+  alias mc="pass show -c crypt; encfs ~/.crypt ~/crypt"
+  alias mountcrypt="mc"
 
   #-------------------------------------
   # [xmodmap]
@@ -605,6 +606,7 @@ fi
 
   # SSH Config
   alias sconf="vim ~/.ssh/config"
+  alias sconfd="vim ~/.ssh/conf.d/"
   alias sconfl="vim ~/.ssh/config-local"
   alias sconfg="vim ~/.ssh/conf.d/gcp.conf"
 
