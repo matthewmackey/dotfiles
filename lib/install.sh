@@ -57,6 +57,7 @@ REMOTE_INCLUDES_ENABLED_SH=(
   go
   hacker
   python
+  rust
 )
 
 LOCAL_INCLUDES_ENABLED_SH=(
