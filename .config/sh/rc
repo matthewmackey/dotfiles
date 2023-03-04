@@ -76,9 +76,10 @@ if [ "$SESSION_TYPE" != 'remote/ssh' ]; then
   msg "Loading base16-shell"
 
   source $SH_DOTDIR/base16-shell.rc     # Load BASE16_SHELL
-  [[ -n "$PS1" ]] \
-    && [[ -s "$BASE16_SHELL/profile_helper.sh" ]] \
-      && eval "$("$BASE16_SHELL/profile_helper.sh")"
+
+  [ -n "$PS1" ] && \
+      [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+          source "$BASE16_SHELL/profile_helper.sh"
 fi
 # }}}
 
