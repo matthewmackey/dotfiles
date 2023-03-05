@@ -240,6 +240,26 @@ fi
 #-------------------------------------------------------------------------------
 # [tools] {{{
 #-------------------------------------------------------------------------------
+  runMultiple() {
+    local count=$1
+    shift
+
+    for i in {1..$count}; do
+      $@
+    done
+  }
+
+  # Create functions that will run a command <count> number of times.
+  2()  { runMultiple 2  $@; }
+  3()  { runMultiple 3  $@; }
+  4()  { runMultiple 4  $@; }
+  5()  { runMultiple 5  $@; }
+  6()  { runMultiple 6  $@; }
+  7()  { runMultiple 7  $@; }
+  8()  { runMultiple 8  $@; }
+  9()  { runMultiple 9  $@; }
+  10() { runMultiple 10 $@; }
+
   alias a1="awk '{ print \$1; }'"
   alias a2="awk '{ print \$2; }'"
   alias a3="awk '{ print \$3; }'"
