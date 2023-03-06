@@ -835,11 +835,10 @@ pomodur() {
   gsettings set org.gnome.pomodoro.preferences pomodoro-duration $_secs
 }
 
-# `activate` throws error in zsh (but it still works)
-alias pstart="(activate dbus 2>/dev/null; pomo.py start;)"
-alias pstop="(activate dbus 2>/dev/null; pomo.py stop;)"
-alias pstatus="(activate dbus 2>/dev/null; pomo.py status;)"
-alias ptoggle="(activate dbus 2>/dev/null; pomo.py toggle;)"
+alias pstart="(workon dbus; pomo.py start;)"
+alias pstop="(workon dbus; pomo.py stop;)"
+alias pstatus="(workon dbus; pomo.py status;)"
+alias ptoggle="(workon dbus; pomo.py toggle;)"
 
 alias pdur="pomodur"
 alias pd="pomodur"
