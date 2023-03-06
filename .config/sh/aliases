@@ -1,5 +1,5 @@
 #
-# ~/.config/sh/aliases
+;# ~/.config/sh/aliases
 #
 
 #-------------------------------------------------------------------------------
@@ -833,24 +833,42 @@ pomodur() {
   local _mins=$1
   local _secs=$(($_mins * 60))
   gsettings set org.gnome.pomodoro.preferences pomodoro-duration $_secs
+  pstart
 }
 
-alias pstart="(workon dbus; pomo.py start;)"
-alias pstop="(workon dbus; pomo.py stop;)"
-alias pstatus="(workon dbus; pomo.py status;)"
-alias ptoggle="(workon dbus; pomo.py toggle;)"
+_DBUS_PYTHON=$HOME/virtualenvs/dbus/bin/python3
+_POMO_PY="$_DBUS_PYTHON $(which pomo.py)"
+alias pstatus="$_POMO_PY status"
+alias pstart="$_POMO_PY start; echo 'STARTED\n'; pstatus"
+alias pstop="$_POMO_PY stop; echo 'STOPPED\n'; pstatus"
+alias ptoggle="$_POMO_PY toggle; echo 'TOGGLED\n';pstatus"
 
-alias pdur="pomodur"
+alias pst="pstatus"
+alias psta="pstart"
+alias psto="pstop"
+alias pto="ptoggle"
+unset _DBUS_PYTHON
+unset _POMO_PY
+
 alias pd="pomodur"
 alias pd1="pomodur 10"
+alias pd10="pomodur 10"
 alias pd15="pomodur 15"
+
 alias pd2="pomodur 20"
+alias pd20="pomodur 20"
 alias pd25="pomodur 25"
+
 alias pd3="pomodur 30"
+alias pd30="pomodur 30"
 alias pd35="pomodur 35"
+
 alias pd4="pomodur 40"
+alias pd40="pomodur 40"
 alias pd45="pomodur 45"
+
 alias pd6="pomodur 60"
+alias pd60="pomodur 60"
 
 # Set ticking sound from range of 1-10
 pomovol() {
