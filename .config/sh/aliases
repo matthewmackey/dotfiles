@@ -324,7 +324,9 @@ fi
 
   alias za="zoxide add ."
   alias zq="zoxide query --all --score --list"
+  alias zq.="zoxide query --all --score --list \$(basename \$PWD)"
   alias ztop="for i in {1..10}; do zoxide add .; done"
+
 # }}}
 
 
@@ -832,6 +834,13 @@ pomodur() {
   local _secs=$(($_mins * 60))
   gsettings set org.gnome.pomodoro.preferences pomodoro-duration $_secs
 }
+
+# `activate` throws error in zsh (but it still works)
+alias pstart="(activate dbus 2>/dev/null; pomo.py start;)"
+alias pstop="(activate dbus 2>/dev/null; pomo.py stop;)"
+alias pstatus="(activate dbus 2>/dev/null; pomo.py status;)"
+alias ptoggle="(activate dbus 2>/dev/null; pomo.py toggle;)"
+
 alias pdur="pomodur"
 alias pd="pomodur"
 alias pd1="pomodur 10"
@@ -850,6 +859,7 @@ pomovol() {
   local _tick_percent=$(($_tick_level * 0.1))
   gsettings set org.gnome.pomodoro.plugins.sounds ticking-sound-volume $_tick_percent
 }
+
 alias pvol="pomovol"
 alias pv="pomovol"
 
