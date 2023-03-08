@@ -1,5 +1,5 @@
 #
-;# ~/.config/sh/aliases
+# ~/.config/sh/aliases
 #
 
 #-------------------------------------------------------------------------------
@@ -248,17 +248,19 @@ fi
       $@
     done
   }
-
-  # Create functions that will run a command <count> number of times.
-  2()  { runMultiple 2  $@; }
-  3()  { runMultiple 3  $@; }
-  4()  { runMultiple 4  $@; }
-  5()  { runMultiple 5  $@; }
-  6()  { runMultiple 6  $@; }
-  7()  { runMultiple 7  $@; }
-  8()  { runMultiple 8  $@; }
-  9()  { runMultiple 9  $@; }
-  10() { runMultiple 10 $@; }
+  # Bash doesn't allow function names that start with numbers
+  if [ "${SHELL##*/}" = "zsh" ]; then
+    # Create functions that will run a command <count> number of times.
+    2()  { runMultiple 2  $@; }
+    3()  { runMultiple 3  $@; }
+    4()  { runMultiple 4  $@; }
+    5()  { runMultiple 5  $@; }
+    6()  { runMultiple 6  $@; }
+    7()  { runMultiple 7  $@; }
+    8()  { runMultiple 8  $@; }
+    9()  { runMultiple 9  $@; }
+    10() { runMultiple 10 $@; }
+  fi
 
   alias a1="awk '{ print \$1; }'"
   alias a2="awk '{ print \$2; }'"
@@ -792,6 +794,20 @@ tms() {
 #---------------------------------------------
 # gnome-pomodoro Applet
 #---------------------------------------------
+_DBUS_PYTHON=$HOME/virtualenvs/dbus/bin/python3
+_POMO_PY="$_DBUS_PYTHON $(which pomo.py)"
+alias pstatus="$_POMO_PY status"
+alias pstart="$_POMO_PY start; echo 'STARTED\n'; pstatus"
+alias pstop="$_POMO_PY stop; echo 'STOPPED\n'; pstatus"
+alias ptoggle="$_POMO_PY toggle; echo 'TOGGLED\n';pstatus"
+
+alias pst="pstatus"
+alias psta="pstart"
+alias psto="pstop"
+alias pto="ptoggle"
+unset _DBUS_PYTHON
+unset _POMO_PY
+
 # > gsettings list-recursively org.gnome.pomodoro
 # org.gnome.pomodoro.preferences show-screen-notifications false
 # org.gnome.pomodoro.preferences short-break-duration 180.0
@@ -835,20 +851,6 @@ pomodur() {
   gsettings set org.gnome.pomodoro.preferences pomodoro-duration $_secs
   pstart
 }
-
-_DBUS_PYTHON=$HOME/virtualenvs/dbus/bin/python3
-_POMO_PY="$_DBUS_PYTHON $(which pomo.py)"
-alias pstatus="$_POMO_PY status"
-alias pstart="$_POMO_PY start; echo 'STARTED\n'; pstatus"
-alias pstop="$_POMO_PY stop; echo 'STOPPED\n'; pstatus"
-alias ptoggle="$_POMO_PY toggle; echo 'TOGGLED\n';pstatus"
-
-alias pst="pstatus"
-alias psta="pstart"
-alias psto="pstop"
-alias pto="ptoggle"
-unset _DBUS_PYTHON
-unset _POMO_PY
 
 alias pd="pomodur"
 alias pd1="pomodur 10"
