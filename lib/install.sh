@@ -37,6 +37,7 @@ REMOTE_CONFIGS=(
   psql
   readline
   sh
+  tmux
   vim
   zsh
 )
