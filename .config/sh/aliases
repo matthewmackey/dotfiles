@@ -248,8 +248,13 @@ fi
       $@
     done
   }
+
   # Bash doesn't allow function names that start with numbers
-  if [ "${SHELL##*/}" = "zsh" ]; then
+  #
+  # "Checking $BASH_VERSION is a good method of determining which shell is running. $SHELL
+  #  does not necessarily give the correct answer." - https://tldp.org/LDP/abs/html/internalvariables.html
+  #
+  if [ -z "$BASH_VERSION" ]; then
     # Create functions that will run a command <count> number of times.
     2()  { runMultiple 2  $@; }
     3()  { runMultiple 3  $@; }
@@ -531,6 +536,28 @@ fi
 
 
 #-------------------------------------------------------------------------------
+# [Jupyter] {{{
+#-------------------------------------------------------------------------------
+_JUPYTER_LAB_BIN="$VIRTUALENVWRAPPER_HOOK_DIR/jupyter/bin/jupyter-lab"
+_JUPYTER_PORT=9999
+_WORK_NOTES_DIR=$HOME/work/notes
+
+alias jl="jupyter lab 2>/dev/null"
+
+# Workdir must come before options (??)
+alias jnotes="$_JUPYTER_LAB_BIN $_WORK_NOTES_DIR --port=$_JUPYTER_PORT --port-retries=0 --no-browser 2>/dev/null >/dev/null &"
+
+# See: https://stackoverflow.com/questions/60143676/jupyter-notebook-the-port-is-already-in-use-trying-another-port
+alias killjupyter="kill $(lsof -t -i:$_JUPYTER_PORT)"
+
+unset _JUPYTER_LAB_BIN
+unset _JUPYTER_PORT
+unset _WORK_NOTES_DIR
+
+# }}}
+
+
+#-------------------------------------------------------------------------------
 # [Maven] {{{
 #-------------------------------------------------------------------------------
   alias mvcc="mvn clean compile"
@@ -561,22 +588,6 @@ fi
 
 
 #-------------------------------------------------------------------------------
-# [proxies] {{{
-#-------------------------------------------------------------------------------
-  alias pxoff="tmuxsendall '. proxytoggle off'"
-  alias pxon="tmuxsendall '. proxytoggle on'"
-  alias pxon8090="tmuxsendall '. proxytoggle on 127.0.0.1 8090'"
-
-  alias pxoff=". proxytoggle off"
-  alias pxon=". proxytoggle on"
-  alias pxon8090=". proxytoggle on 127.0.0.1 8090"
-
-  alias pxs="proxystatus"
-  alias pxt="proxytoggle"
-# }}}
-
-
-#-------------------------------------------------------------------------------
 # [node/npm] {{{
 #-------------------------------------------------------------------------------
   alias jqp="jq < package.json"
@@ -592,6 +603,22 @@ fi
   alias php='docker run -it --rm --name php-cli-tmp php:latest php -a'
   alias phpcli='php'
   alias phpscript='docker run -it --rm --name php-script-tmp -v $PWD:/usr/src/myapp -w /usr/src/myapp php:latest php'
+# }}}
+
+
+#-------------------------------------------------------------------------------
+# [proxies] {{{
+#-------------------------------------------------------------------------------
+  alias pxoff="tmuxsendall '. proxytoggle off'"
+  alias pxon="tmuxsendall '. proxytoggle on'"
+  alias pxon8090="tmuxsendall '. proxytoggle on 127.0.0.1 8090'"
+
+  alias pxoff=". proxytoggle off"
+  alias pxon=". proxytoggle on"
+  alias pxon8090=". proxytoggle on 127.0.0.1 8090"
+
+  alias pxs="proxystatus"
+  alias pxt="proxytoggle"
 # }}}
 
 
@@ -807,6 +834,8 @@ alias psto="pstop"
 alias pto="ptoggle"
 unset _DBUS_PYTHON
 unset _POMO_PY
+
+alias pomokill="pkill pomodoro && pstart"
 
 # > gsettings list-recursively org.gnome.pomodoro
 # org.gnome.pomodoro.preferences show-screen-notifications false
