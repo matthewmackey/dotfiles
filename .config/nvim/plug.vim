@@ -45,6 +45,9 @@ call plug#begin(data_dir . '/../plugged')
   " Tag bar
   Plug 'liuchengxu/vista.vim'
 
+  " Wiki
+  Plug 'vimwiki/vimwiki'
+
   "------------------------------------------------------------
   " Languages - Generic
   "------------------------------------------------------------
@@ -52,10 +55,20 @@ call plug#begin(data_dir . '/../plugged')
   Plug 'vim-test/vim-test' " Generic test framework
 
   "------------------------------------------------------------
+  " Languages - HTML
+  "------------------------------------------------------------
+  Plug 'mattn/emmet-vim'
+
+  "------------------------------------------------------------
   " Languages - Go
   "------------------------------------------------------------
   Plug 'fatih/vim-go'
   Plug 'AndrewRadev/splitjoin.vim'
+
+  "------------------------------------------------------------
+  " Languages - Kotlin
+  "------------------------------------------------------------
+  Plug 'udalov/kotlin-vim'
 
   "-------------------------------------------------------------------------------
   " nvim-specific Plugins {{{
