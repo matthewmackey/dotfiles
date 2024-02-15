@@ -89,6 +89,7 @@
   fi
 
   alias ll='ls -alhF'
+  alias lla='ls -lhF'
 
   #-------------------------------------
   # [clear]
@@ -96,6 +97,7 @@
   alias c="clear"
   alias cl="clear"
   alias cll="cl; pwd; ll"
+  alias clla="cl; pwd; lla"
 
   #-------------------------------------
   # [cd]
@@ -190,9 +192,15 @@
 #-------------------------------------------------------------------------------
   alias cr="cd ~/crypt"
   alias d="cd ~/downloads"
+  alias docs="cd ~/docs"
   alias desk="cd ~/Desktop"
   alias l="cd ~/.local/bin"
   alias m="cd ~/mmbin"
+  alias media="cd ~/media"
+  alias notes="cd ~/notes"
+  alias pdocs="cd ~/docs/personal"
+  alias pics="cd ~/media/pics"
+  alias srv="cd ~/srv"
   alias tmp="cd ~/tmp"
 
   alias ldot="cd $LOCAL_DOTDIR"
@@ -202,6 +210,7 @@
   alias pconf="cd $PERSONAL/config-mgmt/ansible_root"
   alias pdot="cd $PERSONAL/dotfiles"
   alias pn="cd $PERSONAL/notes"
+  alias pnotes="cd $PERSONAL/notes"
 
   # profile shorcuts
   alias profile="cd $PROFILE"
@@ -699,7 +708,7 @@ unset _WORK_NOTES_DIR
 # [tmux] {{{
 #-------------------------------------------------------------------------------
 # See ~/bin/tm
-  alias 0="tmux switch-client -t 0-SHELL"
+  alias 0="tmux switch-client -t 0-SHELL || tmux attach -t 0-SHELL"
 
   alias tma="tmux attach -t"
   alias tmls="tmux ls"
@@ -836,6 +845,7 @@ unset _DBUS_PYTHON
 unset _POMO_PY
 
 alias pomokill="pkill pomodoro && pstart"
+alias pk="pkill pomodoro && pstart"
 
 # > gsettings list-recursively org.gnome.pomodoro
 # org.gnome.pomodoro.preferences show-screen-notifications false
@@ -883,12 +893,14 @@ pomodur() {
 
 alias pd="pomodur"
 alias pd1="pomodur 10"
+alias pd5="pomodur 5"
 alias pd10="pomodur 10"
 alias pd15="pomodur 15"
 
 alias pd2="pomodur 20"
 alias pd20="pomodur 20"
 alias pd25="pomodur 25"
+alias pd28="pomodur 28"
 
 alias pd3="pomodur 30"
 alias pd30="pomodur 30"
