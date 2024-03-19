@@ -192,12 +192,12 @@
 #-------------------------------------------------------------------------------
   alias cr="cd ~/crypt"
   alias d="cd ~/downloads"
-  alias docs="cd ~/docs"
+  # alias docs="cd ~/docs"
   alias desk="cd ~/Desktop"
   alias l="cd ~/.local/bin"
   alias m="cd ~/mmbin"
   alias media="cd ~/media"
-  alias notes="cd ~/notes"
+  # alias notes="cd ~/notes"
   alias pdocs="cd ~/docs/personal"
   alias pics="cd ~/media/pics"
   alias srv="cd ~/srv"
@@ -208,9 +208,12 @@
   # .personal shorcuts
   alias pbin="cd $PERSONAL/bin"
   alias pconf="cd $PERSONAL/config-mgmt/ansible_root"
+  alias pdocs="cd $PERSONAL/docs"
+  alias docs="cd $PERSONAL/docs"
   alias pdot="cd $PERSONAL/dotfiles"
   alias pn="cd $PERSONAL/notes"
   alias pnotes="cd $PERSONAL/notes"
+  alias notes="cd $PERSONAL/notes"
 
   # profile shorcuts
   alias profile="cd $PROFILE"
