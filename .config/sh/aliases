@@ -191,7 +191,7 @@
 # [cd - shortcuts] {{{
 #-------------------------------------------------------------------------------
   alias cr="cd ~/crypt"
-  alias d="cd ~/downloads"
+  # alias d="cd ~/downloads"
   # alias docs="cd ~/docs"
   alias desk="cd ~/Desktop"
   alias l="cd ~/.local/bin"
@@ -209,6 +209,7 @@
   alias pbin="cd $PERSONAL/bin"
   alias pconf="cd $PERSONAL/config-mgmt/ansible_root"
   alias pdocs="cd $PERSONAL/docs"
+  alias d="cd $PERSONAL/docs"
   alias docs="cd $PERSONAL/docs"
   alias pdot="cd $PERSONAL/dotfiles"
   alias pn="cd $PERSONAL/notes"
