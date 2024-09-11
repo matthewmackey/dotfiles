@@ -6,6 +6,8 @@
 # color scheme; see link below for more info:
 #    - https://superuser.com/questions/337985/how-can-i-achieve-separate-colors-for-current-local-and-remote-ref-names-when
 #-------------------------------------------------------------------------------
+
+
 [commit]
   template = ~/.config/git/.gitmessage.txt
 
@@ -13,6 +15,8 @@
   autocrlf = input
   editor = vim
   excludesfile = ~/.config/git/.gitignore_global
+  # From: delta
+  pager = delta
   whitespace = blank-at-eol,blank-at-eof,space-before-tab
 
 [credential]
@@ -21,18 +25,55 @@
 [credential "https://github.com"]
 #  username = matthewmachaj
 
+[diff]
+  colorMoved = default
+
 [format]
   pretty = fuller
   pretty = medium
 
 [merge]
   #tool = ??
+  # From: delta
+  conflictstyle = diff3
 
 [push]
-  #default = simple
+  # SEE: https://git-scm.com/docs/git-config#Documentation/git-config.txt-pushautoSetupRemote
+  # autoUpdateRemote = true
+  # default = current
+
+#-------------------------------------------------------------------------------
+# delta diff tool:
+# https://dandavison.github.io/delta/configuration.html
+#-------------------------------------------------------------------------------
+[interactive]
+  # From: delta
+    # diffFilter = delta --color-only --features=interactive
+    diffFilter = delta --color-only
+
+[delta]
+    line-numbers = true
+    navigate = true
+    features = decorations
+    # side-by-side = true
+
+# [delta "interactive"]
+#     keep-plus-minus-markers = false
+
+[delta "decorations"]
+    commit-decoration-style = blue ol
+    commit-style = raw
+    file-style = omit
+    hunk-header-decoration-style = blue box
+    hunk-header-file-style = red
+    hunk-header-line-number-style = "#067a00"
+    hunk-header-style = file line-number syntax
 
 # Put [alias] (almost) last b/c it's a really long section and makes it hard to find the other sections
 [alias]
+  # From: https://www.youtube.com/watch?v=c5OPn_dyNcc
+  undo = reset --soft HEAD^
+
   #----------------------------------
   # Add
   #----------------------------------
