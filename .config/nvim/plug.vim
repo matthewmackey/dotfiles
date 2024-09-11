@@ -54,10 +54,16 @@ call plug#begin(data_dir . '/../plugged')
   Plug 'dense-analysis/ale'
   Plug 'vim-test/vim-test' " Generic test framework
 
+  " post install (yarn install | npm install) then load plugin only for editing supported files
+  Plug 'prettier/vim-prettier', {
+    \ 'do': 'yarn install --frozen-lockfile --production',
+    \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
+
   "------------------------------------------------------------
   " Languages - HTML
   "------------------------------------------------------------
   Plug 'mattn/emmet-vim'
+  Plug 'https://github.com/digitaltoad/vim-pug.git'
 
   "------------------------------------------------------------
   " Languages - Go
