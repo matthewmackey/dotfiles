@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+ set -x
 
 #-------------------------------------------------------------------------------
 # Taken pretty much w/o modification from (there was no licensing on the git
@@ -42,6 +43,39 @@
 #         libinput Drag Lock Buttons (338):       <no items>
 #         libinput Horizontal Scroll Enabled (339):       1
 
+#-------------------------------------------------------------------------------
+# Default Properties for Kensington from:
+# https://github.com/ArtiomSu/kensington-expert-trackball-linux-config/blob/master/Kensington_Expert_Setup.sh
+#
+# Device 'Kensington Expert Wireless TB Mouse':
+#	Device Enabled (153):	1
+#	Coordinate Transformation Matrix (155):	1.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 0.000000, 1.000000
+#	libinput Natural Scrolling Enabled (289):	0
+#	libinput Natural Scrolling Enabled Default (290):	0
+#	libinput Scroll Methods Available (291):	0, 0, 1
+#	libinput Scroll Method Enabled (292):	0, 0, 0
+#	libinput Scroll Method Enabled Default (293):	0, 0, 0
+#	libinput Button Scrolling Button (294):	2
+#	libinput Button Scrolling Button Default (295):	2
+#	libinput Button Scrolling Button Lock Enabled (296):	0
+#	libinput Button Scrolling Button Lock Enabled Default (297):	0
+#	libinput Middle Emulation Enabled (298):	0
+#	libinput Middle Emulation Enabled Default (299):	0
+#	libinput Accel Speed (300):	0.000000
+#	libinput Accel Speed Default (301):	0.000000
+#	libinput Accel Profiles Available (302):	1, 1
+#	libinput Accel Profile Enabled (303):	1, 0
+#	libinput Accel Profile Enabled Default (304):	1, 0
+#	libinput Left Handed Enabled (305):	0
+#	libinput Left Handed Enabled Default (306):	0
+#	libinput Send Events Modes Available (274):	1, 0
+#	libinput Send Events Mode Enabled (275):	0, 0
+#	libinput Send Events Mode Enabled Default (276):	0, 0
+#	Device Node (277):	"/dev/input/event9"
+#	Device Product ID (278):	1149, 32792
+#	libinput Drag Lock Buttons (307):	<no items>
+#	libinput Horizontal Scroll Enabled (308):	1
+
 mouse_name="Kensington Expert Wireless TB Mouse"
 
 check=$(xinput | grep "$mouse_name")
@@ -55,12 +89,28 @@ if [[ -n "$check" ]]; then
   # Disable natural scrolling -> this means we roll down to scroll down and roll up to scroll up.
   xinput set-prop $mouse_id "libinput Natural Scrolling Enabled" 0
 
-  # disable acceleration for the ball
-  xinput set-prop $mouse_id "libinput Accel Profile Enabled" 0, 1
-
-  # allow scrolling by holding middle mouse button and using the ball to scroll ( really smooth and fast ). 
+  # allow scrolling by holding middle mouse button and using the ball to scroll ( really smooth and fast ).
   xinput set-prop $mouse_id "libinput Scroll Method Enabled" 0, 0, 1
 
   # allow the remmaped middle mouse to be used for middle mouse scroll
   xinput set-prop $mouse_id "libinput Button Scrolling Button" 3
+
+  #----------------------------------------------------------------------
+  # Mouse Acceleration / Speed
+  #
+  # See:
+  #
+  #  - https://wiki.archlinux.org/title/Mouse_acceleration#Changing_the_acceleration
+  #
+  #----------------------------------------------------------------------
+  # disable acceleration for the ball
+  # xinput set-prop $mouse_id "libinput Accel Profile Enabled" 0, 1
+
+  # enable acceleration for the ball
+  xinput set-prop $mouse_id "libinput Accel Profile Enabled" 1, 0
+
+  # Should be between [-1, 1]
+  xinput set-prop $mouse_id "libinput Accel Speed" 1
 fi
+
+
