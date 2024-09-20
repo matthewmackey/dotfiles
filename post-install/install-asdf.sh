@@ -146,11 +146,11 @@ setup_direnv_plugin() {
 #-------------------------------------------------------------------------------
 # MAIN
 #-------------------------------------------------------------------------------
-ASDF_VERSION=v0.10.2
+ASDF_VERSION=v0.14.1
 APT_CACHE_LAST_UPDATE_MINS=60
 DIRENV_ASDF_INTEGRATION_SCRIPT=${XDG_CONFIG_HOME:-$HOME/.config}/direnv/lib/use_asdf.sh
-DIRENV_INSTALL_DIR=~/.local/bin
-DIRENV_VERSION=2.32.2
+# DIRENV_INSTALL_DIR=~/.local/bin
+DIRENV_VERSION=2.34.0
 
 source $DOTDIR/lib/common.sh
 
@@ -178,6 +178,6 @@ install_ruby_plugin
 
 section "Installing 'direnv' asdf Plugins"
 # Use the `asdf direnv` plugin to do the `direnv` install instead of manually installing
-install_direnv_plugin
 # install_direnv
+install_direnv_plugin
 setup_direnv_plugin
