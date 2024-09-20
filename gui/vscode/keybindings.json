@@ -15,7 +15,7 @@
    * Toggle Side-Bar (one w/ Explorer tab)
    */
   {
-    "key": "ctrl+b s",
+    "key": "ctrl+a s",
     "command": "workbench.action.toggleSidebarVisibility"
   },
   /**
@@ -46,7 +46,7 @@
    * Close editor
    */
   {
-    "key": "ctrl+b x",
+    "key": "ctrl+a x",
     "command": "workbench.action.closeActiveEditor"
   },
   /**
@@ -96,7 +96,7 @@
    * Switch between tab groups
    */
   {
-    "key": "ctrl+b o",
+    "key": "ctrl+a o",
     "command": "workbench.action.navigateEditorGroups"
   },
   /**
@@ -118,4 +118,17 @@
     "key": "ctrl+l",
     "command": "workbench.action.navigateRight"
   },
+  /*****************************************************************************
+   * Terminal
+   ****************************************************************************/
+  {
+    "key": "ctrl+alt+q",
+    "command": "workbench.action.toggleMaximizedPanel"
+    // "when": "!terminalFocus"
+  }
+  // {
+  //   "key": "ctrl+alt+q",
+  //   "command": "workbench.action.toggleMaximizedPanel",
+  //   "when": "!terminalFocus"
+  // }
 ]
