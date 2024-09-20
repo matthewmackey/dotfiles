@@ -72,6 +72,7 @@ alias -g so="| sort"
 alias -g s,="| sops -d --input-type yaml --output-type yaml /dev/stdin"
 alias -g y='| yh'
 alias -g Y='-oyaml| yh'
+alias -g W='| wc -l'
 alias -g 1.='../'
 alias -g 2.='../../'
 alias -g 3.='../../../'
