@@ -10,6 +10,9 @@ export VISUAL="$EDITOR"
 # Standard XDG variables:
 export XDG_CONFIG_HOME=$HOME/.config
 
+# Add flatpak share dirs so that we can get flatpak .desktop files to work
+export XDG_DATA_DIRS="/var/lib/flatpak/exports/share:$XDG_DATA_DIRS"
+export XDG_DATA_DIRS="/home/mmackey/.local/share/flatpak/exports/share:$XDG_DATA_DIRS"
 
 # machine-agnostic dotfiles & configuration
 export PERSONAL=$HOME/.personal
