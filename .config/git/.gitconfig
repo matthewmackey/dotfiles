@@ -16,7 +16,7 @@
   editor = vim
   excludesfile = ~/.config/git/.gitignore_global
   # From: delta
-  pager = delta
+  ; pager = delta
   whitespace = blank-at-eol,blank-at-eof,space-before-tab
 
 [credential]
@@ -54,20 +54,20 @@
 [delta]
     line-numbers = true
     navigate = true
-    features = decorations
+    ; features = decorations
     # side-by-side = true
 
 # [delta "interactive"]
 #     keep-plus-minus-markers = false
 
 [delta "decorations"]
-    commit-decoration-style = blue ol
-    commit-style = raw
-    file-style = omit
-    hunk-header-decoration-style = blue box
-    hunk-header-file-style = red
-    hunk-header-line-number-style = "#067a00"
-    hunk-header-style = file line-number syntax
+    # commit-decoration-style = blue ol
+    # commit-style = raw
+    # file-style = omit
+    # hunk-header-decoration-style = blue box
+    # hunk-header-file-style = red
+    # hunk-header-line-number-style = "#067a00"
+    # hunk-header-style = file line-number syntax
 
 # Put [alias] (almost) last b/c it's a really long section and makes it hard to find the other sections
 [alias]
