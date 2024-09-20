@@ -126,6 +126,11 @@
   alias mountcrypt="mc"
 
   #-------------------------------------
+  # [desktop]
+  #-------------------------------------
+  alias cs="createshortcut"
+
+  #-------------------------------------
   # [xmodmap]
   #-------------------------------------
   alias xmboth="xmodmap ~/.config/xmodmap/.xmodmap-both_escape"
@@ -170,6 +175,7 @@
 
   # Git/Gitlab
   alias gitconf="vim ${DOTDIR}/git/.gitconfig"
+  alias gitconfg="vim ~/.gitconfig"
   alias glb="vim .gitlab-ci.yml"
 
   # TMUX
@@ -191,9 +197,13 @@
 # [cd - shortcuts] {{{
 #-------------------------------------------------------------------------------
   alias cr="cd ~/crypt"
-  # alias d="cd ~/downloads"
-  # alias docs="cd ~/docs"
+  alias apps="cd ~/Applications"
+  alias debs="cd ~/downloads/debs"
   alias desk="cd ~/Desktop"
+  alias dsk="cd ~/Desktop"
+  # alias docs="cd ~/docs"
+  alias down="cd ~/downloads"
+  alias dwn="cd ~/downloads"
   alias l="cd ~/.local/bin"
   alias m="cd ~/mmbin"
   alias media="cd ~/media"
@@ -211,7 +221,7 @@
   alias pdocs="cd $PERSONAL/docs"
   alias d="cd $PERSONAL/docs"
   alias docs="cd $PERSONAL/docs"
-  alias pdot="cd $PERSONAL/dotfiles"
+  alias pdot="cd $PERSONAL/dotfiles/.config"
   alias pn="cd $PERSONAL/notes"
   alias pnotes="cd $PERSONAL/notes"
   alias notes="cd $PERSONAL/notes"
@@ -740,7 +750,7 @@ unset _WORK_NOTES_DIR
 # [tmux] {{{
 #-------------------------------------------------------------------------------
 # See ~/bin/tm
-  alias 0="tmux switch-client -t 0-SHELL || tmux attach -t 0-SHELL"
+  alias 0="if ! tmux ls | grep -q 0-SHELL; then tmux new-session -s 0-SHELL; else tmux switch-client -t 0-SHELL || tmux attach -t 0-SHELL; fi"
 
   alias tma="tmux attach -t"
   alias tmls="tmux ls"
@@ -954,6 +964,10 @@ pomovol() {
 
 alias pvol="pomovol"
 alias pv="pomovol"
+
+for i in {0..10}; do
+  alias pv$i="pomovol $i"
+done
 
 
 # vim: set ft=sh foldmarker={{{,}}} foldmethod=marker foldlevel=0 :
