@@ -4,7 +4,10 @@ if filereadable(expand("~/.local/share/nvim/plugged/nvim-base16/colors/base16-30
       \ && filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   set background=dark
+  " Default:
   colorscheme base16-gruvbox-dark-medium
+
+  " Source a colorscheme override
   source ~/.vimrc_background
 endif
 
