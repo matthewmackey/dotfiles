@@ -28,6 +28,8 @@ export DOTDIR=$PERSONAL/dotfiles
 export PROFILE_DOTDIR=$PROFILE/dotfiles
 export LOCAL_DOTDIR=$HOME/.local/dotfiles
 
+# ASDF
+export ASDF_HOME=~/.asdf
 
 # SSH
 export SSH_LOCAL_CONFIG_DIR=$HOME/.ssh/conf.d
