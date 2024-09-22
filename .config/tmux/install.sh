@@ -5,7 +5,10 @@ set -o pipefail
 
 source $DOTDIR/lib/common.sh
 
+
 _TMUX_PLUGIN_MANAGER_PATH=~/.config/tmux/plugins
+_TMUX_RESURRECT_DIR=~./config/tmux/resurrect
+
 
 print_step "Installing Tmux Plugin Manager (TPM)"
 if [ ! -d $_TMUX_PLUGIN_MANAGER_PATH/tpm/.git ]; then
@@ -31,6 +34,18 @@ print_step "Installing TPM Plugins"
 $_TMUX_PLUGIN_MANAGER_PATH/tpm/bin/install_plugins
 # alert "TMUX Note" "hit Prefix+I to install Tmux TPM plugins"
 
+# It seems that tmux-resurrect will not create this directory and seesions
+# will therefore not be stored unless this is manually created - ?? not sure why
+# this is the case.
+print_step "Making tmux-resurrect directory exists so resurrect data can be stored"
+if [ ! -d "$_TMUX_RESURRECT_DIR" ]; then
+  mkdir -p "$_TMUX_RESURRECT_DIR"
+  msg "tmux-resurrect directory successfully created"
+else
+  skipping "tmux-resurrect directory already exists"
+fi
+
+unset _TMUX_RESURRECT_DIR
 unset _TMUX_PLUGIN_MANAGER_PATH
 
 if ! command -v xsel >/dev/null && ! command -v xclip >/dev/null ; then
