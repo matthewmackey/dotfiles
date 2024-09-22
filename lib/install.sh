@@ -1,4 +1,12 @@
 # -------------------------------------------------------------------------------
+# CONSTANTS
+# -------------------------------------------------------------------------------
+# TODO: figure out a better spot to put these b/c they are duplicated in the
+# bootstrap repo as well
+DEFAULT_GITHUB_NAME="Matthew Mackey"
+DEFAULT_GITHUB_EMAIL="21043873+matthewmackey@users.noreply.github.com"
+
+# -------------------------------------------------------------------------------
 # Dependency Installation
 # -------------------------------------------------------------------------------
 installRemotePackages() {
@@ -127,7 +135,7 @@ setupLocalDotConfigDirSymlinks() {
 # Home Dir Symlinks
 #-------------------------------------------------------------------------------
 setupRemoteHomeDirSymlinks() {
-  print_step "Setting up REMOTE dotfile symlinks in ~/ directory"
+  print_step "Setting up REMOTE dotfile symlinks in \$HOME directory"
   create_symlink_with_backup $STD_DOT_CONFIG_DIR/bash/.bash_profile ~/.bash_profile
   create_symlink_with_backup $STD_DOT_CONFIG_DIR/bash/.bashrc       ~/.bashrc
   create_symlink_with_backup $STD_DOT_CONFIG_DIR/git/.gitconfig     ~/.gitconfig
@@ -140,7 +148,7 @@ setupRemoteHomeDirSymlinks() {
 }
 
 setupLocalHomeDirSymlinks() {
-  print_step "Setting up LOCAL dotfile symlinks in ~/ directory"
+  print_step "Setting up LOCAL dotfile symlinks in \$HOME directory"
   msg "NONE to setup"
 }
 
@@ -150,6 +158,8 @@ setupLocalHomeDirSymlinks() {
 setupIncludesEnabledSymlinks() {
   # Valid values: remote|local
   local include_type=$1
+
+  print_step "Setting up [$include_type] includes-enabled symlinks"
 
   for shell in sh bash zsh; do
     includes_enabled_var=${include_type^^}_INCLUDES_ENABLED_${shell^^}[@]
@@ -173,6 +183,12 @@ setupLocalDotfiles() {
     cd $LOCAL_DOTDIR
     git init
 
+    msg "Setting local git config for [user.name]"
+    git config --local user.name "$DEFAULT_GITHUB_NAME"
+
+    msg "Setting local git config for [user.email]"
+    git config --local user.email "$DEFAULT_GITHUB_EMAIL"
+
     msg "Creating empty 'desktop' directory in repo for .desktop files"
     mkdir desktop
 
@@ -191,9 +207,19 @@ setupLocalDotfiles() {
     msg "Creating empty local 'rc' file in repo"
     touch rc
 
-    msg "Committing empty local aliases/rc files"
-    git add aliases rc
-    git commit -m"Initial commit - adding empty aliases/rc files"
+    # TODO: fix dependency with .config/tmux/install.sh in the dotfiles repo that
+    # needs this local tmux.conf file to exist or that script will fail; that
+    # script script (or actually tmux.conf that sources this file) should be
+    # more robust
+    msg "Creating empty local 'tmux.conf' file in repo"
+    touch tmux.conf
+
+    msg "Committing empty local aliases/rc/tmux.conf files"
+    git add aliases rc tmux.conf
+    git commit -m"Initial commit - adding empty aliases/rc/tmux.conf files"
+
+    msg "Renaming 'master' branch to 'main'"
+    git branch -m main
   else
     skipping "Local dotfiles directory at $LOCAL_DOTDIR already exists"
   fi
@@ -232,7 +258,7 @@ setupMinimalGuiSystem() {
 
   setupLocalDotfiles
 
-  .config/tmux/install.sh
+  $DOTDIR/.config/tmux/install.sh
 }
 
 setupPersonalSystem() {
@@ -253,12 +279,12 @@ setupPersonalSystem() {
 
   setupLocalDotfiles
 
-  .config/tmux/install.sh
-  .config/git/install.sh
+  $DOTDIR/.config/tmux/install.sh
+  $DOTDIR/.config/git/install.sh
 
-  desktop/install.sh
+  $DOTDIR/desktop/install.sh
 
-  gui/vscode/install.sh
+  $DOTDIR/gui/vscode/install.sh
 
   # NOT for remote machines - TODO figure out how to flag when to run these
   # ssh/install.sh
