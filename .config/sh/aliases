@@ -236,8 +236,14 @@
 # [Non-SSH Aliases] {{{
 #-------------------------------------------------------------------------------
 if [ "$SESSION_TYPE" != 'remote/ssh' ]; then
-  alias cat="bat"
-  alias vim="nvim"
+  if command -v bat >/dev/null; then
+    alias cat="bat"
+  fi
+
+  if command -v nvim >/dev/null; then
+    alias vim="nvim"
+  fi
+
   alias nvs="if [ ! -f \$PWD/Session.vim ]; then echo 'No Session.vim in PWD' && false; else nvim -S Session.vim; fi"
 fi
 # }}}  Non-SSH Aliases
