@@ -217,7 +217,7 @@
 
   # .personal shorcuts
   alias pbin="cd $PERSONAL/bin"
-  alias pconf="cd $PERSONAL/config-mgmt/ansible_root"
+  alias pconf="cd $PERSONAL/config-mgmt"
   alias pdocs="cd $PERSONAL/docs"
   alias d="cd $PERSONAL/docs"
   alias docs="cd $PERSONAL/docs"
