@@ -924,6 +924,12 @@ alias pk="pkill pomodoro && pstart"
 # org.gnome.pomodoro.plugins.sounds pomodoro-end-sound-volume 1.0
 # org.gnome.pomodoro.plugins.sounds pomodoro-start-sound-volume 1.0
 
+
+# install_pomodoro_dbus_deps() {
+#   sudo apt install -y libcairo2-dev libxt-dev libgirepository1.0-dev
+#   _DBUS_PYTHON=$HOME/virtualenvs/dbus/bin/python3/../pip install pydbus pycairo PyGObject
+# }
+
 pomols() {
   echo -e "[org/gnome/pomodoro/preferences]"
   gsettings list-recursively org.gnome.pomodoro.preferences
