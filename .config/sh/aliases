@@ -174,7 +174,6 @@
 #-------------------------------------------------------------------------------
 
   # Git/Gitlab
-  alias gitconf="vim ${DOTDIR}/git/.gitconfig"
   alias gitconfg="vim ~/.gitconfig"
   alias glb="vim .gitlab-ci.yml"
 
@@ -221,7 +220,8 @@
   alias pdocs="cd $PERSONAL/docs"
   alias d="cd $PERSONAL/docs"
   alias docs="cd $PERSONAL/docs"
-  alias pdot="cd $PERSONAL/dotfiles/.config"
+  alias pdot="cd $PERSONAL/dotfiles"
+  alias pdotc="cd $PERSONAL/dotfiles/.config"
   alias pn="cd $PERSONAL/notes"
   alias pnotes="cd $PERSONAL/notes"
   alias notes="cd $PERSONAL/notes"
@@ -516,6 +516,9 @@ fi
   alias glsr="git ls-remote"
 
   # Push/Pull
+  alias gpu="git push -u origin"
+  alias gpum="git push -u origin main"
+
   GIT_WITH_AGENT="ensureSSHAgent; git"
 
   alias p="$GIT_WITH_AGENT push"
@@ -687,7 +690,7 @@ unset _WORK_NOTES_DIR
   # to decrease shell startup time
   #
   # Short for: "source pyenv"
-  alias sp="source \$DEFAULT_PYTHON/bin/virtualenvwrapper.sh"
+  alias sp="source \$DEFAULT_ASDF_PYTHON/bin/virtualenvwrapper.sh"
 
   alias w="workon"
 # }}}
