@@ -284,6 +284,8 @@ setupPersonalSystem() {
 
   $DOTDIR/desktop/install.sh
 
+  $DOTDIR/lib/setup_dirs.sh
+
   # NOT for remote machines - TODO figure out how to flag when to run these
   # ssh/install.sh
 }
