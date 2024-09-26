@@ -5,7 +5,6 @@ set -o pipefail
 
 source $DOTDIR/lib/common.sh
 
-
 DOWNLOADS_DIR=~/downloads/srv
 CURR_NIGHTLY_DOWNLOAD_FILE=$DOWNLOADS_DIR/nvim.appimage.tmp
 NIGHTLY_URL=https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
@@ -15,7 +14,7 @@ _VERSIONED_DOWNLOAD_FILE=
 mkdir -p $DOWNLOADS_DIR 2>/dev/null || true
 
 ensure_libfuse_is_installed() {
-  printf "Ensuring proper libfuse dependency is installed\n"
+  print_step "Ensuring proper libfuse dependency is installed\n"
   local _ubuntu_version=$(lsb_release --short --release)
 
   # See: https://askubuntu.com/questions/1363783/cant-run-an-appimage-on-ubuntu-20-04
@@ -27,6 +26,8 @@ ensure_libfuse_is_installed() {
 }
 
 remove_last_download_if_exists() {
+  print_step "Removing last nightly download if it exists"
+
   if [ -e "${CURR_NIGHTLY_DOWNLOAD_FILE}" ]; then
     rm ${CURR_NIGHTLY_DOWNLOAD_FILE}
     printf "Deleting last download of [${CURR_NIGHTLY_DOWNLOAD_FILE}]\n"
@@ -34,6 +35,8 @@ remove_last_download_if_exists() {
 }
 
 download_current_nightly_version() {
+  print_step "Downloading current nightly version"
+
   printf "\nDownloading: [${NIGHTLY_URL}]\n\n"
   curl -L -o "${CURR_NIGHTLY_DOWNLOAD_FILE}" "${NIGHTLY_URL}"
   chmod +x "${CURR_NIGHTLY_DOWNLOAD_FILE}"
@@ -45,6 +48,8 @@ get_current_nightly_version_number() {
 }
 
 rename_nightly_version_to_real_version_number() {
+  print_step "Renaming nightly version to real version number"
+
   printf "Nightly Version downloaded: [${NVIM_NIGHTLY_VERSION}]\n"
   _VERSIONED_DOWNLOAD_FILE=~/downloads/srv/nvim-"${NVIM_NIGHTLY_VERSION}.appimage"
 
@@ -58,6 +63,7 @@ rename_nightly_version_to_real_version_number() {
 }
 
 symlink_global_nvim_to_nightly_version() {
+  print_step "Symlinking /usr/bin/nvim to nightly version"
   replace_global_symlink /usr/bin/nvim "${_VERSIONED_DOWNLOAD_FILE}"
 }
 
@@ -72,26 +78,26 @@ replace_global_symlink() {
 }
 
 install_neovim_python_provider() {
-  print_step "Install Python 3 'neovim' module into default virtualenv if it exists yet"
+  print_step "Install Python 3 'neovim' module into Neovim's virtualenv if it exists yet"
 
-  if [ ! -z ${DEFAULT_PYTHON+x} ]; then
-    if [ -f $DEFAULT_PYTHON/bin/python3 ]; then
+  if [ ! -z ${NEOVIM_VIRTUALENV+x} ]; then
+    if [ -f $NEOVIM_VIRTUALENV/bin/python3 ]; then
       msg "Virtualenv exists so installing/re-installing 'neovim' module"
-      $DEFAULT_PYTHON/bin/pip3 install neovim
+      $NEOVIM_VIRTUALENV/bin/pip3 install neovim
     else
-      skipping "Python 3 default virtualenv does NOT exist so NOT installing 'neovim' module"
+      skipping "Python 3 Neovim virtualenv does NOT exist so NOT installing 'neovim' module"
       warn "Some parts of Neovim may not work; make sure you run Ansible to install your default Python 3"
     fi
   else
-      warn "DEFAULT_PYTHON is not set in the environment so not installing Python 3 'neovim' provider"
+      warn "NEOVIM_VIRTUALENV is not set in the environment so not installing Python 3 'neovim' provider"
   fi
 }
 
 
-ensure_libfuse_is_installed
-remove_last_download_if_exists
-download_current_nightly_version
+# ensure_libfuse_is_installed
+# remove_last_download_if_exists
+# download_current_nightly_version
 NVIM_NIGHTLY_VERSION=$(get_current_nightly_version_number)
-rename_nightly_version_to_real_version_number
-symlink_global_nvim_to_nightly_version
+# rename_nightly_version_to_real_version_number
+# symlink_global_nvim_to_nightly_version
 install_neovim_python_provider

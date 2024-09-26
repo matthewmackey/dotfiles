@@ -2,7 +2,7 @@
 let g:loaded_python_provider = 0
 
 " Set python3 exec to be in virtualenv w/ pynvim installed
-let g:python3_host_prog = $HOME . '/pythons/default/bin/python3'
+let g:python3_host_prog = $HOME . '/pythons/neovim/bin/python3'
 
 " set runtimepath^=~/.config/vim runtimepath+=~/.config/vim/after
 " let &packpath = &runtimepath
