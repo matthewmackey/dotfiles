@@ -7,61 +7,73 @@ set -o pipefail
 # Install Nerd Fonts            #
 #-------------------------------#
 # This direct download method is much faster than the `git clone` w/ `install.sh`
-# method which takes forever (at least it seems that way). `install.sh` seems to
-# take forever on a dedup method it uses
+# method which takes forever at least on the initial clone (about 5-10 minutes).
+# `install.sh` also seems to take forever on a dedup method it uses
+#
+# Newer fonts are also no longer stored in the git repo so we can't use the
+# `install.sh` method for those.
 
-NERD_FONTS_RELEASE=v2.1.0
-NERD_FONT_FILES=(
-  # 3270.zip
-  # Agave.zip
-  # AnonymousPro.zip
-  # Arimo.zip
-  # AurulentSansMono.zip
-  # BigBlueTerminal.zip
-  # BitstreamVeraSansMono.zip
-  # CascadiaCode.zip
-  # CodeNewRoman.zip
-  # Cousine.zip
-  # DaddyTimeMono.zip
-  # DejaVuSansMono.zip
-  # DroidSansMono.zip
-  # FantasqueSansMono.zip
-  # FiraCode.zip
-  # FiraMono.zip
-  # Go-Mono.zip
-  # Gohu.zip
-  # Hack.zip
-  # Hasklig.zip
-  # HeavyData.zip
-  # Hermit.zip
-  # iA-Writer.zip
-  # IBMPlexMono.zip
-  # Inconsolata.zip
-  # InconsolataGo.zip
-  # InconsolataLGC.zip
-  # Iosevka.zip
-  JetBrainsMono.zip
-  # Lekton.zip
-  # LiberationMono.zip
-  # Meslo.zip
-  # Monofur.zip
-  # Monoid.zip
-  # Mononoki.zip
-  # MPlus.zip
-  # Noto.zip
-  # OpenDyslexic.zip
-  # Overpass.zip
-  # ProFont.zip
-  # ProggyClean.zip
-  # RobotoMono.zip
-  # ShareTechMono.zip
-  # SourceCodePro.zip
-  # SpaceMono.zip
-  # Terminus.zip
-  # Tinos.zip
-  # Ubuntu.zip
-  UbuntuMono.zip
-  # VictorMono.zip
+NERD_FONTS_RELEASE=v3.2.1
+# NERD_FONT_ARCHIVE_TYPE=.zip
+NERD_FONT_ARCHIVE_TYPE=tar.xz
+NERD_FONT=(
+  0xProto
+  # 3270
+  # Agave
+  # AnonymousPro
+  # Arimo
+  # AurulentSansMono
+  # BigBlueTerminal
+  # BitstreamVeraSansMono
+  # CascadiaCode
+  # CodeNewRoman
+  # ComicShannsMono
+  # CommitMono
+  # Cousine
+  # D2Coding
+  # DaddyTimeMono
+  # DejaVuSansMono
+  # DroidSansMono
+  # EnvyCodeR
+  # FantasqueSansMono
+  # FiraCode
+  # FiraMono
+  # GeistMono
+  # Go-Mono
+  # Gohu
+  # Hack
+  # Hasklig
+  # HeavyData
+  # Hermit
+  iA-Writer
+  # IBMPlexMono
+  Inconsolata
+  InconsolataGo
+  InconsolataLGC
+  # Iosevka
+  JetBrainsMono
+  # Lekton
+  # LiberationMono
+  # Meslo
+  # Monofur
+  Monoid
+  Mononoki
+  # MPlus
+  Noto
+  # OpenDyslexic
+  # Overpass
+  # ProFont
+  # ProggyClean
+  # RobotoMono
+  # ShareTechMono
+  # SourceCodePro
+  # SpaceMono
+  # Terminus
+  # Tinos
+  Ubuntu
+  UbuntuMono
+  UbuntuSans
+  # VictorMono
 )
 
 NERD_FONTS_DIR=~/.local/share/nerdfonts
@@ -72,12 +84,19 @@ fi
 {
   cd $NERD_FONTS_DIR
 
-  for nff in ${NERD_FONT_FILES[@]}; do
-    printf "PROCESSING -> [$nff]\n\n"
+  for nf in ${NERD_FONT[@]}; do
+    nf_archive=$nf.$NERD_FONT_ARCHIVE_TYPE
 
-    if [ ! -f "$nff" ]; then
-      curl -L -O -s "https://github.com/ryanoasis/nerd-fonts/releases/download/$NERD_FONTS_RELEASE/$nff"
-      unzip $nff
+    printf "PROCESSING -> [$nf_archive]\n\n"
+
+    if [ ! -f "$nf_archive" ]; then
+      curl -L -O -s "https://github.com/ryanoasis/nerd-fonts/releases/download/$NERD_FONTS_RELEASE/$nf_archive"
+
+      if [ "$NERD_FONT_ARCHIVE_TYPE" = "tar.xz" ]; then
+        tar xf "$nf_archive"
+      elif [ "$NERD_FONT_ARCHIVE_TYPE" = "zip" ]; then
+        uznip "$nf_archive"
+      fi
 
       printf "INSTALLED Successfully\n\n"
     else
@@ -95,7 +114,7 @@ LOCAL_SHARE_FONTS_DIR=~/.local/share/fonts
   find ../nerdfonts \
     \( -name '*.otf' -o -name '*.ttf' -o -name '*.TTF' -type f \) \
     -exec sh -c \
-      'B=$(basename "$0"); if [ -L "$B" ]; then echo "Symlink already exists for [$B]"; else echo "Creating symlink for [$B]"; ln -s "$0" . ; fi' \
+    'B=$(basename "$0"); if [ -L "$B" ]; then echo "Symlink already exists for [$B]"; else echo "Creating symlink for [$B]"; ln -s "$0" . ; fi' \
     {} \;
 
   printf "\nUpdating font cache with 'fc-cache'\n"
@@ -103,4 +122,3 @@ LOCAL_SHARE_FONTS_DIR=~/.local/share/fonts
 }
 
 printf "\nDONE\n"
-
