@@ -175,6 +175,7 @@
 
   # Git/Gitlab
   alias gitconfg="vim ~/.gitconfig"
+  alias gitconfl="vim ~/.config/git/.gitconfig_local"
   alias glb="vim .gitlab-ci.yml"
 
   # TMUX
@@ -184,6 +185,7 @@
   # Vimrc
   alias vimrc="vim ${DOTDIR}/.config/vim/vimrc-common.vim"
   alias vimrcl="vim ${DOTDIR}/.config/vim/.vimrc-local"
+  alias nvimrc="nvim ${DOTDIR}/.config/nvim/"
 
   # Other configs
   alias vimal="vim ${DOTDIR}/.config/alacritty/alacritty.yml"
@@ -749,6 +751,11 @@ unset _WORK_NOTES_DIR
       else
         addAgent $passId "$keyFile"
       fi
+    else
+      echo "This function only works when there are no SSH identities loaded."
+      echo "The following identities are currently loaded in the agent:"
+      echo
+      ssh-add -l
     fi
   }
 
