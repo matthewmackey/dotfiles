@@ -32,14 +32,14 @@ NERD_FONT=(
   # Cousine
   # D2Coding
   # DaddyTimeMono
-  # DejaVuSansMono
-  # DroidSansMono
+  DejaVuSansMono
+  DroidSansMono
   # EnvyCodeR
   # FantasqueSansMono
   # FiraCode
   # FiraMono
   # GeistMono
-  # Go-Mono
+  Go-Mono
   # Gohu
   # Hack
   # Hasklig

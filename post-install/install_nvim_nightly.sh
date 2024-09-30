@@ -94,10 +94,10 @@ install_neovim_python_provider() {
 }
 
 
-# ensure_libfuse_is_installed
-# remove_last_download_if_exists
-# download_current_nightly_version
+ensure_libfuse_is_installed
+remove_last_download_if_exists
+download_current_nightly_version
 NVIM_NIGHTLY_VERSION=$(get_current_nightly_version_number)
-# rename_nightly_version_to_real_version_number
-# symlink_global_nvim_to_nightly_version
+rename_nightly_version_to_real_version_number
+symlink_global_nvim_to_nightly_version
 install_neovim_python_provider
