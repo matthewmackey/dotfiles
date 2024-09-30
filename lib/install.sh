@@ -53,8 +53,9 @@ REMOTE_CONFIGS=(
 LOCAL_CONFIGS=(
   alacritty
   awesome
+  fontconfig
   parcellite
-  nvim
+  # nvim
   starship
   tmux
   xinput
@@ -76,7 +77,7 @@ LOCAL_INCLUDES_ENABLED_SH=(
   fzf
   go
   kubectl
-  node
+  pnpm
   python
   ssh
 )
@@ -91,7 +92,6 @@ LOCAL_INCLUDES_ENABLED_BASH=(
   aws
   fzf
   kubernetes
-  node
   prompt
   ruby
   ssh
@@ -137,14 +137,14 @@ setupLocalDotConfigDirSymlinks() {
 setupRemoteHomeDirSymlinks() {
   print_step "Setting up REMOTE dotfile symlinks in \$HOME directory"
   create_symlink_with_backup $STD_DOT_CONFIG_DIR/bash/.bash_profile ~/.bash_profile
-  create_symlink_with_backup $STD_DOT_CONFIG_DIR/bash/.bashrc       ~/.bashrc
-  create_symlink_with_backup $STD_DOT_CONFIG_DIR/git/.gitconfig     ~/.gitconfig
-  create_symlink_with_backup $STD_DOT_CONFIG_DIR/psql/.psqlrc       ~/.psqlrc
-  create_symlink_with_backup $STD_DOT_CONFIG_DIR/readline/inputrc   ~/.inputrc
-  create_symlink_with_backup $STD_DOT_CONFIG_DIR/vim                ~/.vim
-  create_symlink_with_backup $STD_DOT_CONFIG_DIR/zsh/.zshenv        ~/.zshenv
-  create_symlink_with_backup $STD_DOT_CONFIG_DIR/tmux               ~/.tmux
-  create_symlink_with_backup $STD_DOT_CONFIG_DIR/tmux/tmux.conf     ~/.tmux.conf
+  create_symlink_with_backup $STD_DOT_CONFIG_DIR/bash/.bashrc ~/.bashrc
+  create_symlink_with_backup $STD_DOT_CONFIG_DIR/git/.gitconfig ~/.gitconfig
+  create_symlink_with_backup $STD_DOT_CONFIG_DIR/psql/.psqlrc ~/.psqlrc
+  create_symlink_with_backup $STD_DOT_CONFIG_DIR/readline/inputrc ~/.inputrc
+  create_symlink_with_backup $STD_DOT_CONFIG_DIR/vim ~/.vim
+  create_symlink_with_backup $STD_DOT_CONFIG_DIR/zsh/.zshenv ~/.zshenv
+  create_symlink_with_backup $STD_DOT_CONFIG_DIR/tmux ~/.tmux
+  create_symlink_with_backup $STD_DOT_CONFIG_DIR/tmux/tmux.conf ~/.tmux.conf
 }
 
 setupLocalHomeDirSymlinks() {
@@ -224,7 +224,6 @@ setupLocalDotfiles() {
     skipping "Local dotfiles directory at $LOCAL_DOTDIR already exists"
   fi
 }
-
 
 # -------------------------------------------------------------------------------
 #  Dotfile "Profile" Methods
