@@ -7,6 +7,7 @@ source $DOTDIR/lib/common.sh
 
 
 DIRS=(
+  Applications
   docs
   downloads/debs
   logs
