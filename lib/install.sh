@@ -79,6 +79,7 @@ LOCAL_INCLUDES_ENABLED_SH=(
   kubectl
   pnpm
   python
+  rust
   ssh
 )
 
