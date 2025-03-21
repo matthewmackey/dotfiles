@@ -134,6 +134,10 @@ map <S-Space> <Action>(GotoNextError)
 map <M-Space> <Action>(GotoPreviousError)
 map <M-m> <Action>(ActivateMavenToolWindow)
 
+" Defined in IntelliJ itself - doesn't seem like IdeaVim has control over this funcitonality
+" map <C-S-l> <Action>(FocusEditor)
+" sethandler <C-S-l> a:vim
+
 " ----------------------------------------------------------------------
 " Leader Mappings (Single-key mappings)
 " ----------------------------------------------------------------------
@@ -281,6 +285,18 @@ map ,nc <Action>(NewClass)
 map ,nf <Action>(NewFile)
 let g:WhichKeyDesc_new_class = ",nc New Class"
 let g:WhichKeyDesc_new_file = ",nf New File"
+
+map ,qA <Action>(CloseAllEditors)
+map ,qa <Action>(CloseAllEditorsButActive)
+map ,qg <Action>(CloseEditorsGroup)
+map ,ql <Action>(CloseAllToTheLeft)
+map ,qr <Action>(CloseAllToTheRight)
+
+let g:WhichKeyDesc_close_all_editors = ",qA Close All Editors"
+let g:WhichKeyDesc_close_all_editors_but_active = ",qa Close All Editors But Active"
+let g:WhichKeyDesc_close_editors_group = ",qg Close Editors Group"
+let g:WhichKeyDesc_close_all_to_the_left = ",ql Close All To The Left"
+let g:WhichKeyDesc_close_all_to_the_right = ",qr Close All To The Right"
 
 map ,w :w<CR>
 let g:WhichKeyDesc_save = ",w Save File"
