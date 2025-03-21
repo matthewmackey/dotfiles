@@ -1,25 +1,70 @@
 "------------------------------------------------------------------------------
-" IdeaVim Default Config
+" Ideas from:
+"
+" https://www.cyberwizard.io/posts/the-ultimate-ideavim-setup/
+" https://gist.github.com/dewaka/ef947e52767bf453eaf77c852051eb7e
+"
 "------------------------------------------------------------------------------
-""" Map leader to space ---------------------
+
+" ----------------------------------------------------------------------
+" Plugins
+" ----------------------------------------------------------------------
+" set argtextobj
+" let g:argtextobj_pairs="[:],(:),<:>"
+" set textobj-entire
+" set ReplaceWithRegister
+
+" Highlighted yank is also already bundled as part of IdeaVim. The premise of this one is simple, but very useful. When you yank a character, word, or line, it briefly highlights the content you’ve just yanked" set multiple-cursors
+set highlightedyank
+
+set commentary
+set easymotion
+set nerdtree
+set sneak
+set surround
+set which-key
+
+" Which-Key
+set timeoutlen=2500
+let g:WhichKey_FontSize = 16
+let g:WhichKey_CommandColor = "#41ead4"
+let g:WhichKey_PrefixColor = "#f335b2"
+let g:WhichKey_SortOrder = "by_key_prefix_first"
+let g:WhichKeyDesc_leader = "<leader> Leader Key"
+
+" ----------------------------------------------------------------------
+" Settings
+" ----------------------------------------------------------------------
+set scrolloff=5
+
+" linenumber ensures the editor displays the line numbers to the left of the document.
+" relativenumber, which shows line numbers relative to the current line
+set linenumber
+" set relativenumber
+
+" yank and paste go to/from the system clipboard
+set clipboard+=unnamedplus
+
+" showmode and showcmd simply ensure that the Vim mode (normal, insert etc) and any commands you execute are displayed at the bottom of the screen.
+set showcmd
+set showmode
+
+" ignorecase - tells Vim to use case-insensitive search by default.
+" smartcase - tells Vim that if any of the search characters are uppercase, treat the search as case-sensitive.
+" setincsearch - tells Vim to start searching as you type, rather than waiting for you to submit the complete search string first.
+" hlsearch - ensures all of the search results are highlighted.
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+
 let mapleader=" "
 
-""" Plugins  --------------------------------
-set surround
-set multiple-cursors
-set commentary
-set argtextobj
-set easymotion
-set textobj-entire
-set ReplaceWithRegister
-
-""" Plugin settings -------------------------
-let g:argtextobj_pairs="[:],(:),<:>"
-
-""" Common settings -------------------------
-set showmode
-set so=5
-set incsearch
+map <leader>wv <Action>(SplitVertically)
+map <leader>ws <Action>(SplitHorizontally)
+map <leader>wu <Action>(Unsplit)
+map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
 set nu
 
 """ Idea specific settings ------------------
@@ -27,84 +72,225 @@ set ideajoin
 set ideastatusicon=gray
 set idearefactormode=keep
 
-""" Mappings --------------------------------
-map <leader>f <Plug>(easymotion-s)
-map <leader>e <Plug>(easymotion-f)
-
-map <leader>d <Action>(Debug)
-map <leader>r <Action>(RenameElement)
-map <leader>c <Action>(Stop)
-map <leader>z <Action>(ToggleDistractionFreeMode)
-
-map <leader>s <Action>(SelectInProjectView)
-map <leader>a <Action>(Annotate)
-map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
-map <S-Space> <Action>(GotoNextError)
-
-map <leader>b <Action>(ToggleLineBreakpoint)
-map <leader>o <Action>(FileStructurePopup)
 
 " ----------------------------------------------------------------------
-" Custom Plugins
-" See: https://github.com/JetBrains/ideavim/wiki/IdeaVim-Plugins
+" Keybindings
+"
+" NOTE:
+" It seems that using `<Action>` only works with `map` and not Vim
+" standard keymap commands like `nnoremap/inoremap`.
+"
+" It seems you also can use `:Action` with a Vim-specific keymap command
+" to have the same effect as an `<Action>` command, like:
+"
+"   `map <leader>zc :Action CollapseAllRegions<CR>`
+"
+" However, using `<Action>` (or `:Action`) makes the Actions noticeably faster,
+" then just straight Vim keybindings (ie - keybindings that would work
+" even in regular Vim where "Actions" aren't a thing).
+"
 " ----------------------------------------------------------------------
-Plug 'justinmk/vim-sneak'
-Plug 'preservim/nerdtree'
+map ; :
 
-" Which-Key"
-set which-key
-set timeoutlen=2000
+inoremap jj <Esc>
 
-map <leader>n :NERDTreeFocus<CR>
+" Tab navigation
+nnoremap <M-k> :Action NextTab<CR>
+nnoremap <M-j> :Action PreviousTab<CR>
+"map <M-k> <Action>(NextTab)
+"map <M-j> <Action>(PreviousTab)
+sethandler <M-j> n:vim
+
+" Pane navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-k> <C-w>k
+nnoremap <C-j> <C-w>j
+sethandler <C-j> n:vim
+sethandler <C-k> n:vim
+
+" Jump between methods
+map [[ <Action>(MethodUp)
+map ]] <Action>(MethodDown)
+
+" Easy visual indentation
+vnoremap < <gv
+vnoremap > >gv
+
+" Execute macro saved in 'q' register
+nnoremap qj @q
+
+" Popup navigation
+" inoremap <C-j> <Action>(PopupMenu-selectNext)
+" inoremap <C-k> <Action>(PopupMenu-selectPrev)
+
+" NERDTree
+" Open NERDTree (use q to exit)
 map <C-n> :NERDTree<CR>
 map <C-t> :NERDTreeToggle<CR>
 map <C-f> :NERDTreeFind<CR>
 
+map <S-Space> <Action>(GotoNextError)
+map <M-Space> <Action>(GotoPreviousError)
+map <M-m> <Action>(ActivateMavenToolWindow)
+
 " ----------------------------------------------------------------------
-" Custom Config
+" Leader Mappings (Single-key mappings)
 " ----------------------------------------------------------------------
-" map ; :
+map <leader>0 <Action>(ActivateProjectToolWindow)
+map <leader>4 <Action>(ActivateRunToolWindow)
+map <leader>7 <Action>(ActivateServicesToolWindow)
+map <leader>8 <Action>(ActivateStructureToolWindow)
+let g:WhichKeyDesc_activate_project_tool_window = "<leader>0 Activate Project Tool Window"
+let g:WhichKeyDesc_activate_run_tool_window = "<leader>4 Activate Run Tool Window"
+let g:WhichKeyDesc_activate_services_tool_window = "<leader>7 Activate Services Tool Window"
+let g:WhichKeyDesc_activate_structure_tool_window = "<leader>8 Activate Structure Tool Window"
 
-" Use Ctrl-H/J/K/L to navigate between editor groups
-" map <C-H> <Action>(PreviousSplitter)
-" map <C-L> <Action>(NextSplitter)
-" map <C-J> <Action>(MoveDown)
-" map <C-K> <Action>(MoveUp)
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-" map <C-h> <Action>(PreviousSplitter)
-" map <C-l> <Action>(NextSplitter)
-" map <C-j> <Action>(NextTab)
-" map <C-k> <Action>(PreviousTab)
+map <leader>c <Action>(CommentByLineComment)
+let g:WhichKeyDesc_comment_lines = "<leader>c Comment lines"
 
-sethandler <C-h> n:vim
-sethandler <C-j> n:vim
-sethandler <C-k> n:vim
-sethandler <C-l> n:vim
+"map <leader>e <Plug>(easymotion-f)
+"map <leader>f <Plug>(easymotion-s)
+map <leader>j <Plug>(easymotion-s)
 
-" Map J to switch to the next tab
-map <M-j> <Action>(NextTab)
-sethandler <M-j> n:vim
+map <leader>o <Action>(FileStructurePopup)
+let g:WhichKeyDesc_file_nav_popup = "<leader>o File structure popup"
 
-" Map K to switch to the previous tab
-map <M-k> <Action>(PreviousTab)
-sethandler <M-k> n:vim
+map <leader>r <Action>(RenameElement)
+let g:WhichKeyDesc_rename = "<leader>r Rename element
 
-" Map Ctrl-PageUp to switch to the previous tab
-map <C-PageUp> <Action>(PreviousTab)
-sethandler <C-PageUp> n:vim
+map <leader>q <Action>(CloseContent)
+let g:WhichKeyDesc_close_active_tab = "<leader>q Close active tab"
 
-" Map Ctrl-PageDown to switch to the next tab
-map <C-PageDown> <Action>(NextTab)
-sethandler <C-PageDown> n:vim
+map <leader>t <Action>(RunClass)
+let g:WhichKeyDesc_run_test = "<leader>t Run Test"
 
+" ----------------------------------------------------------------------
+" Leader Mappings (Grouped mappings)
+"
+" Groups:
+"
+" - a - Actions
+" - d - Display options
+" - e - Errors
+" - f - File navigation
+" - g - Go to ...
+" - r - Refactoring
+" - v - Vim configuration
+" - w - Window splits
+" - z - Folding
+"
+" ----------------------------------------------------------------------
+" Actions
+map <leader>am <Action>(ShowIntentionActions)
+map <leader>as <Action>(SearchEverywhere)
+
+" Display options
+map <leader>dd <Action>(ToggleDistractionFreeMode)
+map <leader>dz <Action>(ToggleZenMode)
+map <leader>df <Action>(ToggleFullScreen)
+let g:WhichKeyDesc_display = "<leader>d Display options"
+let g:WhichKeyDesc_zen_mode = "<leader>dz Toggle Zen mode"
+let g:WhichKeyDesc_df_mode = "<leader>dd Toggle Distraction-Free mode"
+let g:WhichKeyDesc_fullscreen = "<leader>df Toggle full screen"
+
+" Errors
+map <leader>en <Action>(ReSharperGotoNextErrorInSolution)
+map <leader>ep <Action>(ReSharperGotoPrevErrorInSolution)
+let g:WhichKeyDesc_errors_next = "<leader>en Go to next error in solution"
+let g:WhichKeyDesc_errors_prev = "<leader>ep Go to previous error in solution"
+
+" File navigation
+map <leader><leader> <Action>(RecentFiles)
+map <leader>fa <Action>(GotoAction)
+map <leader>fc <Action>(FindInPath)
+map <leader>fe <Action>(SearchEverywhere)
+map <leader>ff <Action>(GotoFile)
+map <leader>fl <Action>(RecentLocations)
+map <leader>fr <Action>(RecentFiles)
+
+let g:WhichKeyDesc_recent_files = "<leader><leader> Recent files"
+let g:WhichKeyDesc_file_nav = "<leader>f File navigation"
+let g:WhichKeyDesc_file_nav_go_to_action = "<leader>fa Go to Action"
+let g:WhichKeyDesc_file_nav_search_everywhere = "<leader>fe Search everywhere"
+let g:WhichKeyDesc_file_nav_goto_content = "<leader>fc Search for file content"
+let g:WhichKeyDesc_file_nav_goto_file = "<leader>ff Go to file"
+let g:WhichKeyDesc_file_nav_show_recent_locations = "<leader>fl Show recent locations"
+
+" Go To
+nmap <leader>gb <Action>(Forward)
+nmap <leader>gc <Action>(GotoClass)
+nmap <leader>gd <Action>(GotoDeclaration)
+nmap <leader>gf <Action>(Back)
+nmap <leader>gi <Action>(GotoImplementation)
+nmap <leader>gp <Action>(SelectInProjectView)
+nmap <leader>gt <Action>(GotoTest)
+nmap <leader>gu <Action>(ShowUsages)
+nmap <leader>gy <Action>(GotoTypeDeclaration)
+
+let g:WhichKeyDesc_goto = "<leader>g Go to ..."
+let g:WhichKeyDesc_goto_back = "<leader>gb Go Back"
+let g:WhichKeyDesc_goto_class = "<leader>gc Go to Class"
+let g:WhichKeyDesc_goto_declaration = "<leader>gd Go to Definition"
+let g:WhichKeyDesc_goto_forward = "<leader>gf Go Forward"
+let g:WhichKeyDesc_goto_implementation = "<leader>gi Go to Implementation"
+let g:WhichKeyDesc_goto_project = "<leader>gp Select file in Project View"
+let g:WhichKeyDesc_goto_test = "<leader>gt Go to Test"
+let g:WhichKeyDesc_goto_usages = "<leader>gu Go to Usages"
+let g:WhichKeyDesc_goto_type_declaration = "<leader>gy Go to Type Definition"
+
+" Git windows
+"map <leader>gc <Action>(CheckinProject)
+"map <leader>gs <Action>(ActivateVersionControlToolWindow)
+"map <leader>gb <Action>(Git.Branches)
+
+" Refactoring
+map <leader>rf <Action>(IntroduceField)
+map <leader>rm <Action>(ExtractMethod)
+map <leader>rn <Action>(RenameElement)
+map <leader>rr <Action>(Refactorings.QuickListPopupAction)
+map <leader>rs <Action>(ChangeSignature)
+map <leader>rv <Action>(IntroduceVariable)
+
+" Vim configuration
+nnoremap <leader>vc :source ~/.ideavimrc<CR>
+nnoremap <leader>ve :edit ~/.ideavimrc<CR>
+
+" Window splits
+map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
+map <leader>ws <Action>(SplitHorizontally)
+map <leader>wu <Action>(Unsplit)
+map <leader>wv <Action>(SplitVertically)
+let g:WhichKeyDesc_window_splits = "<leader>w Window splits"
+let g:WhichKeyDesc_window_splits_move_editor_to_opposite_tab_group = "<leader>wm Move editor to opposite tab group"
+let g:WhichKeyDesc_window_splits_split_horizontally = "<leader>ws Split horizontally"
+let g:WhichKeyDesc_window_splits_unsplit = "<leader>wu Unsplit"
+let g:WhichKeyDesc_window_splits_split_vertically = "<leader>wv Split vertically"
+
+" Folding
+map <leader>zc <Action>(CollapseAllRegions)
+map <leader>zo <Action>(ExpandAllRegions)
+let g:WhichKeyDesc_folding = "<leader>z Folding"
+let g:WhichKeyDesc_folding_collapse_all_regions = "<leader>zc Collapse all regions"
+let g:WhichKeyDesc_folding_expand_all_regions = "<leader>zo Expand all regions"
+
+" ----------------------------------------------------------------------
+" Local Leader Mappings
+" ----------------------------------------------------------------------
+map ,nc <Action>(NewClass)
+map ,nf <Action>(NewFile)
+let g:WhichKeyDesc_new_class = ",nc New Class"
+let g:WhichKeyDesc_new_file = ",nf New File"
+
+map ,w :w<CR>
+let g:WhichKeyDesc_save = ",w Save File"
 
 " -----------------------------------------------------------------------------
-" Available IdeaVim ACTIONS
+" Available IdeaVim ActionS
 "
-" See this list by running the following in Intellij: `:actionlist`
+" See this list by running the following in Intellij: `:Actionlist`
+"
+" You can filter by keyword (ie- search for tab-related Actions): `:Actionlist tab`
 " -----------------------------------------------------------------------------
 " $Copy                                              <C-C> <C-Ins>
 " $Cut                                               <C-X> <S-Del>
@@ -1145,7 +1331,7 @@ sethandler <C-PageDown> n:vim
 " Git.Branches                                       <C-S-À>
 " git.branches.group.by.prefix
 " Git.Branches.List
-" git.branches.popup.filter.by.action
+" git.branches.popup.filter.by.Action
 " git.branches.popup.filter.by.repository
 " git.branches.popup.filter.by.separator
 " git.branches.popup.resize
@@ -1508,7 +1694,7 @@ sethandler <C-PageDown> n:vim
 " HtmlTableCellNavigateRight
 " HtmlTableCellNavigateUp
 " I18nize
-" idea.java.decompiler.action.group
+" idea.java.decompiler.Action.group
 " IdeaVim.ReloadVimRc.group
 " IdeaVim.ReloadVimRc.reload                         <C-S-O>
 " IdeScriptingConsole
@@ -1970,23 +2156,23 @@ sethandler <C-PageDown> n:vim
 " OpenRecentEditorInBlankDiffWindow
 " OptimizeImports                                    <A-C-O>
 " org.editorconfig.configmanagement.generate.EditorConfigGenerateLanguagePropertiesAction
-" org.intellij.plugins.markdown.ui.actions.scrolling.AutoScrollAction
-" org.intellij.plugins.markdown.ui.actions.styling.HeaderDownAction
-" org.intellij.plugins.markdown.ui.actions.styling.HeaderUpAction
-" org.intellij.plugins.markdown.ui.actions.styling.InsertImageAction <C-U>
-" org.intellij.plugins.markdown.ui.actions.styling.MarkdownIntroduceLinkReferenceAction
-" org.intellij.plugins.markdown.ui.actions.styling.ToggleBoldAction <C-B>
-" org.intellij.plugins.markdown.ui.actions.styling.ToggleCodeSpanAction <C-S-C>
-" org.intellij.plugins.markdown.ui.actions.styling.ToggleItalicAction <C-I>
-" org.intellij.plugins.markdown.ui.actions.styling.ToggleStrikethroughAction <C-S-S>
-" org.jetbrains.plugins.groovy.actions.generate.accessors.GroovyGenerateGetterAction
-" org.jetbrains.plugins.groovy.actions.generate.accessors.GroovyGenerateGetterSetterAction
-" org.jetbrains.plugins.groovy.actions.generate.accessors.GroovyGenerateSetterAction
-" org.jetbrains.plugins.groovy.actions.generate.constructors.GroovyGenerateConstructorAction
-" org.jetbrains.plugins.groovy.actions.generate.equals.GroovyGenerateEqualsAction
-" org.jetbrains.plugins.groovy.actions.generate.missing.GroovyGenerateMethodMissingAction
-" org.jetbrains.plugins.groovy.actions.generate.missing.GroovyGeneratePropertyMissingAction
-" org.jetbrains.plugins.groovy.actions.generate.tostring.GroovyGenerateToStringAction
+" org.intellij.plugins.markdown.ui.Actions.scrolling.AutoScrollAction
+" org.intellij.plugins.markdown.ui.Actions.styling.HeaderDownAction
+" org.intellij.plugins.markdown.ui.Actions.styling.HeaderUpAction
+" org.intellij.plugins.markdown.ui.Actions.styling.InsertImageAction <C-U>
+" org.intellij.plugins.markdown.ui.Actions.styling.MarkdownIntroduceLinkReferenceAction
+" org.intellij.plugins.markdown.ui.Actions.styling.ToggleBoldAction <C-B>
+" org.intellij.plugins.markdown.ui.Actions.styling.ToggleCodeSpanAction <C-S-C>
+" org.intellij.plugins.markdown.ui.Actions.styling.ToggleItalicAction <C-I>
+" org.intellij.plugins.markdown.ui.Actions.styling.ToggleStrikethroughAction <C-S-S>
+" org.jetbrains.plugins.groovy.Actions.generate.accessors.GroovyGenerateGetterAction
+" org.jetbrains.plugins.groovy.Actions.generate.accessors.GroovyGenerateGetterSetterAction
+" org.jetbrains.plugins.groovy.Actions.generate.accessors.GroovyGenerateSetterAction
+" org.jetbrains.plugins.groovy.Actions.generate.constructors.GroovyGenerateConstructorAction
+" org.jetbrains.plugins.groovy.Actions.generate.equals.GroovyGenerateEqualsAction
+" org.jetbrains.plugins.groovy.Actions.generate.missing.GroovyGenerateMethodMissingAction
+" org.jetbrains.plugins.groovy.Actions.generate.missing.GroovyGeneratePropertyMissingAction
+" org.jetbrains.plugins.groovy.Actions.generate.tostring.GroovyGenerateToStringAction
 " Other.KeymapGroup
 " OtherMenu
 " OverrideFileTypeAction
@@ -2593,7 +2779,7 @@ sethandler <C-PageDown> n:vim
 " TableActions
 " TabList
 " TabsActions
-" task.actions
+" task.Actions
 " tasks.analyze.stacktrace
 " tasks.and.contexts
 " tasks.close                                        <A-S-W>
@@ -2720,7 +2906,7 @@ sethandler <C-PageDown> n:vim
 " ToggleCompletionHintsAction
 " ToggleContentUiTypeMode
 " ToggleCreateChangeListForGuestChanges
-" ToggleDistractionFreeMode
+" ToggleDistrActionFreeMode
 " ToggleDockMode
 " ToggleFieldBreakpoint
 " ToggleFindInSelection                              <A-C-E>
