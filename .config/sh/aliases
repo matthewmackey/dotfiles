@@ -5,234 +5,237 @@
 #-------------------------------------------------------------------------------
 # [Console] {{{
 #-------------------------------------------------------------------------------
-  MM_SHELL_PLUGIN_DIR="${ZDOTDIR}/plugins/matthewmackey/shell-plugins/plugins"
+MM_SHELL_PLUGIN_DIR="${ZDOTDIR}/plugins/matthewmackey/shell-plugins/plugins"
 
-  ALIASES=${DOTDIR}/.config/sh/aliases
-  LOCAL_ALIASES=$LOCAL_DOTDIR/aliases
-  ZSH_ALIASES=${DOTDIR}/.config/zsh/aliases.zsh
+ALIASES=${DOTDIR}/.config/sh/aliases
+LOCAL_ALIASES=$LOCAL_DOTDIR/aliases
+ZSH_ALIASES=${DOTDIR}/.config/zsh/aliases.zsh
 
-  AWS_ALIASES=${MM_SHELL_PLUGIN_DIR}/aws/common.sh
-  DOCKER_ALIASES=${MM_SHELL_PLUGIN_DIR}/docker/common.sh
-  GCLOUD_ALIASES=${MM_SHELL_PLUGIN_DIR}/gcloud/common.sh
-  KUBECTL_ALIASES=${MM_SHELL_PLUGIN_DIR}/kubectl/common.sh
-  NODE_ALIASES=${MM_SHELL_PLUGIN_DIR}/node/common.sh
-  SYSTEMCTL_ALIASES=${MM_SHELL_PLUGIN_DIR}/systemctl/common.sh
-  TERRAFORM_ALIASES=${MM_SHELL_PLUGIN_DIR}/terraform/common.sh
+AWS_ALIASES=${MM_SHELL_PLUGIN_DIR}/aws/common.sh
+DOCKER_ALIASES=${MM_SHELL_PLUGIN_DIR}/docker/common.sh
+GCLOUD_ALIASES=${MM_SHELL_PLUGIN_DIR}/gcloud/common.sh
+KUBECTL_ALIASES=${MM_SHELL_PLUGIN_DIR}/kubectl/common.sh
+NODE_ALIASES=${MM_SHELL_PLUGIN_DIR}/node/common.sh
+SYSTEMCTL_ALIASES=${MM_SHELL_PLUGIN_DIR}/systemctl/common.sh
+TERRAFORM_ALIASES=${MM_SHELL_PLUGIN_DIR}/terraform/common.sh
 
-  LOCAL_RC=$LOCAL_DOTDIR/rc
+LOCAL_RC=$LOCAL_DOTDIR/rc
 
-  alias es="eval 'exec \$SHELL'"
-  alias eg="env | grep"
+alias es="eval 'exec \$SHELL'"
+alias eg="env | grep"
 
-  alias s="source"
+alias s="source"
 
-  #-------------------------------------
-  # Shell - [aliases]
-  #-------------------------------------
-  alias al="vim ${ALIASES}"
-  alias lal="vim ${LOCAL_ALIASES}"
-  alias zal="vim ${ZSH_ALIASES}"
+#-------------------------------------
+# Shell - [aliases]
+#-------------------------------------
+alias al="vim ${ALIASES}"
+alias lal="vim ${LOCAL_ALIASES}"
+alias zal="vim ${ZSH_ALIASES}"
 
-  alias aal="vim ${AWS_ALIASES}"
-  alias dal="vim ${DOCKER_ALIASES}"
-  alias gal="vim ${GCLOUD_ALIASES}"
-  alias kal="vim ${KUBECTL_ALIASES}"
-  alias nal="vim ${NODE_ALIASES}"
-  alias sal="vim ${SYSTEMCTL_ALIASES}"
-  alias tal="vim ${TERRAFORM_ALIASES}"
+alias aal="vim ${AWS_ALIASES}"
+alias dal="vim ${DOCKER_ALIASES}"
+alias gal="vim ${GCLOUD_ALIASES}"
+alias kal="vim ${KUBECTL_ALIASES}"
+alias nal="vim ${NODE_ALIASES}"
+alias sal="vim ${SYSTEMCTL_ALIASES}"
+alias tal="vim ${TERRAFORM_ALIASES}"
 
-  alias sa="source ${ALIASES}; \
+alias sa="source ${ALIASES}; \
             source ${ZSH_ALIASES}; \
-            [ -f ${AWS_ALIASES} ] && source ${AWS_ALIASES} \
-            [ -f ${DOCKER_ALIASES} ] && source ${DOCKER_ALIASES} \
-            [ -f ${GCLOUD_ALIASES} ] && source ${GCLOUD_ALIASES} \
-            [ -f ${KUBECTL_ALIASES} ] && source ${KUBECTL_ALIASES} \
-            [ -f ${NODE_ALIASES} ] && source ${NODE_ALIASES} \
-            [ -f ${SYSTEMCTL_ALIASES} ] && source ${SYSTEMCTL_ALIASES} \
-            [ -f ${TERRAFORM_ALIASES} ] && source ${TERRAFORM_ALIASES} \
-            [ -f ${LOCAL_ALIASES} ] && source ${LOCAL_ALIASES}"
+            [ -f ${AWS_ALIASES} ] && source ${AWS_ALIASES}; \
+            [ -f ${DOCKER_ALIASES} ] && source ${DOCKER_ALIASES}; \
+            [ -f ${GCLOUD_ALIASES} ] && source ${GCLOUD_ALIASES}; \
+            [ -f ${KUBECTL_ALIASES} ] && source ${KUBECTL_ALIASES}; \
+            [ -f ${NODE_ALIASES} ] && source ${NODE_ALIASES}; \
+            [ -f ${SYSTEMCTL_ALIASES} ] && source ${SYSTEMCTL_ALIASES}; \
+            [ -f ${TERRAFORM_ALIASES} ] && source ${TERRAFORM_ALIASES}; \
+            [ -f ${LOCAL_ALIASES} ] && source ${LOCAL_ALIASES};"
 
-  #-------------------------------------
-  # Shell - [env]
-  #-------------------------------------
-  alias renv="vim ${DOTDIR}/.config/sh/env"
-  alias zenv="vim ${DOTDIR}/.config/zsh/.zshenv"
+#-------------------------------------
+# Shell - [env]
+#-------------------------------------
+alias renv="vim ${DOTDIR}/.config/sh/env"
+alias zenv="vim ${DOTDIR}/.config/zsh/.zshenv"
 
-  #-------------------------------------
-  # Shell - [rc]
-  #-------------------------------------
-  alias rc="vim ${DOTDIR}/.config/sh/rc"
-  alias lrc="vim ${LOCAL_RC}"
-  alias brc="vim ${DOTDIR}/.config/bash/.bashrc"
-  alias zrc="vim ${DOTDIR}/.config/zsh/.zshrc"
+#-------------------------------------
+# Shell - [rc]
+#-------------------------------------
+alias rc="vim ${DOTDIR}/.config/sh/rc"
+alias lrc="vim ${LOCAL_RC}"
+alias brc="vim ${DOTDIR}/.config/bash/.bashrc"
+alias zrc="vim ${DOTDIR}/.config/zsh/.zshrc"
 
-  #-------------------------------------
-  # [bin]
-  #-------------------------------------
-  alias bin="cd ~/bin"
-  alias lbin="cd ~/.local/bin"
+#-------------------------------------
+# [bin]
+#-------------------------------------
+alias bin="cd ~/bin"
+alias lbin="cd ~/.local/bin"
 
-  #-------------------------------------
-  # [DEFAULTS - used by others below]
-  #-------------------------------------
-  if [[ -x /usr/bin/dircolors ]]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias grep='grep --color=auto'
-    alias grepp='grep'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-  fi
+#-------------------------------------
+# [DEFAULTS - used by others below]
+#-------------------------------------
+if [[ -x /usr/bin/dircolors ]]; then
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  alias ls='ls --color=auto'
+  alias grep='grep --color=auto'
+  alias grepp='grep'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
+fi
 
-  if [[ -x ~/.local/bin/exa ]]; then
-    alias ls="exa"
-  fi
+if [[ -x ~/.local/bin/exa ]]; then
+  alias ls="exa"
+fi
 
-  alias ll='ls -alhF'
-  alias lla='ls -lhF'
+alias ll='ls -alhF'
+alias lla='ls -lhF'
 
-  #-------------------------------------
-  # [clear]
-  #-------------------------------------
-  alias c="clear"
-  alias cl="clear"
-  alias cll="cl; pwd; ll"
-  alias clla="cl; pwd; lla"
+#-------------------------------------
+# [clear]
+#-------------------------------------
+alias c="clear"
+alias cl="clear"
+alias cll="cl; pwd; ll"
+alias clla="cl; pwd; lla"
 
-  #-------------------------------------
-  # [cd]
-  #-------------------------------------
-  alias .l="cd -"
-  alias .ll="cd -; cll"
-  alias 2c.="cd ../"
-  alias 3c.="cd ../../"
-  alias 4c.="cd ../../../"
-  alias 5c.="cd ../../../../"
+#-------------------------------------
+# [cd]
+#-------------------------------------
+alias .l="cd -"
+alias .ll="cd -; cll"
+alias 2c.="cd ../"
+alias 3c.="cd ../../"
+alias 4c.="cd ../../../"
+alias 5c.="cd ../../../../"
 
-  #-------------------------------------
-  # console - other
-  #-------------------------------------
-  # See Non-SSH aliases
-  # alias cat="bat"
-  alias catp="/bin/cat"
-  alias cpr="cp -r"
-  alias hg="history | grep"
-  alias mx="chmod +x"
+#-------------------------------------
+# console - other
+#-------------------------------------
+# See Non-SSH aliases
+# alias cat="bat"
+alias catp="/bin/cat"
+alias cpr="cp -r"
+alias hg="history | grep"
+alias mx="chmod +x"
 
-  #-------------------------------------
-  # [crypt]
-  #-------------------------------------
-  alias mc="pass show -c crypt; encfs ~/.crypt ~/crypt"
-  alias mountcrypt="mc"
+#-------------------------------------
+# [crypt]
+#-------------------------------------
+alias mcrypt="pass show -c crypt; encfs ~/.crypt ~/crypt"
+alias mountcrypt="mcrypt"
 
-  #-------------------------------------
-  # [desktop]
-  #-------------------------------------
-  alias cs="createshortcut"
+#-------------------------------------
+# [desktop]
+#-------------------------------------
+alias cs="createshortcut"
 
-  #-------------------------------------
-  # [xmodmap]
-  #-------------------------------------
-  alias xmboth="xmodmap ~/.config/xmodmap/.xmodmap-both_escape"
-  alias xmnormal="xmodmap ~/.config/xmodmap/.xmodmap-normal"
-  alias xmswitch="xmodmap ~/.config/xmodmap/.xmodmap-switch"
-  # xmod - switch no escape
-  alias xmswitchnoescape="xmodmap ~/.config/xmodmap/.xmodmap-switch_no_escape"
-  alias x="xmswitchnoescape"
+#-------------------------------------
+# [xmodmap]
+#-------------------------------------
+_display=$(who | awk '{ print $2; }' | head -n1)
+_xm="DISPLAY=$_display xmodmap"
+
+alias xmboth="$_xm ~/.config/xmodmap/.xmodmap-both_escape"
+alias xmnormal="$_xm ~/.config/xmodmap/.xmodmap-normal"
+alias xmswitch="$_xm ~/.config/xmodmap/.xmodmap-switch"
+# xmod - switch no escape
+alias xmswitchnoescape="$_xm ~/.config/xmodmap/.xmodmap-switch_no_escape"
+alias x="xmswitchnoescape"
+
+unset _xm
+unset _display
 
 # }}}
-
 
 #-------------------------------------------------------------------------------
 # [Dotfiles] {{{
 #-------------------------------------------------------------------------------
-  alias vimcheat="vim ~/.config/vim/cheatsheet.md"
+alias vimcheat="vim ~/.config/vim/cheatsheet.md"
 # }}}  Dotfiles
-
 
 #-------------------------------------------------------------------------------
 # [Dotfiles - Commit them] {{{
 #-------------------------------------------------------------------------------
-  IS_GIT_STAGED='[ "$(git status -s | grep "^A" | wc -l)" != 0 ] && (echo -e "CANNOT: already staged files\n"; git status -s) ||'
+IS_GIT_STAGED='[ "$(git status -s | grep "^A" | wc -l)" != 0 ] && (echo -e "CANNOT: already staged files\n"; git status -s) ||'
 
-  alias commitaliases='cd ${DOTDIR};           '$IS_GIT_STAGED' (git add ${ALIASES}; git ci -m"aliases: updated aliases"); cd -'
-  alias commitbashrc='cd ${DOTDIR}/bash/;      '$IS_GIT_STAGED' (git add .bashrc; git ci -m"bashrc: updated"); cd -'
-  alias commitdesktop='cd ${DOTDIR}/desktop;   '$IS_GIT_STAGED' (git add .local; git ci -m"desktop: updated .desktop shortcuts"); cd -'
-  alias commitgitconf='cd ${DOTDIR}/git;       '$IS_GIT_STAGED' (git add .gitconfig; git ci -m"git: updated .gitconfig"); cd -'
-  alias committmux='cd ${DOTDIR};              '$IS_GIT_STAGED' (git add .config/tmux/tmux.conf; git ci -m"tmux: updated tmux.conf"); cd -'
-  alias commitvimrc='cd ${DOTDIR}/vim;         '$IS_GIT_STAGED' (git add .vimrc; git ci -m"vim: updated .vimrc"); cd -'
-  alias commitvscode='cd ${DOTDIR}/vscode;     '$IS_GIT_STAGED' (git add .config; git ci -m"vscode: updated VSCode config settings"); cd -'
-  alias commitzaliases='cd ${DOTDIR};          '$IS_GIT_STAGED' (git add ${ZSH_ALIASES}; git ci -m"zsh: updated ZSH aliases"); cd -'
+alias commitaliases='cd ${DOTDIR};           '$IS_GIT_STAGED' (git add ${ALIASES}; git ci -m"aliases: updated aliases"); cd -'
+alias commitbashrc='cd ${DOTDIR}/bash/;      '$IS_GIT_STAGED' (git add .bashrc; git ci -m"bashrc: updated"); cd -'
+alias commitdesktop='cd ${DOTDIR}/desktop;   '$IS_GIT_STAGED' (git add .local; git ci -m"desktop: updated .desktop shortcuts"); cd -'
+alias commitgitconf='cd ${DOTDIR}/git;       '$IS_GIT_STAGED' (git add .gitconfig; git ci -m"git: updated .gitconfig"); cd -'
+alias committmux='cd ${DOTDIR};              '$IS_GIT_STAGED' (git add .config/tmux/tmux.conf; git ci -m"tmux: updated tmux.conf"); cd -'
+alias commitvimrc='cd ${DOTDIR}/vim;         '$IS_GIT_STAGED' (git add .vimrc; git ci -m"vim: updated .vimrc"); cd -'
+alias commitvscode='cd ${DOTDIR}/vscode;     '$IS_GIT_STAGED' (git add .config; git ci -m"vscode: updated VSCode config settings"); cd -'
+alias commitzaliases='cd ${DOTDIR};          '$IS_GIT_STAGED' (git add ${ZSH_ALIASES}; git ci -m"zsh: updated ZSH aliases"); cd -'
 
-  alias commitglb=''$IS_GIT_STAGED'       (git add .gitlab-ci.yml; git ci -m "Updated .gitlab-ci.yml")'
-  alias commitgitignore=''$IS_GIT_STAGED' (git add .gitignore; git ci -m "Updated .gitignore")'
+alias commitglb=''$IS_GIT_STAGED'       (git add .gitlab-ci.yml; git ci -m "Updated .gitlab-ci.yml")'
+alias commitgitignore=''$IS_GIT_STAGED' (git add .gitignore; git ci -m "Updated .gitignore")'
 # }}}  Dotfiles Commit
-
 
 #-------------------------------------------------------------------------------
 # [Dotfile - EDIT them] {{{
 #-------------------------------------------------------------------------------
 
-  # Git/Gitlab
-  alias gitconfg="vim ~/.gitconfig"
-  alias gitconfl="vim ~/.config/git/.gitconfig_local"
-  alias glb="vim .gitlab-ci.yml"
+# Git/Gitlab
+alias gitconfg="vim ~/.gitconfig"
+alias gitconfl="vim ~/.config/git/.gitconfig_local"
+alias glb="vim .gitlab-ci.yml"
 
-  # TMUX
-  alias tmc="vim ~/.config/tmux/tmux.conf"
-  alias tmcl="vim $LOCAL_DOTDIR/tmux.conf"
+# TMUX
+alias tmc="vim ~/.config/tmux/tmux.conf"
+alias tmcl="vim $LOCAL_DOTDIR/tmux.conf"
 
-  # Vimrc
-  alias vimrc="vim ${DOTDIR}/.config/vim/vimrc-common.vim"
-  alias vimrcl="vim ${DOTDIR}/.config/vim/.vimrc-local"
-  alias nvimrc="nvim ${DOTDIR}/.config/nvim/"
+# Vimrc
+alias vimrc="vim ${DOTDIR}/.config/vim/vimrc-common.vim"
+alias vimrcl="vim ${DOTDIR}/.config/vim/.vimrc-local"
+alias nvimrc="nvim ${DOTDIR}/.config/nvim/"
 
-  # Other configs
-  alias vimal="vim ${DOTDIR}/.config/alacritty/alacritty.yml"
-  alias vimaw="vim ${DOTDIR}/.config/awesome/rc.lua"
-  alias vimstar="vim ${DOTDIR}/.config/starship/config.toml"
+# Other configs
+alias vimal="vim ${DOTDIR}/.config/alacritty/alacritty.yml"
+alias vimaw="vim ${DOTDIR}/.config/awesome/rc.lua"
+alias vimstar="vim ${DOTDIR}/.config/starship/config.toml"
 # }}} Dotfiles EDIT
-
 
 #-------------------------------------------------------------------------------
 # [cd - shortcuts] {{{
 #-------------------------------------------------------------------------------
-  alias cr="cd ~/crypt"
-  alias apps="cd ~/Applications"
-  alias debs="cd ~/downloads/debs"
-  alias desk="cd ~/Desktop"
-  alias dsk="cd ~/Desktop"
-  # alias docs="cd ~/docs"
-  alias down="cd ~/downloads"
-  alias dwn="cd ~/downloads"
-  alias l="cd ~/.local/bin"
-  alias m="cd ~/mmbin"
-  alias media="cd ~/media"
-  # alias notes="cd ~/notes"
-  alias pdocs="cd ~/docs/personal"
-  alias pics="cd ~/media/pics"
-  alias srv="cd ~/srv"
-  alias tmp="cd ~/tmp"
+alias cr="cd ~/crypt"
+alias apps="cd ~/Applications"
+alias debs="cd ~/downloads/debs"
+alias desk="cd ~/Desktop"
+alias dsk="cd ~/Desktop"
+# alias docs="cd ~/docs"
+alias down="cd ~/downloads"
+alias dwn="cd ~/downloads"
+alias l="cd ~/.local/bin"
+alias m="cd ~/mmbin"
+alias media="cd ~/media"
+# alias notes="cd ~/notes"
+alias pdocs="cd ~/docs/personal"
+alias pics="cd ~/media/pics"
+alias srv="cd ~/srv"
+alias tmp="cd ~/tmp"
 
-  alias ldot="cd $LOCAL_DOTDIR"
+alias ldot="cd $LOCAL_DOTDIR"
 
-  # .personal shorcuts
-  alias pbin="cd $PERSONAL/bin"
-  alias pconf="cd $PERSONAL/config-mgmt"
-  alias pdocs="cd $PERSONAL/docs"
-  alias d="cd $PERSONAL/docs"
-  alias docs="cd $PERSONAL/docs"
-  alias pdot="cd $PERSONAL/dotfiles"
-  alias pdotc="cd $PERSONAL/dotfiles/.config"
-  alias pn="cd $PERSONAL/notes"
-  alias pnotes="cd $PERSONAL/notes"
-  alias notes="cd $PERSONAL/notes"
+# .personal shorcuts
+alias pbin="cd $PERSONAL/bin"
+alias pconf="cd $PERSONAL/config-mgmt"
+alias pdocs="cd $PERSONAL/docs"
+alias d="cd $PERSONAL/docs"
+alias docs="cd $PERSONAL/docs"
+alias pdot="cd $PERSONAL/dotfiles"
+alias pdotc="cd $PERSONAL/dotfiles/.config"
+alias pn="cd $PERSONAL/notes"
+alias pnotes="cd $PERSONAL/notes"
+alias notes="cd $PERSONAL/notes"
 
-  # profile shorcuts
-  alias profile="cd $PROFILE"
+# profile shorcuts
+alias profile="cd $PROFILE"
+
+alias fzcd="cd \$(find . -type d -print | fzf)"
 
 # }}} cd - shortcuts
-
 
 #-------------------------------------------------------------------------------
 # [Non-SSH Aliases] {{{
@@ -250,352 +253,392 @@ if [ "$SESSION_TYPE" != 'remote/ssh' ]; then
 fi
 # }}}  Non-SSH Aliases
 
-
 #-------------------------------------------------------------------------------
 # [GUI] {{{
 #-------------------------------------------------------------------------------
-  # SEE: https://unix.stackexchange.com/questions/422111/linux-mint-cinnamon-18-in-what-file-are-the-keyboard-shortcuts-saved
-  KEYBINDINGS_FILE="$DOTDIR/gui/cinnamon/keybindings.conf"
-  WORKSPACE_FILE="$DOTDIR/gui/cinnamon/keybindings.conf"
+# SEE: https://unix.stackexchange.com/questions/422111/linux-mint-cinnamon-18-in-what-file-are-the-keyboard-shortcuts-saved
+KEYBINDINGS_FILE="$DOTDIR/gui/cinnamon/keybindings.conf"
+WORKSPACE_FILE="$DOTDIR/gui/cinnamon/keybindings.conf"
 
-  alias keybindingsdump="dconf dump /org/cinnamon/desktop/keybindings/"
-  alias keybindingsdumpsave="echo 'Writing to: $KEYBINDINGS_FILE\n'; dconf dump /org/cinnamon/desktop/keybindings/ | tee $KEYBINDINGS_FILE"
-  alias keybindingsload="dconf load /org/cinnamon/desktop/keybindings/"
+alias keybindingsdump="dconf dump /org/cinnamon/desktop/keybindings/"
+alias keybindingsdumpsave="echo 'Writing to: $KEYBINDINGS_FILE\n'; dconf dump /org/cinnamon/desktop/keybindings/ | tee $KEYBINDINGS_FILE"
+alias keybindingsload="dconf load /org/cinnamon/desktop/keybindings/"
 
-  alias workspacesettingsdump="dconf dump /org/cinnamon/desktop/wm/"
-  alias workspacesettingsdumpsave="echo 'Writing to: $WORKSPACE_FILE\n'; dconf dump /org/cinnamon/desktop/wm/ | tee $WORKSPACE_FILE"
-  alias workspacesettingsload="dconf load /org/cinnamon/desktop/wm/"
+alias workspacesettingsdump="dconf dump /org/cinnamon/desktop/wm/"
+alias workspacesettingsdumpsave="echo 'Writing to: $WORKSPACE_FILE\n'; dconf dump /org/cinnamon/desktop/wm/ | tee $WORKSPACE_FILE"
+alias workspacesettingsload="dconf load /org/cinnamon/desktop/wm/"
 # }}}
 
+#-------------------------------------------------------------------------------
+# [Bluetooth] {{{
+#-------------------------------------------------------------------------------
+JBL="68:59:32:56:9D:30"
+JBL_UNDERSCORE=$(echo $JBL | sed 's/:/_/g')
+
+MU6="BA:98:34:00:09:64"
+MU6_UNDERSCORE=$(echo $MU6 | sed 's/:/_/g')
+
+BOSE_SOUNDSPORT="04:52:C7:E8:1A:AE"
+
+alias blconnjbl="bluetoothctl connect $JBL"
+alias bldconnjbl="bluetoothctl disconnect $JBL"
+alias blconnmu="bluetoothctl connect $MU6"
+alias bldconnmu="bluetoothctl disconnect $MU6"
+
+alias blconnbose="bluetoothctl connect $BOSE_SOUNDSPORT"
+alias bldconnbose="bluetoothctl disconnect $BOSE_SOUNDSPORT"
+
+alias blconnj="blconnjbl"
+alias blconnm="blconnmu"
+
+alias blgood="pactl set-card-profile bluez_card.$JBL_UNDERSCORE a2dp-sink"
+alias blmic="pactl set-card-profile bluez_card.$JBL_UNDERSCORE headset-head-unit"
+
+unset BOSE_SOUNDSPORT
+unset JBL
+unset JBL_UNDERSCORE
+unset MU6
+unset MU6_UNDERSCORE
+# }}}
 
 #-------------------------------------------------------------------------------
+# [sound] {{{
+#-------------------------------------------------------------------------------
+alias micoff="amixer set Capture nocap"
+alias micon="amixer set Capture cap"
+alias mute="amixer -q -D pulse sset Master toggle"
+alias unmute="mute"
+# }}}
+#-------------------------------------------------------------------------------
+
 # [tools] {{{
 #-------------------------------------------------------------------------------
-  runMultiple() {
-    local count=$1
-    shift
+runMultiple() {
+  local count=$1
+  shift
 
-    for i in {1..$count}; do
-      $@
-    done
-  }
-
-  # Bash doesn't allow function names that start with numbers
-  #
-  # "Checking $BASH_VERSION is a good method of determining which shell is running. $SHELL
-  #  does not necessarily give the correct answer." - https://tldp.org/LDP/abs/html/internalvariables.html
-  #
-  if [ -z "$BASH_VERSION" ]; then
-    # Create functions that will run a command <count> number of times.
-    2()  { runMultiple 2  $@; }
-    3()  { runMultiple 3  $@; }
-    4()  { runMultiple 4  $@; }
-    5()  { runMultiple 5  $@; }
-    6()  { runMultiple 6  $@; }
-    7()  { runMultiple 7  $@; }
-    8()  { runMultiple 8  $@; }
-    9()  { runMultiple 9  $@; }
-    10() { runMultiple 10 $@; }
-  fi
-
-  alias a1="awk '{ print \$1; }'"
-  alias a2="awk '{ print \$2; }'"
-  alias a3="awk '{ print \$3; }'"
-  alias a4="awk '{ print \$4; }'"
-  alias a5="awk '{ print \$5; }'"
-
-  # backwards-compatibility for some scripts
-  alias ack-grep="ack"
-
-  # Copy flie contents to clipboard
-  alias clip="xclip -sel clip <"
-  alias clipstdin="xclip -sel clip < /dev/stdin"
-  alias cmv="command -v"
-  alias diff="diff -u --color"
-  alias dlg="dpkg -l | grep -i"
-  alias fd="fdfind"
-  alias fr="file-roller"
-  alias j="jq <"
-  alias open="xdg-open"
-  # DISABLED: `op` is the 1Password CLI tool
-  # alias op="open"
-  alias pg="ps -efH | grep -i"
-  alias syslog="tail -f /var/log/syslog"
-
-  # direnv
-  alias dallow="direnv allow"
-  alias de="direnv edit"
-
-  # parcellite
-  # NOT SURE that this delete works b/c the file re-appears on parcellite restart
-  alias parcelliteclear="rm ~/.local/share/parcellite/history"
-
-  TREE_BIN=/usr/bin/tree
-  TREE_ALL_IGNORES='.git'
-  # TREE_IGNORES='.git|build|dist|node_modules|packer_cache|__pycache__|.pytest_cache|.terraform|*.egg-info'
-
-  # A tree command that follows .gitignore
-  fdtree() {
-    if [ -z "$1" ]; then
-      fdfind | $TREE_BIN --fromfile
-    else
-      fdfind --max-depth $1 | $TREE_BIN --fromfile
-    fi
-  }
-
-  alias t="cl; fdtree"
-  alias ta="cl; $TREE_BIN -a -I '$TREE_ALL_IGNORES'"
-
-  for i in {1..8}; do
-    alias t$i="fdtree $i"
-    alias ta$i="$TREE_BIN -a -I '$TREE_ALL_IGNORES' -L $i"
+  for i in {1..$count}; do
+    $@
   done
+}
 
-  # See Non-SSH aliases
-  # alias vim="nvim"
+# Bash doesn't allow function names that start with numbers
+#
+# "Checking $BASH_VERSION is a good method of determining which shell is running. $SHELL
+#  does not necessarily give the correct answer." - https://tldp.org/LDP/abs/html/internalvariables.html
+#
+if [ -z "$BASH_VERSION" ]; then
+  # Create functions that will run a command <count> number of times.
+  2() { runMultiple 2 $@; }
+  3() { runMultiple 3 $@; }
+  4() { runMultiple 4 $@; }
+  5() { runMultiple 5 $@; }
+  6() { runMultiple 6 $@; }
+  7() { runMultiple 7 $@; }
+  8() { runMultiple 8 $@; }
+  9() { runMultiple 9 $@; }
+  10() { runMultiple 10 $@; }
+fi
 
-  alias whatismyip="wget http://ipinfo.io/ip -qO -"
+alias a1="awk '{ print \$1; }'"
+alias a2="awk '{ print \$2; }'"
+alias a3="awk '{ print \$3; }'"
+alias a4="awk '{ print \$4; }'"
+alias a5="awk '{ print \$5; }'"
 
-  #alias yqd='docker run --name yqtmp --rm -v"${PWD}":/workdir mikefarah/yq:3.3.4 yq "$@"'
-  alias yqd='docker run --name yqtmp --rm -i mikefarah/yq:3.3.4 yq "$@"'
-  alias yqd4='docker run --name yqtmp --rm -v"${PWD}":/workdir mikefarah/yq:latest "$@"'
+# backwards-compatibility for some scripts
+alias ack-grep="ack"
 
-  alias za="zoxide add ."
-  alias zq="zoxide query --all --score --list"
-  alias zq.="zoxide query --all --score --list \$(basename \$PWD)"
-  alias ztop="for i in {1..10}; do zoxide add .; done"
+# Copy flie contents to clipboard
+alias clip="xclip -sel clip <"
+alias clipstdin="xclip -sel clip < /dev/stdin"
+alias cmv="command -v"
+alias diff="diff -u --color"
+alias dlg="dpkg -l | grep -i"
+alias fd="fdfind"
+alias fr="file-roller"
+alias j="jq <"
+alias open="xdg-open"
+# DISABLED: `op` is the 1Password CLI tool
+# alias op="open"
+alias pg="ps -efH | grep -i"
+alias syslog="tail -f /var/log/syslog"
+
+function md() {
+  local _dir_name=$1
+  mkdir -p $_dir_name
+  echo "Created directory: [$_dir_name]"
+  cd $_dir_name
+}
+#
+# direnv
+alias dallow="direnv allow"
+alias da.="direnv allow"
+alias de="direnv edit"
+
+# parcellite
+# NOT SURE that this delete works b/c the file re-appears on parcellite restart
+alias parcelliteclear="rm ~/.local/share/parcellite/history"
+
+TREE_BIN=/usr/bin/tree
+TREE_IGNORES_ALL='.git|build|dist|node_modules|packer_cache|__pycache__|.pytest_cache|.terraform|*.egg-info|.next'
+TREE_IGNORES_GIT='.git'
+
+# A tree command that follows .gitignore
+fdtree() {
+  if [ -z "$1" ]; then
+    fdfind | $TREE_BIN --fromfile
+  else
+    fdfind --max-depth $1 | $TREE_BIN --fromfile
+  fi
+}
+
+alias t="cl; fdtree"
+alias ta="cl; $TREE_BIN -a -I '$TREE_IGNORES_ALL'"
+
+for i in {1..8}; do
+  alias t$i="fdtree $i"
+  alias ta$i="$TREE_BIN -a -I '$TREE_IGNORES_ALL' -L $i"
+done
+
+# See Non-SSH aliases
+# alias vim="nvim"
+
+alias whatismyip="wget http://ipinfo.io/ip -qO -"
+
+#alias yqd='docker run --name yqtmp --rm -v"${PWD}":/workdir mikefarah/yq:3.3.4 yq "$@"'
+alias yqd='docker run --name yqtmp --rm -i mikefarah/yq:3.3.4 yq "$@"'
+alias yqd4='docker run --name yqtmp --rm -v"${PWD}":/workdir mikefarah/yq:latest "$@"'
+
+alias za="zoxide add ."
+alias zq="zoxide query --all --score --list"
+alias zq.="zoxide query --all --score --list \$(basename \$PWD)"
+alias ztop="for i in {1..10}; do zoxide add .; done"
 
 # }}}
-
 
 #-------------------------------------------------------------------------------
 # [ansible] {{{
 #-------------------------------------------------------------------------------
-  alias afacts="ansible -m setup"
-  alias aping="ansible -m ping"
-  alias play="ansible-playbook"
-  alias playi="ansible-playbook -i inventory"
-  alias playil="ansible-playbook -i inventory -l"
-  alias playit="ansible-playbook -i inventory -t"
-  alias playl="ansible-playbook -i local playbook.yml -t"
+alias afacts="ansible -m setup"
+alias aping="ansible -m ping"
+alias play="ansible-playbook"
+alias playi="ansible-playbook -i inventory"
+alias playil="ansible-playbook -i inventory -l"
+alias playit="ansible-playbook -i inventory -t"
+alias playl="ansible-playbook -i local playbook.yml -t"
 
-  alias playdns="ansible-playbook -i inventory play-dns-etc-hosts.yml"
+alias playdns="ansible-playbook -i inventory play-dns-etc-hosts.yml"
 # }}}
-
 
 #-------------------------------------------------------------------------------
 # [Colors] {{{
 #-------------------------------------------------------------------------------
-  alias b='find ~/.config/base16-shell/scripts/*.sh \
+alias b='find ~/.config/base16-shell/scripts/*.sh \
     | sed -r "s|(.*)/base16-(.*)\.sh|\2\t\1/base16-\2.sh|" \
     | column -t \
     | fzf \
     | xargs -I {} zsh -c \
     "eval $(functions _base16); _base16 \$(echo "{}" | awk '"'"'{ print \$2,\$1; }'"'"';) "'
 
-  # Color scheme shortcuts
-  function b16() {
-    local b16_short_name=$1
-    local b16_colorscheme=base16-$b16_short_name
-    _base16 ~/.config/base16-shell/scripts/$b16_colorscheme.sh $b16_short_name
-  }
+# Color scheme shortcuts
+function b16() {
+  local b16_short_name=$1
+  local b16_colorscheme=base16-$b16_short_name
+  _base16 ~/.config/base16-shell/scripts/$b16_colorscheme.sh $b16_short_name
+}
 
-  function updateVimrcBackground() {
-    local b16_colorscheme=base16-$1
-    sed -i.bak -e 's/^colorscheme \(.*\)/colorscheme '$b16_colorscheme'/' ~/.vimrc_background
-  }
+function updateVimrcBackground() {
+  local b16_colorscheme=base16-$1
+  sed -i.bak -e 's/^colorscheme \(.*\)/colorscheme '$b16_colorscheme'/' ~/.vimrc_background
+}
 
-  function setColors() {
-    local b16_short_name=$1
+function setColors() {
+  local b16_short_name=$1
 
-    b16 "$b16_short_name"
-    updateVimrcBackground "$b16_short_name"
-  }
+  b16 "$b16_short_name"
+  updateVimrcBackground "$b16_short_name"
+}
 
-  alias light="setColors gruvbox-light-soft"
-  alias blue="setColors atelier-sulphurpool"
+alias light="setColors gruvbox-light-soft"
+alias blue="setColors atelier-sulphurpool"
 
-  alias dark="setColors monokai"
-  alias darkgoogle="setColors google-dark"
-  alias darkgruv="setColors gruvbox-dark-medium"
-  alias darkmonokai="setColors monokai"
-  alias monokai="setColors monokai"
+alias dark="setColors monokai"
+alias darkgoogle="setColors google-dark"
+alias darkgruv="setColors gruvbox-dark-medium"
+alias darkmonokai="setColors monokai"
+alias monokai="setColors monokai"
 
-  # Black
-  alias colorcodes="open https://www.tweaking4all.com/software/linux-software/xterm-color-cheat-sheet/"
-  alias desktopbg='gsettings set org.gnome.desktop.background picture-uri ""; gsettings set org.gnome.desktop.background primary-color "#000000"'
+# Black
+alias colorcodes="open https://www.tweaking4all.com/software/linux-software/xterm-color-cheat-sheet/"
+alias desktopbg='gsettings set org.gnome.desktop.background picture-uri ""; gsettings set org.gnome.desktop.background primary-color "#000000"'
 # }}}
-
 
 #-------------------------------------------------------------------------------
 # [Git] {{{
 #-------------------------------------------------------------------------------
-  # Add
-  alias ga="git add"
-  alias ga.="git add ."
+# Add
+alias ga="git add"
+alias ga.="git add ."
 
-  # Branch
-  alias gb="git branch"
-  alias gbav="git branch -av"
-  alias gb="gbav"
-  alias gbd="git branch -d"
-  alias gbD="git branch -D"
-  alias gbm="git branch -m"
-  alias gbmm="git branch -m main"
+# Branch
+alias gb="git branch"
+alias gbav="git branch -av"
+alias gb="gbav"
+alias gbd="git branch -d"
+alias gbD="git branch -D"
+alias gbm="git branch -m"
+alias gbmm="git branch -m main"
 
-  # Checkout
-  alias co="git checkout \*"
-  alias cop="git checkout"
+# Checkout
+alias co="git checkout \*"
+alias cop="git checkout"
 
-  # Commit
-  alias gci="git commit -m\""
-  alias gcim="git commit"
+# Commit
+alias gci="git commit -m\""
+alias gcim="git commit"
 
-  # Diff
-  alias gd="clear; git diff"
-  alias gdp="clear; git diff -- . ':!package-lock.json'"
+# Diff
+alias gd="clear; git diff"
+alias gdp="clear; git diff -- . ':!package-lock.json'"
 
-  # Diff --staged
-  alias gds="clear; git diff --staged --"
-  alias gdsp="clear; git diff --staged -- . ':!package-lock.json'"
+# Diff --staged
+alias gds="clear; git diff --staged --"
+alias gdsp="clear; git diff --staged -- . ':!package-lock.json'"
 
-  # Fetch
-  alias f="git fetch"
-  alias fa="git fetch --all"
-  alias fp="git fetch --prune"
+# Fetch
+alias f="git fetch"
+alias fa="git fetch --all"
+alias fp="git fetch --prune"
 
-  # Init
-  alias gi="git init"
+# Init
+alias gi="git init"
 
-  #--------------------------------------------------------------
-  # Log
-  #--------------------------------------------------------------
-  HALF_SCREEN=35
-  FULL_SCREEN=50
-  PRETTY="--pretty=format:'%C(yellow)%h%C(reset) %C(green)(%><(12)%cr%><|(12))%C(reset) - %s %C(blue)<%an>%C(reset)%C(auto)%d%C(reset)'"
-  PRETTYF="--pretty=format:'%C(yellow)%h%C(reset) %C(green)(%cs / %as)%C(reset) %s %C(blue)<C:%cn, A:%an>%C(reset)%C(auto)%d%C(reset)'"
+#--------------------------------------------------------------
+# Log
+#--------------------------------------------------------------
+HALF_SCREEN=35
+FULL_SCREEN=50
+PRETTY="--pretty=format:'%C(yellow)%h%C(reset) %C(green)(%><(12)%cr%><|(12))%C(reset) - %s %C(blue)<%an>%C(reset)%C(auto)%d%C(reset)'"
+PRETTYF="--pretty=format:'%C(yellow)%h%C(reset) %C(green)(%cs / %as)%C(reset) %s %C(blue)<C:%cn, A:%an>%C(reset)%C(auto)%d%C(reset)'"
 
-  alias glnopage="clear; git -c pager.log=false log"
+alias glnopage="clear; git -c pager.log=false log"
 
-  # Log - Graph Branch (Quarter/Half/Full-screen)
-  # p = paged
-  alias glbp="clear; git log $PRETTY --graph"
-  alias glbh="clear; git log $PRETTY --graph -n $HALF_SCREEN"
-  alias glbf="clear; git log $PRETTY --graph -n $FULL_SCREEN"
-  alias glb="glbh"
+# Log - Graph Branch (Quarter/Half/Full-screen)
+# p = paged
+alias glbp="clear; git log $PRETTY --graph"
+alias glbh="clear; git log $PRETTY --graph -n $HALF_SCREEN"
+alias glbf="clear; git log $PRETTY --graph -n $FULL_SCREEN"
+alias glb="glbh"
 
-  # Log - Graph All (Quarter/Half/Full-screen)
-  # p = paged
-  alias glap="clear; git log $PRETTY --all --graph"
-  alias glah="clear; git log $PRETTY --all --graph -n $HALF_SCREEN"
-  alias glaf="clear; git log $PRETTY --all --graph -n $FULL_SCREEN"
-  alias gla="glah"
+# Log - Graph All (Quarter/Half/Full-screen)
+# p = paged
+alias glap="clear; git log $PRETTY --all --graph"
+alias glah="clear; git log $PRETTY --all --graph -n $HALF_SCREEN"
+alias glaf="clear; git log $PRETTY --all --graph -n $FULL_SCREEN"
+alias gla="glah"
 
-  alias gl="glbh"
+alias gl="glbh"
 
-  # Log - name-only
-  alias gln="clear; git log $PRETTY --name-only"
-  alias glnh="clear; git log $PRETTY --name-only -n $HALF_SCREEN"
-  alias glnf="clear; git log $PRETTY --name-only -n $FULL_SCREEN"
+# Log - name-only
+alias gln="clear; git log $PRETTY --name-only"
+alias glnh="clear; git log $PRETTY --name-only -n $HALF_SCREEN"
+alias glnf="clear; git log $PRETTY --name-only -n $FULL_SCREEN"
 
-  # Log - oneline
-  alias glo="clear; git log --oneline"
-  alias gloh="clear; git log --oneline -n $HALF_SCREEN"
-  alias glof="clear; git log --oneline -n $FULL_SCREEN"
+# Log - oneline
+alias glo="clear; git log --oneline"
+alias gloh="clear; git log --oneline -n $HALF_SCREEN"
+alias glof="clear; git log --oneline -n $FULL_SCREEN"
 
-  # Log - stat
-  alias gls="clear; git log $PRETTY --stat"
-  alias glsh="clear; git log $PRETTY --stat -n $HALF_SCREEN"
-  alias glsf="clear; git log $PRETTY --stat -n $FULL_SCREEN"
+# Log - stat
+alias gls="clear; git log $PRETTY --stat"
+alias glsh="clear; git log $PRETTY --stat -n $HALF_SCREEN"
+alias glsf="clear; git log $PRETTY --stat -n $FULL_SCREEN"
 
-  unset HALF_SCREEN
-  unset FULL_SCREEN
-  unset PRETTY
-  unset PRETTYF
+unset HALF_SCREEN
+unset FULL_SCREEN
+unset PRETTY
+unset PRETTYF
 
+# ls-remote
+alias glsr="git ls-remote"
 
-  # ls-remote
-  alias glsr="git ls-remote"
+# Push/Pull
+alias gpu="git push -u origin"
+alias gpum="git push -u origin main"
 
-  # Push/Pull
-  alias gpu="git push -u origin"
-  alias gpum="git push -u origin main"
+GIT_WITH_AGENT="ensureSSHAgent; git"
 
-  GIT_WITH_AGENT="ensureSSHAgent; git"
+alias p="$GIT_WITH_AGENT push"
+alias pa="$GIT_WITH_AGENT push --all"
+alias pdo="$GIT_WITH_AGENT push -d origin"
+alias pl="$GIT_WITH_AGENT pull"
+alias ppt="$GIT_WITH_AGENT push; git push --tags"
+alias pt="$GIT_WITH_AGENT push --tags"
+alias pu="$GIT_WITH_AGENT push -u origin"
+alias pum="$GIT_WITH_AGENT push -u origin main"
 
-  alias p="$GIT_WITH_AGENT push"
-  alias pa="$GIT_WITH_AGENT push --all"
-  alias pdo="$GIT_WITH_AGENT push -d origin"
-  alias pl="$GIT_WITH_AGENT pull"
-  alias ppt="$GIT_WITH_AGENT push; git push --tags"
-  alias pt="$GIT_WITH_AGENT push --tags"
-  alias pu="$GIT_WITH_AGENT push -u origin"
-  alias pum="$GIT_WITH_AGENT push -u origin main"
+unset GIT_WITH_AGENT
 
-  unset GIT_WITH_AGENT
+# Remote
+alias grao="git remote add origin"
+alias grro="git remote remove origin"
 
-  # Remote
-  alias grao="git remote add origin"
-  alias grro="git remote remove origin"
+# Restore
+alias rs="git restore"
+alias rss="git restore --staged \*"
+alias rssp="git restore --staged"
 
-  # Restore
-  alias rs="git restore"
-  alias rss="git restore --staged \*"
-  alias rssp="git restore --staged"
+# Shortlog (summarize `git log` output)
+# SEE: https://stackoverflow.com/questions/9597410/list-all-developers-on-a-project-in-git
 
-  # Shortlog (summarize `git log` output)
-  # SEE: https://stackoverflow.com/questions/9597410/list-all-developers-on-a-project-in-git
+# Print all uniq authors AND committers in one command
+alias gsluniq="git log --pretty='%an <%ae>%n%cn <%ce>' | sort | uniq"
 
-  # Print all uniq authors AND committers in one command
-  alias gsluniq="git log --pretty='%an <%ae>%n%cn <%ce>' | sort | uniq"
+# Print commit count by author (current branch)
+alias gsl="git shortlog --summary --numbered --email"
 
-  # Print commit count by author (current branch)
-  alias gsl="git shortlog --summary --numbered --email"
+# Print commit count by author (all branches)
+alias gsla="git shortlog --summary --numbered --email --all"
 
-  # Print commit count by author (all branches)
-  alias gsla="git shortlog --summary --numbered --email --all"
+# Print commit count by committer (current branch)
+alias gslc="git shortlog --summary --numbered --email --committer"
 
-  # Print commit count by committer (current branch)
-  alias gslc="git shortlog --summary --numbered --email --committer"
+# Print commit count by committer (all branches)
+alias gslca="git shortlog --summary --numbered --email --committer --all"
 
-  # Print commit count by committer (all branches)
-  alias gslca="git shortlog --summary --numbered --email --committer --all"
+# Show
+alias gsh="clear; git show"
+alias gshp="clear; git show -- . ':!package-lock.json'"
 
+# Status
+alias gst="clear; git st"
+alias g="gst"
+alias gs="gst"
+alias gss="clear; git ss"
 
-  # Show
-  alias gsh="clear; git show"
-  alias gshp="clear; git show -- . ':!package-lock.json'"
+# Switch
+alias sw="git switch"
 
-  # Status
-  alias gst="clear; git st"
-  alias g="gst"
-  alias gs="gst"
-  alias gss="clear; git ss"
+# Tag
+alias gtl="git tag -l"
+alias tag="git tag \$TAG"
+alias deltag="git tag -d \$TAG; git push -d origin refs/tags/\$TAG"
 
-  # Switch
-  alias sw="git switch"
-
-  # Tag
-  alias gtl="git tag -l"
-  alias tag="git tag \$TAG"
-  alias deltag="git tag -d \$TAG; git push -d origin refs/tags/\$TAG"
-
-  # MISCELLANEOUS
-  alias remote="git remote -v"
-  alias rem="git remote -v"
-  alias remotes="clear; git remote -v"
-  alias rems="clear; git remote -v"
+# MISCELLANEOUS
+alias remote="git remote -v"
+alias rem="git remote -v"
+alias remotes="clear; git remote -v"
+alias rems="clear; git remote -v"
 # }}}
-
 
 #-------------------------------------------------------------------------------
 # [Java] {{{
 #-------------------------------------------------------------------------------
-  # SEE: https://petewan.com/blog-post/install-and-manage-multiple-java-jdk-and-jre-versions-on-ubuntu-20-04/
-  alias jreupdate="sudo update-alternatives --config java"
-  alias jdkupdate="sudo update-alternatives --config javac"
+# SEE: https://petewan.com/blog-post/install-and-manage-multiple-java-jdk-and-jre-versions-on-ubuntu-20-04/
+alias jreupdate="sudo update-alternatives --config java"
+alias jdkupdate="sudo update-alternatives --config javac"
 # }}}
-
 
 #-------------------------------------------------------------------------------
 # [Jupyter] {{{
@@ -618,175 +661,158 @@ unset _WORK_NOTES_DIR
 
 # }}}
 
-
 #-------------------------------------------------------------------------------
 # [Maven] {{{
 #-------------------------------------------------------------------------------
-  alias mvcc="mvn clean compile"
-  alias mvci="mvn clean install"
-  alias mvcist="mvn clean install -DskipTests=true"
-  alias sbr="mvn spring-boot:run"
+alias mvcc="mvn clean compile"
+alias mvci="mvn clean install"
+alias mvcist="mvn clean install -DskipTests=true"
+alias sbr="mvn spring-boot:run"
 # }}}
-
 
 #-------------------------------------------------------------------------------
 # [MySQL] {{{
 #-------------------------------------------------------------------------------
-  alias lmysql="mysql -h 0.0.0.0 -P 3306 -u root -ppw"
+alias lmysql="mysql -h 0.0.0.0 -P 3306 -u root -ppw"
 # }}}
-
 
 #-------------------------------------------------------------------------------
 # [networking] {{{
 #-------------------------------------------------------------------------------
-  alias hosts="cat /etc/hosts"
-  alias ibas="sudo ip -br addr show"
+alias hosts="cat /etc/hosts"
+alias ibas="sudo ip -br addr show"
 
-  alias nc2="nc -zvw 2"
+alias nc2="nc -zvw 2"
 
-  alias ns="sudo netstat -tlpn"
-  alias nsg="sudo netstat -tlpn | grep"
+alias ns="sudo netstat -tlpn"
+alias nsg="sudo netstat -tlpn | grep"
 # }}}
-
 
 #-------------------------------------------------------------------------------
 # [node/npm] {{{
 #-------------------------------------------------------------------------------
-  alias jqp="jq < package.json"
-  alias npml="npm ls --depth=0"
-  alias nr="npm run"
-  alias nun="sn; nvm use node"
+alias jqp="jq < package.json"
+alias npml="npm ls --depth=0"
+alias nr="npm run"
+alias nun="sn; nvm use node"
 # }}}
-
 
 #-------------------------------------------------------------------------------
 # [PHP] {{{
 #-------------------------------------------------------------------------------
-  alias php='docker run -it --rm --name php-cli-tmp php:latest php -a'
-  alias phpcli='php'
-  alias phpscript='docker run -it --rm --name php-script-tmp -v $PWD:/usr/src/myapp -w /usr/src/myapp php:latest php'
+alias php='docker run -it --rm --name php-cli-tmp php:latest php -a'
+alias phpcli='php'
+alias phpscript='docker run -it --rm --name php-script-tmp -v $PWD:/usr/src/myapp -w /usr/src/myapp php:latest php'
 # }}}
-
 
 #-------------------------------------------------------------------------------
 # [proxies] {{{
 #-------------------------------------------------------------------------------
-  alias pxoff="tmuxsendall '. proxytoggle off'"
-  alias pxon="tmuxsendall '. proxytoggle on'"
-  alias pxon8090="tmuxsendall '. proxytoggle on 127.0.0.1 8090'"
+alias pxoff="tmuxsendall '. proxytoggle off'"
+alias pxon="tmuxsendall '. proxytoggle on'"
+alias pxon8090="tmuxsendall '. proxytoggle on 127.0.0.1 8090'"
 
-  alias pxoff=". proxytoggle off"
-  alias pxon=". proxytoggle on"
-  alias pxon8090=". proxytoggle on 127.0.0.1 8090"
+alias pxoff=". proxytoggle off"
+alias pxon=". proxytoggle on"
+alias pxon8090=". proxytoggle on 127.0.0.1 8090"
 
-  alias pxs="proxystatus"
-  alias pxt="proxytoggle"
+alias pxs="proxystatus"
+alias pxt="proxytoggle"
 # }}}
-
 
 #-------------------------------------------------------------------------------
 # [Python] {{{
 #-------------------------------------------------------------------------------
 
-  # Create alias to load Virtualenvwrapper so we can lazy load it when we want
-  # to decrease shell startup time
-  #
-  # Short for: "source pyenv"
-  alias sp="source \$DEFAULT_ASDF_PYTHON/bin/virtualenvwrapper.sh"
+# Create alias to load Virtualenvwrapper so we can lazy load it when we want
+# to decrease shell startup time
+#
+# Short for: "source pyenv"
+alias sp="source \$DEFAULT_ASDF_PYTHON/bin/virtualenvwrapper.sh"
 
-  alias w="workon"
+alias w="workon"
 # }}}
-
-
-#-------------------------------------------------------------------------------
-# [sound] {{{
-#-------------------------------------------------------------------------------
-  alias micoff="amixer set Capture nocap"
-  alias micon="amixer set Capture cap"
-  alias mute="amixer -q -D pulse sset Master toggle"
-  alias unmute="mute"
-# }}}
-
 
 #-------------------------------------------------------------------------------
 # [SSH] {{{
 #-------------------------------------------------------------------------------
-  alias rmsock="rm -rf ~/.ssh/sockets/*"
+alias rmsock="rm -rf ~/.ssh/sockets/*"
 
-  # SSH Keys
-  # Print SSH key fingerprint
-  alias sshhash="find ~/.ssh/ -name '*.pub' | xargs -n 1 -I {} sh -c '{ printf \"%s\t%s\n\" \"\$(basename {})\" \"\$(ssh-keygen -l -f {})\" ; }' | column -t | sort"
+# SSH Keys
+# Print SSH key fingerprint
+alias sshhash="find ~/.ssh/ -name '*.pub' | xargs -n 1 -I {} sh -c '{ printf \"%s\t%s\n\" \"\$(basename {})\" \"\$(ssh-keygen -l -f {})\" ; }' | column -t | sort"
 
-  # SSH Config
-  alias sconf="vim ~/.ssh/config"
-  alias sconfd="vim ~/.ssh/conf.d/"
-  alias sconfl="vim ~/.ssh/config-local"
-  alias sconfg="vim ~/.ssh/conf.d/gcp.conf"
+# SSH Config
+alias sconf="vim ~/.ssh/config"
+alias sconfd="vim ~/.ssh/conf.d/"
+alias sconfl="vim ~/.ssh/config-local"
+alias sconfg="vim ~/.ssh/conf.d/gcp.conf"
 
-  # SSH Agent
-  alias sshagent='eval $(ssh-agent -s); ssh-add'
-  alias sag='eval $(ssh-agent -s); ssh-add'
+# SSH Agent
+alias sshagent='eval $(ssh-agent -s); ssh-add'
+alias sag='eval $(ssh-agent -s); ssh-add'
 
-  # SSH Agent - `add`
-  alias add="addAgent"
-  alias addl="ssh-add -l"
-  alias addL="ssh-add -L"
-  alias addd="ssh-add -d"
-  alias addD="ssh-add -D"
+# SSH Agent - `add`
+alias add="addAgent"
+alias addl="ssh-add -l"
+alias addL="ssh-add -L"
+alias addd="ssh-add -d"
+alias addD="ssh-add -D"
 
-  function addAgent() {
-    local passId=${1:-ssh/default}
-    local keyFile=${2:-~/.ssh/id_rsa}
+function addAgent() {
+  local passId=${1:-ssh/default}
+  local keyFile=${2:-~/.ssh/id_rsa}
 
-    { sleep .1 ; pass show "$passId" ; } | script -q -c "ssh-add $keyFile" /dev/null
-  }
+  {
+    sleep .1
+    pass show "$passId"
+  } | script -q -c "ssh-add $keyFile" /dev/null
+}
 
-  function ensureSSHAgent() {
-    local passId=$1
-    local keyFile=$2
+function ensureSSHAgent() {
+  local passId=$1
+  local keyFile=$2
 
-    if ssh-add -l | grep -q 'The agent has no identities'; then
-      if [ -z "$passId" -o -z "$keyFile" ]; then
-        addAgent
-      else
-        addAgent $passId "$keyFile"
-      fi
+  if ssh-add -l | grep -q 'The agent has no identities'; then
+    if [ -z "$passId" -o -z "$keyFile" ]; then
+      addAgent
     else
-      echo "This function only works when there are no SSH identities loaded."
-      echo "The following identities are currently loaded in the agent:"
-      echo
-      ssh-add -l
+      addAgent $passId "$keyFile"
     fi
-  }
+  else
+    echo "This function only works when there are no SSH identities loaded."
+    echo "The following identities are currently loaded in the agent:"
+    echo
+    ssh-add -l
+  fi
+}
 
 # }}}
-
 
 #-------------------------------------------------------------------------------
 # [tmux] {{{
 #-------------------------------------------------------------------------------
 # See ~/bin/tm
-  alias 0="if ! tmux ls | grep -q 0-SHELL; then tmux new-session -s 0-SHELL; else tmux switch-client -t 0-SHELL || tmux attach -t 0-SHELL; fi"
+alias 0="if ! tmux ls | grep -q 0-SHELL; then tmux new-session -s 0-SHELL; else tmux switch-client -t 0-SHELL || tmux attach -t 0-SHELL; fi"
 
-  alias tma="tmux attach -t"
-  alias tmls="tmux ls"
-  alias tmlsa="tmux ls | while read -r sess; do S=\$(echo \$sess | cut -f1 -d:); echo \$sess; tmux list-windows -t \$S | sed -E 's/(.*\)) .*/  \1/'; done"
-  alias tmk="tmux kill-session -t"
-  alias tmrenamesession='tmux rename-session -t "$(tmux display-message -p "#S")"'
-  alias tmrenamewindow='tmux rename-window -t "$(tmux display-message -p "#{window_id}")"'
-  alias tmrs="tmrenamesession"
-  alias tmrw="tmrenamewindow"
+alias tma="tmux attach -t"
+alias tmls="tmux ls"
+alias tmlsa="tmux ls | while read -r sess; do S=\$(echo \$sess | cut -f1 -d:); echo \$sess; tmux list-windows -t \$S | sed -E 's/(.*\)) .*/  \1/'; done"
+alias tmk="tmux kill-session -t"
+alias tmrenamesession='tmux rename-session -t "$(tmux display-message -p "#S")"'
+alias tmrenamewindow='tmux rename-window -t "$(tmux display-message -p "#{window_id}")"'
+alias tmrs="tmrenamesession"
+alias tmrw="tmrenamewindow"
 
-  TM_RES_DIR=~/.tmux/resurrect
+TM_RES_DIR=~/.tmux/resurrect
 
-  alias tmfix="rm $TM_RES_DIR/last || true && \
+alias tmfix="rm $TM_RES_DIR/last || true && \
     ln -s \$(find $TM_RES_DIR -name 'tmux_resurrect_*' -printf '%T@ %p\n' | sort -rn | head -n1 | cut -f2 -d ' ') last && \
     ls --color=auto -alh $TM_RES_DIR/last"
 
-  unset TM_RES_DIR
+unset TM_RES_DIR
 
 # }}}
-
 
 #-------------------------------------------------------------------------------
 # [VMs] {{{
@@ -794,25 +820,24 @@ unset _WORK_NOTES_DIR
 # [Vagrant]
 # [VirtualBox]
 #-------------------------------------------------------------------------------
-  alias mp="multipass"
-  alias mpls="multipass ls"
-  alias mpsh="multipass shell"
+alias mp="multipass"
+alias mpls="multipass ls"
+alias mpsh="multipass shell"
 
-  # See: https://www.dedoimedo.com/computers/kvm-virtualbox.html
-  vboxEnable() {
-    sudo /sbin/rmmod kvm_intel
-    sudo /sbin/rmmod kvm
-    sudo systemctl start vboxdrv.service
-  }
+# See: https://www.dedoimedo.com/computers/kvm-virtualbox.html
+vboxEnable() {
+  sudo /sbin/rmmod kvm_intel
+  sudo /sbin/rmmod kvm
+  sudo systemctl start vboxdrv.service
+}
 
-  vboxDisable() {
-    sudo systemctl stop vboxdrv.service
-    sudo /sbin/insmod /lib/modules/$(uname -r)/kernel/arch/x86/kvm/kvm.ko
-    sudo /sbin/insmod /lib/modules/$(uname -r)/kernel/arch/x86/kvm/kvm-intel.ko
-  }
+vboxDisable() {
+  sudo systemctl stop vboxdrv.service
+  sudo /sbin/insmod /lib/modules/$(uname -r)/kernel/arch/x86/kvm/kvm.ko
+  sudo /sbin/insmod /lib/modules/$(uname -r)/kernel/arch/x86/kvm/kvm-intel.ko
+}
 
 # }}}
-
 
 #------------------------------------------------------------------------------#
 #                                 FUNCTIONS                                    #
@@ -839,7 +864,7 @@ man() {
     \
     LESS_TERMCAP_us=$'\E[01;32m' \
     LESS_TERMCAP_ue=$'\E[0m' \
-  man "$@"
+    man "$@"
 }
 
 # Start VM from disk image (usually qcow2)
@@ -931,7 +956,6 @@ alias pk="pkill pomodoro && pstart"
 # org.gnome.pomodoro.plugins.sounds pomodoro-end-sound-volume 1.0
 # org.gnome.pomodoro.plugins.sounds pomodoro-start-sound-volume 1.0
 
-
 # install_pomodoro_dbus_deps() {
 #   sudo apt install -y libcairo2-dev libxt-dev libgirepository1.0-dev
 #   _DBUS_PYTHON=$HOME/virtualenvs/dbus/bin/python3/../pip install pydbus pycairo PyGObject
@@ -990,6 +1014,5 @@ alias pv="pomovol"
 for i in {0..10}; do
   alias pv$i="pomovol $i"
 done
-
 
 # vim: set ft=sh foldmarker={{{,}}} foldmethod=marker foldlevel=0 :
