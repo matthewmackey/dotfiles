@@ -24,6 +24,18 @@ set sneak
 set surround
 set which-key
 
+Plug 'kana/vim-textobj-user'
+"Plug 'kana/vim-textobj-entire'
+Plug 'kana/vim-textobj-function'
+"Plug 'kana/vim-textobj-fold'
+"Plug 'kana/vim-textobj-indent'
+"Plug 'kana/vim-textobj-line'
+"Plug 'deathlyfrantic/vim-textobj-blanklines'
+""Plug 'fvictorio/vim-textobj-backticks'
+"Plug 'Julian/vim-textobj-brace'
+"Plug 'thinca/vim-textobj-between'
+
+
 " Which-Key
 set timeoutlen=2500
 let g:WhichKey_FontSize = 16
@@ -142,6 +154,7 @@ map <M-m> <Action>(ActivateMavenToolWindow)
 " Leader Mappings (Single-key mappings)
 " ----------------------------------------------------------------------
 map <leader>0 <Action>(ActivateProjectToolWindow)
+map <leader>1 <Action>(ActivateBuildToolWindow)
 map <leader>4 <Action>(ActivateRunToolWindow)
 map <leader>7 <Action>(ActivateServicesToolWindow)
 map <leader>8 <Action>(ActivateStructureToolWindow)
@@ -257,8 +270,8 @@ map <leader>rs <Action>(ChangeSignature)
 map <leader>rv <Action>(IntroduceVariable)
 
 " Vim configuration
-nnoremap <leader>vc :source ~/.ideavimrc<CR>
 nnoremap <leader>ve :edit ~/.ideavimrc<CR>
+nnoremap <leader>vs :source ~/.ideavimrc<CR>
 
 " Window splits
 map <leader>wm <Action>(MoveEditorToOppositeTabGroup)

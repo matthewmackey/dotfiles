@@ -55,5 +55,4 @@ export VIMRC=$XDG_CONFIG_HOME/vim/vimrc-common.vim
 # neovim
 export NEOVIM_VIRTUALENV=$WORKON_HOME/neovim
 
-
 # vim: ft=sh

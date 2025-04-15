@@ -32,6 +32,9 @@
   pretty = fuller
   pretty = medium
 
+[init]
+  defaultBranch = main
+
 [merge]
   #tool = ??
   # From: delta

@@ -34,13 +34,19 @@ call plug#begin(data_dir . '/../plugged')
   " Text Objects
   Plug 'wellle/targets.vim'
 
+  " vim-textobj-user is the root plugin that allows the other `vim-textobj-*` plugins to work
   Plug 'kana/vim-textobj-user'
   Plug 'kana/vim-textobj-entire'
   Plug 'kana/vim-textobj-fold'
   Plug 'kana/vim-textobj-indent'
   Plug 'kana/vim-textobj-line'
-  Plug 'coachshea/vim-textobj-markdown'
+  Plug 'deathlyfrantic/vim-textobj-blanklines'
+  Plug 'fvictorio/vim-textobj-backticks'
+  Plug 'Julian/vim-textobj-brace'
+  Plug 'thinca/vim-textobj-between'
+  " Language-specific
   Plug 'bps/vim-textobj-python'
+  Plug 'coachshea/vim-textobj-markdown'
 
   " Tag bar
   Plug 'liuchengxu/vista.vim'

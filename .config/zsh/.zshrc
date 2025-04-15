@@ -72,6 +72,27 @@ section "Sourcing -> ~/.config/zsh/.zshrc"
     source_file_if_exists $_plugin_clone_dir/$_plugin_source_file
   }
 
+  installOhMyZshPluginDirectly() {
+    local _ohmyzsh_plugin_name=$1
+
+    local _plugin_clone_dir=$ZSH_PLUGIN_DIR/ohmyzsh/${_ohmyzsh_plugin_name}
+    local _plugin_source_file=${_plugin_clone_dir}/${_ohmyzsh_plugin_name}.plugin.zsh
+
+    local _ohmyzsh_plugin_source_file_url=https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/${_ohmyzsh_plugin_name}/${_ohmyzsh_plugin_name}.plugin.zsh
+
+    if [ ! -d $_plugin_clone_dir ]; then
+      mkdir_if_not_exist $_plugin_clone_dir
+    fi
+
+    if [ ! -f $_plugin_source_file ]; then
+      msg "Installing OhMyZsh plugin source file directly from: [${_ohmyzsh_plugin_source_file_url}]"
+      curl -o $_plugin_source_file $_ohmyzsh_plugin_source_file_url
+    fi
+
+    source_file_if_exists $_plugin_source_file
+  }
+
+
   # installZshPlugin ohmyzsh/ohmyzsh plugins/kubectl/kubectl.plugin.zsh
   installZshPlugin zsh-users/zsh-syntax-highlighting zsh-syntax-highlighting.zsh
   installZshPlugin matthewmackey/shell-plugins plugins/docker/common.sh
@@ -80,7 +101,84 @@ section "Sourcing -> ~/.config/zsh/.zshrc"
   installZshPlugin matthewmackey/shell-plugins plugins/node/common.sh
   installZshPlugin matthewmackey/shell-plugins plugins/systemctl/common.sh
   installZshPlugin matthewmackey/shell-plugins plugins/terraform/common.sh
+
 # }}}
+
+#---------------------------------------
+# [OhMyZsh vi-mode without OhMyZsh ] {{{
+#---------------------------------------
+
+  #-----------------------------------------------------------------------------------
+  # These are the manual steps needed to get the MODE_INDICATORs to work without
+  # the full OhMyZsh library:
+  #
+  # 1. Inject $MODE_INDICATOR into PROMPT.
+  #
+  # 2. Add zle-keymap-select to auto-refresh prompt.
+  #
+  # 3. Customize colors with VI_MODE_* vars.
+  #-----------------------------------------------------------------------------------
+
+  #--------------------------------------------
+  # 1. Inject $MODE_INDICATOR into PROMPT.
+  #--------------------------------------------
+
+  #--------------------------------------------
+  # 2. Add zle-keymap-select to auto-refresh prompt.
+  #--------------------------------------------
+  function zle-keymap-select {
+    zle reset-prompt
+  }
+  zle -N zle-keymap-select
+
+  # Also for exiting the line editor
+  function zle-line-finish {
+    zle reset-prompt
+  }
+  zle -N zle-line-finish
+
+  #--------------------------------------------
+  # 3. Customize colors with VI_MODE_* vars.
+  #--------------------------------------------
+
+  # VI_MODE_RESET_PROMPT_ON_MODE_CHANGE: controls whether the prompt is redrawn when switching
+  # to a different input mode. If this is unset, the mode indicator will not be updated when changing
+  # to a different mode. Set it to true to enable it.
+  #
+  # The default value is unset, unless `vi_mode_prompt_info` is used, in which case it'll automatically be set to true.
+  VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+
+  # VI_MODE_DISABLE_CLIPBOARD: If set, disables clipboard integration on yank/paste
+  # VI_MODE_DISABLE_CLIPBOARD=true
+
+  # MODE_INDICATOR: controls the string displayed when the shell is in normal mode.
+  # MODE_INDICATOR="%F{yellow}<<<%f"
+  MODE_INDICATOR="%F{red}<<<+%f"
+  MODE_INDICATOR="🔴 NORMAL"
+
+  # INSERT_MODE_INDICATOR: controls the string displayed when the shell is in insert mode.
+  INSERT_MODE_INDICATOR="%F{yellow}+%f"
+  INSERT_MODE_INDICATOR="🟢 INSERT"
+
+  # VI_MODE_SET_CURSOR: controls whether the cursor style is changed when switching to a different input mode.
+  # Set it to true to enable it (default: unset).
+  #
+  # 0, 1 - Blinking block
+  # 2 - Solid block
+  # 3 - Blinking underline
+  # 4 - Solid underline
+  # 5 - Blinking line
+  # 6 - Solid line
+  VI_MODE_SET_CURSOR=true
+  VI_MODE_CURSOR_NORMAL=2
+  VI_MODE_CURSOR_VISUAL=6
+  VI_MODE_CURSOR_INSERT=6
+  VI_MODE_CURSOR_OPPEND=0
+
+  installOhMyZshPluginDirectly vi-mode
+
+# }}}
+
 
 
 #---------------------------------------
@@ -105,13 +203,13 @@ section "Sourcing -> ~/.config/zsh/.zshrc"
   source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
 
 # plugins=(copydir copyfile git kubectl vi-mode)
-# VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
-# VI_MODE_SET_CURSOR=true
-# MODE_INDICATOR="%F{yellow}<<<%f"
 
 # Fix git paging issues w/ oh-my-zsh
 # https://superuser.com/questions/820943/typing-git-log-oneline-in-oh-my-zsh-pipes-to-less
 #unset LESS
+
+  # Setup `envman` - used by `webi` (see https://webinstall.dev)
+  source ~/.config/envman/load.sh
 
 # }}}
 
@@ -162,4 +260,4 @@ unset _AWS_COMPLETER
 # }}}
 
 
-# vim: ft=bash  foldlevel=0 foldmarker={{{,}}} foldmethod=marker
+# vim: ft=bash  foldmarker={{{,}}} foldmethod=marker

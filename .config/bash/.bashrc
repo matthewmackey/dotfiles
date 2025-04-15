@@ -118,3 +118,6 @@ source_local_dotfiles
 
 
 # vim: ft=sh  foldlevel=0 foldmarker={{{,}}} foldmethod=marker
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
