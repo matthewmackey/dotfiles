@@ -1,8 +1,11 @@
 #-------------------------------------------------------------------------------
 # .zshrc
 #-------------------------------------------------------------------------------
+[ -f ~/.config/sh/env ] && source ~/.config/sh/env
 
-[[ -f ~/.config/sh/rc ]] && source ~/.config/sh/rc
+[ -f ~/.config/sh/rc ] && source ~/.config/sh/rc
+
+[ -f ~/.config/zsh/.zprofile ] && source ~/.config/zsh/.zprofile
 
 # Must be after interactive shell confirmation
 section "Sourcing -> ~/.config/zsh/.zshrc"
@@ -209,10 +212,9 @@ section "Sourcing -> ~/.config/zsh/.zshrc"
 #unset LESS
 
   # Setup `envman` - used by `webi` (see https://webinstall.dev)
-  source ~/.config/envman/load.sh
+  [ -f ~/.config/envman/load.sh ] && source ~/.config/envman/load.sh
 
 # }}}
-
 
 #---------------------------------------
 # [SOURCE Zsh Includes] {{{
@@ -233,9 +235,6 @@ section "Sourcing -> ~/.config/zsh/.zshrc"
 # [OTHER] {{{
 #---------------------------------------
 source_local_dotfiles
-if command -v xmodmap >/dev/null; then
-  xmswitch
-fi
 
 # }}}
 
@@ -258,6 +257,7 @@ fi
 unset _AWS_COMPLETER
 
 # }}}
+
 
 
 # vim: ft=bash  foldmarker={{{,}}} foldmethod=marker

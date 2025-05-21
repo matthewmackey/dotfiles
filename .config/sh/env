@@ -2,6 +2,8 @@
 # ~/.config/sh/env
 #
 
+export DISPLAY=:0
+
 export EDITOR="vim"
 export FCEDIT="$EDITOR"
 export PAGER="less"
