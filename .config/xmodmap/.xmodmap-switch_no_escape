@@ -14,3 +14,4 @@ clear Lock
 ! Do NOT need to do the following or else when you press the Caps_Lock key it
 ! will trigger BOTH an "Escape" AND a "Caps_Lock" (not sure why ??)
 !add Lock = Escape
+

@@ -281,6 +281,7 @@ setupPersonalSystem() {
 
   $DOTDIR/.config/tmux/install.sh
   $DOTDIR/.config/git/install.sh
+  $DOTDIR/.config/xmodmap/install.sh
 
   $DOTDIR/desktop/install.sh
 
