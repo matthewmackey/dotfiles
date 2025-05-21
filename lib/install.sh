@@ -42,6 +42,7 @@ REMOTE_CONFIGS=(
   direnv
   git
   go
+  profile
   psql
   readline
   sh
@@ -137,6 +138,8 @@ setupLocalDotConfigDirSymlinks() {
 #-------------------------------------------------------------------------------
 setupRemoteHomeDirSymlinks() {
   print_step "Setting up REMOTE dotfile symlinks in \$HOME directory"
+
+  create_symlink_with_backup $STD_DOT_CONFIG_DIR/profile/.profile ~/.profile
   create_symlink_with_backup $STD_DOT_CONFIG_DIR/bash/.bash_profile ~/.bash_profile
   create_symlink_with_backup $STD_DOT_CONFIG_DIR/bash/.bashrc ~/.bashrc
   create_symlink_with_backup $STD_DOT_CONFIG_DIR/git/.gitconfig ~/.gitconfig
