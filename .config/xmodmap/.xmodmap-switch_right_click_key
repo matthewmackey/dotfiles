@@ -1,4 +1,16 @@
 ! ---------------------------------------------------------------
 ! Switch Right-click ("Applicaiton") Key and Super/Windows key
+!
+! This does NOT work
 ! ---------------------------------------------------------------
-keycode 135 = Super_R
+! Remap Menu key (keycode 135) to Super_L (Windows key)
+keycode 135 = Super_L
+
+! Clear existing Super assignments if necessary
+remove Mod4 = Super_R
+remove Mod4 = Super_L
+
+! Add Super_L to Mod4 so it functions as the Super key
+clear Mod4
+keycode 135 = Super_L
+add Mod4 = Super_L
