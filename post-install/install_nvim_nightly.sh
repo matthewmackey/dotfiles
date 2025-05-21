@@ -7,7 +7,8 @@ source $DOTDIR/lib/common.sh
 
 DOWNLOADS_DIR=~/downloads/srv
 CURR_NIGHTLY_DOWNLOAD_FILE=$DOWNLOADS_DIR/nvim.appimage.tmp
-NIGHTLY_URL=https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+NIGHTLY_URL=https://github.com/neovim/neovim/releases/download/nightly/nvim-linux-x86_64.appimage
+
 
 _VERSIONED_DOWNLOAD_FILE=
 
