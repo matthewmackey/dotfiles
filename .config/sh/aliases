@@ -133,8 +133,10 @@ alias cs="createshortcut"
 #-------------------------------------
 # [xmodmap]
 #-------------------------------------
-_display=$(who | awk '{ print $2; }' | head -n1)
-_xm="DISPLAY=$_display xmodmap"
+# _display=$(who | awk '{ print $2; }' | head -n1)
+# _display=$(who | awk '{ print $2; }' | grep ':')
+# _xm="DISPLAY=$_display xmodmap"
+_xm="xmodmap"
 
 alias xmboth="$_xm ~/.config/xmodmap/.xmodmap-both_escape"
 alias xmnormal="$_xm ~/.config/xmodmap/.xmodmap-normal"
@@ -913,8 +915,10 @@ tms() {
 #---------------------------------------------
 # gnome-pomodoro Applet
 #---------------------------------------------
-_DBUS_PYTHON=$HOME/virtualenvs/dbus/bin/python3
+_DBUS_PYTHON=$HOME/virtualenvs/main/bin/python3
 _POMO_PY="$_DBUS_PYTHON $(which pomo.py)"
+# Use Sytem Python b/c pydbus now installed to system python
+_POMO_PY="$(which pomo.py)"
 alias pstatus="$_POMO_PY status"
 alias pstart="$_POMO_PY start; echo 'STARTED\n'; pstatus"
 alias pstop="$_POMO_PY stop; echo 'STOPPED\n'; pstatus"
