@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Exec=keymapp
+Icon=~/.local/share/icons/keymapp.jpg
+Terminal=false
+
+Name=Keymapp (Moonlander)
+GenericName=Keyboard Layout Configuration Tool
+StartupWMClass=Keymapp
+Actions=New;
+
