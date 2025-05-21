@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=sxhkd
+Exec=sxhkd
+Type=Application
+X-GNOME-Autostart-enabled=true

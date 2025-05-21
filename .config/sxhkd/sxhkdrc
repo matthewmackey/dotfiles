@@ -1,0 +1,7 @@
+# Start Whisper recording
+ctrl + alt + shift + 8
+    /home/mmackey/brick/work/monorepo/start.sh
+
+# Stop and transcribe
+ctrl + alt + shift + 9
+    /home/mmackey/brick/work/monorepo/stop.sh
