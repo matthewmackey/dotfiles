@@ -17,8 +17,7 @@ setupXmodmapConf() {
   fi
 
   cat $XMODMAP_SWITCH_NO_ESCAPE >$XMODMAP_RC
-  # Disabling Right-key remapping as it doesn't work
-  # cat $XMODMAP_SWITCH_RIGHT_CLICK_KEY >>$XMODMAP_RC
+  cat $XMODMAP_SWITCH_RIGHT_CLICK_KEY >>$XMODMAP_RC
 
   echo
   cat $XMODMAP_RC

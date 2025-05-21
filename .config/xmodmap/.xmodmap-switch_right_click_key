@@ -1,16 +1,21 @@
 ! ---------------------------------------------------------------
 ! Switch Right-click ("Applicaiton") Key and Super/Windows key
 !
-! This does NOT work
+! This will properly map the Right-click key to the Super key,
+! and it will make that key function the same as the regular Super
+! key on the left of the keyboard for all of my Super key
+! keyboard shortcuts.
+!
+! ...However, it will not open the "Start" menu. Getting a Super
+! key to do that is some lower-level Gnome stuff, but this is
+! fine for my purposes b/c I'm mainly using it for the
+! keyboard shortcuts.
 ! ---------------------------------------------------------------
+
 ! Remap Menu key (keycode 135) to Super_L (Windows key)
 keycode 135 = Super_L
 
-! Clear existing Super assignments if necessary
-remove Mod4 = Super_R
-remove Mod4 = Super_L
-
 ! Add Super_L to Mod4 so it functions as the Super key
-clear Mod4
-keycode 135 = Super_L
+!
+! Not sure if this is actually necessary
 add Mod4 = Super_L
